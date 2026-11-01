@@ -1,0 +1,1422 @@
+<title>MICHINARI｜中小企業から、日本を元気にする。外部CMO・Webマーケティング支援</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="MICHINARI（ミチナリ）は、外部CMOとして中小企業の経営に入り、Web・販促・内製化・DX/AXまで事業の道のりに伴走するマーケティングパートナーです。">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700&family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: 博報堂型の「パネルを敷き詰める」構成を明るい配色で。薄いグレーの地に白い角丸パネル、等幅の小ラベル（■ News）、
+   段違いにずらした大きな英字×写真のカード、赤い丸矢印。写真の上に文字を重ねるときは白い縁取りで読みやすさを確保。 */
+:root{
+  color-scheme:light;
+  --page:#eceff3;
+  --panel:#ffffff;
+  --ivory:#fbf8ee;
+  --ink:#1b2129;
+  --body:#3a434d;
+  --muted:#5a636d;
+  --line:#d9dee4;
+  --red:#d74133;
+  --red-ink:#b8342a;
+  --blue:#2468a8;
+  --blue-soft:#e6f0f9;
+  --en:"Lexend","Avenir Next","Helvetica Neue",Arial,sans-serif;
+  --mono:"DM Mono","SFMono-Regular",Menlo,Consolas,monospace;
+  --jp:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  --r:14px;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{background:var(--page)}
+html{overflow-x:clip}
+body{color:var(--body);font-family:var(--jp);font-size:16px;line-height:1.9;letter-spacing:.03em;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--page)}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure,table{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+h1,h2,h3{color:var(--ink)}
+.nb{display:inline-block}
+.shell{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.inner{max-width:1180px;margin:0 auto}
+.panel{background:var(--panel);border-radius:var(--r)}
+.stack{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding-block:16px}
+
+/* ===== header ===== */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(236,239,243,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.site-header .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:76px}
+.logo{display:block;height:34px;width:auto}
+.gnav{display:flex;align-items:center;gap:22px}
+.gnav-links{display:flex;gap:24px;align-items:center}
+.gnav-links a{text-decoration:none;font-size:13.5px;font-weight:700;color:var(--ink);padding:10px 0;letter-spacing:.06em}
+.gnav-links a:hover,.gnav-links a[aria-current="page"]{color:var(--red-ink)}
+/* ===== mega menu (PC) ===== */
+.mega{display:none}
+@media (min-width:921px){
+  .gnav,.gnav-links{align-self:stretch}
+  .gnav-item{display:flex;align-items:center}
+  .gnav-item > a{position:relative}
+  .gnav-item > a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--red);transform:scaleX(0);transition:transform .2s}
+  .gnav-item:hover > a::after,.gnav-item:focus-within > a::after{transform:scaleX(1)}
+  .mega{display:block;position:absolute;top:100%;left:16px;right:16px;z-index:60;padding-top:10px;visibility:hidden;opacity:0;transform:translateY(-6px);transition:opacity .18s,transform .18s,visibility 0s .18s}
+  .gnav-item:hover .mega,.gnav-item:focus-within .mega{visibility:visible;opacity:1;transform:none;transition-delay:.06s,.06s,0s}
+  .gnav-item.closed .mega{visibility:hidden!important;opacity:0!important}
+  .mega-in{max-width:1400px;margin:0 auto;background:#fff;border-radius:24px;box-shadow:0 24px 60px rgba(20,30,40,.16);padding:40px clamp(28px,4vw,72px) 52px}
+  .mega-title{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:var(--ink);margin-bottom:32px}
+  .mega-title b{font:700 clamp(40px,4.2vw,58px)/1.05 var(--en);letter-spacing:-.01em;position:relative}
+  .mega-title b::after{content:"";position:absolute;right:-30px;bottom:12px;width:9px;height:9px;border-right:3px solid var(--red);border-bottom:3px solid var(--red);transform:rotate(-45deg);transition:right .2s}
+  .mega-title:hover b::after{right:-36px}
+  .mega-title span{margin-top:8px;font-size:15px;font-weight:700;letter-spacing:.12em}
+  .gnav-links .mega-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 44px}
+  .gnav-links .mega-links a{display:flex;align-items:center;justify-content:space-between;padding:22px 12px;border-bottom:2px solid #edf0f3;font-size:16px;font-weight:700;letter-spacing:.06em;color:var(--ink)}
+  .gnav-links .mega-links a::after{content:"";flex:none;width:8px;height:8px;border-right:3px solid var(--red);border-bottom:3px solid var(--red);transform:rotate(-45deg);margin-right:4px;transition:margin .2s}
+  .gnav-links .mega-links a:hover{color:var(--red-ink)}
+  .gnav-links .mega-links a:hover::after{margin-right:0}
+}
+.head-cta{display:inline-flex;align-items:center;gap:10px;min-height:42px;padding:0 8px 0 18px;border-radius:999px;background:var(--ink);color:#fff;font-size:13px;font-weight:700;text-decoration:none}
+.head-cta::after{content:"→";display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--red);font-size:13px}
+.head-cta:hover{background:#000}
+.menu-btn{display:none;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.sp-only{display:none}
+
+/* ===== 等幅ラベル付きの見出しパネル ===== */
+.sec-head{padding:14px 24px 22px}
+.labels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;font:500 11.5px/1 var(--mono);color:var(--muted);letter-spacing:.04em}
+.labels span::before{content:"■ ";color:var(--ink)}
+.sec-head h2{margin-top:18px;font-size:clamp(28px,3.6vw,40px);font-weight:900;letter-spacing:.08em;line-height:1.3}
+.sec-head h2 small{margin-left:14px;font:600 15px var(--en);color:var(--muted);letter-spacing:.02em}
+.sec-body{padding:8px 24px 32px}
+
+/* 赤い丸矢印のボタン */
+.more{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 10px 0 22px;border:1.5px solid var(--red);border-radius:10px;color:var(--red-ink);font-size:14px;font-weight:700;text-decoration:none;background:#fff}
+.more::after{content:"→";display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-size:13px;transition:transform .2s}
+.more:hover::after{transform:translateX(3px)}
+.arrow{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;border:1.5px solid var(--red);color:var(--red-ink);font-size:18px;background:#fff;transition:background .2s,color .2s}
+
+/* ===== hero ===== */
+.hero,.hero-strip{margin-inline:calc(50% - 50vw)}
+.hero{position:relative;margin-top:-16px;min-height:clamp(560px,calc(100svh - 77px - 112px),820px);display:flex;align-items:center;color:#fff;overflow:hidden;background:#1d4675}
+.hero-media{position:absolute;inset:0;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:62% 50%;transform-origin:62% 55%;animation:heroDrift 26s ease-in-out infinite alternate}
+@keyframes heroDrift{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-2%,-1%,0)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,26,48,.72) 0%,rgba(10,26,48,.50) 38%,rgba(10,26,48,.12) 70%,rgba(10,26,48,0) 100%),linear-gradient(180deg,rgba(10,26,48,.10) 0%,rgba(10,26,48,0) 40%,rgba(10,26,48,.25) 100%)}
+.hero-in{position:relative;z-index:1;width:min(100% - 32px,1320px);margin:0 auto;padding:72px clamp(8px,4vw,64px) 80px;text-shadow:0 2px 16px rgba(5,15,30,.35)}
+.hero-kicker{font:700 clamp(46px,7vw,104px)/1.04 var(--en);letter-spacing:-.01em;color:#fff;position:relative;padding-top:26px}
+.hero-kicker::before{content:"";position:absolute;left:2px;top:0;width:44px;height:3px;background:var(--red)}
+.hero h1{margin-top:22px;font-size:clamp(22px,2.6vw,34px);font-weight:900;line-height:1.5;letter-spacing:.06em;color:#fff}
+.hero .lead{margin-top:24px;font-size:clamp(14px,1.25vw,16.5px);font-weight:500;line-height:2.05;letter-spacing:.06em;color:#fff}
+.hero-btns{margin-top:40px;display:flex;flex-wrap:wrap;gap:16px}
+.hb{display:inline-flex;align-items:center;justify-content:center;min-width:260px;min-height:64px;padding:0 28px;border-radius:10px;border:2px solid;font-size:15px;font-weight:700;letter-spacing:.06em;text-decoration:none;text-shadow:none;transition:transform .2s,box-shadow .2s,background .2s}
+.hb:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.25)}
+.hb-light{background:#fff;color:var(--ink);border-color:#fff}
+.hb-dark{background:#151b1e;color:#fff;border-color:#fff}
+.hb-dark:hover{background:#000}
+.hero-strip{margin-top:-16px;background:#fff;padding:18px 0 22px;border-bottom:1px solid var(--line)}
+.hero-strip-label{text-align:center;font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--muted)}
+.marquee{margin-top:10px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee-track{display:flex;width:max-content;animation:marquee 38s linear infinite}
+.marquee-track .dup{display:flex}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee a{display:flex;align-items:baseline;gap:10px;padding:6px clamp(28px,3.4vw,52px);text-decoration:none;white-space:nowrap;border-right:1px solid var(--line)}
+.marquee a b{font-size:clamp(16px,1.5vw,20px);font-weight:900;color:var(--ink);letter-spacing:.06em}
+.marquee a span{font:600 12px var(--en);color:var(--red-ink);letter-spacing:.08em}
+.marquee a:hover b{color:var(--red-ink)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.hero-media img,.marquee-track{animation:none}}
+
+/* ===== news ===== */
+.cols-head{display:grid;grid-template-columns:120px minmax(0,1fr) 140px;gap:16px;font:400 11.5px var(--mono);color:var(--muted);padding:12px 4px;border-bottom:1px solid var(--line)}
+.news-list li{border-bottom:1px solid var(--line)}
+.news-list a{display:grid;grid-template-columns:120px minmax(0,1fr) 140px;gap:6px 16px;align-items:center;padding:18px 4px;text-decoration:none}
+.news-list a:hover .t{color:var(--red-ink);text-decoration:underline;text-underline-offset:4px}
+.news-list time,.news-list .date{font:500 13px var(--mono);color:var(--muted)}
+.news-list .t{font-size:15px;font-weight:700;color:var(--ink);line-height:1.7}
+.cat{justify-self:start;display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:4px;background:var(--blue);color:#fff;white-space:nowrap}
+.cat.c-works{background:var(--red-ink)}
+.draft{display:inline-block;margin-left:8px;font-size:11px;font-weight:700;color:var(--red-ink);border:1px solid var(--red-ink);border-radius:4px;padding:0 6px;vertical-align:2px}
+.btn-row{margin-top:26px}
+
+/* ===== philosophy（MVV）：デジタル×道×炎の背景の上に、段違いのカード ===== */
+.philo{position:relative;border-radius:var(--r);overflow:hidden;background:#123a68;padding:clamp(40px,6vw,80px) clamp(16px,4vw,56px) clamp(160px,18vw,230px)}
+.philo > canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.philo-in{position:relative;z-index:1;max-width:1080px;margin:0 auto}
+.philo-title{color:#fff;text-shadow:0 2px 12px rgba(5,20,40,.5)}
+.philo-title .mono{font:500 12px var(--mono);letter-spacing:.06em;opacity:.95}
+.philo-title h2{margin-top:6px;color:#fff;font:700 clamp(40px,6vw,76px)/1.05 var(--en)}
+.mvv{margin-top:36px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px}
+.mvv-card{background:#fff;border-radius:var(--r);padding:30px 32px;box-shadow:0 18px 50px rgba(5,20,40,.30)}
+.mvv-card .k{display:flex;align-items:baseline;gap:12px;font:500 12px var(--mono);color:var(--muted)}
+.mvv-card .k b{font:700 26px var(--en);color:var(--red-ink);letter-spacing:.02em}
+.mvv-card .big{margin-top:12px;font-size:clamp(20px,2.3vw,27px);font-weight:900;line-height:1.55;color:var(--ink);letter-spacing:.04em}
+.mvv-card .en-sub{margin-top:4px;font:600 14px var(--en);color:var(--blue)}
+.mvv-card p{margin-top:12px;font-size:14.5px}
+.m-mission{grid-column:1 / span 7}
+.m-vision{grid-column:5 / span 8;margin-top:-8px}
+.m-value{grid-column:2 / span 11}
+.values{margin-top:18px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.values li{border-top:3px solid var(--ink);padding-top:12px}
+.values .n{font:500 11.5px var(--mono);color:var(--muted)}
+.values b{display:block;margin-top:4px;font-size:15.5px;font-weight:900;color:var(--ink);line-height:1.5}
+.values i{display:block;font-style:normal;font:600 12px var(--en);color:var(--blue);margin-top:2px}
+.values span{display:block;margin-top:6px;font-size:13px;line-height:1.75}
+.philo-more{margin-top:28px;text-align:right}
+
+/* ===== 段違いの英字×写真カード ===== */
+.stagger{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px clamp(24px,5vw,72px);padding:clamp(32px,5vw,64px) clamp(20px,5vw,72px) clamp(48px,7vw,96px)}
+.stagger > a:nth-child(even){margin-top:clamp(60px,9vw,130px)}
+.s-card{position:relative;display:block;text-decoration:none;color:inherit;padding-top:clamp(36px,4.5vw,64px)}
+.s-card .big{position:absolute;top:0;left:0;z-index:2;font:700 clamp(34px,5.2vw,72px)/.95 var(--en);color:var(--ink);letter-spacing:-.005em;
+  text-shadow:0 0 1px #fff,0 0 2px #fff,0 0 3px #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff}
+.s-card .jp{position:relative;z-index:2;display:block;margin:6px 0 0 4px;font-size:14px;font-weight:700;color:var(--ink);text-shadow:0 0 3px #fff,0 0 3px #fff}
+.s-card .ph{margin:-10px 0 0 clamp(40px,8vw,110px);border-radius:8px;overflow:hidden;aspect-ratio:16/10;background:#dde6ee}
+.s-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.s-card:hover .ph img{transform:scale(1.04)}
+.s-card .desc{margin:14px 0 0 clamp(40px,8vw,110px);font-size:14px}
+.s-card .arrow{position:absolute;left:4px;bottom:clamp(40px,5vw,60px);z-index:2}
+.s-card:hover .arrow{background:var(--red);color:#fff}
+.sub-link{margin:0 clamp(20px,5vw,72px) clamp(32px,5vw,56px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;border:1px solid var(--line);border-radius:12px;padding:20px 24px;text-decoration:none;color:inherit}
+.sub-link b{font-size:17px;font-weight:900;color:var(--ink)}
+.sub-link p{flex:1 1 320px;font-size:14px}
+.sub-link:hover b{color:var(--red-ink)}
+
+/* ===== works ===== */
+.works{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.case{background:var(--page);border-radius:12px;padding:26px 26px 22px;display:flex;flex-direction:column;gap:12px}
+.panel .case{background:#f4f6f9}
+.case-meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font:500 12px var(--mono);color:var(--muted)}
+.case h3{font-size:17.5px;line-height:1.65;font-weight:900;text-wrap:pretty}
+.figs{display:flex;flex-wrap:wrap;gap:12px 36px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fig small{display:block;font-size:12px;color:var(--muted)}
+.fig .v{display:flex;align-items:baseline;gap:4px;margin-top:2px}
+.fig .v b{font:700 36px/1.1 var(--en);color:var(--ink);font-variant-numeric:tabular-nums}
+.fig .v i{font-style:normal;font-size:13px;font-weight:700;color:var(--ink)}
+.fig .was{display:block;font:400 12px var(--mono);color:var(--muted)}
+.case details summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--ink);min-height:32px;display:flex;align-items:center}
+.case details p{font-size:13px;margin-top:4px}
+.case-more{align-self:flex-start;font-size:13.5px;font-weight:700;color:var(--red-ink);text-decoration:none}
+.case-more::after{content:" →"}
+.case-consult{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;background:var(--ivory,#faf7ef);border-radius:12px;padding:24px 28px}
+.case-consult b{font-size:17px;font-weight:900;color:var(--ink)}
+.case-consult p{margin-top:6px;font-size:14px;max-width:44em}
+.case-more:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* ===== CTA ===== */
+.cta{position:relative;border-radius:var(--r);overflow:hidden;padding:clamp(64px,9vw,128px) clamp(16px,4vw,40px);display:grid;place-items:center;isolation:isolate}
+.cta-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(255,255,255,.28) 0%,rgba(240,245,251,.10) 45%,rgba(15,23,42,.18) 100%)}
+.cta-card{position:relative;width:min(100%,880px);background:#fff;border-radius:26px;padding:clamp(40px,5vw,60px) clamp(20px,5vw,72px) clamp(40px,5vw,56px);text-align:center;
+  box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 2px 6px rgba(15,23,42,.06),0 30px 70px rgba(15,23,42,.22);border:1px solid rgba(255,255,255,.7)}
+.cta-card.reveal{opacity:0;transform:translateY(28px) scale(.98);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.cta-card.reveal.is-visible{opacity:1;transform:none}
+.cta-eyebrow{display:inline-flex;align-items:center;gap:18px;font-size:clamp(14px,1.3vw,17px);font-weight:700;color:var(--red-ink);letter-spacing:.08em}
+.cta-eyebrow::before,.cta-eyebrow::after{content:"";width:22px;height:1.5px;background:currentColor}
+.cta-eyebrow::before{transform:rotate(45deg)}.cta-eyebrow::after{transform:rotate(-45deg)}
+.cta h2{margin-top:16px;font-size:clamp(26px,3.4vw,42px);font-weight:900;line-height:1.5;letter-spacing:.05em;color:#0f172a}
+.cta h2 em{font-style:normal;color:var(--red-ink)}
+.cta-text{margin-top:18px;font-size:15.5px;font-weight:500;color:#475569;letter-spacing:.04em;line-height:1.9}
+.cta-btns{margin-top:36px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:680px;margin-inline:auto}
+.cta-btn{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;min-height:70px;border-radius:999px;color:#fff;font-size:15.5px;font-weight:700;letter-spacing:.08em;text-decoration:none;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s;overflow:hidden}
+.cta-btn::before{content:"";position:absolute;inset:0 0 50% 0;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0));pointer-events:none}
+.cta-btn:hover{transform:translateY(-3px)}
+.cta-btn:active{transform:translateY(0)}
+.cta-form{background:linear-gradient(135deg,#f0705c 0%,#d74133 55%,#b8263a 100%);box-shadow:0 12px 30px rgba(215,65,51,.36),inset 0 -2px 0 rgba(0,0,0,.08)}
+.cta-form:hover{box-shadow:0 18px 40px rgba(215,65,51,.44),inset 0 -2px 0 rgba(0,0,0,.08)}
+.cta-line{background:#06c755;box-shadow:0 12px 30px rgba(6,199,85,.32),inset 0 -2px 0 rgba(0,0,0,.08)}
+.cta-line:hover{box-shadow:0 18px 40px rgba(6,199,85,.42),inset 0 -2px 0 rgba(0,0,0,.08)}
+.cta-line .badge{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:#06c755}
+.cta-form .badge{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.2)}
+@media (prefers-reduced-motion:reduce){.cta-card.reveal{opacity:1;transform:none;transition:none}.cta-btn{transition:none}}
+
+.pagetop{display:grid;justify-items:center;gap:6px;padding:32px 0 8px;font:500 11px var(--mono);color:var(--muted);text-decoration:none}
+.pagetop span{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#fff;border:1px solid var(--line);font-size:18px;color:var(--ink)}
+
+/* ===== footer ===== */
+.site-footer{padding-block:16px 28px}
+.foot{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,2fr);gap:16px}
+.foot-brand{background:var(--ink);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;color:#e6edf3}
+.foot-brand img{height:36px;width:auto}
+.foot-brand p{font-size:13px;color:#d6dee6;letter-spacing:.1em}
+.foot-nav{background:var(--panel);border-radius:var(--r);padding:28px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.foot-nav h4{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--ink);padding-bottom:8px;border-bottom:1px solid var(--ink);margin-bottom:8px}
+.foot-nav h4 a{text-decoration:none}
+.foot-nav h4.foot-sub{margin-top:18px}
+.foot-nav h4::after{content:"→";font-size:12px;color:var(--red-ink)}
+.foot-nav a{display:block;font-size:13px;color:var(--body);text-decoration:none;padding:5px 0}
+.foot-nav a:hover{color:var(--red-ink);text-decoration:underline;text-underline-offset:4px}
+.copy{margin-top:18px;text-align:center;font:400 11.5px var(--mono);color:var(--muted)}
+
+/* ===== 下層ページ ===== */
+.page-title{padding:14px 24px 30px}
+.crumb{font:400 12px var(--mono);color:var(--muted);margin-top:14px}
+.crumb a{color:var(--blue);text-decoration:none}
+.page-title h1{margin-top:22px;font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:.06em;line-height:1.3}
+.page-title .en{display:block;margin-top:6px;font:700 clamp(18px,2vw,22px) var(--en);color:var(--muted)}
+.page-title p{margin-top:16px;max-width:44em;font-size:15px}
+.h-line{font-size:22px;font-weight:900;color:var(--ink);display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.h-line::before{content:"";width:10px;height:10px;background:var(--red);border-radius:2px;flex:none}
+.block{padding:32px 24px 40px}
+.message-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:start}
+.message-body figure img{border-radius:10px;width:100%}
+.message-body figcaption{margin-top:8px;font:400 12px var(--mono);color:var(--muted)}
+.message-body h3{font-size:clamp(22px,2.6vw,28px);font-weight:900;line-height:1.7}
+.message-body p{margin-top:16px;font-size:15.5px;line-height:2.1}
+.sign{margin-top:24px;text-align:right;font-size:14px}
+.sign b{display:block;font-size:22px;font-weight:900;color:var(--ink);letter-spacing:.2em}
+.mvv-list{display:grid;gap:16px}
+.mvv-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+.mvv-row .k b{display:block;font:700 28px var(--en);color:var(--red-ink)}
+.mvv-row .k span{font:400 12px var(--mono);color:var(--muted)}
+.mvv-row .big{font-size:22px;font-weight:900;color:var(--ink);line-height:1.6}
+.mvv-row p{margin-top:8px;font-size:15px}
+.mvv-row .values{grid-template-columns:repeat(2,minmax(0,1fr))}
+.members{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.member{display:grid;grid-template-columns:128px minmax(0,1fr);gap:22px;align-items:start;background:#f4f6f9;padding:24px;border-radius:12px}
+.member-photo{aspect-ratio:1;border-radius:10px;overflow:hidden}
+.member-photo img{width:100%;height:100%;object-fit:cover}
+.ph-box{position:relative;display:grid;place-items:center;text-align:center;background:var(--blue-soft);border-radius:10px;aspect-ratio:1}
+.ph-box::before{content:"";position:absolute;inset:8px;border:1px dashed rgba(36,104,168,.45);border-radius:6px}
+.ph-box span{position:relative;font-size:11.5px;font-weight:700;color:var(--blue);padding:8px}
+.member .pos{font:500 12px var(--mono);color:var(--red-ink)}
+.member h3{margin-top:4px;font-size:21px;font-weight:900;letter-spacing:.14em}
+.member h3 small{margin-left:10px;font:500 12px var(--en);color:var(--muted);letter-spacing:.02em}
+.member p{margin-top:8px;font-size:14px}
+.member .links{margin-top:6px;display:flex;flex-wrap:wrap;gap:2px 16px}
+.member .links a{font-size:13px;font-weight:700;color:var(--blue);padding:6px 0}
+.company table{width:100%;border-collapse:collapse;border-top:1px solid var(--line)}
+.company th,.company td{text-align:left;vertical-align:top;padding:18px 0;border-bottom:1px solid var(--line);font-size:15px}
+.company th{width:200px;font-weight:700;color:var(--ink);padding-right:20px}
+.principle{background:var(--ivory);border-radius:12px;padding:26px 30px;margin-bottom:24px}
+.principle b{display:block;font-size:clamp(19px,2.2vw,24px);font-weight:900;color:var(--ink)}
+.principle p{margin-top:6px;font-size:15px}
+.svc-rows{display:grid;gap:16px}
+.svc-row{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);background:#f4f6f9;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit}
+.svc-row .img{min-height:220px;position:relative}
+.svc-row .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.svc-row .txt{padding:28px 30px;display:flex;flex-direction:column;gap:6px}
+.svc-row .en{font:600 13px var(--en);color:var(--blue)}
+.svc-row h3{font-size:22px;font-weight:900}
+.svc-row .for{font-size:13.5px;font-weight:700;color:var(--red-ink)}
+.svc-row p{font-size:14.5px}
+.svc-row .go{margin-top:auto;padding-top:8px;font-size:14px;font-weight:700;color:var(--red-ink)}
+.svc-row .go::after{content:" →"}
+.svc-row:hover h3{color:var(--red-ink)}
+.svc-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.svc-hero img{border-radius:10px;width:100%;aspect-ratio:16/10;object-fit:cover}
+.svc-lead{margin-top:14px;font-size:15.5px;font-weight:500}
+.svc-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px}
+.worries{display:grid;gap:10px}
+.worries li{position:relative;padding:14px 16px 14px 46px;background:#f4f6f9;border-radius:10px;font-size:15px;color:var(--ink)}
+.worries li::before{content:"✓";position:absolute;left:16px;top:14px;width:20px;height:20px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:900;display:grid;place-items:center}
+.after-box{background:var(--ivory);border-radius:12px;padding:22px 24px;font-size:15.5px;line-height:2;color:var(--ink)}
+.svc-table{border-top:1px solid var(--ink)}
+.svc-group{display:grid;grid-template-columns:200px minmax(0,1fr);border-bottom:1px solid var(--line)}
+.svc-group > h3{padding:20px 16px 20px 0;font-size:15px;font-weight:900}
+.svc-group ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;padding:10px 0}
+.svc-group li{padding:10px 0;font-size:14.5px;display:grid;gap:2px}
+.svc-group li b{color:var(--ink)}
+.svc-group li span{font-size:13px;color:var(--muted);line-height:1.7}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.step{background:#f4f6f9;border-radius:12px;padding:22px 20px}
+.step .s{font:500 12px var(--mono);color:var(--red-ink)}
+.step b{display:block;margin-top:6px;font-size:16.5px;color:var(--ink)}
+.step p{margin-top:6px;font-size:14px}
+.center-cta{margin-top:32px;display:grid;justify-items:center;gap:12px;text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 30px;border-radius:999px;font-size:15px;font-weight:700;text-decoration:none;border:1.5px solid transparent;cursor:pointer;font-family:inherit}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#000}
+.btn-red{background:var(--red-ink);color:#fff}
+.btn-red:hover{filter:brightness(1.08)}
+.btn-ghost{background:#fff;border-color:var(--ink);color:var(--ink)}
+.btn-sm{min-height:44px;font-size:14px;padding:0 20px}
+.btn-wide{width:100%}
+.other-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.other-links a{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#f4f6f9;border-radius:10px;padding:16px 18px;font-size:14px;font-weight:700;color:var(--ink);text-decoration:none}
+.other-links a::after{content:"→";color:var(--red-ink)}
+.other-links a:hover{color:var(--red-ink)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.filters button{min-height:40px;padding:0 18px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.article{max-width:780px;margin:0 auto;padding:16px 0}
+.article-meta{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;font:400 13px var(--mono);color:var(--muted)}
+.article h1{margin-top:14px;font-size:clamp(22px,2.8vw,30px);font-weight:900;line-height:1.6}
+.article .body{margin-top:24px;border-top:1px solid var(--line);padding-top:20px}
+.article .body h2{margin-top:34px;font-size:19px;font-weight:900;padding-left:14px;border-left:4px solid var(--red)}
+.article .body p{margin-top:14px;font-size:16px;line-height:2.05}
+.article .body ul{margin-top:14px;display:grid;gap:6px}
+.article .body li{padding-left:18px;position:relative}
+.article .body li::before{content:"";position:absolute;left:2px;top:.85em;width:6px;height:6px;background:var(--red)}
+.article .body .memo{margin-top:22px;background:#f4f6f9;border-radius:8px;padding:14px 18px;font-size:14px}
+.article-foot{margin-top:40px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:22px}
+.back{font-size:14px;font-weight:700;color:var(--blue);text-decoration:none}
+.back::before{content:"← "}
+.faq{display:grid;gap:8px;margin-top:28px}
+.faq details{background:#f4f6f9;border-radius:10px}
+.faq summary{cursor:pointer;list-style:none;display:flex;gap:14px;align-items:center;padding:16px 20px;font-weight:700;color:var(--ink);font-size:15px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q";font:700 17px var(--en);color:var(--red-ink);flex:none}
+.faq details p{padding:0 20px 18px 48px;font-size:14.5px}
+.contact-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.8fr);gap:32px;align-items:start}
+.proto-note{font-size:13px;color:var(--muted);background:var(--ivory);border-left:3px solid var(--red);border-radius:6px;padding:10px 14px;margin-bottom:22px}
+.form-steps{display:flex;gap:4px;margin-bottom:26px;counter-reset:fs}
+.form-steps li{flex:1;text-align:center;padding:10px 4px;font-size:14px;font-weight:700;color:var(--muted);background:#f4f6f9;border-radius:8px;counter-increment:fs}
+.form-steps li::before{content:counter(fs) ". "}
+.form-steps li[aria-current="step"]{background:var(--ink);color:#fff}
+.field{display:grid;gap:8px;margin-bottom:22px}
+.field-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}
+.label{font-size:14.5px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px}
+.label em,.agree em{font-style:normal;font-size:11px;font-weight:700;color:#fff;background:var(--red-ink);border-radius:4px;padding:1px 7px}
+.label small{font-size:11px;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 6px}
+.field input[type=text],.field input[type=email],.field input[type=tel],.field input[type=url],.field textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid #c3ccd5;border-radius:8px;padding:12px 14px;min-height:50px}
+.field textarea{resize:vertical;line-height:1.8}
+.field input:focus,.field textarea:focus{outline:2px solid var(--ink);outline-offset:0}
+.invalid{border-color:#c0392b!important;background:#fdf3f2!important}
+.select-wrap{position:relative;max-width:420px}
+.select-wrap::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.field select{width:100%;appearance:none;-webkit-appearance:none;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid #c3ccd5;border-radius:8px;padding:12px 44px 12px 14px;min-height:48px;cursor:pointer}
+.field select:focus{outline:2px solid var(--ink);outline-offset:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:2px;border:1px solid transparent;border-radius:10px}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0;width:1px;height:1px}
+.chips span{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border:1px solid #c3ccd5;border-radius:8px;font-size:14px;font-weight:700;color:var(--ink);background:#fff}
+.chips input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
+.chips input:focus-visible+span{outline:3px solid var(--red);outline-offset:2px}
+.agree label{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.8;cursor:pointer}
+.agree input{width:20px;height:20px;margin-top:4px;flex:none;accent-color:var(--ink)}
+.agree label.invalid{color:#c0392b;background:transparent!important}
+.form-error{color:#c0392b;font-size:14px;font-weight:700;margin-bottom:16px}
+.confirm-list div{display:grid;grid-template-columns:170px minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.confirm-list dt{font-weight:700;color:var(--ink);font-size:14px}
+.confirm-list dd{font-size:15px;white-space:pre-wrap;overflow-wrap:anywhere}
+.confirm-actions{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+.confirm-actions .btn{flex:1 1 200px}
+.done{text-align:center;padding:24px 0;display:grid;gap:14px;justify-items:center}
+.done h2{font-size:24px;font-weight:900}
+.contact-side{display:grid;gap:16px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px)}
+.side-box{background:#f4f6f9;border-radius:12px;padding:22px}
+.side-box b{display:block;font-size:15px;color:var(--ink);margin-bottom:8px}
+.side-box p{font-size:13.5px;margin-bottom:12px}
+.mini-flow{counter-reset:m;display:grid;gap:8px}
+.mini-flow li{counter-increment:m;display:flex;gap:10px;font-size:14px}
+.mini-flow li::before{content:counter(m);flex:none;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;margin-top:3px}
+
+/* ===== responsive ===== */
+@media (max-width:1060px){
+  .values{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .gnav-links{gap:16px}
+}
+@media (max-width:920px){
+  .gnav-links{display:none}
+  .menu-btn{display:inline-flex;align-items:center}
+  .gnav.open .gnav-links{display:flex;flex-direction:column;align-items:stretch;gap:0;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 10px 30px rgba(20,30,40,.1);padding:6px max(20px,env(safe-area-inset-right,0px)) 14px max(20px,env(safe-area-inset-left,0px))}
+  .gnav.open .gnav-links a{padding:15px 0;border-bottom:1px solid var(--line);font-size:15px}
+  .gnav.open .gnav-item > a{display:block}
+  .gnav.open .gnav-links a.sp-only{display:block;color:var(--red-ink)}
+  .hero .lead br{display:none}
+  .hero-in{padding:56px 8px 64px}
+  .hb{min-width:0;width:100%;min-height:56px}
+  .hero-btns{gap:12px}
+  .mvv{grid-template-columns:minmax(0,1fr)}
+  .m-mission,.m-vision,.m-value{grid-column:auto;margin-top:0}
+  .m-vision{margin-left:clamp(0px,6vw,48px)}
+  .works,.members,.message-body,.svc-hero,.svc-intro,.contact-layout,.cta,.foot{grid-template-columns:minmax(0,1fr)}
+  .svc-row{grid-template-columns:minmax(0,1fr)}
+  .svc-row .img{min-height:200px}
+  .svc-group{grid-template-columns:minmax(0,1fr)}
+  .svc-group > h3{padding:16px 0 0}
+  .flow,.other-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .foot-nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .contact-side{position:static}
+  .mvv-row{grid-template-columns:minmax(0,1fr);gap:8px}
+}
+@media (max-width:640px){
+  .head-cta{display:none}
+  .logo{height:28px}
+  .labels{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .labels span:nth-child(3){display:none}
+  .sec-head,.sec-body,.page-title,.block{padding-left:18px;padding-right:18px}
+  .cols-head{display:none}
+  .news-list a{grid-template-columns:auto minmax(0,1fr);}
+  .news-list .t{grid-column:1/-1}
+  .news-list .cat{grid-row:1;grid-column:2}
+  .stagger{grid-template-columns:minmax(0,1fr);gap:40px}
+  .stagger > a:nth-child(even){margin-top:0;margin-left:24px}
+  .values,.mvv-row .values{grid-template-columns:minmax(0,1fr)}
+  .mvv-card{padding:24px 20px}
+  .flow,.other-links,.foot-nav{grid-template-columns:minmax(0,1fr)}
+  .member{grid-template-columns:92px minmax(0,1fr);gap:14px;padding:18px}
+  .company th{width:7em}
+  .field-row{grid-template-columns:minmax(0,1fr)}
+  .confirm-list div{grid-template-columns:minmax(0,1fr);gap:2px}
+  .faq details p{padding-left:20px}
+  .cta-btns{grid-template-columns:minmax(0,1fr);gap:14px}
+  .cta-btn{min-height:62px}
+  .cta-eyebrow{font-size:13px;gap:10px;white-space:nowrap}
+  .cta-eyebrow::before,.cta-eyebrow::after{width:14px}
+  .cta-card{padding:32px 20px;border-radius:22px}
+  .cta-text{font-size:14px}
+}
+
+/* stagger card fix: 英字→写真（英字の下端が写真に少し重なる）→日本語→説明 */
+.s-card{display:flex;flex-direction:column;padding-top:0}
+.s-card .big{position:relative;order:1;top:auto;left:auto}
+.s-card .ph{order:2;margin-top:clamp(-30px,-2.2vw,-14px);position:relative;z-index:1}
+.s-card .big{z-index:2}
+.s-card .jp{order:3;margin:12px 0 0 clamp(40px,8vw,110px);text-shadow:none}
+.s-card .desc{order:4;margin-top:6px}
+.s-card .arrow{bottom:auto;top:clamp(120px,14vw,190px)}
+@media (max-width:640px){.s-card .arrow{display:none}.s-card .ph,.s-card .jp,.s-card .desc{margin-left:24px}}
+
+/* ===== opening (intro) ===== */
+.intro{position:fixed;inset:0;z-index:300;background:#fff;display:grid;place-items:center;animation:introOut .75s cubic-bezier(.7,0,.2,1) 2.15s forwards;cursor:pointer}
+.intro-in{display:flex;flex-direction:column;align-items:center;gap:22px}
+.intro-logo{position:relative;width:clamp(220px,34vw,440px)}
+.intro-logo img{display:block;width:100%;height:auto;opacity:0;animation:introShow 0s linear .62s forwards}
+.intro-bar{position:absolute;inset:-6% -3%;background:var(--red);transform:scaleX(0);transform-origin:left center;animation:introBar .95s cubic-bezier(.77,0,.18,1) .2s forwards}
+.intro-tag{font:500 clamp(12px,1.2vw,14px) var(--mono);letter-spacing:.32em;color:var(--ink);opacity:0;transform:translateY(8px);animation:introTag .6s ease 1.15s forwards}
+.intro-line{width:clamp(160px,22vw,260px);height:2px;background:#e3e7ec;overflow:hidden}
+.intro-line::before{content:"";display:block;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:left;animation:introLine 1.7s cubic-bezier(.6,0,.3,1) .3s forwards}
+@keyframes introBar{0%{transform:scaleX(0);transform-origin:left center}45%{transform:scaleX(1);transform-origin:left center}46%{transform:scaleX(1);transform-origin:right center}100%{transform:scaleX(0);transform-origin:right center}}
+@keyframes introShow{to{opacity:1}}
+@keyframes introTag{to{opacity:1;transform:none}}
+@keyframes introLine{to{transform:scaleX(1)}}
+@keyframes introOut{to{transform:translateY(-100%);visibility:hidden}}
+.intro.skip{animation:introOut .45s cubic-bezier(.7,0,.2,1) forwards}
+html.no-intro .intro{display:none}
+@media (prefers-reduced-motion:reduce){.intro{display:none}}
+
+/* ===== About（AX型：白地・細い罫線・余白） ===== */
+.bleed{margin-inline:calc(50% - 50vw)}
+#view-about .stack{gap:0;padding-block:0}
+.ax-wrap{width:min(100% - 40px,1080px);margin:0 auto}
+.ax-head{background:#f3f4f6;padding:clamp(56px,7vw,96px) 0 clamp(48px,6vw,80px)}
+.ax-head-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:end}
+.ax-head .crumb{margin:0 0 14px;font:400 12px var(--mono);color:var(--muted)}
+.ax-head .crumb a{color:var(--muted)}
+.ax-head h1{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 16px;font-size:clamp(28px,3.4vw,40px);font-weight:900;color:#151b1e;letter-spacing:.04em;line-height:1.3}
+.ax-head h1 span{font-weight:400;color:#9aa3ab;font-size:.5em}
+.ax-head h1 small{font:700 14px var(--en);color:#151b1e;letter-spacing:.04em}
+.ax-head-in > p{font-size:14.5px;line-height:2;color:#151b1e;letter-spacing:.05em}
+.ax-photo{height:clamp(240px,34vw,480px);overflow:hidden;background:#dde6ee}
+.ax-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.ax-sec{background:#fff;padding:clamp(64px,8vw,112px) 0}
+.ax-gray{background:#f7f8fa}
+.ax-sec + .ax-sec{border-top:1px solid #e6e8eb}
+.ax-h{display:flex;flex-direction:column;gap:4px;font-size:clamp(24px,2.6vw,30px);font-weight:900;color:#151b1e;letter-spacing:.06em;line-height:1.3}
+.ax-h small{font:700 13px var(--en);letter-spacing:.04em;color:#151b1e}
+.ax-msg{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,6vw,80px);align-items:start}
+.ax-msg h3{margin-top:clamp(28px,4vw,44px);font-size:clamp(20px,2.2vw,26px);font-weight:900;line-height:1.6;color:#151b1e;letter-spacing:.04em}
+.ax-msg p{margin-top:22px;font-size:14.5px;line-height:2.1;color:#30373c}
+.ax-msg .sign{margin-top:32px;font-weight:700;color:#151b1e;line-height:1.8}
+.ax-msg figure{position:sticky;top:110px;border-radius:12px;overflow:hidden}
+.ax-msg figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:62% 50%}
+.ax-members{margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,40px)}
+.ax-members .ph{aspect-ratio:1;border-radius:12px;overflow:hidden;background:#e9edf1}
+.ax-members .ph img{width:100%;height:100%;object-fit:cover}
+.ax-members .ph-empty{display:grid;place-items:center;border:1px dashed #c3ccd5;background:#fff}
+.ax-members .ph-empty span{font:500 12px var(--mono);color:var(--muted)}
+.ax-members .pos{margin-top:18px;font-size:12px;font-weight:700;color:var(--red-ink);letter-spacing:.04em}
+.ax-members h3{margin-top:6px;font-size:21px;font-weight:900;color:#151b1e;letter-spacing:.14em}
+.ax-members .en{font:600 12px var(--en);color:#7a838b;letter-spacing:.04em}
+.ax-members .bio{margin-top:12px;font-size:14px;line-height:1.95;color:#30373c}
+.ax-members .links{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px 16px}
+.ax-members .links a{font-size:13px;font-weight:700;color:var(--blue)}
+.ax-table{margin-top:clamp(28px,4vw,44px);border-top:1px solid #e6e8eb}
+.ax-table > div{display:grid;grid-template-columns:180px minmax(0,1fr);gap:16px;padding:24px 4px;border-bottom:1px solid #e6e8eb}
+.ax-table dt{font-size:14px;font-weight:700;color:#151b1e}
+.ax-table dd{font-size:14.5px;color:#30373c;line-height:1.9}
+.ax-table ul{display:grid;gap:2px}
+.ax-table li::before{content:"・"}
+.ax-table a{color:#151b1e;text-underline-offset:4px}
+.ax-more{margin-top:36px}
+@media (max-width:820px){
+  .ax-head-in,.ax-msg,.ax-members{grid-template-columns:minmax(0,1fr)}
+  .ax-head-in > p br{display:none}
+  .ax-msg figure{position:static;order:-1}
+  .ax-table > div{grid-template-columns:minmax(0,1fr);gap:4px;padding:18px 2px}
+  .ax-members{gap:40px}
+  .ax-members .ph{max-width:240px}
+}
+
+/* ===== Contact（YORISOI型：中央の白カード＋グラデーションボタン） ===== */
+#view-contact .stack{gap:0;padding-block:0}
+.ct-hero{position:relative;background:linear-gradient(180deg,#f6f8fb,#eef2f7);overflow:hidden}
+.ct-hero-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:stretch;min-height:clamp(300px,30vw,400px)}
+.ct-hero-txt{padding:clamp(40px,5vw,64px) 24px clamp(40px,5vw,64px) max(20px,calc((100vw - 1180px)/2 + 20px));display:flex;flex-direction:column;justify-content:center}
+.ct-hero .crumb{margin:0 0 18px;font:500 11.5px var(--en);letter-spacing:.12em;color:#94a3b8}
+.ct-hero .crumb a{color:#94a3b8;text-decoration:none}
+.ct-label{font:700 14px var(--en);letter-spacing:.18em;color:var(--red-ink)}
+.ct-hero h1{margin-top:8px;font-size:clamp(34px,4.2vw,52px);font-weight:900;color:#0f172a;letter-spacing:.06em;line-height:1.3}
+.ct-hero-txt > p:last-child{margin-top:18px;font-size:15px;line-height:2;color:#475569}
+.ct-hero-img{clip-path:polygon(14% 0,100% 0,100% 100%,0 100%);overflow:hidden}
+.ct-hero-img img{width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.ct-body{position:relative;overflow:hidden;background:#f8fafc;padding:clamp(48px,6vw,80px) 16px clamp(64px,8vw,110px)}
+.ring{position:absolute;border-radius:50%;border:clamp(18px,2.4vw,34px) solid;pointer-events:none;opacity:.16}
+.ring-a{width:clamp(260px,30vw,460px);aspect-ratio:1;left:-8%;top:16%;border-color:var(--red)}
+.ring-b{width:clamp(220px,26vw,400px);aspect-ratio:1;right:-6%;bottom:12%;border-color:#2468a8}
+.ct-intro{position:relative;text-align:center;font-size:14.5px;line-height:2;color:#475569;letter-spacing:.04em}
+.ct-card{position:relative;width:min(100%,740px);margin:32px auto 0;background:#fff;border-radius:22px;padding:clamp(28px,5vw,56px);box-shadow:0 18px 50px rgba(15,23,42,.08)}
+.ct-card .field{margin-bottom:22px}
+.ct-card .field-row{gap:0 20px}
+.ct-card .label{font-size:13.5px;color:#0f172a}
+.ct-card input[type=text],.ct-card input[type=email],.ct-card input[type=tel],.ct-card input[type=url],.ct-card textarea,.ct-card select{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;min-height:52px;font-size:16px}
+.ct-card input:focus,.ct-card textarea:focus,.ct-card select:focus{outline:none;border-color:var(--red);background:#fff;box-shadow:0 0 0 4px rgba(215,65,51,.12)}
+.ct-card ::placeholder{color:#a0aab6}
+.ct-select{max-width:none}
+.ct-agree{text-align:center;margin-top:8px}
+.ct-agree label{justify-content:center}
+.ct-submit{display:flex;justify-content:center;margin-top:12px}
+.ct-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-width:280px;min-height:64px;padding:0 36px;border:0;border-radius:999px;color:#fff;font:inherit;font-size:15.5px;font-weight:700;letter-spacing:.08em;text-decoration:none;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.ct-btn > span[aria-hidden]{font-size:20px;line-height:1}
+.ct-btn:hover{transform:translateY(-2px)}
+.ct-btn-send{background:linear-gradient(135deg,#f0705c 0%,#d74133 55%,#b8263a 100%);box-shadow:0 14px 34px rgba(215,65,51,.38)}
+.ct-btn-line{background:#06c755;box-shadow:0 14px 30px rgba(6,199,85,.30);min-height:58px}
+.ct-btn-line .badge{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#fff;color:#06c755}
+.ct-or{display:flex;align-items:center;gap:16px;margin:30px 0 18px;font-size:12px;color:#94a3b8;letter-spacing:.1em}
+.ct-or::before,.ct-or::after{content:"";flex:1;height:1px;background:#e2e8f0}
+.ct-note{margin-top:12px;text-align:center;font-size:12.5px;color:#64748b}
+.ct-proto{margin-top:24px;font-size:12px}
+.ct-sub-h{font-size:18px;font-weight:900;color:#0f172a;margin-bottom:14px}
+#confirm .confirm-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:24px}
+.ct-flow{position:relative;width:min(100%,1080px);margin:clamp(56px,7vw,88px) auto 0;text-align:center}
+.ct-flow .flow{text-align:left;margin-top:18px}
+@media (max-width:820px){
+  .ct-hero-in{grid-template-columns:minmax(0,1fr)}
+  .ct-hero-img{clip-path:none;height:200px;order:2}
+  .ct-hero-txt{padding:36px 20px}
+  .ct-hero-txt > p:last-child br,.ct-intro br{display:none}
+  .ct-btn{min-width:0;width:100%}
+  .ct-card .field-row{grid-template-columns:minmax(0,1fr);gap:0}
+}
+
+/* ===== Philosophy（AX型：黒地の企業理念） ===== */
+#view-philosophy .stack{gap:0;padding-block:0}
+.ax-dark{background:#151b1e;color:#fff;padding:clamp(72px,9vw,128px) 0}
+.ax-h-dark,.ax-h-dark small{color:#fff}
+.ph-block{margin-top:clamp(56px,7vw,88px);scroll-margin-top:110px}
+.ph-block h3{display:flex;flex-direction:column;gap:10px;font-size:clamp(24px,2.6vw,32px);font-weight:700;line-height:1.5;letter-spacing:.04em;color:#fff}
+.ph-block h3 span{font:700 20px var(--en);letter-spacing:.02em;color:#fff}
+.ph-block h3 span::after{content:"";display:block;width:28px;height:2px;margin-top:10px;background:var(--red)}
+.ph-block h4{margin-top:36px;font-size:clamp(16px,1.4vw,19px);font-weight:700;color:#fff;display:flex;align-items:center;gap:12px;letter-spacing:.03em}
+.ph-block h4::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;flex:none}
+.ph-block p{margin-top:14px;font-size:15.5px;line-height:1.9;color:#9a9a9a}
+.ph-block h4 + p{padding-left:18px}
+.ph-block .ph-en{margin-top:12px;font:600 17px var(--en);color:#e8eef3;letter-spacing:.04em}
+.ph-values{margin-top:28px;display:grid;border-top:1px solid #2c3438}
+.ph-values li{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:8px 40px;align-items:baseline;padding:22px 4px;border-bottom:1px solid #2c3438}
+.ph-values .t{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.ph-values .t::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;flex:none;transform:translateY(-3px)}
+.ph-values b{font-size:17px;font-weight:700;color:#fff;letter-spacing:.03em}
+.ph-values i{font:600 12.5px var(--en);font-style:normal;color:#8a949b;letter-spacing:.04em}
+.ph-values p{font-size:15px;line-height:1.85;color:#9a9a9a}
+.ph-next{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px}
+.ph-next p{font-size:15px;color:#30373c}
+@media (max-width:820px){
+  .ph-values li{grid-template-columns:minmax(0,1fr)}
+  .ph-block p br{display:none}
+  .ph-values p{padding-left:20px}
+}
+
+/* ===== AX tone (global) ===== */
+:root{--page:#f4f5f6}
+html,body{background:var(--page)}
+.labels{display:none!important}
+.site-header{background:rgba(255,255,255,.96);border-bottom:1px solid #e6e8eb}
+.head-cta{border-radius:8px;padding:0 20px;background:#151b1e;min-height:44px;font-size:13.5px}
+.head-cta::after{display:none}
+.panel{border-radius:14px}
+.ax-top{margin-top:-16px;margin-bottom:8px}
+.ax-top .ax-photo{height:clamp(220px,28vw,420px)}
+.sec-head{padding:clamp(28px,4vw,44px) clamp(20px,4vw,48px) 8px}
+.sec-head h2{margin-top:0;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:28px;font-size:clamp(26px,3vw,34px);font-weight:700;letter-spacing:.06em;color:#151b1e}
+.sec-head h2::after{content:"";height:1px;background:#c9ced3;grid-column:2;grid-row:1}
+.sec-head h2 small{grid-column:1/-1;grid-row:2;margin:6px 0 0;font:700 13px var(--en);color:#151b1e;letter-spacing:.04em}
+.sec-desc{margin-top:14px;font-size:14.5px;color:#30373c}
+.more{border:0;background:none;padding:0;min-height:44px;color:#151b1e;font-size:14px;gap:14px}
+.more::after{content:"→";width:34px;height:34px;background:#151b1e;font-size:14px}
+.more:hover{color:#151b1e;text-decoration:underline;text-underline-offset:5px}
+.ax-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;padding:24px clamp(20px,4vw,48px) 8px}
+.ax-card{display:flex;flex-direction:column;background:#fff;border:1px solid #e6e8eb;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;transition:box-shadow .25s,transform .25s}
+.ax-card:hover{box-shadow:0 16px 40px rgba(21,27,30,.10);transform:translateY(-3px)}
+.ax-card .ph{position:relative;aspect-ratio:16/10;overflow:hidden;background:#e9edf1}
+.ax-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.ax-card:hover .ph img{transform:scale(1.04)}
+.ax-card .tag{position:absolute;left:0;bottom:0;background:#151b1e;color:#fff;font-size:12.5px;font-weight:700;padding:7px 14px;letter-spacing:.04em}
+.ax-card .body{display:flex;flex-direction:column;gap:12px;padding:20px 22px 22px;flex:1}
+.ax-card .big{font:700 clamp(20px,1.8vw,24px)/1.25 var(--en);color:#151b1e;letter-spacing:.01em;padding-bottom:12px;border-bottom:1px solid #e6e8eb}
+.ax-card .desc{font-size:14px;line-height:1.85;color:#30373c;flex:1}
+.ax-card .go{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:#151b1e;align-self:flex-start}
+.ax-card .go::after{content:"→";display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#151b1e;color:#fff;font-size:12px}
+.site-footer{background:#151b1e;margin-top:24px;padding-block:clamp(48px,6vw,72px) 28px}
+.site-footer .foot{gap:40px}
+.foot-brand,.foot-nav{background:none;border-radius:0;padding:0}
+.foot-nav h4,.foot-nav h4 a{color:#fff;border-bottom:0;padding-bottom:0}
+.foot-nav h4::after{display:none}
+.foot-nav a{color:#aeb6bd}
+.foot-nav a:hover{color:#fff}
+.site-footer .copy{color:#8a949b;border-top:1px solid #2c3438;padding-top:22px;margin-top:40px}
+@media (max-width:920px){.ax-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.ax-cards{grid-template-columns:minmax(0,1fr)}.ax-top .ax-photo{height:200px}}
+.ax-top .ax-photo-tall{height:clamp(240px,38vw,560px)}
+
+/* ===== News list（画像＋日付・タイトル） ===== */
+.n-head{grid-template-columns:120px minmax(0,1fr)!important}
+.news-list a{grid-template-columns:120px minmax(0,1fr)!important;gap:0 24px!important;align-items:center;padding:20px 4px!important}
+.nthumb{position:relative;aspect-ratio:1;border:1px solid #d9dde1;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.nthumb.is-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.nthumb.is-img .lbl{position:absolute;left:0;right:0;bottom:0;padding:5px 4px;background:rgba(21,27,30,.82);color:#fff;font:700 10px var(--en);letter-spacing:.06em}
+.nthumb.is-text{padding:10px;gap:6px;background:#fff}
+.nthumb.is-text .k{font-size:9px;font-weight:700;color:#fff;background:var(--red-ink);padding:2px 6px;border-radius:3px;white-space:nowrap}
+.nthumb.is-text b{font:700 12px/1.25 var(--en);color:#151b1e;letter-spacing:.01em}
+.nthumb.is-text b small{font-size:10px;color:var(--red-ink)}
+.nthumb .mk{width:56%;height:auto}
+.nthumb.is-def{gap:6px}
+.nthumb.is-def span{font:700 10px var(--en);color:#151b1e;letter-spacing:.04em}
+.nmain{display:flex;flex-direction:column;gap:8px;min-width:0}
+.nmeta{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px}
+.nmeta time,.nmeta .date{font:500 15px var(--mono)!important;color:#151b1e!important;letter-spacing:.04em}
+.nmeta .cat{background:#8f9499;font-size:12px;font-weight:500;padding:3px 10px;border-radius:3px}
+.nmeta .draft{margin-left:0}
+.news-list .t{font-size:clamp(15px,1.5vw,18px);font-weight:500;line-height:1.7;color:#151b1e}
+.news-list a:hover .nthumb{border-color:#151b1e}
+.nthumb.big{width:min(100%,360px);aspect-ratio:16/10;margin-bottom:22px;border-radius:12px}
+.nthumb.big.is-text b{font-size:22px}
+.nthumb.big.is-text .k{font-size:12px;padding:3px 10px}
+.nthumb.big .mk{width:34%}
+.nthumb.big.is-img .lbl{font-size:12px;padding:8px}
+@media (max-width:640px){
+  .n-head{display:none}
+  .news-list a{grid-template-columns:84px minmax(0,1fr)!important;gap:0 14px!important}
+  .nthumb.is-text b{font-size:10px}
+  .nthumb.is-text .k{font-size:8px;padding:1px 4px}
+  .news-list .t{font-size:14.5px}
+  .nmeta time,.nmeta .date{font-size:13px!important}
+}
+.article-meta .cat{background:#8f9499;font-weight:500;border-radius:3px}
+@media (max-width:640px){.nmeta{gap:6px 8px}}
+.nthumb.big.sq{width:min(100%,300px);aspect-ratio:1}
+
+/* ===== 進め方（5ステップ・アイコン＋図＋写真） ===== */
+.flow-intro{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,4vw,48px);align-items:center;background:#f7f8fa;border-radius:14px;padding:clamp(16px,2.4vw,24px);margin-bottom:clamp(28px,4vw,44px);text-align:left}
+.flow-intro figure{border-radius:10px;overflow:hidden;aspect-ratio:16/10}
+.flow-intro img{width:100%;height:100%;object-fit:cover}
+.fi-k{font:700 12px var(--en);letter-spacing:.14em;color:var(--red-ink)}
+.flow-intro h3{margin-top:8px;font-size:clamp(18px,1.9vw,23px);font-weight:900;line-height:1.6;color:#151b1e}
+.fi-map{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.fi-map .n{white-space:nowrap;display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:999px;background:#fff;border:1.5px solid #d9dde1;font-size:13.5px;font-weight:700;color:#151b1e}
+.fi-map .n.hot{background:var(--red-ink);border-color:var(--red-ink);color:#fff}
+.fi-map i{font-style:normal;color:#9aa3ab;font-weight:700}
+.fi-t{margin-top:16px;font-size:14px;color:#30373c}
+.flow5{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);counter-reset:none;text-align:left}
+.flow5::before{content:"";position:absolute;left:10%;right:10%;top:36px;height:2px;background:repeating-linear-gradient(90deg,#c9ced3 0 8px,transparent 8px 14px)}
+.fstep{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 4px}
+.fic{position:relative;z-index:1;display:grid;place-items:center;width:72px;height:72px;border-radius:50%;background:#fff;border:1.5px solid #d9dde1;color:#151b1e;box-shadow:0 8px 20px rgba(21,27,30,.06)}
+.fstep.key .fic{background:var(--red-ink);border-color:var(--red-ink);color:#fff;box-shadow:0 10px 24px rgba(184,52,42,.30)}
+.fno{margin-top:16px;font:700 12px var(--en);letter-spacing:.12em;color:var(--red-ink)}
+.fstep b{margin-top:6px;font-size:15.5px;word-break:keep-all;overflow-wrap:anywhere;font-weight:900;line-height:1.5;color:#151b1e;min-height:3em;display:flex;align-items:flex-start;justify-content:center}
+.ftag{margin-top:2px;font-style:normal;font-size:11px;font-weight:700;color:#fff;background:#151b1e;border-radius:3px;padding:2px 8px}
+.fstep p{margin-top:10px;font-size:13.5px;line-height:1.85;color:#30373c;text-align:left}
+@media (max-width:900px){
+  .flow-intro{grid-template-columns:minmax(0,1fr)}
+  .flow-intro h3 br{display:none}
+  .flow5{grid-template-columns:minmax(0,1fr);gap:0}
+  .flow5::before{left:35px;right:auto;top:20px;bottom:20px;width:2px;height:auto;background:repeating-linear-gradient(180deg,#c9ced3 0 8px,transparent 8px 14px)}
+  .fstep{display:grid;grid-template-columns:72px minmax(0,1fr);column-gap:18px;align-items:start;text-align:left;padding:0 0 26px}
+  .fic{grid-row:1/span 4}
+  .fno{margin-top:4px}
+  .fstep b{min-height:0;justify-content:flex-start}
+  .ftag{justify-self:start;margin-top:4px}
+  .fstep p{margin-top:6px}
+}
+@media (max-width:640px){#svc-cta{font-size:14px;padding-inline:18px;white-space:nowrap}}
+</style>
+
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-in">
+    <div class="intro-logo"><img src="images/logo-wordmark.webp" width="720" height="141" alt=""><span class="intro-bar"></span></div>
+    <p class="intro-tag">Be the Light of Japan.</p>
+    <span class="intro-line"></span>
+  </div>
+</div>
+<script>
+(function(){var el=document.getElementById('intro'),seen=false;
+  try{seen=sessionStorage.getItem('michinari-intro')==='1';sessionStorage.setItem('michinari-intro','1');}catch(e){}
+  if(seen){document.documentElement.classList.add('no-intro');return;}
+  function end(){el.style.display='none';}
+  el.addEventListener('animationend',function(e){if(e.target===el)end();});
+  el.addEventListener('click',function(){el.classList.add('skip');});
+  setTimeout(end,3600);
+})();
+</script>
+<header class="site-header">
+  <div class="shell"><div class="inner bar" style="max-width:1400px">
+    <a href="#top" aria-label="MICHINARI トップ"><img class="logo" src="images/logo-wordmark.webp" width="720" height="141" alt="MICHINARI"></a>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー">
+      <div class="gnav-links" id="gnav-links">
+        <div class="gnav-item">
+          <a href="#news" data-nav="news">お知らせ</a>
+          <div class="mega" id="mega-news" role="region" aria-label="お知らせのメニュー"><div class="mega-in">
+            <a class="mega-title" href="#news"><b>News</b><span>お知らせ</span></a>
+            <div class="mega-links"><a href="#news"><span>お知らせ一覧</span></a></div>
+          </div></div>
+        </div>
+        <div class="gnav-item">
+          <a href="#philosophy" data-nav="philosophy">私たちの理念</a>
+          <div class="mega" id="mega-philosophy" role="region" aria-label="私たちの理念のメニュー"><div class="mega-in">
+            <a class="mega-title" href="#philosophy"><b>Philosophy</b><span>私たちの理念</span></a>
+            <div class="mega-links"><a href="#mission"><span>Mission　私たちの使命</span></a><a href="#vision"><span>Vision　目指す未来</span></a><a href="#value"><span>Value　大切にする価値観</span></a></div>
+          </div></div>
+        </div>
+        <div class="gnav-item">
+          <a href="#about" data-nav="about">MICHINARIについて</a>
+          <div class="mega" id="mega-about" role="region" aria-label="MICHINARIについてのメニュー"><div class="mega-in">
+            <a class="mega-title" href="#about"><b>About</b><span>MICHINARIについて</span></a>
+            <div class="mega-links"><a href="#message"><span>代表ご挨拶</span></a><a href="#members"><span>メンバー</span></a><a href="#company"><span>事業者情報</span></a></div>
+          </div></div>
+        </div>
+        <div class="gnav-item">
+          <a href="#services" data-nav="services">私たちの事業</a>
+          <div class="mega" id="mega-services" role="region" aria-label="私たちの事業のメニュー"><div class="mega-in">
+            <a class="mega-title" href="#services"><b>Services</b><span>私たちの事業</span></a>
+            <div class="mega-links"><a href="#services"><span>事業トップ</span></a><a href="#service-cmo"><span>外部CMO</span></a><a href="#service-web"><span>Webマーケティング支援</span></a><a href="#service-promo"><span>販促支援</span></a><a href="#service-inhouse"><span>内製化支援</span></a><a href="#service-dx"><span>DX・AX推進支援</span></a><a href="#service-subsidy"><span>補助金コンサルティング</span></a></div>
+          </div></div>
+        </div>
+        <div class="gnav-item">
+          <a href="#works" data-nav="works">支援実績</a>
+          <div class="mega" id="mega-works" role="region" aria-label="支援実績のメニュー"><div class="mega-in">
+            <a class="mega-title" href="#works"><b>Works</b><span>支援実績</span></a>
+            <div class="mega-links"><a href="#works"><span>支援実績一覧</span></a><a href="#contact" data-topic="支援事例について詳しく聞きたい"><span>事例について相談する（30分）</span></a></div>
+          </div></div>
+        </div>
+        <a href="#contact" data-nav="contact" class="sp-only">お問い合わせ</a>
+      </div>
+      <a class="head-cta" href="#contact">お問い合わせ</a>
+      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="gnav-links">メニュー</button>
+    </nav>
+  </div></div>
+</header>
+
+<!-- ================= トップ ================= -->
+<main id="view-top" class="shell"><div class="inner stack" style="max-width:1400px">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-media"><img src="images/hero-tokyo.webp" width="1920" height="1079" alt="" fetchpriority="high"></div>
+    <div class="hero-in">
+      <p class="hero-kicker" aria-hidden="true"><span class="nb">Be the Light</span> <span class="nb">of Japan.</span></p>
+      <h1 id="hero-title"><span class="nb">地域の会社が、</span><br><span class="nb">日本を明るくする。</span></h1>
+      <p class="lead">MICHINARIは、外部CMOとして中小企業の経営に入り、<br>Web・販促・内製化・DX/AXまで、<br>事業の道のりに伴走するマーケティングパートナーです。</p>
+      <div class="hero-btns"><a class="hb hb-light" href="#services">サービス一覧を見る</a><a class="hb hb-dark" href="#contact">ご相談／お問い合わせ</a></div>
+    </div>
+  </section>
+  <div class="hero-strip" aria-label="支援領域">
+    <p class="hero-strip-label">支援領域</p>
+    <div class="marquee"><div class="marquee-track"><a href="#service-cmo"><b>外部CMO</b><span>Outsourced CMO</span></a><a href="#service-web"><b>Webマーケティング支援</b><span>Web Marketing</span></a><a href="#service-promo"><b>販促支援</b><span>Sales Promotion</span></a><a href="#service-inhouse"><b>内製化支援</b><span>In-house Support</span></a><a href="#service-dx"><b>DX・AX推進支援</b><span>DX / AX</span></a><a href="#service-subsidy"><b>補助金コンサルティング</b><span>Subsidy</span></a><span class="dup" aria-hidden="true"><a tabindex="-1" href="#service-cmo"><b>外部CMO</b><span>Outsourced CMO</span></a><a tabindex="-1" href="#service-web"><b>Webマーケティング支援</b><span>Web Marketing</span></a><a tabindex="-1" href="#service-promo"><b>販促支援</b><span>Sales Promotion</span></a><a tabindex="-1" href="#service-inhouse"><b>内製化支援</b><span>In-house Support</span></a><a tabindex="-1" href="#service-dx"><b>DX・AX推進支援</b><span>DX / AX</span></a><a tabindex="-1" href="#service-subsidy"><b>補助金コンサルティング</b><span>Subsidy</span></a></span></div></div>
+  </div>
+
+  <section class="panel" aria-labelledby="t-news">
+    <div class="sec-head"><div class="labels"><span>News</span><span>News</span><span>News</span></div><h2 id="t-news">お知らせ<small>News</small></h2><p class="sec-desc">MICHINARIからのお知らせや、Webマーケティングに関するコラムをお届けします。</p></div>
+    <div class="sec-body">
+      <div class="cols-head n-head"><span>[Image]</span><span>[Date + Title]</span></div>
+      <ul class="news-list" id="top-news"></ul>
+      <div class="btn-row"><a class="more" href="#news">お知らせ一覧</a></div>
+    </div>
+  </section>
+
+
+  <section class="panel" aria-labelledby="t-what">
+    <div class="sec-head"><div class="labels"><span>What We Do</span><span>What We Do</span><span>What We Do</span></div><h2 id="t-what">事業内容<small>Services</small></h2><p class="sec-desc">中小企業のマーケティングを、戦略から実行・社内への定着まで一貫して支援します。</p></div>
+    <div class="ax-cards">
+      <a class="ax-card" href="#service-cmo"><div class="ph"><img src="images/biz-cmo.webp" width="1200" height="674" alt="" loading="lazy"><span class="tag">外部CMO</span></div><div class="body"><span class="big">Outsourced CMO</span><p class="desc">マーケティングの責任者として経営に加わり、目標・予算・優先順位を決めて実行まで進めます。</p><span class="go">詳細を見る</span></div></a>
+      <a class="ax-card" href="#service-web"><div class="ph"><img src="images/biz-web.webp" width="1200" height="674" alt="" loading="lazy"><span class="tag">Webマーケティング支援</span></div><div class="body"><span class="big">Web Marketing</span><p class="desc">Web広告、ホームページ・LP、SNS、LINEまで。問い合わせや購入に至る流れを整えます。</p><span class="go">詳細を見る</span></div></a>
+      <a class="ax-card" href="#service-promo"><div class="ph"><img src="images/biz-promo.webp" width="1200" height="674" alt="" loading="lazy"><span class="tag">販促支援</span></div><div class="body"><span class="big">Sales Promotion</span><p class="desc">キャンペーン企画や販促物、売り場づくり。オンラインとオフラインの両方から売上をつくります。</p><span class="go">詳細を見る</span></div></a>
+      <a class="ax-card" href="#service-inhouse"><div class="ph"><img src="images/biz-inhouse.webp" width="1200" height="674" alt="" loading="lazy"><span class="tag">内製化支援</span></div><div class="body"><span class="big">In-house Support</span><p class="desc">実践研修や手順書の整備で、社内で運用と改善を続けられる体制をつくります。</p><span class="go">詳細を見る</span></div></a>
+      <a class="ax-card" href="#service-dx"><div class="ph"><img src="images/biz-dx.webp" width="1200" height="675" alt="" loading="lazy"><span class="tag">DX・AX推進支援</span></div><div class="body"><span class="big">DX / AX</span><p class="desc">クラウドツールと生成AIで、顧客管理・営業・社内業務の仕組みを整え、時間を生み出します。</p><span class="go">詳細を見る</span></div></a>
+      <a class="ax-card" href="#service-subsidy"><div class="ph"><img src="images/hero-city.webp" width="1600" height="807" alt="" loading="lazy"><span class="tag">補助金コンサルティング</span></div><div class="body"><span class="big">Subsidy</span><p class="desc">Webや新しい取り組みへの投資について、補助金を活用できる可能性と進め方を一緒に整理します。</p><span class="go">詳細を見る</span></div></a>
+    </div>
+    
+  </section>
+
+</div></main>
+
+
+<!-- ================= 私たちの理念 ================= -->
+<main id="view-philosophy" class="shell" hidden><div class="inner stack">
+  <section class="ax-head bleed">
+    <div class="ax-wrap ax-head-in">
+      <div><p class="crumb"><a href="#top">TOP</a> / 私たちの理念</p><h1>私たちの理念<span>/</span><small>Philosophy</small></h1></div>
+      <p>MICHINARIが何のために、どこを目指し、<br>何を大切にして仕事をしているのかをまとめました。</p>
+    </div>
+  </section>
+  <div class="ax-photo bleed"><img src="images/head-philosophy.webp" width="1776" height="896" alt="朝日が昇る地方の町並み" loading="lazy"></div>
+  <section class="ax-dark bleed" aria-labelledby="t-philo">
+    <div class="ax-wrap">
+      <h2 class="ax-h ax-h-dark" id="t-philo">企業理念<small>Corporate Philosophy</small></h2>
+
+      <div class="ph-block" id="mvv-mission">
+        <h3><span>Mission</span>価値ある商品やサービスを、<br>必要としている人へ届ける。</h3>
+        <h4>Why this mission?</h4>
+        <p>地域で長く愛されている商品や、現場で磨かれてきた技術があっても、伝え方や届け方が整っていないために、必要としている人に知られていない。そんな会社を一社でも減らしたいと考えています。</p>
+        <h4>How we achieve this</h4>
+        <p>中小企業のマーケティングの責任者として、戦略から実行、社内への定着まで伴走し、<br>事業が成長し続ける仕組みをつくります。</p>
+      </div>
+
+      <div class="ph-block" id="mvv-vision">
+        <h3><span>Vision</span>中小企業から、日本を元気にする。</h3>
+        <p class="ph-en">Be the Light of Japan.</p>
+        <p>地域の会社が輝き、そこで働く人とまちが元気になる。<br>一社一社の成長が、日本を明るくしていく未来をつくります。</p>
+      </div>
+
+      <div class="ph-block" id="mvv-value">
+        <h3><span>Value</span>大切にする価値観</h3>
+        <ul class="ph-values" id="values-top"></ul>
+      </div>
+    </div>
+  </section>
+  <section class="ax-sec bleed">
+    <div class="ax-wrap ph-next">
+      <p>この理念を形にするために、代表がどんな思いで仕事をしているのかをお伝えしています。</p>
+      <a class="more" href="#message">代表ご挨拶を読む</a>
+    </div>
+  </section>
+</div></main>
+
+<!-- ================= 私たちの事業 ================= -->
+<main id="view-services" class="shell" hidden><div class="inner stack">
+  <div class="ax-top bleed">
+    <section class="ax-head">
+      <div class="ax-wrap ax-head-in">
+        <div><p class="crumb"><a href="#top">TOP</a> / 私たちの事業</p><h1>私たちの事業<span>/</span><small>Services</small></h1></div>
+        <p>戦略を決めるところから、現場で手を動かすところまで。<br>一部の施策だけのご依頼も、全体をまとめてのご依頼も承ります。</p>
+      </div>
+    </section>
+    <div class="ax-photo"><img src="images/head-services.webp" width="1600" height="800" alt="会議室でマーケティング戦略を話し合うチーム" loading="lazy"></div>
+  </div>
+  <section class="panel block">
+    <div class="principle"><b>最小限の費用から、最大限の効果を出します。</b><p>限られた予算の中で、事業の課題に合った施策を選び、やるべきことと、やらなくていいことを一緒に決めます。</p></div>
+    <div class="svc-rows" id="svc-rows"></div>
+  </section>
+</div></main>
+
+<!-- ================= 事業詳細 ================= -->
+<main id="view-service" class="shell" hidden><div class="inner stack">
+  <section class="panel">
+    <div class="page-title">
+      <p class="crumb"><a href="#top">TOP</a> / <a href="#services">私たちの事業</a> / <span id="svc-crumb"></span></p>
+      <div class="svc-hero" style="margin-top:20px">
+        <div><h1 id="svc-jp" style="margin-top:0"></h1><span class="en" id="svc-en"></span><p class="svc-lead" id="svc-lead"></p></div>
+        <img id="svc-img" src="" alt="" width="1200" height="674">
+      </div>
+    </div>
+  </section>
+  <section class="panel block svc-intro">
+    <div><h2 class="h-line">こんなお悩みはありませんか</h2><ul class="worries" id="svc-worries"></ul></div>
+    <div><h2 class="h-line">支援後に目指す状態</h2><p class="after-box" id="svc-after"></p></div>
+  </section>
+  <section class="panel block"><h2 class="h-line">サービス一覧</h2><div class="svc-table" id="svc-table"></div></section>
+  <section class="panel block">
+    <h2 class="h-line">進め方</h2><ol class="flow" data-flow></ol>
+    <div class="center-cta"><p>このサービスについて、まずはお気軽にご相談ください。</p><a class="btn btn-dark" id="svc-cta" href="#contact">このサービスについて問い合わせる</a></div>
+  </section>
+  <section class="panel block"><h2 class="h-line">そのほかの事業</h2><nav class="other-links" id="svc-others" aria-label="そのほかの事業"></nav></section>
+</div></main>
+
+<!-- ================= 支援実績 ================= -->
+<main id="view-works" class="shell" hidden><div class="inner stack">
+  <div class="ax-top bleed">
+    <section class="ax-head">
+      <div class="ax-wrap ax-head-in">
+        <div><p class="crumb"><a href="#top">TOP</a> / 支援実績</p><h1>支援実績<span>/</span><small>Works</small></h1></div>
+        <p>集客や売上の改善につながった支援事例をご紹介します。<br>支援内容・期間・予算は案件ごとに異なり、同様の成果を保証するものではありません。</p>
+      </div>
+    </section>
+    <div class="ax-photo ax-photo-tall"><img src="images/head-works.webp" width="1600" height="800" alt="オフィスで握手を交わす経営者とコンサルタント" loading="lazy" style="object-position:50% 72%"></div>
+  </div>
+  <section class="panel block"><div class="works" id="all-works"></div>
+    <div class="case-consult"><div><b>事例の詳しい内容は、オンライン相談でご説明します</b><p>取り組んだ施策や進め方、期間などの詳細は、お問い合わせのうえ、オンラインでの30分の個別相談でお話しします。貴社の状況に近い事例もあわせてご紹介します。</p></div><a class="btn btn-dark" href="#contact" data-topic="支援事例について詳しく聞きたい">30分のオンライン相談を申し込む</a></div></section>
+</div></main>
+
+<!-- ================= MICHINARIについて ================= -->
+<main id="view-about" class="shell" hidden><div class="inner stack">
+  <section class="ax-head bleed">
+    <div class="ax-wrap ax-head-in">
+      <div><p class="crumb"><a href="#top">TOP</a> / MICHINARIについて</p><h1>MICHINARIについて<span>/</span><small>About</small></h1></div>
+      <p>MICHINARIは、外部CMOとして中小企業の経営に入り、<br>マーケティングの戦略から実行・社内への定着までを支援する<br>マーケティングパートナーです。</p>
+    </div>
+  </section>
+  <div class="ax-photo bleed"><img src="images/about-street.webp" width="1600" height="900" alt="晴れた日の地方の商店街" loading="lazy"></div>
+
+  <section class="ax-sec bleed" id="sec-message">
+    <div class="ax-wrap ax-msg">
+      <div>
+        <h2 class="ax-h">代表ご挨拶<small>CEO Message</small></h2>
+        <h3>いい商品を持つ会社が、<br>きちんと選ばれるように。</h3>
+        <p>中小企業には、地域で長く愛されている商品や、現場で磨かれてきた技術がたくさんあります。それなのに、伝え方や届け方が整っていないせいで、必要としている人に知られていない。そんな場面を何度も見てきました。</p>
+        <p>多くの会社では、マーケティングを専任で見る人がいません。広告は代理店、ホームページは制作会社、SNSは手が空いた社員が担当する。一つひとつは動いていても、全体を見て「次に何をやるか」を決める人がいないのです。</p>
+        <p>MICHINARIは、その役割を社外から引き受けます。経営者と同じ目線で目標を決め、予算の使い道を選び、実行と改善まで責任を持つ。そして最後には、社内で続けられるやり方を残します。一社一社の成長が、働く人や地域の元気につながると信じて、この仕事をしています。</p>
+        <p class="sign">MICHINARI<br>代表　河本 修司</p>
+      </div>
+      <figure><img src="images/message-portrait.webp" width="1400" height="1128" alt="セミナーで登壇する代表の河本修司" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <section class="ax-sec ax-gray bleed" id="sec-members">
+    <div class="ax-wrap">
+      <h2 class="ax-h">メンバー<small>Members</small></h2>
+      <div class="ax-members">
+        <article>
+          <div class="ph"><img src="images/member-kawamoto.webp" width="600" height="600" alt="代表の河本修司" loading="lazy"></div>
+          <p class="pos">代表／外部CMO</p><h3>河本 修司</h3><p class="en">Shuji Kawamoto</p>
+          <p class="bio">理学療法士、海外の広告会社、フリーランスでのWebマーケティングを経験。広告運用、SNS、LP・HP制作、アクセス解析などを担当してきました。</p>
+          <div class="links"><a href="https://www.wantedly.com/id/shuuji_kawamoto_b" target="_blank" rel="noopener">Wantedly ↗</a><a href="https://youtrust.jp/users/0735408c56ff8f0f857ed08f6ad5fcf2?youtrust_source=qr_share" target="_blank" rel="noopener">YOUTRUST ↗</a><a href="https://x.com/shuji2000_jp" target="_blank" rel="noopener">X ↗</a></div>
+        </article>
+        <article>
+          <div class="ph"><img src="images/member-danno.webp" width="480" height="480" alt="パートナーの團野凌" loading="lazy"></div>
+          <p class="pos">パートナー／I-Nexus プロジェクトマネージャー</p><h3>團野 凌</h3><p class="en">Ryo Danno</p>
+          <p class="bio">I-Nexusで課題整理とマーケティングを担当。Webサイト制作、MEO、Web担当代理など、施策の実行を一緒に担います。</p>
+          <div class="links"><a href="https://inexus-gb.com/" target="_blank" rel="noopener">I-Nexus ↗</a></div>
+        </article>
+        <article>
+          <div class="ph ph-empty"><span>写真準備中</span></div>
+          <p class="pos">パートナー／Webマーケティング・制作運用</p><h3>歌川 大介</h3>
+          <p class="bio">広告・Web・LINEをつなぐ施策の実行を担当。ECやLINE活用などの支援経験を生かします。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ax-sec bleed" id="sec-company">
+    <div class="ax-wrap">
+      <h2 class="ax-h">事業者情報<small>Company</small></h2>
+      <dl class="ax-table">
+        <div><dt>名称</dt><dd>MICHINARI（ミチナリ）</dd></div>
+        <div><dt>代表</dt><dd>河本 修司</dd></div>
+        <div><dt>事業内容</dt><dd><ul><li><a href="#service-cmo">外部CMO</a></li><li><a href="#service-web">Webマーケティング支援</a></li><li><a href="#service-promo">販促支援</a></li><li><a href="#service-inhouse">内製化支援</a></li><li><a href="#service-dx">DX・AX推進支援</a></li><li><a href="#service-subsidy">補助金コンサルティング</a></li></ul></dd></div>
+        <div><dt>対応地域</dt><dd>日本全国（打ち合わせはオンラインで行います）</dd></div>
+        <div><dt>パートナー</dt><dd>I-Nexus（<a href="https://inexus-gb.com/" target="_blank" rel="noopener">inexus-gb.com ↗</a>）</dd></div>
+        <div><dt>お問い合わせ</dt><dd><a href="#contact">お問い合わせフォーム</a>／<a href="https://lin.ee/5DKzvf8P" target="_blank" rel="noopener">公式LINE ↗</a></dd></div>
+      </dl>
+      <p class="ax-more"><a class="more" href="#philosophy">私たちの理念を見る</a></p>
+    </div>
+  </section>
+</div></main>
+
+<!-- ================= お知らせ ================= -->
+<main id="view-news" class="shell" hidden><div class="inner stack">
+  <div class="ax-top bleed">
+    <section class="ax-head">
+      <div class="ax-wrap ax-head-in">
+        <div><p class="crumb"><a href="#top">TOP</a> / お知らせ</p><h1>お知らせ<span>/</span><small>News</small></h1></div>
+        <p>MICHINARIからのお知らせや、<br>Webマーケティングに関するコラムを掲載しています。</p>
+      </div>
+    </section>
+    <div class="ax-photo"><img src="images/head-news.webp" width="1600" height="800" alt="窓辺のデスクに置かれたノートPCとコーヒー" loading="lazy"></div>
+  </div>
+  <section class="panel block">
+    <div class="filters" role="group" aria-label="カテゴリで絞り込む">
+      <button type="button" data-cat="all" aria-pressed="true">すべて</button>
+      <button type="button" data-cat="お知らせ" aria-pressed="false">お知らせ</button>
+      <button type="button" data-cat="実績紹介" aria-pressed="false">実績紹介</button>
+      <button type="button" data-cat="コラム" aria-pressed="false">コラム</button>
+    </div>
+    <div class="cols-head n-head"><span>[Image]</span><span>[Date + Title]</span></div>
+    <ul class="news-list" id="all-news"></ul>
+  </section>
+</div></main>
+
+<main id="view-article" class="shell" hidden><div class="inner stack">
+  <section class="panel block"><p class="crumb" style="margin:0 0 8px"><a href="#top">TOP</a> / <a href="#news">お知らせ</a> / <span id="crumb-title"></span></p><article class="article" id="article"></article></section>
+</div></main>
+
+<!-- ================= お問い合わせ ================= -->
+<main id="view-contact" class="shell" hidden><div class="inner stack">
+  <section class="ct-hero bleed">
+    <div class="ct-hero-in">
+      <div class="ct-hero-txt">
+        <p class="crumb"><a href="#top">HOME</a> / CONTACT</p>
+        <p class="ct-label">CONTACT</p>
+        <h1>お問い合わせ</h1>
+        <p>サービスに関するご質問やご相談など、<br>お気軽にお問い合わせください。</p>
+      </div>
+      <div class="ct-hero-img"><img src="images/cta-office.webp" width="1600" height="899" alt="" loading="lazy"></div>
+    </div>
+  </section>
+  <section class="ct-body bleed">
+    <span class="ring ring-a" aria-hidden="true"></span><span class="ring ring-b" aria-hidden="true"></span>
+    <p class="ct-intro">以下のフォームに必要事項をご入力のうえ、送信してください。<br>内容を確認し、担当の河本からメールでご連絡します。</p>
+    <div class="ct-card form-card">
+      <form id="contact-form" novalidate>
+        <div class="field-row">
+          <div class="field"><label class="label" for="f-company">会社名・屋号<em>必須</em></label><input id="f-company" name="company" type="text" autocomplete="organization" placeholder="株式会社〇〇"></div>
+          <div class="field"><label class="label" for="f-name">お名前<em>必須</em></label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="山田 太郎"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label class="label" for="f-email">メールアドレス<em>必須</em></label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="info@example.co.jp"></div>
+          <div class="field"><label class="label" for="f-tel">電話番号<small>任意</small></label><input id="f-tel" name="tel" type="tel" autocomplete="tel" placeholder="03-1234-5678"></div>
+        </div>
+          <div class="field">
+            <label class="label" for="f-topic">ご相談の内容<em>必須</em></label>
+            <div class="select-wrap ct-select"><select id="f-topic" name="topic" required>
+              <option value="">選択してください</option>
+              <option value="外部CMOについて">外部CMO</option>
+              <option value="Webマーケティング支援について">Webマーケティング支援</option>
+              <option value="販促支援について">販促支援</option>
+              <option value="内製化支援について">内製化支援・研修</option>
+              <option value="DX・AX推進支援について">DX・AX推進支援</option>
+              <option value="補助金コンサルティングについて">補助金コンサルティング</option>
+              <option value="支援事例について詳しく聞きたい">支援事例について詳しく聞きたい</option>
+              <option value="その他">その他</option>
+            </select></div>
+          </div>
+        <div class="field"><label class="label" for="f-url">ホームページURL<small>任意</small></label><input id="f-url" name="url" type="url" placeholder="https://example.co.jp"></div>
+        <div class="field"><label class="label" for="f-msg">ご相談内容<em>必須</em></label><textarea id="f-msg" name="message" rows="7" placeholder="事業・サービスの概要、今お困りのこと、これから実現したいことなど、分かる範囲でご記入ください。"></textarea></div>
+        <div class="field agree ct-agree"><label><input type="checkbox" id="f-agree" name="agree"> 入力いただいた情報を、ご相談への回答のために使用することに同意します。</label></div>
+        <p class="form-error" id="form-error" role="alert" hidden>未入力の必須項目があります。赤く表示された項目をご確認ください。</p>
+        <div class="ct-submit"><button class="ct-btn ct-btn-send" type="submit">入力内容を確認する<span aria-hidden="true">›</span></button></div>
+      </form>
+      <div id="confirm" hidden>
+        <h2 class="ct-sub-h">入力内容のご確認</h2>
+        <dl class="confirm-list" id="confirm-list"></dl>
+        <p class="form-error" id="send-error" role="alert" hidden>送信できませんでした。時間をおいて再度お試しいただくか、公式LINEからご連絡ください。</p>
+        <div class="confirm-actions"><button class="btn btn-ghost" type="button" id="btn-back">修正する</button><button class="ct-btn ct-btn-send" type="button" id="btn-send">この内容で送信する<span aria-hidden="true">›</span></button></div>
+      </div>
+      <div id="done" class="done" hidden>
+        <h2>お問い合わせありがとうございます</h2>
+        <p>内容を確認のうえ、担当の河本からメールでご連絡します。</p>
+        <a class="btn btn-dark" href="#top">トップへ戻る</a>
+      </div>
+      <div class="ct-or"><span>または</span></div>
+      <div class="ct-submit"><a class="ct-btn ct-btn-line" href="https://lin.ee/5DKzvf8P" target="_blank" rel="noopener"><span class="badge"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 .9l-.1.9c0 .3-.2 1 .9.5 1.1-.5 5.9-3.5 8-5.9C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg></span>LINEで相談する</a></div>
+      <p class="ct-note">メールより気軽にやりとりしたい方は、公式LINEからもご相談いただけます。</p>
+    </div>
+    <div class="ct-flow" id="sec-flow">
+      <h2 class="ct-sub-h">お問い合わせ後の流れ</h2>
+      <ol class="flow" data-flow></ol>
+    </div>
+  </section>
+</div></main>
+
+<div class="shell"><div class="inner stack" style="max-width:1400px;padding-top:0">
+  <section class="cta" aria-labelledby="t-cta">
+    <img class="cta-bg" src="images/cta-office.webp" width="1600" height="900" alt="" loading="lazy">
+    <div class="cta-card reveal" id="cta-card">
+      <p class="cta-eyebrow">まずはお気軽にご相談ください</p>
+      <h2 id="t-cta"><span class="nb">事業の道のりに、</span><br><span class="nb"><em>最適な一手</em>を</span><span class="nb">ご提案します</span></h2>
+      <p class="cta-text"><span class="nb">集客・販促・社内の体制づくり・DX/AI活用まで、</span><span class="nb">お気軽にお問い合わせください。</span></p>
+      <div class="cta-btns">
+        <a class="cta-btn cta-form" href="#contact"><span class="badge"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4.2 7H19.8L12 12.2zM4 9.1V17h16V9.1l-8 5.3-8-5.3z"/></svg></span>お問い合わせフォーム</a>
+        <a class="cta-btn cta-line" href="https://lin.ee/5DKzvf8P" target="_blank" rel="noopener"><span class="badge"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 .9l-.1.9c0 .3-.2 1 .9.5 1.1-.5 5.9-3.5 8-5.9C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg></span>LINEで相談する</a>
+      </div>
+    </div>
+  </section>
+  <a class="pagetop" href="#top" id="pagetop"><span aria-hidden="true">↑</span>Page Top</a>
+</div></div>
+
+<footer class="site-footer shell">
+  <div class="inner" style="max-width:1400px">
+    <div class="foot">
+      <div class="foot-brand"><a href="#top"><img src="images/logo-wordmark-white.webp" width="720" height="141" alt="MICHINARI"></a><p>中小企業から日本を元気にする</p></div>
+      <nav class="foot-nav" aria-label="フッターメニュー">
+        <div><h4><a href="#news">お知らせ</a></h4><a href="#news">お知らせ一覧</a><h4 class="foot-sub"><a href="#works">支援実績</a></h4><a href="#works">支援実績一覧</a></div>
+        <div><h4><a href="#about">MICHINARIについて</a></h4><a href="#philosophy">私たちの理念</a><a href="#message">代表ご挨拶</a><a href="#members">メンバー</a><a href="#company">事業者情報</a></div>
+        <div><h4><a href="#services">私たちの事業</a></h4><a href="#service-cmo">外部CMO</a><a href="#service-web">Webマーケティング支援</a><a href="#service-promo">販促支援</a><a href="#service-inhouse">内製化支援</a><a href="#service-dx">DX・AX推進支援</a><a href="#service-subsidy">補助金コンサルティング</a></div>
+        <div><h4><a href="#contact">お問い合わせ</a></h4><a href="#contact">お問い合わせフォーム</a><a href="#flow">ご相談の流れ</a><a href="https://lin.ee/5DKzvf8P" target="_blank" rel="noopener">公式LINE ↗</a><a href="https://x.com/shuji2000_jp" target="_blank" rel="noopener">X ↗</a></div>
+      </nav>
+    </div>
+    <p class="copy">© MICHINARI All rights reserved.</p>
+  </div>
+</footer>
+<script>
+var NEWS = [
+  {
+    id: "logo", date: "2026.11.01", cat: "お知らせ",
+    thumb: {img: "images/news-logo.webp", square: true},
+    title: "MICHINARIのロゴを新しく作成しました",
+    body: [
+      ["p","このたび、MICHINARI（ミチナリ）のロゴを新しく作成しました。"],
+      ["h","ロゴに込めた思い"],
+      ["p","シンボルマークは、アルファベットの「m」をもとにしています。「道なり」という名前のとおり、お客さまの事業の道のりに寄り添い、一歩ずつ一緒に前へ進んでいく姿をイメージしました。"],
+      ["p","ワードマーク「michinari」の「i」の点には赤を使っています。地域の会社が日本を明るく照らす存在になる、という「Be the Light of Japan.」の思いを込めました。"],
+      ["p","あわせて、ビジョン「中小企業から、日本を元気にする。」をロゴと一緒に掲げていきます。名刺や資料、Webサイトなど、これから順次このロゴに切り替えてまいります。"]
+    ]
+  },
+  {
+    id: "site-open", date: "2026.11.01", cat: "お知らせ",
+    thumb: {img: "images/hero-tokyo.webp", label: "Website Open"},
+    title: "ホームページを公開しました",
+    body: [
+      ["p","MICHINARIのホームページを公開しました。"],
+      ["p","事業内容、支援実績、ご相談の流れを掲載しています。今後はこのお知らせページで、MICHINARIからのお知らせやWebマーケティングに関するコラムも発信していきます。"]
+    ]
+  }
+];
+
+
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+var BASE_TITLE=document.title;
+
+/* ---------- お知らせ ---------- */
+function dateHtml(n){return n.date?'<time>'+esc(n.date)+'</time>':'<span class="date">日付未定</span>';}
+function catClass(c){return c==="実績紹介"?"cat c-works":"cat";}
+function thumbHtml(n,big){var t=n.thumb||{};var cls='nthumb'+(big?' big':'');
+  if(t.img)return '<div class="'+cls+' is-img'+(t.square?' sq':'')+'"><img src="'+t.img+'" alt="" loading="lazy">'+(t.label?'<span class="lbl">'+esc(t.label)+'</span>':'')+'</div>';
+  if(t.text)return '<div class="'+cls+' is-text"><span class="k">'+esc(t.label||'')+'</span><b>'+t.text+'</b><img class="mk" src="images/logo-wordmark.webp" alt=""></div>';
+  return '<div class="'+cls+' is-def"><img class="mk" src="images/logo-wordmark.webp" alt=""><span>News Release</span></div>';}
+function newsItem(n){return '<li><a href="#news-'+n.id+'">'+thumbHtml(n)+'<div class="nmain"><div class="nmeta">'+dateHtml(n)+'<span class="'+catClass(n.cat)+'">'+esc(n.cat)+'</span>'+(n.draft?'<span class="draft">下書き</span>':'')+'</div><span class="t">'+esc(n.title)+'</span></div></a></li>';}
+document.getElementById('top-news').innerHTML=NEWS.slice(0,3).map(newsItem).join('');
+var currentCat='all';
+function renderList(){var l=NEWS.filter(function(n){return currentCat==='all'||n.cat===currentCat;});document.getElementById('all-news').innerHTML=l.length?l.map(newsItem).join(''):'<li style="padding:24px 0">このカテゴリの記事はまだありません。</li>';}
+document.querySelectorAll('.filters button').forEach(function(b){b.addEventListener('click',function(){currentCat=b.dataset.cat;document.querySelectorAll('.filters button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});renderList();});});
+renderList();
+function renderArticle(n){
+  var body=n.body.map(function(b){if(b[0]==='h')return '<h2>'+esc(b[1])+'</h2>';if(b[0]==='ul')return '<ul>'+b[1].map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>';if(b[0]==='memo')return '<p class="memo">'+esc(b[1])+'</p>';return '<p>'+esc(b[1])+'</p>';}).join('');
+  document.getElementById('crumb-title').textContent=n.title;
+  document.getElementById('article').innerHTML=thumbHtml(n,true)+'<div class="article-meta">'+dateHtml(n)+'<span class="'+catClass(n.cat)+'">'+esc(n.cat)+'</span>'+(n.draft?'<span class="draft" style="margin:0">下書き</span>':'')+'</div><h1>'+esc(n.title)+'</h1><div class="body">'+body+'</div><div class="article-foot"><a class="back" href="#news">お知らせ一覧へ戻る</a><a class="btn btn-orange" href="#contact">この内容について相談する</a></div>';
+  document.title=n.title+'｜MICHINARI';
+}
+
+
+/* ---------- バリュー ---------- */
+var VALUES=[
+  ["最小限の費用で、最大限の効果を","Less Cost, More Impact","限られた予算で、いまやるべき施策だけを選び抜きます。"],
+  ["経営者と同じ側に立つ","Same Side","外注先ではなく、同じ目標を追うチームの一員として考えます。"],
+  ["手を動かし、結果で語る","Hands-on","提案で終わらせず、現場で実行し、数字で成果を確かめます。"],
+  ["数字に正直に","Honest Numbers","良い数字も悪い数字も共有し、次の一手を一緒に決めます。"],
+  ["社内に力を残す","Leave the Skill","支援が終わっても続くよう、やり方と判断基準を社内に残します。"]
+];
+function valuesHtml(){return VALUES.map(function(v,i){return '<li><span class="n">'+String(i+1).padStart(2,'0')+'</span><b>'+esc(v[0])+'</b><i>'+esc(v[1])+'</i><span>'+esc(v[2])+'</span></li>';}).join('');}
+document.getElementById('values-top').innerHTML=VALUES.map(function(v){return '<li><div class="t"><b>'+esc(v[0])+'</b><i>'+esc(v[1])+'</i></div><p>'+esc(v[2])+'</p></li>';}).join('');
+
+
+/* ---------- 支援実績 ---------- */
+var CASES=[
+  {cat:"法人向けサービス",attr:"支援実績",title:"ホームページからの問い合わせが、月6件から60件以上に。",figs:[["HPからの問い合わせ","60","件以上／月","改善前 6件／月"],["月間売上の増加","+300","万円以上",""]],term:"月間の数値比較です。比較した年月は記載していません。",link:"#news-case-b2b"},
+  {cat:"LINE集客",attr:"支援実績",title:"登録単価を抑えながら、月間のLINE登録者数を拡大。",figs:[["LINE登録1名あたりの獲得単価","500","円","改善前 5,000円"],["LINE登録者数","72","名／月","改善前 14名／月"]],term:"月間登録者数と登録単価の比較です。比較した年月は記載していません。",link:"#news-case-line"},
+  {cat:"EC・コンタクトレンズ販売",attr:"協力パートナーの支援実績",works:true,title:"LINE導入から1年で、サブスク会員数が2倍に。",figs:[["サブスク会員数（1年間）","2","倍",""],["LINE導入後1年間の会員増加","約1,000","名",""]],term:"LINE導入後1年間。開始年月は記載していません。協力パートナーの運営事業での、チームによる支援の成果です。",src:"https://webfleek.jp/#results"},
+  {cat:"EC・オンラインレッスンキット販売",attr:"協力パートナーの支援実績",works:true,title:"個別対応に使っていたLINEを、販売チャネルに。",figs:[["公開事例における平均CVR","22.73","%",""],["LINEの友だち登録数","380","名／月",""]],term:"集計年月・CVRの母数は記載していません。協力パートナーの運営事業での、チームによる支援の成果です。",src:"https://webfleek.jp/#results"}
+];
+function caseCard(c){
+  return '<article class="case"><div class="case-meta"><span class="'+(c.works?'cat c-works':'cat')+'">'+esc(c.cat)+'</span><span>'+esc(c.attr)+'</span></div><h3>'+esc(c.title)+'</h3><div class="figs">'+
+    c.figs.map(function(f){return '<div class="fig"><small>'+esc(f[0])+'</small><div class="v"><b>'+esc(f[1])+'</b><i>'+esc(f[2])+'</i></div>'+(f[3]?'<span class="was">'+esc(f[3])+'</span>':'')+'</div>';}).join('')+
+    '</div><details><summary>対象期間 ＋</summary><p>'+esc(c.term)+(c.src?' <a href="'+c.src+'" target="_blank" rel="noopener">出典 ↗</a>':'')+'</p></details>'+'<a class="case-more" href="#contact" data-topic="支援事例について詳しく聞きたい">詳しい内容は、オンライン相談（30分）でご説明します</a>'+'</article>';
+}
+document.getElementById('all-works').innerHTML=CASES.map(caseCard).join('');
+
+/* ---------- 進め方（共通） ---------- */
+var FLOW_ICON={
+  mail:'<path d="M4 6.5h16v11H4z"/><path d="m4.5 7.5 7.5 5.5 7.5-5.5"/>',
+  talk:'<path d="M3.5 5h11v7.5H8L4.5 15V5z"/><path d="M14.5 9h6v7.5l-3-2.2h-6V12.5"/>',
+  target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="1" fill="currentColor"/>',
+  doc:'<path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/><path d="M9.5 12h6M9.5 15.5h6"/>',
+  grow:'<path d="M4 19.5h16"/><path d="m5 15.5 4-4 3 3 6.5-6.5"/><path d="M14.5 8h4v4"/>'
+};
+var FLOW=[
+  ["01","お問い合わせ","mail","フォームまたは公式LINEから、今のお悩みやご相談内容をお送りください。"],
+  ["02","ヒアリング","talk","オンライン（30分ほど）で、事業の状況・目標・現在の施策と体制を伺います。"],
+  ["03","ボトルネック・優先順位の明確化","target","企業様の目標や目的に合わせて、成果を止めているボトルネックを見つけ、取り組む順番をはっきりさせます。",true],
+  ["04","ご提案","doc","優先する施策、支援範囲、費用、役割分担をまとめてご提案します。"],
+  ["05","ご支援開始","grow","合意した施策を実行し、毎月の数字を見ながら改善を続けます。"]
+];
+var FLOW_INTRO='<div class="flow-intro"><figure><img src="images/head-services.webp" alt="目標や課題について話し合う打ち合わせの様子" loading="lazy"></figure>'+
+  '<div><p class="fi-k">MICHINARIの進め方</p><h3>いきなり施策から始めず、<br>まず「どこで止まっているか」を見つけます。</h3>'+
+  '<div class="fi-map" aria-label="目標から施策までの考え方"><span class="n">目標・目的</span><i>→</i><span class="n hot">ボトルネック</span><i>→</i><span class="n">優先順位</span><i>→</i><span class="n">施策</span></div>'+
+  '<p class="fi-t">目標から逆算して、やるべきことと、やらなくていいことを一緒に決めます。</p></div></div>';
+document.querySelectorAll('[data-flow]').forEach(function(ol){
+  ol.classList.add('flow5');
+  ol.innerHTML=FLOW.map(function(f){return '<li class="fstep'+(f[4]?' key':'')+'"><div class="fic"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+FLOW_ICON[f[2]]+'</svg></div><span class="fno">STEP '+f[0]+'</span><b>'+f[1]+'</b>'+(f[4]?'<em class="ftag">ここが大切</em>':'')+'<p>'+f[3]+'</p></li>';}).join('');
+  ol.insertAdjacentHTML('beforebegin',FLOW_INTRO);
+});
+
+/* ---------- 事業 ---------- */
+var SERVICES={
+  cmo:{title:"外部CMO",en:"Outsourced CMO",img:"images/biz-cmo.webp",alt:"資料を広げて打ち合わせをする経営者とコンサルタント",for:"マーケティングの責任者がいない会社に",
+    lead:"マーケティングの責任者として経営に加わり、目標・予算・施策の優先順位を決めて、社内外のメンバーと実行まで進めます。",
+    worries:["広告・ホームページ・SNSを別々の会社に頼んでいて、全体を見る人がいない","マーケティングにいくら使い、何が成果につながっているか分からない","専任のマーケティング担当を社内に置く余裕がない"],
+    after:"経営の目標から逆算した施策と予算配分が決まり、毎月の数字をもとに次の一手を判断できる状態をつくります。",
+    groups:[["戦略・マネジメント",[["外部CMO","マーケティング責任者としての戦略立案・意思決定"],["マーケティング戦略設計","現状分析、KGI・KPI設計、予算配分"],["プロジェクト進行管理（PM）","社内・外注先を含めた施策の進行と品質管理"],["Webコンサルティング","既存施策の診断と改善提案"]]]],topic:"外部CMOについて"},
+  web:{title:"Webマーケティング支援",en:"Web Marketing",img:"images/biz-web.webp",alt:"アクセス解析の画面を見ながらPCで作業する手元",for:"Webからの問い合わせや売上を増やしたい会社に",
+    lead:"Web広告、ホームページ・LP、SNS、LINE、MEOまで。見つけてもらい、問い合わせや購入に至るまでの流れを一つずつ整えます。",
+    worries:["ホームページはあるが、問い合わせがほとんど来ない","広告を出しているが、費用に見合っているか判断できない","SNSやLINEを始めたものの、売上につながっていない"],
+    after:"どの経路から問い合わせや購入が生まれているかが数字で分かり、効果の高い施策に予算を集中できる状態をつくります。",
+    groups:[["Web広告運用",[["リスティング広告","Google・Yahoo!の検索広告"],["ディスプレイ広告","Googleディスプレイネットワークなど"],["SNS広告","Instagram・Facebook・TikTok・X"],["動画広告","YouTubeなどの動画広告の企画と運用"],["LINE広告","友だち追加広告などLINE上の配信"],["広告クリエイティブ制作","バナー・広告文・動画の制作と検証"]]],["Web制作・集客導線",[["ホームページ・LP制作","集客の目的に合わせた設計・制作・改善、WordPress構築"],["LINE公式アカウント構築","友だち追加から購入・予約までの導線設計"],["MEO対策","Googleビジネスプロフィールの最適化と運用"],["SNS運用","投稿の企画・制作・分析"],["アクセス解析・効果測定","計測環境の整備とレポート"],["Web担当代理","社内のWeb・IT担当者の代わりとして日々の運用を担当"]]]],topic:"Webマーケティング支援について"},
+  promo:{title:"販促支援",en:"Promotion",img:"images/biz-promo.webp",alt:"商品とPOP、パンフレットが並ぶ店頭のカウンター",for:"商品の良さが、売上に結びついていない会社に",
+    lead:"キャンペーンの企画、チラシやPOPなどの販促物、ECや店舗の売り場づくり。オンラインとオフラインの両方から売上をつくります。",
+    worries:["いい商品なのに、店頭やECで手に取ってもらえない","キャンペーンやチラシを、毎回なんとなく作っている","店舗のお客さまを、LINEやSNSでのリピートにつなげたい"],
+    after:"商品の良さが伝わる売り場と販促物が整い、店頭とWebの両方からリピートにつながる流れができている状態を目指します。",
+    groups:[["販促",[["キャンペーン企画","新商品・季節施策などの企画と実行"],["販促物の制作","チラシ・パンフレット・POPなど"],["EC・店舗の販売促進","商品ページ・売り場・リピート施策の改善"],["オンラインとオフラインの連携","店頭からLINE・SNSへつなぐ導線づくり"]]]],topic:"販促支援について"},
+  inhouse:{title:"内製化支援",en:"In-house",img:"images/biz-inhouse.webp",alt:"モニターの資料を見ながら学ぶ社内研修の様子",for:"外注に頼りきりの状態から抜け出したい会社に",
+    lead:"自社の広告や投稿を題材にした実践研修と手順書の整備で、社内で運用と改善を続けられる体制をつくります。",
+    worries:["外注費がかさむので、社内で運用できるようにしたい","担当者が替わるたびに、やり方が引き継がれない","社内に、施策の良し悪しを判断できる担当者を育てたい"],
+    after:"担当者が手順と判断基準を持ち、外部に頼りきらずに運用・振り返り・改善を回せる状態をつくります。",
+    groups:[["内製化・人材育成",[["担当者の実践研修","自社の広告・投稿を題材にしたOJT"],["社内向けWeb広告・SNS講座","担当者が運用を引き継ぐための講座"],["マニュアル・手順書の整備","入稿・投稿・レポートの型づくり"],["振り返りの仕組みづくり","KPIの共有と、社内で改善を回す定例の設計"]]]],topic:"内製化支援について"},
+  dx:{title:"DX・AX推進支援",en:"DX / AX",img:"images/biz-dx.webp",alt:"明るいオフィスでノートPCとタブレットを使って打ち合わせる様子",for:"紙・Excel・人頼みの業務から抜け出したい会社に",
+    lead:"DX（デジタルトランスフォーメーション）とAX（AIトランスフォーメーション）を、中小企業の現場に合う大きさで。Google Workspace・Notionなどのクラウドツールと生成AIを使い、マーケティングから受注・顧客管理、社内業務までを一つの流れでつなぎます。",
+    worries:["顧客情報や案件の状況が、担当者ごと・Excelごとにバラバラになっている","資料作成や報告書づくりに、毎回時間がかかっている","AIを業務に取り入れたいが、どこから使えばいいか分からない"],
+    after:"顧客・案件・社内の情報が一か所にまとまり、定型業務はツールとAIに任せて、人は判断と提案に時間を使える状態をつくります。",
+    groups:[["DX（デジタル化・業務改善）",[["業務フローの可視化・改善","いまの業務を棚卸しし、デジタル化する範囲と順番を設計"],["Google Workspace活用","Gmail・ドライブ・スプレッドシートの共有ルールと運用づくり"],["Notionによる社内ポータル・ナレッジ管理","マニュアル・議事録・タスクを一か所に集約"],["受注・顧客管理（CRM / SFA）","顧客情報・商談・案件の進み具合を見える化"]]],["AX（AI活用）・自動化",[["MA（マーケティング・オートメーション）","見込み客へのメール・LINE配信やフォローの自動化"],["生成AIの業務活用","文章・企画・分析へのAI導入と社内ルールづくり"],["資料作成の時短化","提案書・報告書・議事録のテンプレート化とAI活用"],["ツール連携・業務自動化","フォーム・CRM・チャットをつなぎ、手作業を削減"]]]],topic:"DX・AX推進支援について"},
+  subsidy:{title:"補助金コンサルティング",en:"Subsidy",img:"images/hero-city.webp",alt:"晴れた日の地方都市の街並み",for:"新しい取り組みを、資金面から考えたい会社に",
+    lead:"Webや新しい取り組みへの投資について、補助金を活用できる可能性と進め方を一緒に整理します。",
+    worries:["Webや設備への投資に、補助金が使えるか知りたい","申請の進め方やスケジュールのイメージがつかめない","補助金とあわせて、取り組みの中身から相談したい"],
+    after:"実現したい取り組みと資金面の進め方が整理され、Webマーケティングや内製化の計画とあわせて動き出せる状態を目指します。",
+    groups:[["補助金",[["取り組みたい事業・課題の整理","補助金の活用を前提に、やりたいことを整理"],["補助金活用についてのご相談","活用できる可能性と進め方の検討"],["事業に合わせた進め方の検討","Web施策・内製化の計画とあわせて検討"]]]],topic:"補助金コンサルティングについて"}
+};
+document.getElementById('svc-rows').innerHTML=Object.keys(SERVICES).map(function(k){var d=SERVICES[k];return '<a class="svc-row" href="#service-'+k+'"><div class="img"><img src="'+d.img+'" alt="'+esc(d.alt)+'" loading="lazy"></div><div class="txt"><span class="en">'+esc(d.en)+'</span><h3>'+esc(d.title)+'</h3><span class="for">'+esc(d.for)+'</span><p>'+esc(d.lead)+'</p><span class="go">サービス一覧を見る</span></div></a>';}).join('');
+var pendingTopic=null;
+function renderService(key){
+  var d=SERVICES[key];
+  var img=document.getElementById('svc-img');img.src=d.img;img.alt=d.alt;
+  document.getElementById('svc-crumb').textContent=d.title;
+  document.getElementById('svc-jp').textContent=d.title;
+  document.getElementById('svc-en').textContent=d.en;
+  document.getElementById('svc-lead').textContent=d.lead;
+  document.getElementById('svc-worries').innerHTML=d.worries.map(function(w){return '<li>'+esc(w)+'</li>';}).join('');
+  document.getElementById('svc-after').textContent=d.after;
+  document.getElementById('svc-table').innerHTML=d.groups.map(function(g){return '<div class="svc-group"><h3>'+esc(g[0])+'</h3><ul>'+g[1].map(function(it){return '<li><b>'+esc(it[0])+'</b><span>'+esc(it[1])+'</span></li>';}).join('')+'</ul></div>';}).join('');
+  document.getElementById('svc-cta').setAttribute('data-topic',d.topic);
+  document.getElementById('svc-others').innerHTML=Object.keys(SERVICES).filter(function(k){return k!==key;}).map(function(k){return '<a href="#service-'+k+'">'+esc(SERVICES[k].title)+'</a>';}).join('');
+  document.title=d.title+'｜MICHINARI';
+}
+document.addEventListener('click',function(e){var a=e.target.closest('[data-topic]');if(a)pendingTopic=a.getAttribute('data-topic');});
+
+/* ---------- お問い合わせフォーム（確認用：送信はしない） ---------- */
+(function(){
+  var form=document.getElementById('contact-form'),confirmBox=document.getElementById('confirm'),done=document.getElementById('done'),err=document.getElementById('form-error');
+  function step(n){['fs-1','fs-2','fs-3'].forEach(function(id,i){var el=document.getElementById(id);if(!el)return;if(i===n)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current');});}
+  function val(n){return (form.elements[n].value||'').trim();}
+  function top(){var f=document.querySelector('#view-contact .form-card');window.scrollTo(0,f.getBoundingClientRect().top+scrollY-110);}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();var ok=true;
+    ['company','name','email','message'].forEach(function(n){var el=form.elements[n];var bad=!el.value.trim()||(n==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()));el.classList.toggle('invalid',bad);el.setAttribute('aria-invalid',String(bad));if(bad)ok=false;});
+    var topic=form.elements.topic;var tbad=!topic.value;topic.classList.toggle('invalid',tbad);topic.setAttribute('aria-invalid',String(tbad));if(tbad)ok=false;
+    var ag=document.getElementById('f-agree');ag.parentElement.classList.toggle('invalid',!ag.checked);if(!ag.checked)ok=false;
+    err.hidden=ok;
+    if(!ok){var first=form.querySelector('.invalid');if(first)first.scrollIntoView({block:'center'});return;}
+    var rows=[['会社名・屋号',val('company')],['お名前',val('name')],['メールアドレス',val('email')],['電話番号',val('tel')||'（未入力）'],['ご相談の内容',topic.value],['ホームページURL',val('url')||'（未入力）'],['ご相談内容',val('message')]];
+    document.getElementById('confirm-list').innerHTML=rows.map(function(r){return '<div><dt>'+esc(r[0])+'</dt><dd>'+esc(r[1])+'</dd></div>';}).join('');
+    form.hidden=true;confirmBox.hidden=false;step(1);top();
+  });
+  document.getElementById('btn-back').addEventListener('click',function(){confirmBox.hidden=true;form.hidden=false;step(0);top();});
+  var sendBtn=document.getElementById('btn-send'),sendErr=document.getElementById('send-error');
+  sendBtn.addEventListener('click',function(){
+    if(sendBtn.disabled)return;
+    sendBtn.disabled=true;sendErr.hidden=true;var label=sendBtn.innerHTML;sendBtn.textContent='送信中…';
+    var data={_subject:'【MICHINARI】お問い合わせ：'+form.elements.topic.value,_template:'table',_captcha:'false',
+      'ご相談の内容':form.elements.topic.value,'会社名・屋号':val('company'),'お名前':val('name'),'メールアドレス':val('email'),
+      '電話番号':val('tel')||'（未入力）','ホームページURL':val('url')||'（未入力）','ご相談内容':val('message'),_replyto:val('email'),_honey:''};
+    fetch('https://formsubmit.co/ajax/'+['shuji.kawamoto.jp','gmail.com'].join('@'),{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
+      .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+      .then(function(){confirmBox.hidden=true;done.hidden=false;step(2);top();form.reset();})
+      .catch(function(){sendErr.hidden=false;})
+      .then(function(){sendBtn.disabled=false;sendBtn.innerHTML=label;});
+  });
+  window.__resetContact=function(){form.hidden=false;confirmBox.hidden=true;done.hidden=true;step(0);
+    if(pendingTopic){form.elements.topic.value=pendingTopic;form.elements.topic.classList.remove('invalid');pendingTopic=null;}};
+})();
+
+/* ---------- 理念の背景：静止画（夜明けの道） ---------- */
+(function(){
+  var cv=document.getElementById('vision-fx'); if(!cv) return;
+  var ctx=cv.getContext('2d');
+  function seeded(n){var x=Math.sin(n*12.9898)*43758.5453;return x-Math.floor(x);}
+  function draw(){
+    var r=cv.getBoundingClientRect(); if(!r.width) return;
+    var dpr=Math.min(window.devicePixelRatio||1,2), W=r.width, H=r.height;
+    cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    var hy=H-Math.min(230,H*.3), vx=W*.5;
+    // 空：深い紺から地平線の朝焼けへ
+    var g=ctx.createLinearGradient(0,0,0,hy);
+    g.addColorStop(0,'#071427'); g.addColorStop(.6,'#0f2d52'); g.addColorStop(1,'#1d4675');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+    // 細かいドットのグリッド（上ほど薄く）
+    for(var y=24;y<hy-20;y+=22){var a=.05+.10*(y/hy);ctx.fillStyle='rgba(170,205,240,'+a+')';
+      for(var x=(y/22%2)*11+12;x<W;x+=22){ctx.fillRect(x,y,1.2,1.2);}}
+    // 地平線から放射する光の筋
+    ctx.save(); ctx.globalCompositeOperation='lighter';
+    for(var i=0;i<26;i++){var ang=Math.PI+(i+.5)/26*Math.PI, len=Math.max(W,H)*1.2, sp=.012+seeded(i)*.016;
+      var gr=ctx.createLinearGradient(vx,hy,vx+Math.cos(ang)*len*.6,hy+Math.sin(ang)*len*.6);
+      gr.addColorStop(0,'rgba(255,190,120,'+(.10+seeded(i+40)*.08)+')'); gr.addColorStop(1,'rgba(255,190,120,0)');
+      ctx.fillStyle=gr; ctx.beginPath(); ctx.moveTo(vx,hy);
+      ctx.lineTo(vx+Math.cos(ang-sp)*len,hy+Math.sin(ang-sp)*len); ctx.lineTo(vx+Math.cos(ang+sp)*len,hy+Math.sin(ang+sp)*len); ctx.closePath(); ctx.fill();}
+    // 地平線の光（太陽）
+    var glow=ctx.createRadialGradient(vx,hy,0,vx,hy,Math.max(W,H)*.6);
+    glow.addColorStop(0,'rgba(255,214,150,.85)'); glow.addColorStop(.06,'rgba(255,160,80,.55)'); glow.addColorStop(.22,'rgba(215,65,51,.22)'); glow.addColorStop(.55,'rgba(40,100,170,.08)'); glow.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=glow; ctx.fillRect(0,0,W,H);
+    var core=ctx.createRadialGradient(vx,hy,0,vx,hy,70); core.addColorStop(0,'rgba(255,250,235,1)'); core.addColorStop(.35,'rgba(255,220,160,.6)'); core.addColorStop(1,'rgba(255,180,100,0)');
+    ctx.fillStyle=core; ctx.beginPath(); ctx.arc(vx,hy,70,0,6.283); ctx.fill();
+    ctx.restore();
+    // 大きな輪郭文字
+    var fs=Math.min(W*.2,260);
+    ctx.save(); ctx.font='700 '+fs+'px "Lexend","Helvetica Neue",Arial,sans-serif'; ctx.textAlign='center'; ctx.textBaseline='alphabetic';
+    ctx.lineWidth=1.2; ctx.strokeStyle='rgba(190,215,240,.13)'; ctx.strokeText('MICHINARI',vx,hy-6); ctx.restore();
+    // 地面
+    var gd=ctx.createLinearGradient(0,hy,0,H); gd.addColorStop(0,'#16365c'); gd.addColorStop(1,'#0a1a30');
+    ctx.fillStyle=gd; ctx.fillRect(0,hy,W,H-hy);
+    ctx.save(); ctx.beginPath(); ctx.rect(0,hy,W,H-hy); ctx.clip();
+    ctx.strokeStyle='rgba(140,190,240,.30)'; ctx.lineWidth=1;
+    for(var gx=-16;gx<=16;gx++){ctx.beginPath();ctx.moveTo(vx,hy);ctx.lineTo(vx+gx*W*.09,H);ctx.stroke();}
+    for(var gy=1;gy<13;gy++){var q=gy/13, yy=hy+(H-hy)*q*q; ctx.globalAlpha=.15+.5*q; ctx.beginPath();ctx.moveTo(0,yy);ctx.lineTo(W,yy);ctx.stroke();}
+    ctx.globalAlpha=1;
+    // 道（光を受けた路面）
+    var road=ctx.createLinearGradient(0,hy,0,H); road.addColorStop(0,'rgba(255,200,140,.55)'); road.addColorStop(1,'rgba(255,255,255,.08)');
+    ctx.fillStyle=road; ctx.beginPath(); ctx.moveTo(vx-2,hy); ctx.lineTo(vx+2,hy); ctx.lineTo(vx+W*.16,H); ctx.lineTo(vx-W*.16,H); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle='rgba(255,220,180,.55)'; ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.moveTo(vx-2,hy); ctx.lineTo(vx-W*.16,H); ctx.moveTo(vx+2,hy); ctx.lineTo(vx+W*.16,H); ctx.stroke();
+    ctx.fillStyle='rgba(255,255,255,.85)';
+    for(var d=0;d<10;d++){var q1=(d+.2)/10,q2=q1+.05; if(q2>1)continue; var y1=hy+(H-hy)*q1*q1,y2=hy+(H-hy)*q2*q2,w1=1+q1*6,w2=1+q2*6; ctx.globalAlpha=.3+.7*q1;
+      ctx.beginPath(); ctx.moveTo(vx-w1/2,y1);ctx.lineTo(vx+w1/2,y1);ctx.lineTo(vx+w2/2,y2);ctx.lineTo(vx-w2/2,y2);ctx.closePath();ctx.fill();}
+    ctx.restore(); ctx.globalAlpha=1;
+    // 地平線のライン
+    var hl=ctx.createLinearGradient(0,0,W,0); hl.addColorStop(0,'rgba(255,190,130,0)'); hl.addColorStop(.5,'rgba(255,220,170,.9)'); hl.addColorStop(1,'rgba(255,190,130,0)');
+    ctx.fillStyle=hl; ctx.fillRect(0,hy-1,W,2);
+    // 静かな星（固定位置）
+    for(var k=0;k<Math.round(W/16);k++){var sx=seeded(k+7)*W, sy=seeded(k+99)*hy*.7, sr=.5+seeded(k+3)*1.1;
+      ctx.fillStyle='rgba(230,240,255,'+(.25+seeded(k+11)*.5)+')'; ctx.beginPath(); ctx.arc(sx,sy,sr,0,6.283); ctx.fill();}
+  }
+  draw();
+  var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(draw,120);});
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(draw);
+})();
+
+/* ---------- CTAカードのフェードイン ---------- */
+(function(){var c=document.getElementById('cta-card');if(!c)return;
+  if(!('IntersectionObserver' in window)){c.classList.add('is-visible');return;}
+  new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){c.classList.add('is-visible');o.disconnect();}});},{threshold:.2}).observe(c);})();
+
+/* ---------- ページ切り替え ---------- */
+var VIEWS=['top','philosophy','services','service','works','about','news','article','contact'];
+var ALIAS={mission:['philosophy','mvv-mission'],vision:['philosophy','mvv-vision'],value:['philosophy','mvv-value'],message:['about','sec-message'],members:['about','sec-members'],company:['about','sec-company'],flow:['contact','sec-flow']};
+function show(name){
+  VIEWS.forEach(function(v){document.getElementById('view-'+v).hidden=(v!==name);});
+  var cta=document.querySelector('section.cta');if(cta)cta.hidden=(name==='contact');
+  var navKey={philosophy:'philosophy',services:'services',service:'services',works:'works',about:'about',news:'news',article:'news',contact:'contact'}[name];
+  document.querySelectorAll('[data-nav]').forEach(function(a){if(a.dataset.nav===navKey)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+}
+function route(){
+  var h=(location.hash||'').slice(1);
+  document.title=BASE_TITLE;
+  var anchor=null,view='top';
+  if(ALIAS[h]){view=ALIAS[h][0];anchor=ALIAS[h][1];}
+  else if(h.indexOf('news-')===0&&NEWS.some(function(x){return 'news-'+x.id===h;})){view='article';renderArticle(NEWS.filter(function(x){return 'news-'+x.id===h;})[0]);}
+  else if(h.indexOf('service-')===0&&SERVICES[h.slice(8)]){view='service';renderService(h.slice(8));}
+  else if(['philosophy','services','works','about','news','contact'].indexOf(h)>=0){view=h;}
+  if(view==='contact')window.__resetContact();
+  show(view);
+  if(anchor){requestAnimationFrame(function(){var el=document.getElementById(anchor);window.scrollTo(0,el.getBoundingClientRect().top+scrollY-96);});}
+  else window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);
+route();
+
+(function(){
+  document.querySelectorAll('.gnav-item').forEach(function(it){
+    it.addEventListener('click',function(e){if(e.target.closest('a')){it.classList.add('closed');var a=document.activeElement;if(a&&a.blur)a.blur();}});
+    it.addEventListener('mouseleave',function(){it.classList.remove('closed');});
+  });
+  var btn=document.getElementById('menu-btn'),nav=document.getElementById('gnav');
+  function close(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='メニュー';}
+  btn.addEventListener('click',function(){var o=!nav.classList.contains('open');nav.classList.toggle('open',o);btn.setAttribute('aria-expanded',String(o));btn.textContent=o?'閉じる':'メニュー';});
+  document.querySelectorAll('#gnav-links a').forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){close();btn.focus();}});
+})();
+</script>
