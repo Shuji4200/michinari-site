@@ -1,0 +1,1448 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="MICHINARI is a Japan-based marketing partner that works inside your business as an outsourced CMO, covering digital marketing, sales promotion, in-house training and DX/AX for Japanese SMEs and overseas companies entering Japan.">
+<title>MICHINARI | Marketing Partner for Growth in Japan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700&family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: 博報堂型の「パネルを敷き詰める」構成を明るい配色で。薄いグレーの地に白い角丸パネル、等幅の小ラベル（■ News）、
+   段違いにずらした大きな英字×写真のカード、赤い丸矢印。写真の上に文字を重ねるときは白い縁取りで読みやすさを確保。 */
+:root{
+  color-scheme:light;
+  --page:#eceff3;
+  --panel:#ffffff;
+  --ivory:#fbf8ee;
+  --ink:#1b2129;
+  --body:#3a434d;
+  --muted:#5a636d;
+  --line:#d9dee4;
+  --red:#d74133;
+  --red-ink:#b8342a;
+  --blue:#2468a8;
+  --blue-soft:#e6f0f9;
+  --en:"Lexend","Avenir Next","Helvetica Neue",Arial,sans-serif;
+  --mono:"DM Mono","SFMono-Regular",Menlo,Consolas,monospace;
+  --jp:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  --r:14px;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{background:var(--page)}
+html{overflow-x:clip}
+body{color:var(--body);font-family:var(--jp);font-size:16px;line-height:1.9;letter-spacing:.03em;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--page)}
+h1,h2,h3,h4,p,ul,ol,dl,dd,figure,table{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+h1,h2,h3{color:var(--ink)}
+.nb{display:inline-block}
+.shell{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.inner{max-width:1180px;margin:0 auto}
+.panel{background:var(--panel);border-radius:var(--r)}
+.stack{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;padding-block:16px}
+
+/* ===== header ===== */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(236,239,243,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.site-header .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:76px}
+.logo{display:block;height:34px;width:auto}
+.gnav{display:flex;align-items:center;gap:22px}
+.gnav-links{display:flex;gap:24px;align-items:center}
+.gnav-links a{text-decoration:none;font-size:13.5px;font-weight:700;color:var(--ink);padding:10px 0;letter-spacing:.06em}
+.gnav-links a:hover,.gnav-links a[aria-current="page"]{color:var(--red-ink)}
+/* ===== mega menu (PC) ===== */
+.mega{display:none}
+@media (min-width:921px){
+  .gnav,.gnav-links{align-self:stretch}
+  .gnav-item{display:flex;align-items:center}
+  .gnav-item > a{position:relative}
+  .gnav-item > a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--red);transform:scaleX(0);transition:transform .2s}
+  .gnav-item:hover > a::after,.gnav-item:focus-within > a::after{transform:scaleX(1)}
+  .mega{display:block;position:absolute;top:100%;left:16px;right:16px;z-index:60;padding-top:10px;visibility:hidden;opacity:0;transform:translateY(-6px);transition:opacity .18s,transform .18s,visibility 0s .18s}
+  .gnav-item:hover .mega,.gnav-item:focus-within .mega{visibility:visible;opacity:1;transform:none;transition-delay:.06s,.06s,0s}
+  .gnav-item.closed .mega{visibility:hidden!important;opacity:0!important}
+  .mega-in{max-width:1400px;margin:0 auto;background:#fff;border-radius:24px;box-shadow:0 24px 60px rgba(20,30,40,.16);padding:40px clamp(28px,4vw,72px) 52px}
+  .mega-title{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:var(--ink);margin-bottom:32px}
+  .mega-title b{font:700 clamp(40px,4.2vw,58px)/1.05 var(--en);letter-spacing:-.01em;position:relative}
+  .mega-title b::after{content:"";position:absolute;right:-30px;bottom:12px;width:9px;height:9px;border-right:3px solid var(--red);border-bottom:3px solid var(--red);transform:rotate(-45deg);transition:right .2s}
+  .mega-title:hover b::after{right:-36px}
+  .mega-title span{margin-top:8px;font-size:15px;font-weight:700;letter-spacing:.12em}
+  .gnav-links .mega-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 44px}
+  .gnav-links .mega-links a{display:flex;align-items:center;justify-content:space-between;padding:22px 12px;border-bottom:2px solid #edf0f3;font-size:16px;font-weight:700;letter-spacing:.06em;color:var(--ink)}
+  .gnav-links .mega-links a::after{content:"";flex:none;width:8px;height:8px;border-right:3px solid var(--red);border-bottom:3px solid var(--red);transform:rotate(-45deg);margin-right:4px;transition:margin .2s}
+  .gnav-links .mega-links a:hover{color:var(--red-ink)}
+  .gnav-links .mega-links a:hover::after{margin-right:0}
+}
+.head-cta{display:inline-flex;align-items:center;gap:10px;min-height:42px;padding:0 8px 0 18px;border-radius:999px;background:var(--ink);color:#fff;font-size:13px;font-weight:700;text-decoration:none}
+.head-cta::after{content:"→";display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--red);font-size:13px}
+.head-cta:hover{background:#000}
+.menu-btn{display:none;min-height:42px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.sp-only{display:none}
+
+/* ===== 等幅ラベル付きの見出しパネル ===== */
+.sec-head{padding:14px 24px 22px}
+.labels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;font:500 11.5px/1 var(--mono);color:var(--muted);letter-spacing:.04em}
+.labels span::before{content:"■ ";color:var(--ink)}
+.sec-head h2{margin-top:18px;font-size:clamp(28px,3.6vw,40px);font-weight:900;letter-spacing:.08em;line-height:1.3}
+.sec-head h2 small{margin-left:14px;font:600 15px var(--en);color:var(--muted);letter-spacing:.02em}
+.sec-body{padding:8px 24px 32px}
+
+/* 赤い丸矢印のボタン */
+.more{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:0 10px 0 22px;border:1.5px solid var(--red);border-radius:10px;color:var(--red-ink);font-size:14px;font-weight:700;text-decoration:none;background:#fff}
+.more::after{content:"→";display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-size:13px;transition:transform .2s}
+.more:hover::after{transform:translateX(3px)}
+.arrow{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;border:1.5px solid var(--red);color:var(--red-ink);font-size:18px;background:#fff;transition:background .2s,color .2s}
+
+/* ===== hero ===== */
+.hero,.hero-strip{margin-inline:calc(50% - 50vw)}
+.hero{position:relative;margin-top:-16px;min-height:clamp(560px,calc(100svh - 77px - 112px),820px);display:flex;align-items:center;color:#fff;overflow:hidden;background:#1d4675}
+.hero-media{position:absolute;inset:0;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:62% 50%;transform-origin:62% 55%;animation:heroDrift 26s ease-in-out infinite alternate}
+@keyframes heroDrift{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-2%,-1%,0)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,26,48,.72) 0%,rgba(10,26,48,.50) 38%,rgba(10,26,48,.12) 70%,rgba(10,26,48,0) 100%),linear-gradient(180deg,rgba(10,26,48,.10) 0%,rgba(10,26,48,0) 40%,rgba(10,26,48,.25) 100%)}
+.hero-in{position:relative;z-index:1;width:min(100% - 32px,1320px);margin:0 auto;padding:72px clamp(8px,4vw,64px) 80px;text-shadow:0 2px 16px rgba(5,15,30,.35)}
+.hero-kicker{font:700 clamp(46px,7vw,104px)/1.04 var(--en);letter-spacing:-.01em;color:#fff;position:relative;padding-top:26px}
+.hero-kicker::before{content:"";position:absolute;left:2px;top:0;width:44px;height:3px;background:var(--red)}
+.hero h1{margin-top:22px;font-size:clamp(22px,2.6vw,34px);font-weight:900;line-height:1.5;letter-spacing:.06em;color:#fff}
+.hero .lead{margin-top:24px;font-size:clamp(14px,1.25vw,16.5px);font-weight:500;line-height:2.05;letter-spacing:.06em;color:#fff}
+.hero-btns{margin-top:40px;display:flex;flex-wrap:wrap;gap:16px}
+.hb{display:inline-flex;align-items:center;justify-content:center;min-width:260px;min-height:64px;padding:0 28px;border-radius:10px;border:2px solid;font-size:15px;font-weight:700;letter-spacing:.06em;text-decoration:none;text-shadow:none;transition:transform .2s,box-shadow .2s,background .2s}
+.hb:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.25)}
+.hb-light{background:#fff;color:var(--ink);border-color:#fff}
+.hb-dark{background:#151b1e;color:#fff;border-color:#fff}
+.hb-dark:hover{background:#000}
+.hero-strip{margin-top:-16px;background:#fff;padding:18px 0 22px;border-bottom:1px solid var(--line)}
+.hero-strip-label{text-align:center;font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--muted)}
+.marquee{margin-top:10px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.marquee-track{display:flex;width:max-content;animation:marquee 38s linear infinite}
+.marquee-track .dup{display:flex}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee a{display:flex;align-items:baseline;gap:10px;padding:6px clamp(28px,3.4vw,52px);text-decoration:none;white-space:nowrap;border-right:1px solid var(--line)}
+.marquee a b{font-size:clamp(16px,1.5vw,20px);font-weight:900;color:var(--ink);letter-spacing:.06em}
+.marquee a span{font:600 12px var(--en);color:var(--red-ink);letter-spacing:.08em}
+.marquee a:hover b{color:var(--red-ink)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.hero-media img,.marquee-track{animation:none}}
+
+/* ===== news ===== */
+.cols-head{display:grid;grid-template-columns:120px minmax(0,1fr) 140px;gap:16px;font:400 11.5px var(--mono);color:var(--muted);padding:12px 4px;border-bottom:1px solid var(--line)}
+.news-list li{border-bottom:1px solid var(--line)}
+.news-list a{display:grid;grid-template-columns:120px minmax(0,1fr) 140px;gap:6px 16px;align-items:center;padding:18px 4px;text-decoration:none}
+.news-list a:hover .t{color:var(--red-ink);text-decoration:underline;text-underline-offset:4px}
+.news-list time,.news-list .date{font:500 13px var(--mono);color:var(--muted)}
+.news-list .t{font-size:15px;font-weight:700;color:var(--ink);line-height:1.7}
+.cat{justify-self:start;display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:4px;background:var(--blue);color:#fff;white-space:nowrap}
+.cat.c-works{background:var(--red-ink)}
+.draft{display:inline-block;margin-left:8px;font-size:11px;font-weight:700;color:var(--red-ink);border:1px solid var(--red-ink);border-radius:4px;padding:0 6px;vertical-align:2px}
+.btn-row{margin-top:26px}
+
+/* ===== philosophy（MVV）：デジタル×道×炎の背景の上に、段違いのカード ===== */
+.philo{position:relative;border-radius:var(--r);overflow:hidden;background:#123a68;padding:clamp(40px,6vw,80px) clamp(16px,4vw,56px) clamp(160px,18vw,230px)}
+.philo > canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.philo-in{position:relative;z-index:1;max-width:1080px;margin:0 auto}
+.philo-title{color:#fff;text-shadow:0 2px 12px rgba(5,20,40,.5)}
+.philo-title .mono{font:500 12px var(--mono);letter-spacing:.06em;opacity:.95}
+.philo-title h2{margin-top:6px;color:#fff;font:700 clamp(40px,6vw,76px)/1.05 var(--en)}
+.mvv{margin-top:36px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px}
+.mvv-card{background:#fff;border-radius:var(--r);padding:30px 32px;box-shadow:0 18px 50px rgba(5,20,40,.30)}
+.mvv-card .k{display:flex;align-items:baseline;gap:12px;font:500 12px var(--mono);color:var(--muted)}
+.mvv-card .k b{font:700 26px var(--en);color:var(--red-ink);letter-spacing:.02em}
+.mvv-card .big{margin-top:12px;font-size:clamp(20px,2.3vw,27px);font-weight:900;line-height:1.55;color:var(--ink);letter-spacing:.04em}
+.mvv-card .en-sub{margin-top:4px;font:600 14px var(--en);color:var(--blue)}
+.mvv-card p{margin-top:12px;font-size:14.5px}
+.m-mission{grid-column:1 / span 7}
+.m-vision{grid-column:5 / span 8;margin-top:-8px}
+.m-value{grid-column:2 / span 11}
+.values{margin-top:18px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.values li{border-top:3px solid var(--ink);padding-top:12px}
+.values .n{font:500 11.5px var(--mono);color:var(--muted)}
+.values b{display:block;margin-top:4px;font-size:15.5px;font-weight:900;color:var(--ink);line-height:1.5}
+.values i{display:block;font-style:normal;font:600 12px var(--en);color:var(--blue);margin-top:2px}
+.values span{display:block;margin-top:6px;font-size:13px;line-height:1.75}
+.philo-more{margin-top:28px;text-align:right}
+
+/* ===== 段違いの英字×写真カード ===== */
+.stagger{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px clamp(24px,5vw,72px);padding:clamp(32px,5vw,64px) clamp(20px,5vw,72px) clamp(48px,7vw,96px)}
+.stagger > a:nth-child(even){margin-top:clamp(60px,9vw,130px)}
+.s-card{position:relative;display:block;text-decoration:none;color:inherit;padding-top:clamp(36px,4.5vw,64px)}
+.s-card .big{position:absolute;top:0;left:0;z-index:2;font:700 clamp(34px,5.2vw,72px)/.95 var(--en);color:var(--ink);letter-spacing:-.005em;
+  text-shadow:0 0 1px #fff,0 0 2px #fff,0 0 3px #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff}
+.s-card .jp{position:relative;z-index:2;display:block;margin:6px 0 0 4px;font-size:14px;font-weight:700;color:var(--ink);text-shadow:0 0 3px #fff,0 0 3px #fff}
+.s-card .ph{margin:-10px 0 0 clamp(40px,8vw,110px);border-radius:8px;overflow:hidden;aspect-ratio:16/10;background:#dde6ee}
+.s-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.s-card:hover .ph img{transform:scale(1.04)}
+.s-card .desc{margin:14px 0 0 clamp(40px,8vw,110px);font-size:14px}
+.s-card .arrow{position:absolute;left:4px;bottom:clamp(40px,5vw,60px);z-index:2}
+.s-card:hover .arrow{background:var(--red);color:#fff}
+.sub-link{margin:0 clamp(20px,5vw,72px) clamp(32px,5vw,56px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;border:1px solid var(--line);border-radius:12px;padding:20px 24px;text-decoration:none;color:inherit}
+.sub-link b{font-size:17px;font-weight:900;color:var(--ink)}
+.sub-link p{flex:1 1 320px;font-size:14px}
+.sub-link:hover b{color:var(--red-ink)}
+
+/* ===== works ===== */
+.works{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.case{background:var(--page);border-radius:12px;padding:26px 26px 22px;display:flex;flex-direction:column;gap:12px}
+.panel .case{background:#f4f6f9}
+.case-meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font:500 12px var(--mono);color:var(--muted)}
+.case h3{font-size:17.5px;line-height:1.65;font-weight:900;text-wrap:pretty}
+.figs{display:flex;flex-wrap:wrap;gap:12px 36px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fig small{display:block;font-size:12px;color:var(--muted)}
+.fig .v{display:flex;align-items:baseline;gap:4px;margin-top:2px}
+.fig .v b{font:700 36px/1.1 var(--en);color:var(--ink);font-variant-numeric:tabular-nums}
+.fig .v i{font-style:normal;font-size:13px;font-weight:700;color:var(--ink)}
+.fig .was{display:block;font:400 12px var(--mono);color:var(--muted)}
+.case details summary{cursor:pointer;font-size:13px;font-weight:700;color:var(--ink);min-height:32px;display:flex;align-items:center}
+.case details p{font-size:13px;margin-top:4px}
+.case-more{align-self:flex-start;font-size:13.5px;font-weight:700;color:var(--red-ink);text-decoration:none}
+.case-more::after{content:" →"}
+.case-consult{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;background:var(--ivory,#faf7ef);border-radius:12px;padding:24px 28px}
+.case-consult b{font-size:17px;font-weight:900;color:var(--ink)}
+.case-consult p{margin-top:6px;font-size:14px;max-width:44em}
+.case-more:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* ===== CTA ===== */
+.cta{position:relative;border-radius:var(--r);overflow:hidden;padding:clamp(64px,9vw,128px) clamp(16px,4vw,40px);display:grid;place-items:center;isolation:isolate}
+.cta-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(255,255,255,.28) 0%,rgba(240,245,251,.10) 45%,rgba(15,23,42,.18) 100%)}
+.cta-card{position:relative;width:min(100%,880px);background:#fff;border-radius:26px;padding:clamp(40px,5vw,60px) clamp(20px,5vw,72px) clamp(40px,5vw,56px);text-align:center;
+  box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 2px 6px rgba(15,23,42,.06),0 30px 70px rgba(15,23,42,.22);border:1px solid rgba(255,255,255,.7)}
+.cta-card.reveal{opacity:0;transform:translateY(28px) scale(.98);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.cta-card.reveal.is-visible{opacity:1;transform:none}
+.cta-eyebrow{display:inline-flex;align-items:center;gap:18px;font-size:clamp(14px,1.3vw,17px);font-weight:700;color:var(--red-ink);letter-spacing:.08em}
+.cta-eyebrow::before,.cta-eyebrow::after{content:"";width:22px;height:1.5px;background:currentColor}
+.cta-eyebrow::before{transform:rotate(45deg)}.cta-eyebrow::after{transform:rotate(-45deg)}
+.cta h2{margin-top:16px;font-size:clamp(26px,3.4vw,42px);font-weight:900;line-height:1.5;letter-spacing:.05em;color:#0f172a}
+.cta h2 em{font-style:normal;color:var(--red-ink)}
+.cta-text{margin-top:18px;font-size:15.5px;font-weight:500;color:#475569;letter-spacing:.04em;line-height:1.9}
+.cta-btns{margin-top:36px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:680px;margin-inline:auto}
+.cta-btn{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;min-height:70px;border-radius:999px;color:#fff;font-size:15.5px;font-weight:700;letter-spacing:.08em;text-decoration:none;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s;overflow:hidden}
+.cta-btn::before{content:"";position:absolute;inset:0 0 50% 0;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0));pointer-events:none}
+.cta-btn:hover{transform:translateY(-3px)}
+.cta-btn:active{transform:translateY(0)}
+.cta-form{background:linear-gradient(135deg,#f0705c 0%,#d74133 55%,#b8263a 100%);box-shadow:0 12px 30px rgba(215,65,51,.36),inset 0 -2px 0 rgba(0,0,0,.08)}
+.cta-form:hover{box-shadow:0 18px 40px rgba(215,65,51,.44),inset 0 -2px 0 rgba(0,0,0,.08)}
+.cta-line{background:#06c755;box-shadow:0 12px 30px rgba(6,199,85,.32),inset 0 -2px 0 rgba(0,0,0,.08)}
+.cta-line:hover{box-shadow:0 18px 40px rgba(6,199,85,.42),inset 0 -2px 0 rgba(0,0,0,.08)}
+.cta-line .badge{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:#06c755}
+.cta-form .badge{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.2)}
+@media (prefers-reduced-motion:reduce){.cta-card.reveal{opacity:1;transform:none;transition:none}.cta-btn{transition:none}}
+
+.pagetop{display:grid;justify-items:center;gap:6px;padding:32px 0 8px;font:500 11px var(--mono);color:var(--muted);text-decoration:none}
+.pagetop span{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#fff;border:1px solid var(--line);font-size:18px;color:var(--ink)}
+
+/* ===== footer ===== */
+.site-footer{padding-block:16px 28px}
+.foot{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,2fr);gap:16px}
+.foot-brand{background:var(--ink);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;color:#e6edf3}
+.foot-brand img{height:36px;width:auto}
+.foot-brand p{font-size:13px;color:#d6dee6;letter-spacing:.1em}
+.foot-nav{background:var(--panel);border-radius:var(--r);padding:28px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.foot-nav h4{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--ink);padding-bottom:8px;border-bottom:1px solid var(--ink);margin-bottom:8px}
+.foot-nav h4 a{text-decoration:none}
+.foot-nav h4.foot-sub{margin-top:18px}
+.foot-nav h4::after{content:"→";font-size:12px;color:var(--red-ink)}
+.foot-nav a{display:block;font-size:13px;color:var(--body);text-decoration:none;padding:5px 0}
+.foot-nav a:hover{color:var(--red-ink);text-decoration:underline;text-underline-offset:4px}
+.copy{margin-top:18px;text-align:center;font:400 11.5px var(--mono);color:var(--muted)}
+
+/* ===== 下層ページ ===== */
+.page-title{padding:14px 24px 30px}
+.crumb{font:400 12px var(--mono);color:var(--muted);margin-top:14px}
+.crumb a{color:var(--blue);text-decoration:none}
+.page-title h1{margin-top:22px;font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:.06em;line-height:1.3}
+.page-title .en{display:block;margin-top:6px;font:700 clamp(18px,2vw,22px) var(--en);color:var(--muted)}
+.page-title p{margin-top:16px;max-width:44em;font-size:15px}
+.h-line{font-size:22px;font-weight:900;color:var(--ink);display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.h-line::before{content:"";width:10px;height:10px;background:var(--red);border-radius:2px;flex:none}
+.block{padding:32px 24px 40px}
+.message-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:48px;align-items:start}
+.message-body figure img{border-radius:10px;width:100%}
+.message-body figcaption{margin-top:8px;font:400 12px var(--mono);color:var(--muted)}
+.message-body h3{font-size:clamp(22px,2.6vw,28px);font-weight:900;line-height:1.7}
+.message-body p{margin-top:16px;font-size:15.5px;line-height:2.1}
+.sign{margin-top:24px;text-align:right;font-size:14px}
+.sign b{display:block;font-size:22px;font-weight:900;color:var(--ink);letter-spacing:.2em}
+.mvv-list{display:grid;gap:16px}
+.mvv-row{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+.mvv-row .k b{display:block;font:700 28px var(--en);color:var(--red-ink)}
+.mvv-row .k span{font:400 12px var(--mono);color:var(--muted)}
+.mvv-row .big{font-size:22px;font-weight:900;color:var(--ink);line-height:1.6}
+.mvv-row p{margin-top:8px;font-size:15px}
+.mvv-row .values{grid-template-columns:repeat(2,minmax(0,1fr))}
+.members{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.member{display:grid;grid-template-columns:128px minmax(0,1fr);gap:22px;align-items:start;background:#f4f6f9;padding:24px;border-radius:12px}
+.member-photo{aspect-ratio:1;border-radius:10px;overflow:hidden}
+.member-photo img{width:100%;height:100%;object-fit:cover}
+.ph-box{position:relative;display:grid;place-items:center;text-align:center;background:var(--blue-soft);border-radius:10px;aspect-ratio:1}
+.ph-box::before{content:"";position:absolute;inset:8px;border:1px dashed rgba(36,104,168,.45);border-radius:6px}
+.ph-box span{position:relative;font-size:11.5px;font-weight:700;color:var(--blue);padding:8px}
+.member .pos{font:500 12px var(--mono);color:var(--red-ink)}
+.member h3{margin-top:4px;font-size:21px;font-weight:900;letter-spacing:.14em}
+.member h3 small{margin-left:10px;font:500 12px var(--en);color:var(--muted);letter-spacing:.02em}
+.member p{margin-top:8px;font-size:14px}
+.member .links{margin-top:6px;display:flex;flex-wrap:wrap;gap:2px 16px}
+.member .links a{font-size:13px;font-weight:700;color:var(--blue);padding:6px 0}
+.company table{width:100%;border-collapse:collapse;border-top:1px solid var(--line)}
+.company th,.company td{text-align:left;vertical-align:top;padding:18px 0;border-bottom:1px solid var(--line);font-size:15px}
+.company th{width:200px;font-weight:700;color:var(--ink);padding-right:20px}
+.principle{background:var(--ivory);border-radius:12px;padding:26px 30px;margin-bottom:24px}
+.principle b{display:block;font-size:clamp(19px,2.2vw,24px);font-weight:900;color:var(--ink)}
+.principle p{margin-top:6px;font-size:15px}
+.svc-rows{display:grid;gap:16px}
+.svc-row{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);background:#f4f6f9;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit}
+.svc-row .img{min-height:220px;position:relative}
+.svc-row .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.svc-row .txt{padding:28px 30px;display:flex;flex-direction:column;gap:6px}
+.svc-row .en{font:600 13px var(--en);color:var(--blue)}
+.svc-row h3{font-size:22px;font-weight:900}
+.svc-row .for{font-size:13.5px;font-weight:700;color:var(--red-ink)}
+.svc-row p{font-size:14.5px}
+.svc-row .go{margin-top:auto;padding-top:8px;font-size:14px;font-weight:700;color:var(--red-ink)}
+.svc-row .go::after{content:" →"}
+.svc-row:hover h3{color:var(--red-ink)}
+.svc-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.svc-hero img{border-radius:10px;width:100%;aspect-ratio:16/10;object-fit:cover}
+.svc-lead{margin-top:14px;font-size:15.5px;font-weight:500}
+.svc-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px}
+.worries{display:grid;gap:10px}
+.worries li{position:relative;padding:14px 16px 14px 46px;background:#f4f6f9;border-radius:10px;font-size:15px;color:var(--ink)}
+.worries li::before{content:"✓";position:absolute;left:16px;top:14px;width:20px;height:20px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:900;display:grid;place-items:center}
+.after-box{background:var(--ivory);border-radius:12px;padding:22px 24px;font-size:15.5px;line-height:2;color:var(--ink)}
+.svc-table{border-top:1px solid var(--ink)}
+.svc-group{display:grid;grid-template-columns:200px minmax(0,1fr);border-bottom:1px solid var(--line)}
+.svc-group > h3{padding:20px 16px 20px 0;font-size:15px;font-weight:900}
+.svc-group ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;padding:10px 0}
+.svc-group li{padding:10px 0;font-size:14.5px;display:grid;gap:2px}
+.svc-group li b{color:var(--ink)}
+.svc-group li span{font-size:13px;color:var(--muted);line-height:1.7}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.step{background:#f4f6f9;border-radius:12px;padding:22px 20px}
+.step .s{font:500 12px var(--mono);color:var(--red-ink)}
+.step b{display:block;margin-top:6px;font-size:16.5px;color:var(--ink)}
+.step p{margin-top:6px;font-size:14px}
+.center-cta{margin-top:32px;display:grid;justify-items:center;gap:12px;text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 30px;border-radius:999px;font-size:15px;font-weight:700;text-decoration:none;border:1.5px solid transparent;cursor:pointer;font-family:inherit}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#000}
+.btn-red{background:var(--red-ink);color:#fff}
+.btn-red:hover{filter:brightness(1.08)}
+.btn-ghost{background:#fff;border-color:var(--ink);color:var(--ink)}
+.btn-sm{min-height:44px;font-size:14px;padding:0 20px}
+.btn-wide{width:100%}
+.other-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.other-links a{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#f4f6f9;border-radius:10px;padding:16px 18px;font-size:14px;font-weight:700;color:var(--ink);text-decoration:none}
+.other-links a::after{content:"→";color:var(--red-ink)}
+.other-links a:hover{color:var(--red-ink)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.filters button{min-height:40px;padding:0 18px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.article{max-width:780px;margin:0 auto;padding:16px 0}
+.article-meta{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;font:400 13px var(--mono);color:var(--muted)}
+.article h1{margin-top:14px;font-size:clamp(22px,2.8vw,30px);font-weight:900;line-height:1.6}
+.article .body{margin-top:24px;border-top:1px solid var(--line);padding-top:20px}
+.article .body h2{margin-top:34px;font-size:19px;font-weight:900;padding-left:14px;border-left:4px solid var(--red)}
+.article .body p{margin-top:14px;font-size:16px;line-height:2.05}
+.article .body ul{margin-top:14px;display:grid;gap:6px}
+.article .body li{padding-left:18px;position:relative}
+.article .body li::before{content:"";position:absolute;left:2px;top:.85em;width:6px;height:6px;background:var(--red)}
+.article .body .memo{margin-top:22px;background:#f4f6f9;border-radius:8px;padding:14px 18px;font-size:14px}
+.article-foot{margin-top:40px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:22px}
+.back{font-size:14px;font-weight:700;color:var(--blue);text-decoration:none}
+.back::before{content:"← "}
+.faq{display:grid;gap:8px;margin-top:28px}
+.faq details{background:#f4f6f9;border-radius:10px}
+.faq summary{cursor:pointer;list-style:none;display:flex;gap:14px;align-items:center;padding:16px 20px;font-weight:700;color:var(--ink);font-size:15px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"Q";font:700 17px var(--en);color:var(--red-ink);flex:none}
+.faq details p{padding:0 20px 18px 48px;font-size:14.5px}
+.contact-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.8fr);gap:32px;align-items:start}
+.proto-note{font-size:13px;color:var(--muted);background:var(--ivory);border-left:3px solid var(--red);border-radius:6px;padding:10px 14px;margin-bottom:22px}
+.form-steps{display:flex;gap:4px;margin-bottom:26px;counter-reset:fs}
+.form-steps li{flex:1;text-align:center;padding:10px 4px;font-size:14px;font-weight:700;color:var(--muted);background:#f4f6f9;border-radius:8px;counter-increment:fs}
+.form-steps li::before{content:counter(fs) ". "}
+.form-steps li[aria-current="step"]{background:var(--ink);color:#fff}
+.field{display:grid;gap:8px;margin-bottom:22px}
+.field-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px}
+.label{font-size:14.5px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px}
+.label em,.agree em{font-style:normal;font-size:11px;font-weight:700;color:#fff;background:var(--red-ink);border-radius:4px;padding:1px 7px}
+.label small{font-size:11px;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:0 6px}
+.field input[type=text],.field input[type=email],.field input[type=tel],.field input[type=url],.field textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid #c3ccd5;border-radius:8px;padding:12px 14px;min-height:50px}
+.field textarea{resize:vertical;line-height:1.8}
+.field input:focus,.field textarea:focus{outline:2px solid var(--ink);outline-offset:0}
+.invalid{border-color:#c0392b!important;background:#fdf3f2!important}
+.select-wrap{position:relative;max-width:420px}
+.select-wrap::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.field select{width:100%;appearance:none;-webkit-appearance:none;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid #c3ccd5;border-radius:8px;padding:12px 44px 12px 14px;min-height:48px;cursor:pointer}
+.field select:focus{outline:2px solid var(--ink);outline-offset:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:2px;border:1px solid transparent;border-radius:10px}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0;width:1px;height:1px}
+.chips span{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border:1px solid #c3ccd5;border-radius:8px;font-size:14px;font-weight:700;color:var(--ink);background:#fff}
+.chips input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
+.chips input:focus-visible+span{outline:3px solid var(--red);outline-offset:2px}
+.agree label{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.8;cursor:pointer}
+.agree input{width:20px;height:20px;margin-top:4px;flex:none;accent-color:var(--ink)}
+.agree label.invalid{color:#c0392b;background:transparent!important}
+.form-error{color:#c0392b;font-size:14px;font-weight:700;margin-bottom:16px}
+.confirm-list div{display:grid;grid-template-columns:170px minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.confirm-list dt{font-weight:700;color:var(--ink);font-size:14px}
+.confirm-list dd{font-size:15px;white-space:pre-wrap;overflow-wrap:anywhere}
+.confirm-actions{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap}
+.confirm-actions .btn{flex:1 1 200px}
+.done{text-align:center;padding:24px 0;display:grid;gap:14px;justify-items:center}
+.done h2{font-size:24px;font-weight:900}
+.contact-side{display:grid;gap:16px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px)}
+.side-box{background:#f4f6f9;border-radius:12px;padding:22px}
+.side-box b{display:block;font-size:15px;color:var(--ink);margin-bottom:8px}
+.side-box p{font-size:13.5px;margin-bottom:12px}
+.mini-flow{counter-reset:m;display:grid;gap:8px}
+.mini-flow li{counter-increment:m;display:flex;gap:10px;font-size:14px}
+.mini-flow li::before{content:counter(m);flex:none;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;margin-top:3px}
+
+/* ===== responsive ===== */
+@media (max-width:1060px){
+  .values{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .gnav-links{gap:16px}
+}
+@media (max-width:920px){
+  .gnav-links{display:none}
+  .menu-btn{display:inline-flex;align-items:center}
+  .gnav.open .gnav-links{display:flex;flex-direction:column;align-items:stretch;gap:0;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 10px 30px rgba(20,30,40,.1);padding:6px max(20px,env(safe-area-inset-right,0px)) 14px max(20px,env(safe-area-inset-left,0px))}
+  .gnav.open .gnav-links a{padding:15px 0;border-bottom:1px solid var(--line);font-size:15px}
+  .gnav.open .gnav-item > a{display:block}
+  .gnav.open .gnav-links a.sp-only{display:block;color:var(--red-ink)}
+  .hero .lead br{display:none}
+  .hero-in{padding:56px 8px 64px}
+  .hb{min-width:0;width:100%;min-height:56px}
+  .hero-btns{gap:12px}
+  .mvv{grid-template-columns:minmax(0,1fr)}
+  .m-mission,.m-vision,.m-value{grid-column:auto;margin-top:0}
+  .m-vision{margin-left:clamp(0px,6vw,48px)}
+  .works,.members,.message-body,.svc-hero,.svc-intro,.contact-layout,.cta,.foot{grid-template-columns:minmax(0,1fr)}
+  .svc-row{grid-template-columns:minmax(0,1fr)}
+  .svc-row .img{min-height:200px}
+  .svc-group{grid-template-columns:minmax(0,1fr)}
+  .svc-group > h3{padding:16px 0 0}
+  .flow,.other-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .foot-nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .contact-side{position:static}
+  .mvv-row{grid-template-columns:minmax(0,1fr);gap:8px}
+}
+@media (max-width:640px){
+  .head-cta{display:none}
+  .logo{height:28px}
+  .labels{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .labels span:nth-child(3){display:none}
+  .sec-head,.sec-body,.page-title,.block{padding-left:18px;padding-right:18px}
+  .cols-head{display:none}
+  .news-list a{grid-template-columns:auto minmax(0,1fr);}
+  .news-list .t{grid-column:1/-1}
+  .news-list .cat{grid-row:1;grid-column:2}
+  .stagger{grid-template-columns:minmax(0,1fr);gap:40px}
+  .stagger > a:nth-child(even){margin-top:0;margin-left:24px}
+  .values,.mvv-row .values{grid-template-columns:minmax(0,1fr)}
+  .mvv-card{padding:24px 20px}
+  .flow,.other-links,.foot-nav{grid-template-columns:minmax(0,1fr)}
+  .member{grid-template-columns:92px minmax(0,1fr);gap:14px;padding:18px}
+  .company th{width:7em}
+  .field-row{grid-template-columns:minmax(0,1fr)}
+  .confirm-list div{grid-template-columns:minmax(0,1fr);gap:2px}
+  .faq details p{padding-left:20px}
+  .cta-btns{grid-template-columns:minmax(0,1fr);gap:14px}
+  .cta-btn{min-height:62px}
+  .cta-eyebrow{font-size:13px;gap:10px;white-space:nowrap}
+  .cta-eyebrow::before,.cta-eyebrow::after{width:14px}
+  .cta-card{padding:32px 20px;border-radius:22px}
+  .cta-text{font-size:14px}
+}
+
+/* stagger card fix: 英字→写真（英字の下端が写真に少し重なる）→日本語→説明 */
+.s-card{display:flex;flex-direction:column;padding-top:0}
+.s-card .big{position:relative;order:1;top:auto;left:auto}
+.s-card .ph{order:2;margin-top:clamp(-30px,-2.2vw,-14px);position:relative;z-index:1}
+.s-card .big{z-index:2}
+.s-card .jp{order:3;margin:12px 0 0 clamp(40px,8vw,110px);text-shadow:none}
+.s-card .desc{order:4;margin-top:6px}
+.s-card .arrow{bottom:auto;top:clamp(120px,14vw,190px)}
+@media (max-width:640px){.s-card .arrow{display:none}.s-card .ph,.s-card .jp,.s-card .desc{margin-left:24px}}
+
+/* ===== opening (intro) ===== */
+.intro{position:fixed;inset:0;z-index:300;background:#fff;display:grid;place-items:center;animation:introOut .75s cubic-bezier(.7,0,.2,1) 2.15s forwards;cursor:pointer}
+.intro-in{display:flex;flex-direction:column;align-items:center;gap:22px}
+.intro-logo{position:relative;width:clamp(220px,34vw,440px)}
+.intro-logo img{display:block;width:100%;height:auto;opacity:0;animation:introShow 0s linear .62s forwards}
+.intro-bar{position:absolute;inset:-6% -3%;background:var(--red);transform:scaleX(0);transform-origin:left center;animation:introBar .95s cubic-bezier(.77,0,.18,1) .2s forwards}
+.intro-tag{font:500 clamp(12px,1.2vw,14px) var(--mono);letter-spacing:.32em;color:var(--ink);opacity:0;transform:translateY(8px);animation:introTag .6s ease 1.15s forwards}
+.intro-line{width:clamp(160px,22vw,260px);height:2px;background:#e3e7ec;overflow:hidden}
+.intro-line::before{content:"";display:block;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:left;animation:introLine 1.7s cubic-bezier(.6,0,.3,1) .3s forwards}
+@keyframes introBar{0%{transform:scaleX(0);transform-origin:left center}45%{transform:scaleX(1);transform-origin:left center}46%{transform:scaleX(1);transform-origin:right center}100%{transform:scaleX(0);transform-origin:right center}}
+@keyframes introShow{to{opacity:1}}
+@keyframes introTag{to{opacity:1;transform:none}}
+@keyframes introLine{to{transform:scaleX(1)}}
+@keyframes introOut{to{transform:translateY(-100%);visibility:hidden}}
+.intro.skip{animation:introOut .45s cubic-bezier(.7,0,.2,1) forwards}
+html.no-intro .intro{display:none}
+@media (prefers-reduced-motion:reduce){.intro{display:none}}
+
+/* ===== About（AX型：白地・細い罫線・余白） ===== */
+.bleed{margin-inline:calc(50% - 50vw)}
+#view-about .stack{gap:0;padding-block:0}
+.ax-wrap{width:min(100% - 40px,1080px);margin:0 auto}
+.ax-head{background:#f3f4f6;padding:clamp(56px,7vw,96px) 0 clamp(48px,6vw,80px)}
+.ax-head-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:end}
+.ax-head .crumb{margin:0 0 14px;font:400 12px var(--mono);color:var(--muted)}
+.ax-head .crumb a{color:var(--muted)}
+.ax-head h1{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 16px;font-size:clamp(28px,3.4vw,40px);font-weight:900;color:#151b1e;letter-spacing:.04em;line-height:1.3}
+.ax-head h1 span{font-weight:400;color:#9aa3ab;font-size:.5em}
+.ax-head h1 small{font:700 14px var(--en);color:#151b1e;letter-spacing:.04em}
+.ax-head-in > p{font-size:14.5px;line-height:2;color:#151b1e;letter-spacing:.05em}
+.ax-photo{height:clamp(240px,34vw,480px);overflow:hidden;background:#dde6ee}
+.ax-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.ax-sec{background:#fff;padding:clamp(64px,8vw,112px) 0}
+.ax-gray{background:#f7f8fa}
+.ax-sec + .ax-sec{border-top:1px solid #e6e8eb}
+.ax-h{display:flex;flex-direction:column;gap:4px;font-size:clamp(24px,2.6vw,30px);font-weight:900;color:#151b1e;letter-spacing:.06em;line-height:1.3}
+.ax-h small{font:700 13px var(--en);letter-spacing:.04em;color:#151b1e}
+.ax-msg{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,6vw,80px);align-items:start}
+.ax-msg h3{margin-top:clamp(28px,4vw,44px);font-size:clamp(20px,2.2vw,26px);font-weight:900;line-height:1.6;color:#151b1e;letter-spacing:.04em}
+.ax-msg p{margin-top:22px;font-size:14.5px;line-height:2.1;color:#30373c}
+.ax-msg .sign{margin-top:32px;font-weight:700;color:#151b1e;line-height:1.8}
+.ax-msg figure{position:sticky;top:110px;border-radius:12px;overflow:hidden}
+.ax-msg figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:62% 50%}
+.ax-members{margin-top:clamp(32px,4vw,48px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,3vw,40px)}
+.ax-members .ph{aspect-ratio:1;border-radius:12px;overflow:hidden;background:#e9edf1}
+.ax-members .ph img{width:100%;height:100%;object-fit:cover}
+.ax-members .ph-empty{display:grid;place-items:center;border:1px dashed #c3ccd5;background:#fff}
+.ax-members .ph-empty span{font:500 12px var(--mono);color:var(--muted)}
+.ax-members .pos{margin-top:18px;font-size:12px;font-weight:700;color:var(--red-ink);letter-spacing:.04em}
+.ax-members h3{margin-top:6px;font-size:21px;font-weight:900;color:#151b1e;letter-spacing:.14em}
+.ax-members .en{font:600 12px var(--en);color:#7a838b;letter-spacing:.04em}
+.ax-members .bio{margin-top:12px;font-size:14px;line-height:1.95;color:#30373c}
+.ax-members .links{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px 16px}
+.ax-members .links a{font-size:13px;font-weight:700;color:var(--blue)}
+.ax-table{margin-top:clamp(28px,4vw,44px);border-top:1px solid #e6e8eb}
+.ax-table > div{display:grid;grid-template-columns:180px minmax(0,1fr);gap:16px;padding:24px 4px;border-bottom:1px solid #e6e8eb}
+.ax-table dt{font-size:14px;font-weight:700;color:#151b1e}
+.ax-table dd{font-size:14.5px;color:#30373c;line-height:1.9}
+.ax-table ul{display:grid;gap:2px}
+.ax-table li::before{content:"• "}
+.ax-table a{color:#151b1e;text-underline-offset:4px}
+.ax-more{margin-top:36px}
+@media (max-width:820px){
+  .ax-head-in,.ax-msg,.ax-members{grid-template-columns:minmax(0,1fr)}
+  .ax-head-in > p br{display:none}
+  .ax-msg figure{position:static;order:-1}
+  .ax-table > div{grid-template-columns:minmax(0,1fr);gap:4px;padding:18px 2px}
+  .ax-members{gap:40px}
+  .ax-members .ph{max-width:240px}
+}
+
+/* ===== Contact（YORISOI型：中央の白カード＋グラデーションボタン） ===== */
+#view-contact .stack{gap:0;padding-block:0}
+.ct-hero{position:relative;background:linear-gradient(180deg,#f6f8fb,#eef2f7);overflow:hidden}
+.ct-hero-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:stretch;min-height:clamp(300px,30vw,400px)}
+.ct-hero-txt{padding:clamp(40px,5vw,64px) 24px clamp(40px,5vw,64px) max(20px,calc((100vw - 1180px)/2 + 20px));display:flex;flex-direction:column;justify-content:center}
+.ct-hero .crumb{margin:0 0 18px;font:500 11.5px var(--en);letter-spacing:.12em;color:#94a3b8}
+.ct-hero .crumb a{color:#94a3b8;text-decoration:none}
+.ct-label{font:700 14px var(--en);letter-spacing:.18em;color:var(--red-ink)}
+.ct-hero h1{margin-top:8px;font-size:clamp(34px,4.2vw,52px);font-weight:900;color:#0f172a;letter-spacing:.06em;line-height:1.3}
+.ct-hero-txt > p:last-child{margin-top:18px;font-size:15px;line-height:2;color:#475569}
+.ct-hero-img{clip-path:polygon(14% 0,100% 0,100% 100%,0 100%);overflow:hidden}
+.ct-hero-img img{width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.ct-body{position:relative;overflow:hidden;background:#f8fafc;padding:clamp(48px,6vw,80px) 16px clamp(64px,8vw,110px)}
+.ring{position:absolute;border-radius:50%;border:clamp(18px,2.4vw,34px) solid;pointer-events:none;opacity:.16}
+.ring-a{width:clamp(260px,30vw,460px);aspect-ratio:1;left:-8%;top:16%;border-color:var(--red)}
+.ring-b{width:clamp(220px,26vw,400px);aspect-ratio:1;right:-6%;bottom:12%;border-color:#2468a8}
+.ct-intro{position:relative;text-align:center;font-size:14.5px;line-height:2;color:#475569;letter-spacing:.04em}
+.ct-card{position:relative;width:min(100%,740px);margin:32px auto 0;background:#fff;border-radius:22px;padding:clamp(28px,5vw,56px);box-shadow:0 18px 50px rgba(15,23,42,.08)}
+.ct-card .field{margin-bottom:22px}
+.ct-card .field-row{gap:0 20px}
+.ct-card .label{font-size:13.5px;color:#0f172a}
+.ct-card input[type=text],.ct-card input[type=email],.ct-card input[type=tel],.ct-card input[type=url],.ct-card textarea,.ct-card select{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;min-height:52px;font-size:16px}
+.ct-card input:focus,.ct-card textarea:focus,.ct-card select:focus{outline:none;border-color:var(--red);background:#fff;box-shadow:0 0 0 4px rgba(215,65,51,.12)}
+.ct-card ::placeholder{color:#a0aab6}
+.ct-select{max-width:none}
+.ct-agree{text-align:center;margin-top:8px}
+.ct-agree label{justify-content:center}
+.ct-submit{display:flex;justify-content:center;margin-top:12px}
+.ct-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-width:280px;min-height:64px;padding:0 36px;border:0;border-radius:999px;color:#fff;font:inherit;font-size:15.5px;font-weight:700;letter-spacing:.08em;text-decoration:none;cursor:pointer;transition:transform .25s,box-shadow .25s}
+.ct-btn > span[aria-hidden]{font-size:20px;line-height:1}
+.ct-btn:hover{transform:translateY(-2px)}
+.ct-btn-send{background:linear-gradient(135deg,#f0705c 0%,#d74133 55%,#b8263a 100%);box-shadow:0 14px 34px rgba(215,65,51,.38)}
+.ct-btn-line{background:#06c755;box-shadow:0 14px 30px rgba(6,199,85,.30);min-height:58px}
+.ct-btn-line .badge{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#fff;color:#06c755}
+.ct-or{display:flex;align-items:center;gap:16px;margin:30px 0 18px;font-size:12px;color:#94a3b8;letter-spacing:.1em}
+.ct-or::before,.ct-or::after{content:"";flex:1;height:1px;background:#e2e8f0}
+.ct-note{margin-top:12px;text-align:center;font-size:12.5px;color:#64748b}
+.ct-proto{margin-top:24px;font-size:12px}
+.ct-sub-h{font-size:18px;font-weight:900;color:#0f172a;margin-bottom:14px}
+#confirm .confirm-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:24px}
+.ct-flow{position:relative;width:min(100%,1080px);margin:clamp(56px,7vw,88px) auto 0;text-align:center}
+.ct-flow .flow{text-align:left;margin-top:18px}
+@media (max-width:820px){
+  .ct-hero-in{grid-template-columns:minmax(0,1fr)}
+  .ct-hero-img{clip-path:none;height:200px;order:2}
+  .ct-hero-txt{padding:36px 20px}
+  .ct-hero-txt > p:last-child br,.ct-intro br{display:none}
+  .ct-btn{min-width:0;width:100%}
+  .ct-card .field-row{grid-template-columns:minmax(0,1fr);gap:0}
+}
+
+/* ===== Philosophy（AX型：黒地の企業理念） ===== */
+#view-philosophy .stack{gap:0;padding-block:0}
+.ax-dark{background:#151b1e;color:#fff;padding:clamp(72px,9vw,128px) 0}
+.ax-h-dark,.ax-h-dark small{color:#fff}
+.ph-block{margin-top:clamp(56px,7vw,88px);scroll-margin-top:110px}
+.ph-block h3{display:flex;flex-direction:column;gap:10px;font-size:clamp(24px,2.6vw,32px);font-weight:700;line-height:1.5;letter-spacing:.04em;color:#fff}
+.ph-block h3 span{font:700 20px var(--en);letter-spacing:.02em;color:#fff}
+.ph-block h3 span::after{content:"";display:block;width:28px;height:2px;margin-top:10px;background:var(--red)}
+.ph-block h4{margin-top:36px;font-size:clamp(16px,1.4vw,19px);font-weight:700;color:#fff;display:flex;align-items:center;gap:12px;letter-spacing:.03em}
+.ph-block h4::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;flex:none}
+.ph-block p{margin-top:14px;font-size:15.5px;line-height:1.9;color:#9a9a9a}
+.ph-block h4 + p{padding-left:18px}
+.ph-block .ph-en{margin-top:12px;font:600 17px var(--en);color:#e8eef3;letter-spacing:.04em}
+.ph-values{margin-top:28px;display:grid;border-top:1px solid #2c3438}
+.ph-values li{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:8px 40px;align-items:baseline;padding:22px 4px;border-bottom:1px solid #2c3438}
+.ph-values .t{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.ph-values .t::before{content:"";width:6px;height:6px;border-radius:50%;background:#fff;flex:none;transform:translateY(-3px)}
+.ph-values b{font-size:17px;font-weight:700;color:#fff;letter-spacing:.03em}
+.ph-values i{font:600 12.5px var(--en);font-style:normal;color:#8a949b;letter-spacing:.04em}
+.ph-values p{font-size:15px;line-height:1.85;color:#9a9a9a}
+.ph-next{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px}
+.ph-next p{font-size:15px;color:#30373c}
+@media (max-width:820px){
+  .ph-values li{grid-template-columns:minmax(0,1fr)}
+  .ph-block p br{display:none}
+  .ph-values p{padding-left:20px}
+}
+
+/* ===== AX tone (global) ===== */
+:root{--page:#f4f5f6}
+html,body{background:var(--page)}
+.labels{display:none!important}
+.site-header{background:rgba(255,255,255,.96);border-bottom:1px solid #e6e8eb}
+.head-cta{border-radius:8px;padding:0 20px;background:#151b1e;min-height:44px;font-size:13.5px}
+.head-cta::after{display:none}
+.panel{border-radius:14px}
+.ax-top{margin-top:-16px;margin-bottom:8px}
+.ax-top .ax-photo{height:clamp(220px,28vw,420px)}
+.sec-head{padding:clamp(28px,4vw,44px) clamp(20px,4vw,48px) 8px}
+.sec-head h2{margin-top:0;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:28px;font-size:clamp(26px,3vw,34px);font-weight:700;letter-spacing:.06em;color:#151b1e}
+.sec-head h2::after{content:"";height:1px;background:#c9ced3;grid-column:2;grid-row:1}
+.sec-head h2 small{grid-column:1/-1;grid-row:2;margin:6px 0 0;font:700 13px var(--en);color:#151b1e;letter-spacing:.04em}
+.sec-desc{margin-top:14px;font-size:14.5px;color:#30373c}
+.more{border:0;background:none;padding:0;min-height:44px;color:#151b1e;font-size:14px;gap:14px}
+.more::after{content:"→";width:34px;height:34px;background:#151b1e;font-size:14px}
+.more:hover{color:#151b1e;text-decoration:underline;text-underline-offset:5px}
+.ax-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;padding:24px clamp(20px,4vw,48px) 8px}
+.ax-card{display:flex;flex-direction:column;background:#fff;border:1px solid #e6e8eb;border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;transition:box-shadow .25s,transform .25s}
+.ax-card:hover{box-shadow:0 16px 40px rgba(21,27,30,.10);transform:translateY(-3px)}
+.ax-card .ph{position:relative;aspect-ratio:16/10;overflow:hidden;background:#e9edf1}
+.ax-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.ax-card:hover .ph img{transform:scale(1.04)}
+.ax-card .tag{position:absolute;left:0;bottom:0;background:#151b1e;color:#fff;font-size:12.5px;font-weight:700;padding:7px 14px;letter-spacing:.04em}
+.ax-card .body{display:flex;flex-direction:column;gap:12px;padding:20px 22px 22px;flex:1}
+.ax-card .big{font:700 clamp(20px,1.8vw,24px)/1.25 var(--en);color:#151b1e;letter-spacing:.01em;padding-bottom:12px;border-bottom:1px solid #e6e8eb}
+.ax-card .desc{font-size:14px;line-height:1.85;color:#30373c;flex:1}
+.ax-card .go{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:#151b1e;align-self:flex-start}
+.ax-card .go::after{content:"→";display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#151b1e;color:#fff;font-size:12px}
+.site-footer{background:#151b1e;margin-top:24px;padding-block:clamp(48px,6vw,72px) 28px}
+.site-footer .foot{gap:40px}
+.foot-brand,.foot-nav{background:none;border-radius:0;padding:0}
+.foot-nav h4,.foot-nav h4 a{color:#fff;border-bottom:0;padding-bottom:0}
+.foot-nav h4::after{display:none}
+.foot-nav a{color:#aeb6bd}
+.foot-nav a:hover{color:#fff}
+.site-footer .copy{color:#8a949b;border-top:1px solid #2c3438;padding-top:22px;margin-top:40px}
+@media (max-width:920px){.ax-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.ax-cards{grid-template-columns:minmax(0,1fr)}.ax-top .ax-photo{height:200px}}
+.ax-top .ax-photo-tall{height:clamp(240px,38vw,560px)}
+
+/* ===== News list（画像＋日付・タイトル） ===== */
+.n-head{grid-template-columns:120px minmax(0,1fr)!important}
+.news-list a{grid-template-columns:120px minmax(0,1fr)!important;gap:0 24px!important;align-items:center;padding:20px 4px!important}
+.nthumb{position:relative;aspect-ratio:1;border:1px solid #d9dde1;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.nthumb.is-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.nthumb.is-img .lbl{position:absolute;left:0;right:0;bottom:0;padding:5px 4px;background:rgba(21,27,30,.82);color:#fff;font:700 10px var(--en);letter-spacing:.06em}
+.nthumb.is-text{padding:10px;gap:6px;background:#fff}
+.nthumb.is-text .k{font-size:9px;font-weight:700;color:#fff;background:var(--red-ink);padding:2px 6px;border-radius:3px;white-space:nowrap}
+.nthumb.is-text b{font:700 12px/1.25 var(--en);color:#151b1e;letter-spacing:.01em}
+.nthumb.is-text b small{font-size:10px;color:var(--red-ink)}
+.nthumb .mk{width:56%;height:auto}
+.nthumb.is-def{gap:6px}
+.nthumb.is-def span{font:700 10px var(--en);color:#151b1e;letter-spacing:.04em}
+.nmain{display:flex;flex-direction:column;gap:8px;min-width:0}
+.nmeta{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px}
+.nmeta time,.nmeta .date{font:500 15px var(--mono)!important;color:#151b1e!important;letter-spacing:.04em}
+.nmeta .cat{background:#8f9499;font-size:12px;font-weight:500;padding:3px 10px;border-radius:3px}
+.nmeta .draft{margin-left:0}
+.news-list .t{font-size:clamp(15px,1.5vw,18px);font-weight:500;line-height:1.7;color:#151b1e}
+.news-list a:hover .nthumb{border-color:#151b1e}
+.nthumb.big{width:min(100%,360px);aspect-ratio:16/10;margin-bottom:22px;border-radius:12px}
+.nthumb.big.is-text b{font-size:22px}
+.nthumb.big.is-text .k{font-size:12px;padding:3px 10px}
+.nthumb.big .mk{width:34%}
+.nthumb.big.is-img .lbl{font-size:12px;padding:8px}
+@media (max-width:640px){
+  .n-head{display:none}
+  .news-list a{grid-template-columns:84px minmax(0,1fr)!important;gap:0 14px!important}
+  .nthumb.is-text b{font-size:10px}
+  .nthumb.is-text .k{font-size:8px;padding:1px 4px}
+  .news-list .t{font-size:14.5px}
+  .nmeta time,.nmeta .date{font-size:13px!important}
+}
+.article-meta .cat{background:#8f9499;font-weight:500;border-radius:3px}
+@media (max-width:640px){.nmeta{gap:6px 8px}}
+.nthumb.big.sq{width:min(100%,300px);aspect-ratio:1}
+
+/* ===== 進め方（5ステップ・アイコン＋図＋写真） ===== */
+.flow-intro{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,4vw,48px);align-items:center;background:#f7f8fa;border-radius:14px;padding:clamp(16px,2.4vw,24px);margin-bottom:clamp(28px,4vw,44px);text-align:left}
+.flow-intro figure{border-radius:10px;overflow:hidden;aspect-ratio:16/10}
+.flow-intro img{width:100%;height:100%;object-fit:cover}
+.fi-k{font:700 12px var(--en);letter-spacing:.14em;color:var(--red-ink)}
+.flow-intro h3{margin-top:8px;font-size:clamp(18px,1.9vw,23px);font-weight:900;line-height:1.6;color:#151b1e}
+.fi-map{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.fi-map .n{white-space:nowrap;display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:999px;background:#fff;border:1.5px solid #d9dde1;font-size:13.5px;font-weight:700;color:#151b1e}
+.fi-map .n.hot{background:var(--red-ink);border-color:var(--red-ink);color:#fff}
+.fi-map i{font-style:normal;color:#9aa3ab;font-weight:700}
+.fi-t{margin-top:16px;font-size:14px;color:#30373c}
+.flow5{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);counter-reset:none;text-align:left}
+.flow5::before{content:"";position:absolute;left:10%;right:10%;top:36px;height:2px;background:repeating-linear-gradient(90deg,#c9ced3 0 8px,transparent 8px 14px)}
+.fstep{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 4px}
+.fic{position:relative;z-index:1;display:grid;place-items:center;width:72px;height:72px;border-radius:50%;background:#fff;border:1.5px solid #d9dde1;color:#151b1e;box-shadow:0 8px 20px rgba(21,27,30,.06)}
+.fstep.key .fic{background:var(--red-ink);border-color:var(--red-ink);color:#fff;box-shadow:0 10px 24px rgba(184,52,42,.30)}
+.fno{margin-top:16px;font:700 12px var(--en);letter-spacing:.12em;color:var(--red-ink)}
+.fstep b{margin-top:6px;font-size:15.5px;word-break:keep-all;overflow-wrap:anywhere;font-weight:900;line-height:1.5;color:#151b1e;min-height:3em;display:flex;align-items:flex-start;justify-content:center}
+.ftag{margin-top:2px;font-style:normal;font-size:11px;font-weight:700;color:#fff;background:#151b1e;border-radius:3px;padding:2px 8px}
+.fstep p{margin-top:10px;font-size:13.5px;line-height:1.85;color:#30373c;text-align:left}
+@media (max-width:900px){
+  .flow-intro{grid-template-columns:minmax(0,1fr)}
+  .flow-intro h3 br{display:none}
+  .flow5{grid-template-columns:minmax(0,1fr);gap:0}
+  .flow5::before{left:35px;right:auto;top:20px;bottom:20px;width:2px;height:auto;background:repeating-linear-gradient(180deg,#c9ced3 0 8px,transparent 8px 14px)}
+  .fstep{display:grid;grid-template-columns:72px minmax(0,1fr);column-gap:18px;align-items:start;text-align:left;padding:0 0 26px}
+  .fic{grid-row:1/span 4}
+  .fno{margin-top:4px}
+  .fstep b{min-height:0;justify-content:flex-start}
+  .ftag{justify-self:start;margin-top:4px}
+  .fstep p{margin-top:6px}
+}
+@media (max-width:640px){#svc-cta{font-size:14px;padding-inline:18px;white-space:nowrap}}
+
+/* ===== 言語切り替え ===== */
+.lang-sw{display:flex;align-items:center;gap:6px;font:600 15px var(--en);letter-spacing:.02em;margin-right:4px}
+.lang-sw a{text-decoration:none;color:#a7adb3;padding:6px 2px}
+.lang-sw a[aria-current="true"]{color:#151b1e;font-weight:700}
+.lang-sw a:hover{color:#151b1e}
+.lang-sw span{color:#151b1e}
+@media (max-width:920px){.lang-sw{order:-1;font-size:14px;margin-right:6px}}
+
+/* ===== English version ===== */
+:root{--jp:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans JP",sans-serif}
+body{letter-spacing:0}
+.gnav-links a{letter-spacing:.01em}
+.ax-head h1 span,.ax-head h1 small,.sec-head h2 small,.mega-title span,.ph-values i,.marquee a span,.ax-members .en{display:none}
+.sec-head h2,.ax-h,.ph-block h3,.flow-intro h3,.cta h2,.hero h1{letter-spacing:0}
+.ax-head h1{letter-spacing:-.005em}
+.hero h1{font-size:clamp(24px,2.8vw,36px)}
+.ax-members h3{letter-spacing:.02em}
+.fstep b{word-break:normal}
+</style>
+
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-in">
+    <div class="intro-logo"><img src="images/logo-wordmark.webp" width="720" height="141" alt=""><span class="intro-bar"></span></div>
+    <p class="intro-tag">Be the Light of Japan.</p>
+    <span class="intro-line"></span>
+  </div>
+</div>
+<script>document.documentElement.lang="en";
+(function(){var el=document.getElementById('intro'),seen=false;
+  try{seen=sessionStorage.getItem('michinari-intro')==='1';sessionStorage.setItem('michinari-intro','1');}catch(e){}
+  if(seen){document.documentElement.classList.add('no-intro');return;}
+  function end(){el.style.display='none';}
+  el.addEventListener('animationend',function(e){if(e.target===el)end();});
+  el.addEventListener('click',function(){el.classList.add('skip');});
+  setTimeout(end,3600);
+})();
+</script>
+<header class="site-header">
+  <div class="shell"><div class="inner bar" style="max-width:1400px">
+    <a href="#top" aria-label="MICHINARI home"><img class="logo" src="images/logo-wordmark.webp" width="720" height="141" alt="MICHINARI"></a>
+    <nav class="gnav" id="gnav" aria-label="Main menu">
+      <div class="gnav-links" id="gnav-links">
+        <div class="gnav-item">
+          <a href="#news" data-nav="news">News</a>
+          <div class="mega" id="mega-news" role="region" aria-label="News menu"><div class="mega-in">
+            <a class="mega-title" href="#news"><b>News</b><span>News</span></a>
+            <div class="mega-links"><a href="#news"><span>All news</span></a></div>
+          </div></div>
+        </div>
+        <div class="gnav-item">
+          <a href="#philosophy" data-nav="philosophy">Philosophy</a>
+          <div class="mega" id="mega-philosophy" role="region" aria-label="Philosophy menu"><div class="mega-in">
+            <a class="mega-title" href="#philosophy"><b>Philosophy</b><span>Philosophy</span></a>
+            <div class="mega-links"><a href="#mission"><span>Mission</span></a><a href="#vision"><span>Vision</span></a><a href="#value"><span>Values</span></a></div>
+          </div></div>
+        </div>
+        <div class="gnav-item">
+          <a href="#about" data-nav="about">About</a>
+          <div class="mega" id="mega-about" role="region" aria-label="About menu"><div class="mega-in">
+            <a class="mega-title" href="#about"><b>About</b><span>About</span></a>
+            <div class="mega-links"><a href="#message"><span>Message from the Founder</span></a><a href="#members"><span>Team</span></a><a href="#company"><span>Company</span></a></div>
+          </div></div>
+        </div>
+        <div class="gnav-item">
+          <a href="#services" data-nav="services">Services</a>
+          <div class="mega" id="mega-services" role="region" aria-label="Services menu"><div class="mega-in">
+            <a class="mega-title" href="#services"><b>Services</b><span>Services</span></a>
+            <div class="mega-links"><a href="#services"><span>All services</span></a><a href="#service-cmo"><span>Outsourced CMO</span></a><a href="#service-web"><span>Digital Marketing</span></a><a href="#service-promo"><span>Sales Promotion</span></a><a href="#service-inhouse"><span>In-house Capability Building</span></a><a href="#service-dx"><span>DX / AX Support</span></a><a href="#service-subsidy"><span>Subsidy Consulting</span></a></div>
+          </div></div>
+        </div>
+        <div class="gnav-item">
+          <a href="#works" data-nav="works">Case Studies</a>
+          <div class="mega" id="mega-works" role="region" aria-label="Case studies menu"><div class="mega-in">
+            <a class="mega-title" href="#works"><b>Works</b><span>Case Studies</span></a>
+            <div class="mega-links"><a href="#works"><span>All case studies</span></a><a href="#contact" data-topic="I’d like details on your case studies"><span>Discuss a case study (30 min)</span></a></div>
+          </div></div>
+        </div>
+        <a href="#contact" data-nav="contact" class="sp-only">Contact</a>
+      </div>
+      <div class="lang-sw" aria-label="Language"><a href="index.html" data-lang="ja" lang="ja">JP</a><span aria-hidden="true">/</span><a href="en.html" data-lang="en" aria-current="true" lang="en">EN</a></div>
+      <a class="head-cta" href="#contact">Contact</a>
+      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="gnav-links">Menu</button>
+    </nav>
+  </div></div>
+</header>
+
+<!-- ================= トップ ================= -->
+<main id="view-top" class="shell"><div class="inner stack" style="max-width:1400px">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-media"><img src="images/hero-tokyo.webp" width="1920" height="1079" alt="" fetchpriority="high"></div>
+    <div class="hero-in">
+      <p class="hero-kicker" aria-hidden="true"><span class="nb">Be the Light</span> <span class="nb">of Japan.</span></p>
+      <h1 id="hero-title"><span class="nb">When local businesses thrive,</span><br><span class="nb">Japan shines.</span></h1>
+      <p class="lead">MICHINARI is a marketing partner that works inside your business as an outsourced CMO, <br>covering digital marketing, sales promotion, in-house training and DX/AX. <br>We help Japanese SMEs—and overseas companies bringing their products to Japan—grow.</p>
+      <div class="hero-btns"><a class="hb hb-light" href="#services">View our services</a><a class="hb hb-dark" href="#contact">Contact us</a></div>
+    </div>
+  </section>
+  <div class="hero-strip" aria-label="What we do">
+    <p class="hero-strip-label">What we do</p>
+    <div class="marquee"><div class="marquee-track"><a href="#service-cmo"><b>Outsourced CMO</b><span>Outsourced CMO</span></a><a href="#service-web"><b>Digital Marketing</b><span>Web Marketing</span></a><a href="#service-promo"><b>Sales Promotion</b><span>Sales Promotion</span></a><a href="#service-inhouse"><b>In-house Capability Building</b><span>In-house Support</span></a><a href="#service-dx"><b>DX / AX Support</b><span>DX / AX</span></a><a href="#service-subsidy"><b>Subsidy Consulting</b><span>Subsidy</span></a><span class="dup" aria-hidden="true"><a tabindex="-1" href="#service-cmo"><b>Outsourced CMO</b><span>Outsourced CMO</span></a><a tabindex="-1" href="#service-web"><b>Digital Marketing</b><span>Web Marketing</span></a><a tabindex="-1" href="#service-promo"><b>Sales Promotion</b><span>Sales Promotion</span></a><a tabindex="-1" href="#service-inhouse"><b>In-house Capability Building</b><span>In-house Support</span></a><a tabindex="-1" href="#service-dx"><b>DX / AX Support</b><span>DX / AX</span></a><a tabindex="-1" href="#service-subsidy"><b>Subsidy Consulting</b><span>Subsidy</span></a></span></div></div>
+  </div>
+
+  <section class="panel" aria-labelledby="t-news">
+    <div class="sec-head"><div class="labels"><span>News</span><span>News</span><span>News</span></div><h2 id="t-news">News<small>News</small></h2><p class="sec-desc">Updates from MICHINARI and articles on digital marketing.</p></div>
+    <div class="sec-body">
+      <div class="cols-head n-head"><span>[Image]</span><span>[Date + Title]</span></div>
+      <ul class="news-list" id="top-news"></ul>
+      <div class="btn-row"><a class="more" href="#news">All news</a></div>
+    </div>
+  </section>
+
+
+  <section class="panel" aria-labelledby="t-what">
+    <div class="sec-head"><div class="labels"><span>What We Do</span><span>What We Do</span><span>What We Do</span></div><h2 id="t-what">Services<small>Services</small></h2><p class="sec-desc">End-to-end marketing support—from strategy and execution to building lasting capability inside your company.</p></div>
+    <div class="ax-cards">
+      <a class="ax-card" href="#service-cmo"><div class="ph"><img src="images/biz-cmo.webp" width="1200" height="674" alt="" loading="lazy"><span class="tag">Strategy</span></div><div class="body"><span class="big">Outsourced CMO</span><p class="desc">We join your leadership as your head of marketing, set goals, budgets and priorities, and drive execution.</p><span class="go">Learn more</span></div></a>
+      <a class="ax-card" href="#service-web"><div class="ph"><img src="images/biz-web.webp" width="1200" height="674" alt="" loading="lazy"><span class="tag">Digital</span></div><div class="body"><span class="big">Digital Marketing</span><p class="desc">Ads, websites, landing pages, social media and LINE—we build the path that turns visitors into inquiries and sales.</p><span class="go">Learn more</span></div></a>
+      <a class="ax-card" href="#service-promo"><div class="ph"><img src="images/biz-promo.webp" width="1200" height="674" alt="" loading="lazy"><span class="tag">Promotion</span></div><div class="body"><span class="big">Sales Promotion</span><p class="desc">Campaigns, promotional materials and store displays that drive sales both online and offline.</p><span class="go">Learn more</span></div></a>
+      <a class="ax-card" href="#service-inhouse"><div class="ph"><img src="images/biz-inhouse.webp" width="1200" height="674" alt="" loading="lazy"><span class="tag">Training</span></div><div class="body"><span class="big">In-house Capability</span><p class="desc">Hands-on training and clear playbooks so your team can run and improve marketing on its own.</p><span class="go">Learn more</span></div></a>
+      <a class="ax-card" href="#service-dx"><div class="ph"><img src="images/biz-dx.webp" width="1200" height="675" alt="" loading="lazy"><span class="tag">Operations</span></div><div class="body"><span class="big">DX / AX</span><p class="desc">Streamline customer management, sales and back-office work with cloud tools and generative AI.</p><span class="go">Learn more</span></div></a>
+      <a class="ax-card" href="#service-subsidy"><div class="ph"><img src="images/hero-city.webp" width="1600" height="807" alt="" loading="lazy"><span class="tag">Funding</span></div><div class="body"><span class="big">Subsidy Consulting</span><p class="desc">We help you explore Japanese government subsidies for digital and new-business investments, and plan how to apply.</p><span class="go">Learn more</span></div></a>
+    </div>
+    
+  </section>
+
+</div></main>
+
+
+<!-- ================= Philosophy ================= -->
+<main id="view-philosophy" class="shell" hidden><div class="inner stack">
+  <section class="ax-head bleed">
+    <div class="ax-wrap ax-head-in">
+      <div><p class="crumb"><a href="#top">TOP</a> / Philosophy</p><h1>Philosophy<span>/</span><small>Philosophy</small></h1></div>
+      <p>Why MICHINARI exists, where we are headed, <br>and what we value in our work.</p>
+    </div>
+  </section>
+  <div class="ax-photo bleed"><img src="images/head-philosophy.webp" width="1776" height="896" alt="Morning sun rising over a small Japanese town" loading="lazy"></div>
+  <section class="ax-dark bleed" aria-labelledby="t-philo">
+    <div class="ax-wrap">
+      <h2 class="ax-h ax-h-dark" id="t-philo">Our Philosophy<small>Corporate Philosophy</small></h2>
+
+      <div class="ph-block" id="mvv-mission">
+        <h3><span>Mission</span>Delivering valuable products and services <br>to the people who need them.</h3>
+        <h4>Why this mission?</h4>
+        <p>Many companies have products loved locally for years or skills refined on the front line, yet remain unknown to the people who need them because their message and channels are not in place. We want to change that, one company at a time.</p>
+        <h4>How we achieve this</h4>
+        <p>As the head of marketing for small and mid-sized businesses, we stay with you from strategy and execution to embedding the work in your team, <br>building systems that keep your business growing.</p>
+      </div>
+
+      <div class="ph-block" id="mvv-vision">
+        <h3><span>Vision</span>Energizing Japan, starting with its small businesses.</h3>
+        <p class="ph-en">Be the Light of Japan.</p>
+        <p>When local companies shine, their people and communities thrive. <br>We are building a future where each company’s growth makes Japan brighter.</p>
+      </div>
+
+      <div class="ph-block" id="mvv-value">
+        <h3><span>Value</span>What we value</h3>
+        <ul class="ph-values" id="values-top"></ul>
+      </div>
+    </div>
+  </section>
+  <section class="ax-sec bleed">
+    <div class="ax-wrap ph-next">
+      <p>Read how our founder puts this philosophy into practice.</p>
+      <a class="more" href="#message">Read the founder’s message</a>
+    </div>
+  </section>
+</div></main>
+
+<!-- ================= Services ================= -->
+<main id="view-services" class="shell" hidden><div class="inner stack">
+  <div class="ax-top bleed">
+    <section class="ax-head">
+      <div class="ax-wrap ax-head-in">
+        <div><p class="crumb"><a href="#top">TOP</a> / Services</p><h1>Services<span>/</span><small>Services</small></h1></div>
+        <p>From setting strategy to rolling up our sleeves on the ground. <br>Engage us for a single initiative or for your entire marketing function.</p>
+      </div>
+    </section>
+    <div class="ax-photo"><img src="images/head-services.webp" width="1600" height="800" alt="A team discussing marketing strategy in a meeting room" loading="lazy"></div>
+  </div>
+  <section class="panel block">
+    <div class="principle"><b>Maximum impact from a minimal budget.</b><p>Within a limited budget, we choose the initiatives that fit your challenges and decide together what to do—and what not to do.</p></div>
+    <div class="svc-rows" id="svc-rows"></div>
+  </section>
+</div></main>
+
+<!-- ================= 事業詳細 ================= -->
+<main id="view-service" class="shell" hidden><div class="inner stack">
+  <section class="panel">
+    <div class="page-title">
+      <p class="crumb"><a href="#top">TOP</a> / <a href="#services">Services</a> / <span id="svc-crumb"></span></p>
+      <div class="svc-hero" style="margin-top:20px">
+        <div><h1 id="svc-jp" style="margin-top:0"></h1><span class="en" id="svc-en"></span><p class="svc-lead" id="svc-lead"></p></div>
+        <img id="svc-img" src="" alt="" width="1200" height="674">
+      </div>
+    </div>
+  </section>
+  <section class="panel block svc-intro">
+    <div><h2 class="h-line">Sound familiar?</h2><ul class="worries" id="svc-worries"></ul></div>
+    <div><h2 class="h-line">Where we aim to get you</h2><p class="after-box" id="svc-after"></p></div>
+  </section>
+  <section class="panel block"><h2 class="h-line">Service menu</h2><div class="svc-table" id="svc-table"></div></section>
+  <section class="panel block">
+    <h2 class="h-line">How we work</h2><ol class="flow" data-flow></ol>
+    <div class="center-cta"><p>Interested in this service? Let’s talk.</p><a class="btn btn-dark" id="svc-cta" href="#contact">Ask about this service</a></div>
+  </section>
+  <section class="panel block"><h2 class="h-line">Other services</h2><nav class="other-links" id="svc-others" aria-label="Other services"></nav></section>
+</div></main>
+
+<!-- ================= 支援実績 ================= -->
+<main id="view-works" class="shell" hidden><div class="inner stack">
+  <div class="ax-top bleed">
+    <section class="ax-head">
+      <div class="ax-wrap ax-head-in">
+        <div><p class="crumb"><a href="#top">TOP</a> / Case Studies</p><h1>Case Studies<span>/</span><small>Works</small></h1></div>
+        <p>Examples of our work that improved customer acquisition and sales. <br>Scope, duration and budget vary by project, and similar results are not guaranteed.</p>
+      </div>
+    </section>
+    <div class="ax-photo ax-photo-tall"><img src="images/head-works.webp" width="1600" height="800" alt="A business owner and consultant shaking hands in an office" loading="lazy" style="object-position:50% 72%"></div>
+  </div>
+  <section class="panel block"><div class="works" id="all-works"></div>
+    <div class="case-consult"><div><b>We share the details in an online consultation</b><p>Contact us and we’ll walk you through the initiatives, approach and timelines in a 30-minute online meeting—including cases not listed here that are close to your situation.</p></div><a class="btn btn-dark" href="#contact" data-topic="I’d like details on your case studies">Book a 30-minute online meeting</a></div></section>
+</div></main>
+
+<!-- ================= About ================= -->
+<main id="view-about" class="shell" hidden><div class="inner stack">
+  <section class="ax-head bleed">
+    <div class="ax-wrap ax-head-in">
+      <div><p class="crumb"><a href="#top">TOP</a> / About</p><h1>About<span>/</span><small>About</small></h1></div>
+      <p>MICHINARI joins small and mid-sized businesses as an outsourced CMO, <br>supporting everything from marketing strategy and execution <br>to building lasting capability inside your company.</p>
+    </div>
+  </section>
+  <div class="ax-photo bleed"><img src="images/about-street.webp" width="1600" height="900" alt="A local shopping street on a sunny day" loading="lazy"></div>
+
+  <section class="ax-sec bleed" id="sec-message">
+    <div class="ax-wrap ax-msg">
+      <div>
+        <h2 class="ax-h">Message from the Founder<small>CEO Message</small></h2>
+        <h3>So that companies with great products <br>get the customers they deserve.</h3>
+        <p>Japan’s small and mid-sized businesses have countless products loved locally for years and skills refined on the front line. Yet I have seen many of them stay unknown to the people who need them, simply because their message and channels were not in place.</p>
+        <p>Most of these companies have no one dedicated to marketing. Ads go to an agency, the website to a web studio, and social media to whoever has time. Each piece moves, but no one looks at the whole picture and decides what to do next.</p>
+        <p>MICHINARI takes on that role from the outside. We set goals with the same perspective as the owner, decide where the budget goes, and take responsibility through execution and improvement. In the end, we leave behind a way of working your team can continue. I do this work because I believe each company’s growth brings energy to its people and its community.</p>
+        <p class="sign">Shuji Kawamoto <br>Founder, MICHINARI</p>
+      </div>
+      <figure><img src="images/message-portrait.webp" width="1400" height="1128" alt="Founder Shuji Kawamoto speaking at a seminar" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <section class="ax-sec ax-gray bleed" id="sec-members">
+    <div class="ax-wrap">
+      <h2 class="ax-h">Team<small>Members</small></h2>
+      <div class="ax-members">
+        <article>
+          <div class="ph"><img src="images/member-kawamoto.webp" width="600" height="600" alt="Founder Shuji Kawamoto" loading="lazy"></div>
+          <p class="pos">Founder / Outsourced CMO</p><h3>Shuji Kawamoto</h3><p class="en">Shuji Kawamoto</p>
+          <p class="bio">Former physical therapist with experience at an overseas advertising company and as a freelance digital marketer. Has handled ad operations, social media, landing page and website production, and web analytics.</p>
+          <div class="links"><a href="https://www.wantedly.com/id/shuuji_kawamoto_b" target="_blank" rel="noopener">Wantedly ↗</a><a href="https://youtrust.jp/users/0735408c56ff8f0f857ed08f6ad5fcf2?youtrust_source=qr_share" target="_blank" rel="noopener">YOUTRUST ↗</a><a href="https://x.com/shuji2000_jp" target="_blank" rel="noopener">X ↗</a></div>
+        </article>
+        <article>
+          <div class="ph"><img src="images/member-danno.webp" width="480" height="480" alt="Partner Ryo Danno" loading="lazy"></div>
+          <p class="pos">Partner / Project Manager, I-Nexus</p><h3>Ryo Danno</h3><p class="en">Ryo Danno</p>
+          <p class="bio">Handles problem definition and marketing at I-Nexus. Works with us on execution, including website production, MEO (Google Business Profile optimization) and outsourced web management.</p>
+          <div class="links"><a href="https://inexus-gb.com/" target="_blank" rel="noopener">I-Nexus ↗</a></div>
+        </article>
+        <article>
+          <div class="ph ph-empty"><span>Photo coming soon</span></div>
+          <p class="pos">Partner / Digital Marketing & Production</p><h3>Daisuke Utagawa</h3>
+          <p class="bio">Executes initiatives that connect advertising, websites and LINE, drawing on experience supporting e-commerce and LINE marketing.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ax-sec bleed" id="sec-company">
+    <div class="ax-wrap">
+      <h2 class="ax-h">Company<small>Company</small></h2>
+      <dl class="ax-table">
+        <div><dt>Name</dt><dd>MICHINARI</dd></div>
+        <div><dt>Founder</dt><dd>Shuji Kawamoto</dd></div>
+        <div><dt>Services</dt><dd><ul><li><a href="#service-cmo">Outsourced CMO</a></li><li><a href="#service-web">Digital Marketing</a></li><li><a href="#service-promo">Sales Promotion</a></li><li><a href="#service-inhouse">In-house Capability Building</a></li><li><a href="#service-dx">DX / AX Support</a></li><li><a href="#service-subsidy">Subsidy Consulting</a></li></ul></dd></div>
+        <div><dt>Coverage</dt><dd>All of Japan (meetings are held online). Overseas companies entering the Japanese market are welcome.</dd></div>
+        <div><dt>Partner</dt><dd>I-Nexus（<a href="https://inexus-gb.com/" target="_blank" rel="noopener">inexus-gb.com ↗</a>）</dd></div>
+        <div><dt>Contact</dt><dd><a href="#contact">Contact form</a>／<a href="https://lin.ee/5DKzvf8P" target="_blank" rel="noopener">Official LINE ↗</a></dd></div>
+      </dl>
+      <p class="ax-more"><a class="more" href="#philosophy">See our philosophy</a></p>
+    </div>
+  </section>
+</div></main>
+
+<!-- ================= お知らせ ================= -->
+<main id="view-news" class="shell" hidden><div class="inner stack">
+  <div class="ax-top bleed">
+    <section class="ax-head">
+      <div class="ax-wrap ax-head-in">
+        <div><p class="crumb"><a href="#top">TOP</a> / News</p><h1>News<span>/</span><small>News</small></h1></div>
+        <p>Updates from MICHINARI <br>and articles on digital marketing.</p>
+      </div>
+    </section>
+    <div class="ax-photo"><img src="images/head-news.webp" width="1600" height="800" alt="A laptop and coffee on a desk by the window" loading="lazy"></div>
+  </div>
+  <section class="panel block">
+    <div class="filters" role="group" aria-label="Filter by category">
+      <button type="button" data-cat="all" aria-pressed="true">All</button>
+      <button type="button" data-cat="News" aria-pressed="false">News</button>
+      <button type="button" data-cat="Case Study" aria-pressed="false">Case Study</button>
+      <button type="button" data-cat="Column" aria-pressed="false">Column</button>
+    </div>
+    <div class="cols-head n-head"><span>[Image]</span><span>[Date + Title]</span></div>
+    <ul class="news-list" id="all-news"></ul>
+  </section>
+</div></main>
+
+<main id="view-article" class="shell" hidden><div class="inner stack">
+  <section class="panel block"><p class="crumb" style="margin:0 0 8px"><a href="#top">TOP</a> / <a href="#news">News</a> / <span id="crumb-title"></span></p><article class="article" id="article"></article></section>
+</div></main>
+
+<!-- ================= Contact ================= -->
+<main id="view-contact" class="shell" hidden><div class="inner stack">
+  <section class="ct-hero bleed">
+    <div class="ct-hero-in">
+      <div class="ct-hero-txt">
+        <p class="crumb"><a href="#top">HOME</a> / CONTACT</p>
+        <p class="ct-label">CONTACT</p>
+        <h1>Contact</h1>
+        <p>For questions about our services or any other inquiries, <br>please feel free to contact us.</p>
+      </div>
+      <div class="ct-hero-img"><img src="images/cta-office.webp" width="1600" height="899" alt="" loading="lazy"></div>
+    </div>
+  </section>
+  <section class="ct-body bleed">
+    <span class="ring ring-a" aria-hidden="true"></span><span class="ring ring-b" aria-hidden="true"></span>
+    <p class="ct-intro">Please fill in the form below and submit it. <br>Shuji Kawamoto will review your message and reply by email.</p>
+    <div class="ct-card form-card">
+      <form id="contact-form" novalidate>
+        <div class="field-row">
+          <div class="field"><label class="label" for="f-company">Company name<em>Required</em></label><input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Your company"></div>
+          <div class="field"><label class="label" for="f-name">Your name<em>Required</em></label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label class="label" for="f-email">Email<em>Required</em></label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="info@example.co.jp"></div>
+          <div class="field"><label class="label" for="f-tel">Phone<small>Optional</small></label><input id="f-tel" name="tel" type="tel" autocomplete="tel" placeholder="03-1234-5678"></div>
+        </div>
+          <div class="field">
+            <label class="label" for="f-topic">Topic<em>Required</em></label>
+            <div class="select-wrap ct-select"><select id="f-topic" name="topic" required>
+              <option value="">Please select</option>
+              <option value="About Outsourced CMO">Outsourced CMO</option>
+              <option value="About Digital Marketing">Digital Marketing</option>
+              <option value="About Sales Promotion">Sales Promotion</option>
+              <option value="About In-house Capability Building">In-house capability building / training</option>
+              <option value="About DX / AX Support">DX / AX Support</option>
+              <option value="About Subsidy Consulting">Subsidy Consulting</option>
+              <option value="I’d like details on your case studies">I’d like details on your case studies</option>
+              <option value="Other">Other</option>
+            </select></div>
+          </div>
+        <div class="field"><label class="label" for="f-url">Website URL<small>Optional</small></label><input id="f-url" name="url" type="url" placeholder="https://example.co.jp"></div>
+        <div class="field"><label class="label" for="f-msg">Message<em>Required</em></label><textarea id="f-msg" name="message" rows="7" placeholder="Tell us about your business, your current challenges and what you want to achieve—as much as you can."></textarea></div>
+        <div class="field agree ct-agree"><label><input type="checkbox" id="f-agree" name="agree"> I agree that the information I provide will be used to respond to my inquiry.</label></div>
+        <p class="form-error" id="form-error" role="alert" hidden>Some required fields are empty. Please check the fields highlighted in red.</p>
+        <div class="ct-submit"><button class="ct-btn ct-btn-send" type="submit">Review my entry<span aria-hidden="true">›</span></button></div>
+      </form>
+      <div id="confirm" hidden>
+        <h2 class="ct-sub-h">Please review your entry</h2>
+        <dl class="confirm-list" id="confirm-list"></dl>
+        <p class="form-error" id="send-error" role="alert" hidden>Your message could not be sent. Please try again later or contact us via our official LINE account.</p>
+        <div class="confirm-actions"><button class="btn btn-ghost" type="button" id="btn-back">Edit</button><button class="ct-btn ct-btn-send" type="button" id="btn-send">Send<span aria-hidden="true">›</span></button></div>
+      </div>
+      <div id="done" class="done" hidden>
+        <h2>Thank you for your inquiry</h2>
+        <p>Shuji Kawamoto will review your message and reply by email.</p>
+        <a class="btn btn-dark" href="#top">Back to top</a>
+      </div>
+      <div class="ct-or"><span>or</span></div>
+      <div class="ct-submit"><a class="ct-btn ct-btn-line" href="https://lin.ee/5DKzvf8P" target="_blank" rel="noopener"><span class="badge"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 .9l-.1.9c0 .3-.2 1 .9.5 1.1-.5 5.9-3.5 8-5.9C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg></span>Chat with us on LINE</a></div>
+      <p class="ct-note">Prefer something more casual than email? You can also reach us on LINE, Japan’s most popular messaging app.</p>
+    </div>
+    <div class="ct-flow" id="sec-flow">
+      <h2 class="ct-sub-h">What happens next</h2>
+      <ol class="flow" data-flow></ol>
+    </div>
+  </section>
+</div></main>
+
+<div class="shell"><div class="inner stack" style="max-width:1400px;padding-top:0">
+  <section class="cta" aria-labelledby="t-cta">
+    <img class="cta-bg" src="images/cta-office.webp" width="1600" height="900" alt="" loading="lazy">
+    <div class="cta-card reveal" id="cta-card">
+      <p class="cta-eyebrow">Let’s talk</p>
+      <h2 id="t-cta"><span class="nb">We’ll find the <em>right next move</em></span><br><span class="nb">for your business.</span></h2>
+      <p class="cta-text">From customer acquisition and sales promotion to team building and DX/AI, feel free to get in touch.</p>
+      <div class="cta-btns">
+        <a class="cta-btn cta-form" href="#contact"><span class="badge"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4.2 7H19.8L12 12.2zM4 9.1V17h16V9.1l-8 5.3-8-5.3z"/></svg></span>Contact form</a>
+        <a class="cta-btn cta-line" href="https://lin.ee/5DKzvf8P" target="_blank" rel="noopener"><span class="badge"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 .9l-.1.9c0 .3-.2 1 .9.5 1.1-.5 5.9-3.5 8-5.9C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg></span>Chat with us on LINE</a>
+      </div>
+    </div>
+  </section>
+  <a class="pagetop" href="#top" id="pagetop"><span aria-hidden="true">↑</span>Page Top</a>
+</div></div>
+
+<footer class="site-footer shell">
+  <div class="inner" style="max-width:1400px">
+    <div class="foot">
+      <div class="foot-brand"><a href="#top"><img src="images/logo-wordmark-white.webp" width="720" height="141" alt="MICHINARI"></a><p>Energizing Japan, starting with its small businesses</p></div>
+      <nav class="foot-nav" aria-label="Footer menu">
+        <div><h4><a href="#news">News</a></h4><a href="#news">All news</a><h4 class="foot-sub"><a href="#works">Case Studies</a></h4><a href="#works">All case studies</a></div>
+        <div><h4><a href="#about">About</a></h4><a href="#philosophy">Philosophy</a><a href="#message">Message from the Founder</a><a href="#members">Team</a><a href="#company">Company</a></div>
+        <div><h4><a href="#services">Services</a></h4><a href="#service-cmo">Outsourced CMO</a><a href="#service-web">Digital Marketing</a><a href="#service-promo">Sales Promotion</a><a href="#service-inhouse">In-house Capability Building</a><a href="#service-dx">DX / AX Support</a><a href="#service-subsidy">Subsidy Consulting</a></div>
+        <div><h4><a href="#contact">Contact</a></h4><a href="#contact">Contact form</a><a href="#flow">How it works</a><a href="https://lin.ee/5DKzvf8P" target="_blank" rel="noopener">Official LINE ↗</a><a href="https://x.com/shuji2000_jp" target="_blank" rel="noopener">X ↗</a></div>
+      </nav>
+    </div>
+    <p class="copy">© MICHINARI All rights reserved.</p>
+  </div>
+</footer>
+<script>
+var NEWS = [
+  {
+    id: "logo", date: "2026.11.01", cat: "News",
+    thumb: {img: "images/news-logo.webp", square: true},
+    title: "We’ve created a new MICHINARI logo",
+    body: [
+      ["p","We have created a new logo for MICHINARI."],
+      ["h","The idea behind the logo"],
+      ["p","The symbol is based on the letter “m.” True to our name—michinari means “along the road” in Japanese—it represents walking alongside our clients on their business journey, moving forward together step by step."],
+      ["p","The dot on the “i” in the michinari wordmark is red. It expresses our motto, “Be the Light of Japan.”—local companies becoming a light that brightens the whole country."],
+      ["p","Alongside the logo, we will carry our vision: “Energizing Japan, starting with its small businesses.” We will gradually switch our business cards, materials and website to the new logo."]
+    ]
+  },
+  {
+    id: "site-open", date: "2026.11.01", cat: "News",
+    thumb: {img: "images/hero-tokyo.webp", label: "Website Open"},
+    title: "Our website is now live",
+    body: [
+      ["p","The MICHINARI website is now live."],
+      ["p","It covers our services, case studies and how we work with clients. Going forward, we will also share updates and articles on digital marketing on this News page."]
+    ]
+  }
+];
+
+
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+var BASE_TITLE=document.title;
+
+/* ---------- お知らせ ---------- */
+function dateHtml(n){return n.date?'<time>'+esc(n.date)+'</time>':'<span class="date">TBD</span>';}
+function catClass(c){return c==="Case Study"?"cat c-works":"cat";}
+function thumbHtml(n,big){var t=n.thumb||{};var cls='nthumb'+(big?' big':'');
+  if(t.img)return '<div class="'+cls+' is-img'+(t.square?' sq':'')+'"><img src="'+t.img+'" alt="" loading="lazy">'+(t.label?'<span class="lbl">'+esc(t.label)+'</span>':'')+'</div>';
+  if(t.text)return '<div class="'+cls+' is-text"><span class="k">'+esc(t.label||'')+'</span><b>'+t.text+'</b><img class="mk" src="images/logo-wordmark.webp" alt=""></div>';
+  return '<div class="'+cls+' is-def"><img class="mk" src="images/logo-wordmark.webp" alt=""><span>News Release</span></div>';}
+function newsItem(n){return '<li><a href="#news-'+n.id+'">'+thumbHtml(n)+'<div class="nmain"><div class="nmeta">'+dateHtml(n)+'<span class="'+catClass(n.cat)+'">'+esc(n.cat)+'</span>'+(n.draft?'<span class="draft">Draft</span>':'')+'</div><span class="t">'+esc(n.title)+'</span></div></a></li>';}
+document.getElementById('top-news').innerHTML=NEWS.slice(0,3).map(newsItem).join('');
+var currentCat='all';
+function renderList(){var l=NEWS.filter(function(n){return currentCat==='all'||n.cat===currentCat;});document.getElementById('all-news').innerHTML=l.length?l.map(newsItem).join(''):'<li style="padding:24px 0">No articles in this category yet.</li>';}
+document.querySelectorAll('.filters button').forEach(function(b){b.addEventListener('click',function(){currentCat=b.dataset.cat;document.querySelectorAll('.filters button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});renderList();});});
+renderList();
+function renderArticle(n){
+  var body=n.body.map(function(b){if(b[0]==='h')return '<h2>'+esc(b[1])+'</h2>';if(b[0]==='ul')return '<ul>'+b[1].map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>';if(b[0]==='memo')return '<p class="memo">'+esc(b[1])+'</p>';return '<p>'+esc(b[1])+'</p>';}).join('');
+  document.getElementById('crumb-title').textContent=n.title;
+  document.getElementById('article').innerHTML=thumbHtml(n,true)+'<div class="article-meta">'+dateHtml(n)+'<span class="'+catClass(n.cat)+'">'+esc(n.cat)+'</span>'+(n.draft?'<span class="draft" style="margin:0">Draft</span>':'')+'</div><h1>'+esc(n.title)+'</h1><div class="body">'+body+'</div><div class="article-foot"><a class="back" href="#news">Back to news</a><a class="btn btn-orange" href="#contact">Ask us about this</a></div>';
+  document.title=n.title+'｜MICHINARI';
+}
+
+
+/* ---------- バリュー ---------- */
+var VALUES=[
+  ["Less cost, more impact","Less Cost, More Impact","With a limited budget, we pick only what truly needs doing now."],
+  ["On the same side as the owner","Same Side","We think as part of your team chasing the same goals—not as an outside vendor."],
+  ["Hands-on, judged by results","Hands-on","We don’t stop at proposals; we execute on the ground and verify results in numbers."],
+  ["Honest about the numbers","Honest Numbers","We share the good numbers and the bad, and decide the next move together."],
+  ["Leave the skills behind","Leave the Skill","We leave methods and decision criteria inside your company so the work continues after we’re done."]
+];
+function valuesHtml(){return VALUES.map(function(v,i){return '<li><span class="n">'+String(i+1).padStart(2,'0')+'</span><b>'+esc(v[0])+'</b><i>'+esc(v[1])+'</i><span>'+esc(v[2])+'</span></li>';}).join('');}
+document.getElementById('values-top').innerHTML=VALUES.map(function(v){return '<li><div class="t"><b>'+esc(v[0])+'</b><i>'+esc(v[1])+'</i></div><p>'+esc(v[2])+'</p></li>';}).join('');
+
+
+/* ---------- 支援実績 ---------- */
+var CASES=[
+  {cat:"B2B services",attr:"Case study",title:"Website inquiries grew from 6 to over 60 a month.",figs:[["Website inquiries","60+","/ month","Before: 6 / month"],["Monthly revenue increase","¥3M+","",""]],term:"Monthly comparison. The months compared are not disclosed.",link:"#news-case-b2b"},
+  {cat:"LINE marketing",attr:"Case study",title:"More LINE sign-ups per month at a lower cost per sign-up.",figs:[["Cost per LINE sign-up","¥500","","Before: ¥5,000"],["LINE sign-ups","72","/ month","Before: 14 / month"]],term:"Comparison of monthly sign-ups and cost per sign-up. The months compared are not disclosed.",link:"#news-case-line"},
+];
+function caseCard(c){
+  return '<article class="case"><div class="case-meta"><span class="'+(c.works?'cat c-works':'cat')+'">'+esc(c.cat)+'</span><span>'+esc(c.attr)+'</span></div><h3>'+esc(c.title)+'</h3><div class="figs">'+
+    c.figs.map(function(f){return '<div class="fig"><small>'+esc(f[0])+'</small><div class="v"><b>'+esc(f[1])+'</b><i>'+esc(f[2])+'</i></div>'+(f[3]?'<span class="was">'+esc(f[3])+'</span>':'')+'</div>';}).join('')+
+    '</div><details><summary>Period ＋</summary><p>'+esc(c.term)+(c.src?' <a href="'+c.src+'" target="_blank" rel="noopener">Source ↗</a>':'')+'</p></details>'+'<a class="case-more" href="#contact" data-topic="I’d like details on your case studies">Get the details in a 30-minute online meeting</a>'+'</article>';
+}
+document.getElementById('all-works').innerHTML=CASES.map(caseCard).join('');
+
+/* ---------- 進め方（共通） ---------- */
+var FLOW_ICON={
+  mail:'<path d="M4 6.5h16v11H4z"/><path d="m4.5 7.5 7.5 5.5 7.5-5.5"/>',
+  talk:'<path d="M3.5 5h11v7.5H8L4.5 15V5z"/><path d="M14.5 9h6v7.5l-3-2.2h-6V12.5"/>',
+  target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="1" fill="currentColor"/>',
+  doc:'<path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/><path d="M9.5 12h6M9.5 15.5h6"/>',
+  grow:'<path d="M4 19.5h16"/><path d="m5 15.5 4-4 3 3 6.5-6.5"/><path d="M14.5 8h4v4"/>'
+};
+var FLOW=[
+  ["01","Contact","mail","Tell us about your challenges via our contact form or LINE."],
+  ["02","Discovery call","talk","In a 30-minute online call, we learn about your business, goals, current initiatives and team."],
+  ["03","Pinpoint bottlenecks & priorities","target","Based on your goals, we identify what is holding back results and set a clear order of priorities.",true],
+  ["04","Proposal","doc","We propose priority initiatives, scope, fees and the division of roles."],
+  ["05","Kick-off","grow","We execute the agreed plan and keep improving based on monthly numbers."]
+];
+var FLOW_INTRO='<div class="flow-intro"><figure><img src="images/head-services.webp" alt="A meeting discussing goals and challenges" loading="lazy"></figure>'+
+  '<div><p class="fi-k">How MICHINARI works</p><h3>We don’t jump straight into tactics. <br>First, we find where things are getting stuck.</h3>'+
+  '<div class="fi-map" aria-label="From goals to initiatives"><span class="n">Goals</span><i>→</i><span class="n hot">Bottleneck</span><i>→</i><span class="n">Priorities</span><i>→</i><span class="n">Initiatives</span></div>'+
+  '<p class="fi-t">Working back from your goals, we decide together what to do—and what not to do.</p></div></div>';
+document.querySelectorAll('[data-flow]').forEach(function(ol){
+  ol.classList.add('flow5');
+  ol.innerHTML=FLOW.map(function(f){return '<li class="fstep'+(f[4]?' key':'')+'"><div class="fic"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+FLOW_ICON[f[2]]+'</svg></div><span class="fno">STEP '+f[0]+'</span><b>'+f[1]+'</b>'+(f[4]?'<em class="ftag">Key step</em>':'')+'<p>'+f[3]+'</p></li>';}).join('');
+  ol.insertAdjacentHTML('beforebegin',FLOW_INTRO);
+});
+
+/* ---------- 事業 ---------- */
+var SERVICES={
+  cmo:{title:"Outsourced CMO",en:"Strategy",img:"images/biz-cmo.webp",alt:"A business owner and consultant meeting over documents",for:"For companies without a head of marketing",
+    lead:"We join your leadership as your head of marketing, set goals, budgets and priorities, and drive execution with your internal team and outside partners.",
+    worries:["Ads, website and social media are handled by different vendors, and no one sees the whole picture","You don’t know how much you spend on marketing or what actually drives results","You can’t afford a full-time marketing lead in-house"],
+    after:"Initiatives and budgets are set by working back from business goals, and you can decide each next move based on monthly numbers.",
+    groups:[["Strategy & management",[["Outsourced CMO","Strategy and decision-making as your head of marketing"],["Marketing strategy design","Situation analysis, KGI/KPI design and budget allocation"],["Project management","Managing progress and quality across your team and vendors"],["Web consulting","Audits of current initiatives and improvement proposals"]]]],topic:"About Outsourced CMO"},
+  web:{title:"Digital Marketing",en:"Digital",img:"images/biz-web.webp",alt:"Hands working on a laptop showing web analytics",for:"For companies that want more online inquiries and sales",
+    lead:"Ads, websites, landing pages, social media, LINE and MEO. We build every step from being discovered to receiving inquiries and purchases.",
+    worries:["You have a website, but it brings in almost no inquiries","You run ads but can’t tell whether they pay off","You started social media or LINE, but it isn’t driving sales"],
+    after:"You can see in numbers which channels bring inquiries and sales, and focus your budget on what works best.",
+    groups:[["Online advertising",[["Search ads","Google and Yahoo! JAPAN search ads"],["Display ads","Google Display Network and more"],["Social media ads","Instagram, Facebook, TikTok and X"],["Video ads","Planning and running video ads on YouTube and more"],["LINE ads","Follower-acquisition ads and other campaigns on LINE"],["Ad creative production","Producing and testing banners, ad copy and videos"]]],["Web production & conversion paths",[["Website & landing page production","Design, production and optimization for your goals, including WordPress builds"],["LINE Official Account setup","Designing the path from new follower to purchase or booking"],["MEO (local search)","Optimizing and managing your Google Business Profile"],["Social media management","Planning, creating and analyzing posts"],["Web analytics & measurement","Tracking setup and reporting"],["Outsourced web manager","Day-to-day operations in place of an in-house web/IT person"]]]],topic:"About Digital Marketing"},
+  promo:{title:"Sales Promotion",en:"Promotion",img:"images/biz-promo.webp",alt:"A shop counter with products, POP displays and brochures",for:"For companies whose great products aren’t turning into sales",
+    lead:"Campaign planning, flyers, POP and other promotional materials, and e-commerce and in-store displays—driving sales both online and offline.",
+    worries:["Your products are good, but shoppers pass them by in store and online","Campaigns and flyers are made by gut feeling every time","You want to turn in-store customers into repeat buyers via LINE and social media"],
+    after:"Displays and materials that communicate your product’s value, and a flow that drives repeat purchases both in store and online.",
+    groups:[["Sales promotion",[["Campaign planning","Planning and running launches and seasonal campaigns"],["Promotional materials","Flyers, brochures, POP and more"],["E-commerce & in-store promotion","Improving product pages, displays and repeat-purchase programs"],["Online–offline integration","Guiding in-store customers to LINE and social media"]]]],topic:"About Sales Promotion"},
+  inhouse:{title:"In-house Capability Building",en:"Training",img:"images/biz-inhouse.webp",alt:"An in-house training session with slides on a monitor",for:"For companies that want to stop relying entirely on outside vendors",
+    lead:"Hands-on training using your own ads and posts, plus clear playbooks, so your team can keep running and improving marketing.",
+    worries:["Outsourcing costs keep rising, and you want to handle it in-house","Know-how is lost every time the person in charge changes","You want people in-house who can judge what works and what doesn’t"],
+    after:"Your team has clear procedures and criteria, and can run, review and improve marketing without depending on outsiders.",
+    groups:[["In-house capability & training",[["Hands-on training","On-the-job training using your own ads and posts"],["In-house courses on online ads and social media","Courses that help your team take over operations"],["Manuals & playbooks","Templates for ad setup, posting and reporting"],["Review routines","Sharing KPIs and designing regular meetings to drive improvement"]]]],topic:"About In-house Capability Building"},
+  dx:{title:"DX / AX Support",en:"Operations",img:"images/biz-dx.webp",alt:"A meeting with a laptop and tablet in a bright office",for:"For companies that want to move beyond paper, spreadsheets and people-dependent processes",
+    lead:"DX (digital transformation) and AX (AI transformation), sized to fit small and mid-sized businesses. Using cloud tools such as Google Workspace and Notion together with generative AI, we connect marketing, order and customer management, and internal operations into a single flow.",
+    worries:["Customer and deal information is scattered across people and spreadsheets","Creating documents and reports takes too much time, every time","You want to use AI at work but don’t know where to start"],
+    after:"Customer, deal and internal information lives in one place; routine work is handled by tools and AI, freeing people to focus on decisions and proposals.",
+    groups:[["DX (digitalization & process improvement)",[["Workflow mapping & improvement","Reviewing current work and planning what to digitize, and in what order"],["Google Workspace adoption","Sharing rules and practices for Gmail, Drive and Sheets"],["Internal portal & knowledge base in Notion","Bringing manuals, meeting notes and tasks into one place"],["Order & customer management (CRM / SFA)","Visibility into customers, deals and project progress"]]],["AX (AI adoption) & automation",[["Marketing automation (MA)","Automated email, LINE messages and follow-ups for prospects"],["Generative AI at work","Bringing AI into writing, planning and analysis, with internal guidelines"],["Faster document creation","Templates and AI for proposals, reports and meeting notes"],["Tool integration & workflow automation","Connecting forms, CRM and chat to cut manual work"]]]],topic:"About DX / AX Support"},
+  subsidy:{title:"Subsidy Consulting",en:"Funding",img:"images/hero-city.webp",alt:"A regional Japanese city on a sunny day",for:"For companies looking to fund new initiatives",
+    lead:"We help you explore Japanese government subsidies for digital and new-business investments, and plan how to apply.",
+    worries:["You want to know whether subsidies can cover web or equipment investments","You’re unsure how the application process and timeline work","You want advice on the initiative itself, not just the subsidy"],
+    after:"Your plans and funding approach are clear, so you can get moving alongside your digital marketing and in-house capability plans.",
+    groups:[["Subsidies",[["Clarifying your project and challenges","Organizing what you want to do with subsidies in mind"],["Subsidy consultation","Assessing eligibility and how to proceed"],["Planning that fits your business","Planned together with your web and in-house capability initiatives"]]]],topic:"About Subsidy Consulting"}
+};
+document.getElementById('svc-rows').innerHTML=Object.keys(SERVICES).map(function(k){var d=SERVICES[k];return '<a class="svc-row" href="#service-'+k+'"><div class="img"><img src="'+d.img+'" alt="'+esc(d.alt)+'" loading="lazy"></div><div class="txt"><span class="en">'+esc(d.en)+'</span><h3>'+esc(d.title)+'</h3><span class="for">'+esc(d.for)+'</span><p>'+esc(d.lead)+'</p><span class="go">View services</span></div></a>';}).join('');
+var pendingTopic=null;
+function renderService(key){
+  var d=SERVICES[key];
+  var img=document.getElementById('svc-img');img.src=d.img;img.alt=d.alt;
+  document.getElementById('svc-crumb').textContent=d.title;
+  document.getElementById('svc-jp').textContent=d.title;
+  document.getElementById('svc-en').textContent=d.en;
+  document.getElementById('svc-lead').textContent=d.lead;
+  document.getElementById('svc-worries').innerHTML=d.worries.map(function(w){return '<li>'+esc(w)+'</li>';}).join('');
+  document.getElementById('svc-after').textContent=d.after;
+  document.getElementById('svc-table').innerHTML=d.groups.map(function(g){return '<div class="svc-group"><h3>'+esc(g[0])+'</h3><ul>'+g[1].map(function(it){return '<li><b>'+esc(it[0])+'</b><span>'+esc(it[1])+'</span></li>';}).join('')+'</ul></div>';}).join('');
+  document.getElementById('svc-cta').setAttribute('data-topic',d.topic);
+  document.getElementById('svc-others').innerHTML=Object.keys(SERVICES).filter(function(k){return k!==key;}).map(function(k){return '<a href="#service-'+k+'">'+esc(SERVICES[k].title)+'</a>';}).join('');
+  document.title=d.title+'｜MICHINARI';
+}
+document.addEventListener('click',function(e){var a=e.target.closest('[data-topic]');if(a)pendingTopic=a.getAttribute('data-topic');});
+
+/* ---------- Contact form（確認用：送信はしない） ---------- */
+(function(){
+  var form=document.getElementById('contact-form'),confirmBox=document.getElementById('confirm'),done=document.getElementById('done'),err=document.getElementById('form-error');
+  function step(n){['fs-1','fs-2','fs-3'].forEach(function(id,i){var el=document.getElementById(id);if(!el)return;if(i===n)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current');});}
+  function val(n){return (form.elements[n].value||'').trim();}
+  function top(){var f=document.querySelector('#view-contact .form-card');window.scrollTo(0,f.getBoundingClientRect().top+scrollY-110);}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();var ok=true;
+    ['company','name','email','message'].forEach(function(n){var el=form.elements[n];var bad=!el.value.trim()||(n==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()));el.classList.toggle('invalid',bad);el.setAttribute('aria-invalid',String(bad));if(bad)ok=false;});
+    var topic=form.elements.topic;var tbad=!topic.value;topic.classList.toggle('invalid',tbad);topic.setAttribute('aria-invalid',String(tbad));if(tbad)ok=false;
+    var ag=document.getElementById('f-agree');ag.parentElement.classList.toggle('invalid',!ag.checked);if(!ag.checked)ok=false;
+    err.hidden=ok;
+    if(!ok){var first=form.querySelector('.invalid');if(first)first.scrollIntoView({block:'center'});return;}
+    var rows=[['Company name',val('company')],['Your name',val('name')],['Email',val('email')],['Phone',val('tel')||'(not provided)'],['Topic',topic.value],['Website URL',val('url')||'(not provided)'],['Message',val('message')]];
+    document.getElementById('confirm-list').innerHTML=rows.map(function(r){return '<div><dt>'+esc(r[0])+'</dt><dd>'+esc(r[1])+'</dd></div>';}).join('');
+    form.hidden=true;confirmBox.hidden=false;step(1);top();
+  });
+  document.getElementById('btn-back').addEventListener('click',function(){confirmBox.hidden=true;form.hidden=false;step(0);top();});
+  var sendBtn=document.getElementById('btn-send'),sendErr=document.getElementById('send-error');
+  sendBtn.addEventListener('click',function(){
+    if(sendBtn.disabled)return;
+    sendBtn.disabled=true;sendErr.hidden=true;var label=sendBtn.innerHTML;sendBtn.textContent='Sending…';
+    var data={_subject:'【MICHINARI・EN】Inquiry: '+form.elements.topic.value,_template:'table',_captcha:'false',
+      'Topic':form.elements.topic.value,'Company name':val('company'),'Your name':val('name'),'Email':val('email'),
+      'Phone':val('tel')||'(not provided)','Website URL':val('url')||'(not provided)','Message':val('message'),_replyto:val('email'),_honey:''};
+    fetch('https://formsubmit.co/ajax/'+['shuji.kawamoto.jp','gmail.com'].join('@'),{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
+      .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+      .then(function(){confirmBox.hidden=true;done.hidden=false;step(2);top();form.reset();})
+      .catch(function(){sendErr.hidden=false;})
+      .then(function(){sendBtn.disabled=false;sendBtn.innerHTML=label;});
+  });
+  window.__resetContact=function(){form.hidden=false;confirmBox.hidden=true;done.hidden=true;step(0);
+    if(pendingTopic){form.elements.topic.value=pendingTopic;form.elements.topic.classList.remove('invalid');pendingTopic=null;}};
+})();
+
+/* ---------- 理念の背景：静止画（夜明けの道） ---------- */
+(function(){
+  var cv=document.getElementById('vision-fx'); if(!cv) return;
+  var ctx=cv.getContext('2d');
+  function seeded(n){var x=Math.sin(n*12.9898)*43758.5453;return x-Math.floor(x);}
+  function draw(){
+    var r=cv.getBoundingClientRect(); if(!r.width) return;
+    var dpr=Math.min(window.devicePixelRatio||1,2), W=r.width, H=r.height;
+    cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    var hy=H-Math.min(230,H*.3), vx=W*.5;
+    // 空：深い紺から地平線の朝焼けへ
+    var g=ctx.createLinearGradient(0,0,0,hy);
+    g.addColorStop(0,'#071427'); g.addColorStop(.6,'#0f2d52'); g.addColorStop(1,'#1d4675');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+    // 細かいドットのグリッド（上ほど薄く）
+    for(var y=24;y<hy-20;y+=22){var a=.05+.10*(y/hy);ctx.fillStyle='rgba(170,205,240,'+a+')';
+      for(var x=(y/22%2)*11+12;x<W;x+=22){ctx.fillRect(x,y,1.2,1.2);}}
+    // 地平線から放射する光の筋
+    ctx.save(); ctx.globalCompositeOperation='lighter';
+    for(var i=0;i<26;i++){var ang=Math.PI+(i+.5)/26*Math.PI, len=Math.max(W,H)*1.2, sp=.012+seeded(i)*.016;
+      var gr=ctx.createLinearGradient(vx,hy,vx+Math.cos(ang)*len*.6,hy+Math.sin(ang)*len*.6);
+      gr.addColorStop(0,'rgba(255,190,120,'+(.10+seeded(i+40)*.08)+')'); gr.addColorStop(1,'rgba(255,190,120,0)');
+      ctx.fillStyle=gr; ctx.beginPath(); ctx.moveTo(vx,hy);
+      ctx.lineTo(vx+Math.cos(ang-sp)*len,hy+Math.sin(ang-sp)*len); ctx.lineTo(vx+Math.cos(ang+sp)*len,hy+Math.sin(ang+sp)*len); ctx.closePath(); ctx.fill();}
+    // 地平線の光（太陽）
+    var glow=ctx.createRadialGradient(vx,hy,0,vx,hy,Math.max(W,H)*.6);
+    glow.addColorStop(0,'rgba(255,214,150,.85)'); glow.addColorStop(.06,'rgba(255,160,80,.55)'); glow.addColorStop(.22,'rgba(215,65,51,.22)'); glow.addColorStop(.55,'rgba(40,100,170,.08)'); glow.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=glow; ctx.fillRect(0,0,W,H);
+    var core=ctx.createRadialGradient(vx,hy,0,vx,hy,70); core.addColorStop(0,'rgba(255,250,235,1)'); core.addColorStop(.35,'rgba(255,220,160,.6)'); core.addColorStop(1,'rgba(255,180,100,0)');
+    ctx.fillStyle=core; ctx.beginPath(); ctx.arc(vx,hy,70,0,6.283); ctx.fill();
+    ctx.restore();
+    // 大きな輪郭文字
+    var fs=Math.min(W*.2,260);
+    ctx.save(); ctx.font='700 '+fs+'px "Lexend","Helvetica Neue",Arial,sans-serif'; ctx.textAlign='center'; ctx.textBaseline='alphabetic';
+    ctx.lineWidth=1.2; ctx.strokeStyle='rgba(190,215,240,.13)'; ctx.strokeText('MICHINARI',vx,hy-6); ctx.restore();
+    // 地面
+    var gd=ctx.createLinearGradient(0,hy,0,H); gd.addColorStop(0,'#16365c'); gd.addColorStop(1,'#0a1a30');
+    ctx.fillStyle=gd; ctx.fillRect(0,hy,W,H-hy);
+    ctx.save(); ctx.beginPath(); ctx.rect(0,hy,W,H-hy); ctx.clip();
+    ctx.strokeStyle='rgba(140,190,240,.30)'; ctx.lineWidth=1;
+    for(var gx=-16;gx<=16;gx++){ctx.beginPath();ctx.moveTo(vx,hy);ctx.lineTo(vx+gx*W*.09,H);ctx.stroke();}
+    for(var gy=1;gy<13;gy++){var q=gy/13, yy=hy+(H-hy)*q*q; ctx.globalAlpha=.15+.5*q; ctx.beginPath();ctx.moveTo(0,yy);ctx.lineTo(W,yy);ctx.stroke();}
+    ctx.globalAlpha=1;
+    // 道（光を受けた路面）
+    var road=ctx.createLinearGradient(0,hy,0,H); road.addColorStop(0,'rgba(255,200,140,.55)'); road.addColorStop(1,'rgba(255,255,255,.08)');
+    ctx.fillStyle=road; ctx.beginPath(); ctx.moveTo(vx-2,hy); ctx.lineTo(vx+2,hy); ctx.lineTo(vx+W*.16,H); ctx.lineTo(vx-W*.16,H); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle='rgba(255,220,180,.55)'; ctx.lineWidth=1.5;
+    ctx.beginPath(); ctx.moveTo(vx-2,hy); ctx.lineTo(vx-W*.16,H); ctx.moveTo(vx+2,hy); ctx.lineTo(vx+W*.16,H); ctx.stroke();
+    ctx.fillStyle='rgba(255,255,255,.85)';
+    for(var d=0;d<10;d++){var q1=(d+.2)/10,q2=q1+.05; if(q2>1)continue; var y1=hy+(H-hy)*q1*q1,y2=hy+(H-hy)*q2*q2,w1=1+q1*6,w2=1+q2*6; ctx.globalAlpha=.3+.7*q1;
+      ctx.beginPath(); ctx.moveTo(vx-w1/2,y1);ctx.lineTo(vx+w1/2,y1);ctx.lineTo(vx+w2/2,y2);ctx.lineTo(vx-w2/2,y2);ctx.closePath();ctx.fill();}
+    ctx.restore(); ctx.globalAlpha=1;
+    // 地平線のライン
+    var hl=ctx.createLinearGradient(0,0,W,0); hl.addColorStop(0,'rgba(255,190,130,0)'); hl.addColorStop(.5,'rgba(255,220,170,.9)'); hl.addColorStop(1,'rgba(255,190,130,0)');
+    ctx.fillStyle=hl; ctx.fillRect(0,hy-1,W,2);
+    // 静かな星（固定位置）
+    for(var k=0;k<Math.round(W/16);k++){var sx=seeded(k+7)*W, sy=seeded(k+99)*hy*.7, sr=.5+seeded(k+3)*1.1;
+      ctx.fillStyle='rgba(230,240,255,'+(.25+seeded(k+11)*.5)+')'; ctx.beginPath(); ctx.arc(sx,sy,sr,0,6.283); ctx.fill();}
+  }
+  draw();
+  var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(draw,120);});
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(draw);
+})();
+
+/* ---------- CTAカードのフェードイン ---------- */
+(function(){var c=document.getElementById('cta-card');if(!c)return;
+  if(!('IntersectionObserver' in window)){c.classList.add('is-visible');return;}
+  new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){c.classList.add('is-visible');o.disconnect();}});},{threshold:.2}).observe(c);})();
+
+/* ---------- ページ切り替え ---------- */
+var VIEWS=['top','philosophy','services','service','works','about','news','article','contact'];
+var ALIAS={mission:['philosophy','mvv-mission'],vision:['philosophy','mvv-vision'],value:['philosophy','mvv-value'],message:['about','sec-message'],members:['about','sec-members'],company:['about','sec-company'],flow:['contact','sec-flow']};
+function show(name){
+  VIEWS.forEach(function(v){document.getElementById('view-'+v).hidden=(v!==name);});
+  var cta=document.querySelector('section.cta');if(cta)cta.hidden=(name==='contact');
+  var navKey={philosophy:'philosophy',services:'services',service:'services',works:'works',about:'about',news:'news',article:'news',contact:'contact'}[name];
+  document.querySelectorAll('[data-nav]').forEach(function(a){if(a.dataset.nav===navKey)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+}
+function route(){
+  var h=(location.hash||'').slice(1);
+  document.title=BASE_TITLE;
+  var anchor=null,view='top';
+  if(ALIAS[h]){view=ALIAS[h][0];anchor=ALIAS[h][1];}
+  else if(h.indexOf('news-')===0&&NEWS.some(function(x){return 'news-'+x.id===h;})){view='article';renderArticle(NEWS.filter(function(x){return 'news-'+x.id===h;})[0]);}
+  else if(h.indexOf('service-')===0&&SERVICES[h.slice(8)]){view='service';renderService(h.slice(8));}
+  else if(['philosophy','services','works','about','news','contact'].indexOf(h)>=0){view=h;}
+  if(view==='contact')window.__resetContact();
+  show(view);
+  if(anchor){requestAnimationFrame(function(){var el=document.getElementById(anchor);window.scrollTo(0,el.getBoundingClientRect().top+scrollY-96);});}
+  else window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);
+route();
+
+(function(){
+  document.querySelectorAll('.gnav-item').forEach(function(it){
+    it.addEventListener('click',function(e){if(e.target.closest('a')){it.classList.add('closed');var a=document.activeElement;if(a&&a.blur)a.blur();}});
+    it.addEventListener('mouseleave',function(){it.classList.remove('closed');});
+  });
+  var btn=document.getElementById('menu-btn'),nav=document.getElementById('gnav');
+  function close(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='Menu';}
+  btn.addEventListener('click',function(){var o=!nav.classList.contains('open');nav.classList.toggle('open',o);btn.setAttribute('aria-expanded',String(o));btn.textContent=o?'Close':'Menu';});
+  document.querySelectorAll('#gnav-links a').forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){close();btn.focus();}});
+})();
+
+/* ---------- 言語切り替え：開いている場所（#以降）を保ったまま移動 ---------- */
+document.querySelectorAll('.lang-sw a').forEach(function(a){a.addEventListener('click',function(e){
+  if(a.getAttribute('aria-current')==='true'){e.preventDefault();return;}
+  e.preventDefault();var h=location.hash||'';location.href=a.getAttribute('href')+h;});});
+</script>
