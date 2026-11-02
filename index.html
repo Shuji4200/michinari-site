@@ -934,7 +934,7 @@ html,body{background:var(--page)}
     <div class="ax-photo ax-photo-tall"><img src="images/head-works.webp" width="1600" height="800" alt="オフィスで握手を交わす経営者とコンサルタント" loading="lazy" style="object-position:50% 72%"></div>
   </div>
   <section class="panel block"><div class="works" id="all-works"></div>
-    <div class="case-consult"><div><b>事例の詳しい内容は、オンライン相談でご説明します</b><p>取り組んだ施策や進め方、期間などの詳細は、お問い合わせのうえ、オンラインでの30分の個別相談でお話しします。貴社の状況に近い事例もあわせてご紹介します。</p></div><a class="btn btn-dark" href="#contact" data-topic="支援事例について詳しく聞きたい">30分のオンライン相談を申し込む</a></div></section>
+    <div class="case-consult"><div><b>事例の詳しい内容は、オンライン相談でご説明します</b><p>取り組んだ施策や進め方、期間などの詳細は、お問い合わせのうえ、オンラインでの30分の個別相談でお話しします。ここに載せていない事例も含めて、貴社の状況に近いものをご紹介します。</p></div><a class="btn btn-dark" href="#contact" data-topic="支援事例について詳しく聞きたい">30分のオンライン相談を申し込む</a></div></section>
 </div></main>
 
 <!-- ================= MICHINARIについて ================= -->
@@ -1193,8 +1193,6 @@ document.getElementById('values-top').innerHTML=VALUES.map(function(v){return '<
 var CASES=[
   {cat:"法人向けサービス",attr:"支援実績",title:"ホームページからの問い合わせが、月6件から60件以上に。",figs:[["HPからの問い合わせ","60","件以上／月","改善前 6件／月"],["月間売上の増加","+300","万円以上",""]],term:"月間の数値比較です。比較した年月は記載していません。",link:"#news-case-b2b"},
   {cat:"LINE集客",attr:"支援実績",title:"登録単価を抑えながら、月間のLINE登録者数を拡大。",figs:[["LINE登録1名あたりの獲得単価","500","円","改善前 5,000円"],["LINE登録者数","72","名／月","改善前 14名／月"]],term:"月間登録者数と登録単価の比較です。比較した年月は記載していません。",link:"#news-case-line"},
-  {cat:"EC・コンタクトレンズ販売",attr:"協力パートナーの支援実績",works:true,title:"LINE導入から1年で、サブスク会員数が2倍に。",figs:[["サブスク会員数（1年間）","2","倍",""],["LINE導入後1年間の会員増加","約1,000","名",""]],term:"LINE導入後1年間。開始年月は記載していません。協力パートナーの運営事業での、チームによる支援の成果です。",src:"https://webfleek.jp/#results"},
-  {cat:"EC・オンラインレッスンキット販売",attr:"協力パートナーの支援実績",works:true,title:"個別対応に使っていたLINEを、販売チャネルに。",figs:[["公開事例における平均CVR","22.73","%",""],["LINEの友だち登録数","380","名／月",""]],term:"集計年月・CVRの母数は記載していません。協力パートナーの運営事業での、チームによる支援の成果です。",src:"https://webfleek.jp/#results"}
 ];
 function caseCard(c){
   return '<article class="case"><div class="case-meta"><span class="'+(c.works?'cat c-works':'cat')+'">'+esc(c.cat)+'</span><span>'+esc(c.attr)+'</span></div><h3>'+esc(c.title)+'</h3><div class="figs">'+
