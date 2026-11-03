@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="en">
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S1H3SGD2XF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S1H3SGD2XF');
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="MICHINARI is a Japan-based marketing partner that works inside your business as an outsourced CMO, covering digital marketing, sales promotion, in-house training and DX/AX for Japanese SMEs and overseas companies entering Japan.">
 <title>MICHINARI | Marketing Partner for Growth in Japan</title>
@@ -1200,6 +1209,7 @@ body{letter-spacing:0}
         <div><h4><a href="#contact">Contact</a></h4><a href="#contact">Contact form</a><a href="#flow">How it works</a><a href="https://lin.ee/5DKzvf8P" target="_blank" rel="noopener">Official LINE ↗</a><a href="https://x.com/shuji2000_jp" target="_blank" rel="noopener">X ↗</a></div>
       </nav>
     </div>
+    <p class="copy" style="border-top:none;padding-top:0;margin-top:24px;line-height:1.8">This site uses Google Analytics to understand how it is used. Data is collected anonymously through cookies and does not identify you personally. See <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Google’s policy ↗</a> for details.</p>
     <p class="copy">© MICHINARI All rights reserved.</p>
   </div>
 </footer>
@@ -1380,7 +1390,7 @@ document.addEventListener('click',function(e){var a=e.target.closest('[data-topi
       'Phone':val('tel')||'(not provided)','Website URL':val('url')||'(not provided)','Message':val('message'),_replyto:val('email'),_honey:''};
     fetch('https://formsubmit.co/ajax/'+['shuji.kawamoto.jp','gmail.com'].join('@'),{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
       .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
-      .then(function(){form.reset();location.href='thanks/';})
+      .then(function(){form.reset();var go=function(){location.href='thanks/';};if(typeof gtag==='function'){var done=false,once=function(){if(!done){done=true;go();}};gtag('event','generate_lead',{method:'contact_form',event_callback:once});setTimeout(once,1200);}else go();})
       .catch(function(){sendErr.hidden=false;})
       .then(function(){sendBtn.disabled=false;sendBtn.innerHTML=label;});
   });
@@ -1498,4 +1508,12 @@ route();
 document.querySelectorAll('.lang-sw a').forEach(function(a){a.addEventListener('click',function(e){
   if(a.getAttribute('aria-current')==='true'){e.preventDefault();return;}
   e.preventDefault();var h=location.hash||'';location.href=a.getAttribute('href')+h;});});
+
+/* ---------- アクセス解析（GA4）：LINEボタンのクリックを計測 ---------- */
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[href*="lin.ee"]');
+  if(!a||typeof gtag!=='function')return;
+  var s=a.closest('section[id],footer,header');
+  gtag('event','line_click',{link_location:s?(s.id||s.tagName.toLowerCase()):'other'});
+});
 </script>
