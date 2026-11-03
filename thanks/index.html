@@ -9,6 +9,14 @@
   gtag('js', new Date());
 
   gtag('config', 'G-S1H3SGD2XF');
+
+  /* フォーム送信を経てサンクスページに来たときだけ、成果（generate_lead）を記録する。直接アクセスや再読み込みでは数えない */
+  (function(){
+    var fromForm=false;
+    try{if(sessionStorage.getItem('mn_lead')){fromForm=true;sessionStorage.removeItem('mn_lead');}}catch(e){}
+    if(/[?&]sent=1/.test(location.search)){fromForm=true;try{history.replaceState(null,'',location.pathname);}catch(e){}}
+    if(fromForm)gtag('event','generate_lead',{method:'contact_form'});
+  })();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
@@ -69,3 +77,10 @@ footer{padding:22px 16px;text-align:center;font:400 11.5px var(--en);color:var(-
   </section>
 </main>
 <footer>© MICHINARI All rights reserved.</footer>
+<script>
+/* サンクスページのLINEボタンのクリックを計測 */
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[href*="lin.ee"]');
+  if(a&&typeof gtag==='function')gtag('event','line_click',{link_location:'thanks'});
+});
+</script>
