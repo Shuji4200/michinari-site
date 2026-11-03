@@ -12,7 +12,7 @@
 </script>
 <title>MICHINARI｜中小企業から、日本を元気にする。外部CMO・Webマーケティング支援</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="MICHINARI（ミチナリ）は、外部CMOとして中小企業の経営に入り、Web・販促・内製化・DX/AXまで事業の道のりに伴走するマーケティングパートナーです。">
+<meta name="description" content="MICHINARI（ミチナリ）は、中小企業の社外マーケティング責任者です。Web集客・販促・人材育成・デジタル化・AI活用を通じて、売上の拡大と、自社で成長を続ける仕組みづくりを支援します。">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -116,10 +116,11 @@ h1,h2,h3{color:var(--ink)}
 @keyframes heroDrift{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-2%,-1%,0)}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,26,48,.72) 0%,rgba(10,26,48,.50) 38%,rgba(10,26,48,.12) 70%,rgba(10,26,48,0) 100%),linear-gradient(180deg,rgba(10,26,48,.10) 0%,rgba(10,26,48,0) 40%,rgba(10,26,48,.25) 100%)}
 .hero-in{position:relative;z-index:1;width:min(100% - 32px,1320px);margin:0 auto;padding:72px clamp(8px,4vw,64px) 80px;text-shadow:0 2px 16px rgba(5,15,30,.35)}
-.hero-kicker{font:700 clamp(46px,7vw,104px)/1.04 var(--en);letter-spacing:-.01em;color:#fff;position:relative;padding-top:26px}
+.hero-kicker{font:700 clamp(20px,2.3vw,30px)/1.2 var(--en);letter-spacing:.02em;color:#fff;position:relative;padding-top:22px}
 .hero-kicker::before{content:"";position:absolute;left:2px;top:0;width:44px;height:3px;background:var(--red)}
-.hero h1{margin-top:22px;font-size:clamp(22px,2.6vw,34px);font-weight:900;line-height:1.5;letter-spacing:.06em;color:#fff}
-.hero .lead{margin-top:24px;font-size:clamp(14px,1.25vw,16.5px);font-weight:500;line-height:2.05;letter-spacing:.06em;color:#fff}
+.hero h1{margin-top:16px;font-size:clamp(32px,5vw,66px);font-weight:900;line-height:1.35;letter-spacing:.05em;color:#fff}
+.hero .lead{margin-top:26px;font-size:clamp(14px,1.25vw,16.5px);font-weight:500;line-height:2.05;letter-spacing:.05em;color:#fff}
+.hero .lead .nb{display:inline-block}
 .hero-btns{margin-top:40px;display:flex;flex-wrap:wrap;gap:16px}
 .hb{display:inline-flex;align-items:center;justify-content:center;min-width:260px;min-height:64px;padding:0 28px;border-radius:10px;border:2px solid;font-size:15px;font-weight:700;letter-spacing:.06em;text-decoration:none;text-shadow:none;transition:transform .2s,box-shadow .2s,background .2s}
 .hb:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.25)}
@@ -828,6 +829,33 @@ html,body{background:var(--page)}
 @media (max-width:960px){.mb-partners{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:820px){.mb-lead{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.mb-card{grid-template-columns:minmax(0,1fr)}.mb-card .mb-ph{max-width:220px}}
+
+/* ===== トップ：支援体制の抜粋 ===== */
+.tm{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(16px,2.4vw,28px);align-items:stretch}
+.tm-lead{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:22px;align-items:center;background:#f4f5f6;border-radius:14px;padding:18px}
+.tm-ph{aspect-ratio:1;border-radius:10px;overflow:hidden}
+.tm-ph img{width:100%;height:100%;object-fit:cover}
+.tm-role{display:flex;flex-direction:column;gap:2px;font-size:12.5px;font-weight:700;color:var(--red-ink);letter-spacing:.12em}
+.tm-role span{font-weight:500;color:#5b646b;letter-spacing:.04em}
+.tm-body h3{margin-top:8px;font-size:clamp(22px,2.2vw,28px);font-weight:900;color:#151b1e;letter-spacing:.14em}
+.tm-catch{margin-top:12px;font-weight:900;font-size:15.5px;line-height:1.6;color:#151b1e;padding-left:12px;border-left:3px solid var(--red)}
+.tm-text{margin-top:10px;font-size:14px;line-height:1.9;color:#30373c}
+.tm-partners{display:grid;gap:12px;align-content:center}
+.tm-partners li{display:grid;grid-template-columns:76px minmax(0,1fr);gap:16px;align-items:center;background:#f4f5f6;border-radius:12px;padding:12px}
+.tm-partners img{width:76px;height:76px;border-radius:8px;object-fit:cover}
+.tm-partners span{display:block;font-size:12px;font-weight:700;color:#5b646b;line-height:1.6}
+.tm-partners b{display:block;margin-top:2px;font-size:17px;font-weight:900;color:#151b1e;letter-spacing:.12em}
+.tm-links{display:flex;flex-wrap:wrap;gap:6px 28px}
+@media (max-width:900px){.tm{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.tm-lead{grid-template-columns:minmax(0,1fr)}.tm-ph{max-width:260px}}
+
+/* ===== お問い合わせ：流れの下のCTA ===== */
+.ct-again{margin:clamp(36px,5vw,56px) auto 0;width:min(100%,740px);background:#fff;border-radius:22px;padding:clamp(28px,4vw,40px) clamp(20px,4vw,44px);text-align:center;box-shadow:0 18px 50px rgba(15,23,42,.08)}
+.ct-again-h{font-size:clamp(17px,1.8vw,20px);font-weight:900;color:#0f172a;line-height:1.6}
+.ct-again-t{margin-top:8px;font-size:14px;color:#475569}
+.ct-again-btns{margin-top:24px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.ct-again-btns .ct-btn{min-width:250px;min-height:60px}
+@media (max-width:820px){.ct-again-btns .ct-btn{min-width:0;width:100%}}
 </style>
 
 <div class="intro" id="intro" aria-hidden="true">
@@ -903,9 +931,9 @@ html,body{background:var(--page)}
     <div class="hero-media"><img src="images/hero-tokyo.webp" width="1920" height="1079" alt="" fetchpriority="high"></div>
     <div class="hero-in">
       <p class="hero-kicker" aria-hidden="true"><span class="nb">Be the Light</span> <span class="nb">of Japan.</span></p>
-      <h1 id="hero-title"><span class="nb">地域の会社が、</span><br><span class="nb">日本を明るくする。</span></h1>
-      <p class="lead">MICHINARIは、外部CMOとして中小企業の経営に入り、<br>Web・販促・内製化・DX/AXまで、<br>事業の道のりに伴走するマーケティングパートナーです。</p>
-      <div class="hero-btns"><a class="hb hb-light" href="#services">サービス一覧を見る</a><a class="hb hb-dark" href="#contact">ご相談／お問い合わせ</a></div>
+      <h1 id="hero-title"><span class="nb">中小企業から、</span><br><span class="nb">日本を元気にする。</span></h1>
+      <p class="lead"><span class="nb">戦略から実行、</span><span class="nb">社内への定着まで。</span><br><span class="nb">MICHINARIは、</span><span class="nb">中小企業の</span><span class="nb">社外マーケティング責任者です。</span><br><span class="nb">Web集客・販促・人材育成・</span><span class="nb">デジタル化・AI活用を通じて、</span><br><span class="nb">売上の拡大と、</span><span class="nb">自社で成長を続ける</span><span class="nb">仕組みづくりを支援します。</span></p>
+      <div class="hero-btns"><a class="hb hb-light" href="#services">支援内容を見る</a><a class="hb hb-dark" href="#contact">無料相談を申し込む</a></div>
     </div>
   </section>
   <div class="hero-strip" aria-label="支援領域">
@@ -913,29 +941,21 @@ html,body{background:var(--page)}
     <div class="marquee"><div class="marquee-track"><a href="#service-cmo"><b>外部CMO</b><span>Outsourced CMO</span></a><a href="#service-web"><b>Webマーケティング支援</b><span>Web Marketing</span></a><a href="#service-promo"><b>販促支援</b><span>Sales Promotion</span></a><a href="#service-inhouse"><b>内製化支援</b><span>In-house Support</span></a><a href="#service-dx"><b>DX・AX推進支援</b><span>DX / AX</span></a><a href="#service-subsidy"><b>補助金コンサルティング</b><span>Subsidy</span></a><span class="dup" aria-hidden="true"><a tabindex="-1" href="#service-cmo"><b>外部CMO</b><span>Outsourced CMO</span></a><a tabindex="-1" href="#service-web"><b>Webマーケティング支援</b><span>Web Marketing</span></a><a tabindex="-1" href="#service-promo"><b>販促支援</b><span>Sales Promotion</span></a><a tabindex="-1" href="#service-inhouse"><b>内製化支援</b><span>In-house Support</span></a><a tabindex="-1" href="#service-dx"><b>DX・AX推進支援</b><span>DX / AX</span></a><a tabindex="-1" href="#service-subsidy"><b>補助金コンサルティング</b><span>Subsidy</span></a></span></div></div>
   </div>
 
-  <section class="panel" aria-labelledby="t-news">
-    <div class="sec-head"><div class="labels"><span>News</span><span>News</span><span>News</span></div><h2 id="t-news">お知らせ<small>News</small></h2><p class="sec-desc">MICHINARIからのお知らせや、Webマーケティングに関するコラムをお届けします。</p></div>
-    <div class="sec-body">
-      <div class="cols-head n-head"><span>[Image]</span><span>[Date + Title]</span></div>
-      <ul class="news-list" id="top-news"></ul>
-      <div class="btn-row"><a class="more" href="#news">お知らせ一覧</a></div>
-    </div>
-  </section>
 
 
   <section class="panel" aria-labelledby="t-what">
-    <div class="sec-head"><h2 id="t-what">事業内容<small>Services</small></h2><p class="sec-desc">Web集客から業務の仕組み化まで、まとめてご相談いただけます。支援の形は、大きく2つです。</p></div>
+    <div class="sec-head"><h2 id="t-what">事業内容<small>Services</small></h2><p class="sec-desc">Web集客から業務の仕組みづくりまで、まとめてご相談いただけます。支援の形は、大きく2つです。</p></div>
     <div class="two-ways">
       <article class="way">
         <div class="way-ph"><img src="images/biz-web.webp" width="1200" height="674" alt="" loading="lazy"><span class="way-no">01</span></div>
         <div class="way-body">
           <p class="way-k">任せる</p>
-          <h3>Web集客を任せたい</h3>
-          <p class="way-lead">広告・ホームページ・SNS・LINEの実装と運用まで、MICHINARIが一緒に担当します。成果に連動した形でのご提案も可能です。</p>
-          <p class="way-for">こんな会社に：Webからの問い合わせや売上を増やしたいが、社内に任せられる人がいない</p>
+          <h3>集客の実行を任せる</h3>
+          <p class="way-lead">Web広告・ホームページ・SNS・LINEの企画から制作・運用まで、MICHINARIが担当します。成果に連動した形でのご提案も可能です。</p>
+          <p class="way-for">こんな企業に：Webからの問い合わせや売上を増やしたいが、社内に任せられる人がいない</p>
           <p class="way-sub">含まれる支援</p>
           <ul class="way-list">
-            <li><a href="#service-web"><b>Webマーケティング支援</b><span>Web広告・HP/LP制作・SNS・LINE・MEO</span></a></li>
+            <li><a href="#service-web"><b>Webマーケティング支援</b><span>Web広告・ホームページ／LP制作・SNS・LINE・MEO</span></a></li>
             <li><a href="#service-promo"><b>販促支援</b><span>キャンペーン企画・販促物・売り場とWebの連携</span></a></li>
           </ul>
         </div>
@@ -944,14 +964,14 @@ html,body{background:var(--page)}
         <div class="way-ph"><img src="images/biz-inhouse.webp" width="1200" height="674" alt="" loading="lazy"><span class="way-no">02</span></div>
         <div class="way-body">
           <p class="way-k">一緒につくる</p>
-          <h3>社内で回せる仕組みをつくりたい</h3>
-          <p class="way-lead">Web施策のプランづくりから、内製化、DX・AX、資料作成や業務効率化まで。社外のマーケティング責任者として、社内で続く仕組みを一緒につくります。</p>
-          <p class="way-for">こんな会社に：外注に頼りきりの状態から抜け出し、社内でマーケティングや業務を回せるようにしたい</p>
+          <h3>自社で成長する体制をつくる</h3>
+          <p class="way-lead">Web施策の計画づくりから、人材育成（内製化）、デジタル化・AI活用、資料作成や業務の効率化まで。社外のマーケティング責任者として、自社で成長を続けられる体制を一緒につくります。</p>
+          <p class="way-for">こんな企業に：外注に頼りきりの状態から抜け出し、自社で運用・改善できる体制をつくりたい</p>
           <p class="way-sub">含まれる支援</p>
           <ul class="way-list">
-            <li><a href="#service-cmo"><b>外部CMO</b><span>戦略設計・KPI・予算配分・進行管理</span></a></li>
-            <li><a href="#service-inhouse"><b>内製化支援</b><span>実践研修・手順書・振り返りの仕組み</span></a></li>
-            <li><a href="#service-dx"><b>DX・AX推進支援</b><span>クラウドツール・生成AI・CRM・資料作成の時短化</span></a></li>
+            <li><a href="#service-cmo"><b>外部CMO</b><span>社外のマーケティング責任者として、戦略設計・KPI・予算配分・進行管理</span></a></li>
+            <li><a href="#service-inhouse"><b>内製化支援</b><span>人材育成：実践研修・手順書・振り返りの仕組み</span></a></li>
+            <li><a href="#service-dx"><b>DX・AX推進支援</b><span>デジタル化・AI活用による業務改善：クラウドツール・生成AI・CRM</span></a></li>
           </ul>
         </div>
       </article>
@@ -962,6 +982,44 @@ html,body{background:var(--page)}
     </div>
   </section>
 
+  <section class="panel" aria-labelledby="t-works">
+    <div class="sec-head"><h2 id="t-works">支援実績<small>Works</small></h2><p class="sec-desc">集客や売上の改善につながった支援事例の一部をご紹介します。</p></div>
+    <div class="sec-body">
+      <div class="works" id="top-works"></div>
+      <div class="btn-row"><a class="more" href="#works">支援実績を見る</a></div>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="t-team">
+    <div class="sec-head"><h2 id="t-team">支援体制<small>Team</small></h2><p class="sec-desc">代表の河本が窓口となり、各分野のパートナーとチームで支援します。</p></div>
+    <div class="sec-body">
+      <div class="tm">
+        <div class="tm-lead">
+          <div class="tm-ph"><img src="images/member-kawamoto.webp" width="600" height="600" alt="セミナーで登壇する代表の河本修司" loading="lazy"></div>
+          <div class="tm-body">
+            <p class="tm-role">代表<span>外部CMO</span></p>
+            <h3>河本 修司</h3>
+            <p class="tm-catch">「現場」と「数字」の両方から、事業を動かす。</p>
+            <p class="tm-text">社外のマーケティング責任者として、戦略から実行、社内への定着まで伴走します。</p>
+          </div>
+        </div>
+        <ul class="tm-partners">
+          <li><img src="images/member-danno.webp" width="480" height="480" alt="パートナーの團野凌" loading="lazy"><div><span>パートナー／I-Nexus プロジェクトマネージャー</span><b>團野 凌</b></div></li>
+          <li><img src="images/member-utagawa.webp" width="600" height="600" alt="パートナーの歌川大介" loading="lazy"><div><span>パートナー／株式会社WEB FLEEK 代表取締役</span><b>歌川 大介</b></div></li>
+        </ul>
+      </div>
+      <div class="btn-row tm-links"><a class="more" href="#members">メンバー紹介を見る</a><a class="more" href="#message">代表ご挨拶を読む</a></div>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="t-news">
+    <div class="sec-head"><div class="labels"><span>News</span><span>News</span><span>News</span></div><h2 id="t-news">お知らせ<small>News</small></h2><p class="sec-desc">MICHINARIからのお知らせや、Webマーケティングに関するコラムをお届けします。</p></div>
+    <div class="sec-body">
+      <div class="cols-head n-head"><span>[Image]</span><span>[Date + Title]</span></div>
+      <ul class="news-list" id="top-news"></ul>
+      <div class="btn-row"><a class="more" href="#news">お知らせ一覧</a></div>
+    </div>
+  </section>
 </div></main>
 
 
@@ -1018,7 +1076,7 @@ html,body{background:var(--page)}
     <div class="ax-photo"><img src="images/head-services.webp" width="1600" height="800" alt="会議室でマーケティング戦略を話し合うチーム" loading="lazy"></div>
   </div>
   <section class="panel block">
-    <div class="principle"><b>最小限の費用から、最大限の効果を出します。</b><p>限られた予算の中で、事業の課題に合った施策を選び、やるべきことと、やらなくていいことを一緒に決めます。</p></div>
+    <div class="principle"><b>限られた予算を、事業の成長につながる一手へ。</b><p>限られた予算の中で、事業の課題と目標に合った施策を選び、優先順位を明確にします。</p></div>
     <div class="svc-rows" id="svc-rows"></div>
   </section>
 </div></main>
@@ -1066,7 +1124,7 @@ html,body{background:var(--page)}
   <section class="ax-head bleed">
     <div class="ax-wrap ax-head-in">
       <div><p class="crumb"><a href="#top">TOP</a> / MICHINARIについて</p><h1>MICHINARIについて<span>/</span><small>About</small></h1></div>
-      <p>MICHINARIは、外部CMOとして中小企業の経営に入り、<br>マーケティングの戦略から実行・社内への定着までを支援する<br>マーケティングパートナーです。</p>
+      <p>MICHINARIは、中小企業の社外マーケティング責任者として、<br>戦略から実行、社内への定着までを支援し、<br>事業の成長に伴走します。</p>
     </div>
   </section>
   <div class="ax-photo bleed"><img src="images/about-street.webp" width="1600" height="900" alt="晴れた日の地方の商店街" loading="lazy"></div>
@@ -1075,10 +1133,11 @@ html,body{background:var(--page)}
     <div class="ax-wrap ax-msg">
       <div>
         <h2 class="ax-h">代表ご挨拶<small>CEO Message</small></h2>
-        <h3>いい商品を持つ会社が、<br>きちんと選ばれるように。</h3>
-        <p>中小企業には、地域で長く愛されている商品や、現場で磨かれてきた技術がたくさんあります。それなのに、伝え方や届け方が整っていないせいで、必要としている人に知られていない。そんな場面を何度も見てきました。</p>
-        <p>多くの会社では、マーケティングを専任で見る人がいません。広告は代理店、ホームページは制作会社、SNSは手が空いた社員が担当する。一つひとつは動いていても、全体を見て「次に何をやるか」を決める人がいないのです。</p>
-        <p>MICHINARIは、その役割を社外から引き受けます。経営者と同じ目線で目標を決め、予算の使い道を選び、実行と改善まで責任を持つ。そして最後には、社内で続けられるやり方を残します。一社一社の成長が、働く人や地域の元気につながると信じて、この仕事をしています。</p>
+        <h3>企業の価値を、<br>選ばれる理由へ。</h3>
+        <p>地域で長く愛されてきた商品。現場で磨かれてきた技術。<br>中小企業には、まだ十分に伝わっていない価値があります。</p>
+        <p>その価値を必要とする人へ届けるには、広告やホームページ、SNSを、それぞれの取り組みで終わらせず、事業の目標に向けてつなぐことが大切です。</p>
+        <p>MICHINARIは、社外のマーケティング責任者として、経営者とともに課題を整理し、戦略から実行・改善まで取り組みます。さらに、その過程で得た知識やノウハウを社内に残し、自社で成長を続けられる体制を育てます。</p>
+        <p>一社の成長が、働く人と地域の活力につながる。<br>その積み重ねで、日本を元気にしていきます。</p>
         <p class="sign">MICHINARI<br>代表　河本 修司</p>
       </div>
       <figure><img src="images/message-portrait.webp" width="1400" height="1128" alt="セミナーで登壇する代表の河本修司" loading="lazy"></figure>
@@ -1096,7 +1155,7 @@ html,body{background:var(--page)}
           <p class="mb-role">代表<span>外部CMO</span></p>
           <h3>河本 修司</h3><p class="mb-en">Shuji Kawamoto</p>
           <p class="mb-catch">「現場」と「数字」の両方から、事業を動かす。</p>
-          <p class="mb-bio">理学療法士として人と向き合う現場からキャリアを始め、海外の広告会社、フリーランスのWebマーケターへ。広告運用、SNS、LP・HP制作、アクセス解析まで、自ら手を動かしてきた経験をもとに、中小企業の「社外のマーケティング責任者」として戦略から実行、社内への定着まで伴走します。</p>
+          <p class="mb-bio">理学療法士として人と向き合う現場からキャリアを始め、海外の広告会社、フリーランスのWebマーケターへ。広告運用、SNS、ホームページ・LP制作、アクセス解析まで、自ら手を動かしてきた経験をもとに、中小企業の「社外のマーケティング責任者」として戦略から実行、社内への定着まで伴走します。</p>
           <ul class="mb-tags"><li>外部CMO</li><li>戦略設計</li><li>広告運用</li><li>内製化研修</li></ul>
           <div class="mb-links"><a href="https://www.wantedly.com/id/shuuji_kawamoto_b" target="_blank" rel="noopener">Wantedly ↗</a><a href="https://youtrust.jp/users/0735408c56ff8f0f857ed08f6ad5fcf2?youtrust_source=qr_share" target="_blank" rel="noopener">YOUTRUST ↗</a><a href="https://x.com/shuji2000_jp" target="_blank" rel="noopener">X ↗</a></div>
         </div>
@@ -1121,8 +1180,8 @@ html,body{background:var(--page)}
             <p class="mb-role">パートナー<span>株式会社WEB FLEEK 代表取締役</span></p>
             <h3>歌川 大介</h3><p class="mb-en">Daisuke Utagawa</p>
             <p class="mb-catch">集客から購入まで、一本の線でつなぐ。</p>
-            <p class="mb-bio">恵比寿を拠点にデジタルマーケティングを一貫して手がける、株式会社WEB FLEEKの代表。Web広告運用、LINE公式アカウントの構築・運用、HP・LP制作、動画運用まで、集客から購入に至る流れを設計し、実行します。</p>
-            <ul class="mb-tags"><li>Web広告運用</li><li>LINE構築・運用</li><li>HP・LP制作</li><li>EC</li></ul>
+            <p class="mb-bio">恵比寿を拠点にデジタルマーケティングを一貫して手がける、株式会社WEB FLEEKの代表。Web広告運用、LINE公式アカウントの構築・運用、ホームページ・LP制作、動画運用まで、集客から購入に至る流れを設計し、実行します。</p>
+            <ul class="mb-tags"><li>Web広告運用</li><li>LINE構築・運用</li><li>ホームページ・LP制作</li><li>EC</li></ul>
             <div class="mb-links"><a href="https://webfleek.jp/" target="_blank" rel="noopener">WEB FLEEK ↗</a></div>
           </div>
         </article>
@@ -1178,7 +1237,7 @@ html,body{background:var(--page)}
   <section class="ct-hero bleed">
     <div class="ct-hero-in">
       <div class="ct-hero-txt">
-        <p class="crumb"><a href="#top">HOME</a> / CONTACT</p>
+        <p class="crumb"><a href="#top">TOP</a> / お問い合わせ</p>
         <p class="ct-label">CONTACT</p>
         <h1>お問い合わせ</h1>
         <p>サービスに関するご質問やご相談など、<br>お気軽にお問い合わせください。</p>
@@ -1200,7 +1259,7 @@ html,body{background:var(--page)}
           <div class="field"><label class="label" for="f-tel">電話番号<small>任意</small></label><input id="f-tel" name="tel" type="tel" autocomplete="tel" placeholder="03-1234-5678"></div>
         </div>
           <div class="field">
-            <label class="label" for="f-topic">ご相談の内容<em>必須</em></label>
+            <label class="label" for="f-topic">ご相談の種類<em>必須</em></label>
             <div class="select-wrap ct-select"><select id="f-topic" name="topic" required>
               <option value="">選択してください</option>
               <option value="外部CMOについて">外部CMO</option>
@@ -1213,8 +1272,23 @@ html,body{background:var(--page)}
               <option value="その他">その他</option>
             </select></div>
           </div>
+        <div class="field">
+          <label class="label" for="f-source">MICHINARIを知ったきっかけ<small>任意</small></label>
+          <div class="select-wrap ct-select"><select id="f-source" name="source">
+            <option value="">選択してください</option>
+            <option value="X（旧Twitter）">X（旧Twitter）</option>
+            <option value="Threads">Threads</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Google・Yahoo!などの検索">Google・Yahoo!などの検索</option>
+            <option value="Web広告">Web広告</option>
+            <option value="PR TIMES">PR TIMES</option>
+            <option value="ご紹介">ご紹介</option>
+            <option value="セミナー・イベント">セミナー・イベント</option>
+            <option value="その他">その他</option>
+          </select></div>
+        </div>
         <div class="field"><label class="label" for="f-url">ホームページURL<small>任意</small></label><input id="f-url" name="url" type="url" placeholder="https://example.co.jp"></div>
-        <div class="field"><label class="label" for="f-msg">ご相談内容<em>必須</em></label><textarea id="f-msg" name="message" rows="7" placeholder="事業・サービスの概要、今お困りのこと、これから実現したいことなど、分かる範囲でご記入ください。"></textarea></div>
+        <div class="field"><label class="label" for="f-msg">ご相談内容の詳細<em>必須</em></label><textarea id="f-msg" name="message" rows="7" placeholder="事業・サービスの概要、今お困りのこと、これから実現したいことなど、分かる範囲でご記入ください。"></textarea></div>
         <div class="field agree ct-agree"><label><input type="checkbox" id="f-agree" name="agree"> 入力いただいた情報を、ご相談への回答のために使用することに同意します。</label></div>
         <p class="form-error" id="form-error" role="alert" hidden>未入力の必須項目があります。赤く表示された項目をご確認ください。</p>
         <div class="ct-submit"><button class="ct-btn ct-btn-send" type="submit">入力内容を確認する<span aria-hidden="true">›</span></button></div>
@@ -1237,6 +1311,14 @@ html,body{background:var(--page)}
     <div class="ct-flow" id="sec-flow">
       <h2 class="ct-sub-h">お問い合わせ後の流れ</h2>
       <ol class="flow" data-flow></ol>
+      <div class="ct-again">
+        <p class="ct-again-h">流れをご確認いただけましたら、お気軽にご相談ください。</p>
+        <p class="ct-again-t">フォームからのお問い合わせ、またはLINEでのご相談をお選びいただけます。</p>
+        <div class="ct-again-btns">
+          <button type="button" class="ct-btn ct-btn-send" id="back-to-form">フォームに入力する<span aria-hidden="true">›</span></button>
+          <a class="ct-btn ct-btn-line" href="https://lin.ee/5DKzvf8P" target="_blank" rel="noopener"><span class="badge"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 .9l-.1.9c0 .3-.2 1 .9.5 1.1-.5 5.9-3.5 8-5.9C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg></span>LINEで相談する</a>
+        </div>
+      </div>
     </div>
   </section>
 </div></main>
@@ -1247,7 +1329,7 @@ html,body{background:var(--page)}
     <div class="cta-card reveal" id="cta-card">
       <p class="cta-eyebrow">まずはお気軽にご相談ください</p>
       <h2 id="t-cta"><span class="nb">事業の道のりに、</span><br><span class="nb"><em>最適な一手</em>を</span><span class="nb">ご提案します</span></h2>
-      <p class="cta-text"><span class="nb">集客・販促・社内の体制づくり・DX/AI活用まで、</span><span class="nb">お気軽にお問い合わせください。</span></p>
+      <p class="cta-text"><span class="nb">Web集客・販促・人材育成・デジタル化・AI活用まで、</span><span class="nb">お気軽にお問い合わせください。</span></p>
       <div class="cta-btns">
         <a class="cta-btn cta-form" href="#contact"><span class="badge"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4.2 7H19.8L12 12.2zM4 9.1V17h16V9.1l-8 5.3-8-5.3z"/></svg></span>お問い合わせフォーム</a>
         <a class="cta-btn cta-line" href="https://lin.ee/5DKzvf8P" target="_blank" rel="noopener"><span class="badge"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 .9l-.1.9c0 .3-.2 1 .9.5 1.1-.5 5.9-3.5 8-5.9C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg></span>LINEで相談する</a>
@@ -1277,9 +1359,9 @@ var NEWS = [
   {
     id: "logo", date: "2026.11.01", cat: "お知らせ",
     thumb: {img: "images/news-logo.webp", square: true},
-    title: "MICHINARIのロゴを新しく作成しました",
+    title: "MICHINARIのブランドロゴを公開しました",
     body: [
-      ["p","このたび、MICHINARI（ミチナリ）のロゴを新しく作成しました。"],
+      ["p","このたび、MICHINARI（ミチナリ）のブランドロゴを公開しました。"],
       ["h","ロゴに込めた思い"],
       ["p","シンボルマークは、アルファベットの「m」をもとにしています。「道なり」という名前のとおり、お客さまの事業の道のりに寄り添い、一歩ずつ一緒に前へ進んでいく姿をイメージしました。"],
       ["p","ワードマーク「michinari」の「i」の点には赤を使っています。地域の会社が日本を明るく照らす存在になる、という「Be the Light of Japan.」の思いを込めました。"],
@@ -1324,7 +1406,7 @@ function renderArticle(n){
 
 /* ---------- バリュー ---------- */
 var VALUES=[
-  ["最小限の費用で、最大限の効果を","Less Cost, More Impact","限られた予算で、いまやるべき施策だけを選び抜きます。"],
+  ["限られた予算を、成長につながる一手へ","Focused Investment","限られた予算の中で、事業の課題と目標に合った施策を選び、優先順位を明確にします。"],
   ["経営者と同じ側に立つ","Same Side","外注先ではなく、同じ目標を追うチームの一員として考えます。"],
   ["手を動かし、結果で語る","Hands-on","提案で終わらせず、現場で実行し、数字で成果を確かめます。"],
   ["数字に正直に","Honest Numbers","良い数字も悪い数字も共有し、次の一手を一緒に決めます。"],
@@ -1345,6 +1427,7 @@ function caseCard(c){
     '</div><details><summary>対象期間 ＋</summary><p>'+esc(c.term)+(c.src?' <a href="'+c.src+'" target="_blank" rel="noopener">出典 ↗</a>':'')+'</p></details>'+'<a class="case-more" href="#contact" data-topic="支援事例について詳しく聞きたい">詳しい内容は、オンライン相談（30分）でご説明します</a>'+'</article>';
 }
 document.getElementById('all-works').innerHTML=CASES.map(caseCard).join('');
+document.getElementById('top-works').innerHTML=CASES.map(caseCard).join('');
 
 /* ---------- 進め方（共通） ---------- */
 var FLOW_ICON={
@@ -1357,13 +1440,13 @@ var FLOW_ICON={
 };
 var FLOW=[
   ["01","お打ち合わせ","talk","LINEまたはフォームからご連絡ください。オンラインで30分ほど、今のお悩みと目指したい姿を伺います。何から相談すればいいか決まっていなくても大丈夫です。",false,"無料・30分"],
-  ["02","ヒアリング","note","売上や問い合わせの数字、いま取り組んでいる施策、社内の体制まで、事業の状況を詳しく伺います。目標から逆算して、成果を止めているボトルネックを見つけます。"],
-  ["03","ボトルネックに沿ったご提案","target","見つかったボトルネックに合わせて、取り組む順番と施策、支援の範囲、役割分担をご提案します。「任せる」か「一緒につくる」か、貴社に合う支援の形もあわせてお伝えします。",true],
+  ["02","ヒアリング","note","売上や問い合わせの数字、いま取り組んでいる施策、社内の体制まで、事業の状況を詳しく伺います。目標から逆算して、成果につながらない原因を見つけます。"],
+  ["03","課題に応じた施策・実行計画のご提案","target","見つかった課題に合わせて、取り組む順番と施策、支援の範囲、役割分担をご提案します。「任せる」か「一緒につくる」か、貴社に合う支援の形もあわせてお伝えします。",true],
   ["04","ご支援開始","grow","合意した計画に沿って実行を始めます。毎月の数字を一緒に振り返り、次の一手を決めながら改善を続けます。"]
 ];
 var FLOW_INTRO='<div class="flow-intro"><figure><img src="images/head-services.webp" alt="目標や課題について話し合う打ち合わせの様子" loading="lazy"></figure>'+
   '<div><p class="fi-k">MICHINARIの進め方</p><h3>いきなり施策から始めず、<br>まず「どこで止まっているか」を見つけます。</h3>'+
-  '<div class="fi-map" aria-label="目標から施策までの考え方"><span class="n">目標・目的</span><i>→</i><span class="n hot">ボトルネック</span><i>→</i><span class="n">優先順位</span><i>→</i><span class="n">施策</span></div>'+
+  '<div class="fi-map" aria-label="目標から施策までの考え方"><span class="n">目標・目的</span><i>→</i><span class="n hot">原因・課題</span><i>→</i><span class="n">優先順位</span><i>→</i><span class="n">施策</span></div>'+
   '<p class="fi-t">目標から逆算して、やるべきことと、やらなくていいことを一緒に決めます。</p></div></div>';
 document.querySelectorAll('[data-flow]').forEach(function(ol){
   ol.classList.add('flow5');
@@ -1373,38 +1456,38 @@ document.querySelectorAll('[data-flow]').forEach(function(ol){
 
 /* ---------- 事業 ---------- */
 var SERVICES={
-  cmo:{title:"外部CMO",en:"Outsourced CMO",img:"images/biz-cmo.webp",alt:"資料を広げて打ち合わせをする経営者とコンサルタント",for:"マーケティングの責任者がいない会社に",
-    lead:"マーケティングの責任者として経営に加わり、目標・予算・施策の優先順位を決めて、社内外のメンバーと実行まで進めます。",
+  cmo:{title:"外部CMO",en:"Outsourced CMO",img:"images/biz-cmo.webp",alt:"資料を広げて打ち合わせをする経営者とコンサルタント",for:"マーケティングの責任者がいない企業へ",
+    lead:"社外のマーケティング責任者（外部CMO）として経営に加わり、目標・予算・施策の優先順位を決めて、社内外のメンバーと実行まで進めます。",
     worries:["広告・ホームページ・SNSを別々の会社に頼んでいて、全体を見る人がいない","マーケティングにいくら使い、何が成果につながっているか分からない","専任のマーケティング担当を社内に置く余裕がない"],
     after:"経営の目標から逆算した施策と予算配分が決まり、毎月の数字をもとに次の一手を判断できる状態をつくります。",
     groups:[["戦略・マネジメント",[["外部CMO","マーケティング責任者としての戦略立案・意思決定"],["マーケティング戦略設計","現状分析、KGI・KPI設計、予算配分"],["プロジェクト進行管理（PM）","社内・外注先を含めた施策の進行と品質管理"],["Webコンサルティング","既存施策の診断と改善提案"]]]],topic:"外部CMOについて"},
-  web:{title:"Webマーケティング支援",en:"Web Marketing",img:"images/biz-web.webp",alt:"アクセス解析の画面を見ながらPCで作業する手元",for:"Webからの問い合わせや売上を増やしたい会社に",
-    lead:"Web広告、ホームページ・LP、SNS、LINE、MEOまで。見つけてもらい、問い合わせや購入に至るまでの流れを一つずつ整えます。",
+  web:{title:"Webマーケティング支援",en:"Web Marketing",img:"images/biz-web.webp",alt:"アクセス解析の画面を見ながらPCで作業する手元",for:"Webからの問い合わせや売上を増やしたい企業へ",
+    lead:"Web広告、ホームページ・LP、SNS、LINE、MEO（Googleマップでの集客）まで。企画から制作・運用までを担い、見つけてもらってから問い合わせや購入に至るまでの流れを整えます。",
     worries:["ホームページはあるが、問い合わせがほとんど来ない","広告を出しているが、費用に見合っているか判断できない","SNSやLINEを始めたものの、売上につながっていない"],
     after:"どの経路から問い合わせや購入が生まれているかが数字で分かり、効果の高い施策に予算を集中できる状態をつくります。",
     groups:[["Web広告運用",[["リスティング広告","Google・Yahoo!の検索広告"],["ディスプレイ広告","Googleディスプレイネットワークなど"],["SNS広告","Instagram・Facebook・TikTok・X"],["動画広告","YouTubeなどの動画広告の企画と運用"],["LINE広告","友だち追加広告などLINE上の配信"],["広告クリエイティブ制作","バナー・広告文・動画の制作と検証"]]],["Web制作・集客導線",[["ホームページ・LP制作","集客の目的に合わせた設計・制作・改善、WordPress構築"],["LINE公式アカウント構築","友だち追加から購入・予約までの導線設計"],["MEO対策","Googleビジネスプロフィールの最適化と運用"],["SNS運用","投稿の企画・制作・分析"],["アクセス解析・効果測定","計測環境の整備とレポート"],["Web担当代理","社内のWeb・IT担当者の代わりとして日々の運用を担当"]]]],topic:"Webマーケティング支援について"},
-  promo:{title:"販促支援",en:"Promotion",img:"images/biz-promo.webp",alt:"商品とPOP、パンフレットが並ぶ店頭のカウンター",for:"商品の良さが、売上に結びついていない会社に",
+  promo:{title:"販促支援",en:"Promotion",img:"images/biz-promo.webp",alt:"商品とPOP、パンフレットが並ぶ店頭のカウンター",for:"商品の良さが、売上に結びついていない企業へ",
     lead:"キャンペーンの企画、チラシやPOPなどの販促物、ECや店舗の売り場づくり。オンラインとオフラインの両方から売上をつくります。",
-    worries:["いい商品なのに、店頭やECで手に取ってもらえない","キャンペーンやチラシを、毎回なんとなく作っている","店舗のお客さまを、LINEやSNSでのリピートにつなげたい"],
-    after:"商品の良さが伝わる売り場と販促物が整い、店頭とWebの両方からリピートにつながる流れができている状態を目指します。",
+    worries:["いい商品なのに、店頭やECで手に取ってもらえない","キャンペーンやチラシを、毎回なんとなく作っている","LINEやSNSを活用して、再来店・再購入につなげたい"],
+    after:"商品の良さが伝わる売り場と販促物が整い、店頭とWebの両方から再来店・再購入につながる流れができている状態を目指します。",
     groups:[["販促",[["キャンペーン企画","新商品・季節施策などの企画と実行"],["販促物の制作","チラシ・パンフレット・POPなど"],["EC・店舗の販売促進","商品ページ・売り場・リピート施策の改善"],["オンラインとオフラインの連携","店頭からLINE・SNSへつなぐ導線づくり"]]]],topic:"販促支援について"},
-  inhouse:{title:"内製化支援",en:"In-house",img:"images/biz-inhouse.webp",alt:"モニターの資料を見ながら学ぶ社内研修の様子",for:"外注に頼りきりの状態から抜け出したい会社に",
-    lead:"自社の広告や投稿を題材にした実践研修と手順書の整備で、社内で運用と改善を続けられる体制をつくります。",
-    worries:["外注費がかさむので、社内で運用できるようにしたい","担当者が替わるたびに、やり方が引き継がれない","社内に、施策の良し悪しを判断できる担当者を育てたい"],
+  inhouse:{title:"内製化支援",en:"In-house",img:"images/biz-inhouse.webp",alt:"モニターの資料を見ながら学ぶ社内研修の様子",for:"外注に頼りきりの状態から抜け出したい企業へ",
+    lead:"自社の広告や投稿を題材にした実践研修と手順書の整備で、自社で運用・改善を続けられる体制をつくります。",
+    worries:["外注費がかさむので、社内で運用できるようにしたい","担当者が替わるたびに、やり方が引き継がれない","施策の効果を判断し、改善できる担当者を育てたい"],
     after:"担当者が手順と判断基準を持ち、外部に頼りきらずに運用・振り返り・改善を回せる状態をつくります。",
     groups:[["内製化・人材育成",[["担当者の実践研修","自社の広告・投稿を題材にしたOJT"],["社内向けWeb広告・SNS講座","担当者が運用を引き継ぐための講座"],["マニュアル・手順書の整備","入稿・投稿・レポートの型づくり"],["振り返りの仕組みづくり","KPIの共有と、社内で改善を回す定例の設計"]]]],topic:"内製化支援について"},
-  dx:{title:"DX・AX推進支援",en:"DX / AX",img:"images/biz-dx.webp",alt:"明るいオフィスでノートPCとタブレットを使って打ち合わせる様子",for:"紙・Excel・人頼みの業務から抜け出したい会社に",
-    lead:"DX（デジタルトランスフォーメーション）とAX（AIトランスフォーメーション）を、中小企業の現場に合う大きさで。Google Workspace・Notionなどのクラウドツールと生成AIを使い、マーケティングから受注・顧客管理、社内業務までを一つの流れでつなぎます。",
+  dx:{title:"DX・AX推進支援",en:"DX / AX",img:"images/biz-dx.webp",alt:"明るいオフィスでノートPCとタブレットを使って打ち合わせる様子",for:"情報の分散や、特定の担当者に依存した業務を見直したい企業へ",
+    lead:"デジタル化（DX）とAI活用（AX）による業務改善を、事業規模と業務に合った方法で進めます。Google Workspace・Notionなどのクラウドツールと生成AIを使い、マーケティングから受注・顧客管理、社内業務までを一つの流れでつなぎます。",
     worries:["顧客情報や案件の状況が、担当者ごと・Excelごとにバラバラになっている","資料作成や報告書づくりに、毎回時間がかかっている","AIを業務に取り入れたいが、どこから使えばいいか分からない"],
     after:"顧客・案件・社内の情報が一か所にまとまり、定型業務はツールとAIに任せて、人は判断と提案に時間を使える状態をつくります。",
     groups:[["DX（デジタル化・業務改善）",[["業務フローの可視化・改善","いまの業務を棚卸しし、デジタル化する範囲と順番を設計"],["Google Workspace活用","Gmail・ドライブ・スプレッドシートの共有ルールと運用づくり"],["Notionによる社内ポータル・ナレッジ管理","マニュアル・議事録・タスクを一か所に集約"],["受注・顧客管理（CRM / SFA）","顧客情報・商談・案件の進み具合を見える化"]]],["AX（AI活用）・自動化",[["MA（マーケティング・オートメーション）","見込み客へのメール・LINE配信やフォローの自動化"],["生成AIの業務活用","文章・企画・分析へのAI導入と社内ルールづくり"],["資料作成の時短化","提案書・報告書・議事録のテンプレート化とAI活用"],["ツール連携・業務自動化","フォーム・CRM・チャットをつなぎ、手作業を削減"]]]],topic:"DX・AX推進支援について"},
-  subsidy:{title:"補助金コンサルティング",en:"Subsidy",img:"images/hero-city.webp",alt:"晴れた日の地方都市の街並み",for:"新しい取り組みを、資金面から考えたい会社に",
-    lead:"Webや新しい取り組みへの投資について、補助金を活用できる可能性と進め方を一緒に整理します。",
+  subsidy:{title:"補助金コンサルティング",en:"Subsidy",img:"images/hero-city.webp",alt:"晴れた日の地方都市の街並み",for:"新しい取り組みを、資金面からも検討したい企業へ",
+    lead:"Webや新しい取り組みへの投資について、まず事業の目的と計画を整理し、そのうえで補助金を活用できる可能性と進め方を一緒に検討します。",
     worries:["Webや設備への投資に、補助金が使えるか知りたい","申請の進め方やスケジュールのイメージがつかめない","補助金とあわせて、取り組みの中身から相談したい"],
     after:"実現したい取り組みと資金面の進め方が整理され、Webマーケティングや内製化の計画とあわせて動き出せる状態を目指します。",
-    groups:[["補助金",[["取り組みたい事業・課題の整理","補助金の活用を前提に、やりたいことを整理"],["補助金活用についてのご相談","活用できる可能性と進め方の検討"],["事業に合わせた進め方の検討","Web施策・内製化の計画とあわせて検討"]]]],topic:"補助金コンサルティングについて"}
+    groups:[["補助金",[["取り組みたい事業・課題の整理","事業の目的と投資計画を整理し、補助金を活用できる可能性を検討"],["補助金活用についてのご相談","申請の進め方とスケジュールの検討"],["事業に合わせた進め方の検討","Web施策・内製化の計画とあわせて検討"]]]],topic:"補助金コンサルティングについて"}
 };
-document.getElementById('svc-rows').innerHTML=Object.keys(SERVICES).map(function(k){var d=SERVICES[k];return '<a class="svc-row" href="#service-'+k+'"><div class="img"><img src="'+d.img+'" alt="'+esc(d.alt)+'" loading="lazy"></div><div class="txt"><span class="en">'+esc(d.en)+'</span><h3>'+esc(d.title)+'</h3><span class="for">'+esc(d.for)+'</span><p>'+esc(d.lead)+'</p><span class="go">サービス一覧を見る</span></div></a>';}).join('');
+document.getElementById('svc-rows').innerHTML=Object.keys(SERVICES).map(function(k){var d=SERVICES[k];return '<a class="svc-row" href="#service-'+k+'"><div class="img"><img src="'+d.img+'" alt="'+esc(d.alt)+'" loading="lazy"></div><div class="txt"><span class="en">'+esc(d.en)+'</span><h3>'+esc(d.title)+'</h3><span class="for">'+esc(d.for)+'</span><p>'+esc(d.lead)+'</p><span class="go">サービスの詳細を見る</span></div></a>';}).join('');
 var pendingTopic=null;
 function renderService(key){
   var d=SERVICES[key];
@@ -1435,7 +1518,7 @@ document.addEventListener('click',function(e){var a=e.target.closest('[data-topi
     var ag=document.getElementById('f-agree');ag.parentElement.classList.toggle('invalid',!ag.checked);if(!ag.checked)ok=false;
     err.hidden=ok;
     if(!ok){var first=form.querySelector('.invalid');if(first)first.scrollIntoView({block:'center'});return;}
-    var rows=[['会社名・屋号',val('company')],['お名前',val('name')],['メールアドレス',val('email')],['電話番号',val('tel')||'（未入力）'],['ご相談の内容',topic.value],['ホームページURL',val('url')||'（未入力）'],['ご相談内容',val('message')]];
+    var rows=[['会社名・屋号',val('company')],['お名前',val('name')],['メールアドレス',val('email')],['電話番号',val('tel')||'（未入力）'],['ご相談の種類',topic.value],['知ったきっかけ',form.elements.source.value||'（未選択）'],['ホームページURL',val('url')||'（未入力）'],['ご相談内容の詳細',val('message')]];
     document.getElementById('confirm-list').innerHTML=rows.map(function(r){return '<div><dt>'+esc(r[0])+'</dt><dd>'+esc(r[1])+'</dd></div>';}).join('');
     form.hidden=true;confirmBox.hidden=false;step(1);top();
   });
@@ -1445,7 +1528,7 @@ document.addEventListener('click',function(e){var a=e.target.closest('[data-topi
     if(sendBtn.disabled)return;
     sendBtn.disabled=true;sendErr.hidden=true;var label=sendBtn.innerHTML;sendBtn.textContent='送信中…';
     var data={_subject:'【MICHINARI】お問い合わせ：'+form.elements.topic.value,_template:'table',_captcha:'false',
-      'ご相談の内容':form.elements.topic.value,'会社名・屋号':val('company'),'お名前':val('name'),'メールアドレス':val('email'),
+      'ご相談の内容':form.elements.topic.value,'知ったきっかけ':form.elements.source.value||'（未選択）','会社名・屋号':val('company'),'お名前':val('name'),'メールアドレス':val('email'),
       '電話番号':val('tel')||'（未入力）','ホームページURL':val('url')||'（未入力）','ご相談内容':val('message'),_replyto:val('email'),_honey:''};
     fetch('https://formsubmit.co/ajax/'+['shuji.kawamoto.jp','gmail.com'].join('@'),{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
       .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
@@ -1573,6 +1656,13 @@ document.querySelectorAll('.lang-sw a').forEach(function(a){a.addEventListener('
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
   var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.25});
   els.forEach(function(e){io.observe(e);});})();
+
+/* ---------- お問い合わせ：流れの下から、フォームの先頭へ戻る ---------- */
+(function(){var b=document.getElementById('back-to-form');if(!b)return;
+  b.addEventListener('click',function(){var f=document.querySelector('#view-contact .ct-card');if(!f)return;
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:f.getBoundingClientRect().top+scrollY-100,behavior:reduce?'auto':'smooth'});
+    var first=document.getElementById('f-company');if(first)setTimeout(function(){first.focus({preventScroll:true});},reduce?0:600);});})();
 
 /* ---------- アクセス解析（GA4）：LINEボタンのクリックを計測 ---------- */
 document.addEventListener('click',function(e){

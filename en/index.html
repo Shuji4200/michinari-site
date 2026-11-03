@@ -116,10 +116,11 @@ h1,h2,h3{color:var(--ink)}
 @keyframes heroDrift{from{transform:scale(1.04) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-2%,-1%,0)}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,26,48,.72) 0%,rgba(10,26,48,.50) 38%,rgba(10,26,48,.12) 70%,rgba(10,26,48,0) 100%),linear-gradient(180deg,rgba(10,26,48,.10) 0%,rgba(10,26,48,0) 40%,rgba(10,26,48,.25) 100%)}
 .hero-in{position:relative;z-index:1;width:min(100% - 32px,1320px);margin:0 auto;padding:72px clamp(8px,4vw,64px) 80px;text-shadow:0 2px 16px rgba(5,15,30,.35)}
-.hero-kicker{font:700 clamp(46px,7vw,104px)/1.04 var(--en);letter-spacing:-.01em;color:#fff;position:relative;padding-top:26px}
+.hero-kicker{font:700 clamp(20px,2.3vw,30px)/1.2 var(--en);letter-spacing:.02em;color:#fff;position:relative;padding-top:22px}
 .hero-kicker::before{content:"";position:absolute;left:2px;top:0;width:44px;height:3px;background:var(--red)}
-.hero h1{margin-top:22px;font-size:clamp(22px,2.6vw,34px);font-weight:900;line-height:1.5;letter-spacing:.06em;color:#fff}
-.hero .lead{margin-top:24px;font-size:clamp(14px,1.25vw,16.5px);font-weight:500;line-height:2.05;letter-spacing:.06em;color:#fff}
+.hero h1{margin-top:16px;font-size:clamp(32px,5vw,66px);font-weight:900;line-height:1.35;letter-spacing:.05em;color:#fff}
+.hero .lead{margin-top:26px;font-size:clamp(14px,1.25vw,16.5px);font-weight:500;line-height:2.05;letter-spacing:.05em;color:#fff}
+.hero .lead .nb{display:inline-block}
 .hero-btns{margin-top:40px;display:flex;flex-wrap:wrap;gap:16px}
 .hb{display:inline-flex;align-items:center;justify-content:center;min-width:260px;min-height:64px;padding:0 28px;border-radius:10px;border:2px solid;font-size:15px;font-weight:700;letter-spacing:.06em;text-decoration:none;text-shadow:none;transition:transform .2s,box-shadow .2s,background .2s}
 .hb:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.25)}
@@ -829,6 +830,33 @@ html,body{background:var(--page)}
 @media (max-width:820px){.mb-lead{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.mb-card{grid-template-columns:minmax(0,1fr)}.mb-card .mb-ph{max-width:220px}}
 
+/* ===== トップ：支援体制の抜粋 ===== */
+.tm{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(16px,2.4vw,28px);align-items:stretch}
+.tm-lead{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:22px;align-items:center;background:#f4f5f6;border-radius:14px;padding:18px}
+.tm-ph{aspect-ratio:1;border-radius:10px;overflow:hidden}
+.tm-ph img{width:100%;height:100%;object-fit:cover}
+.tm-role{display:flex;flex-direction:column;gap:2px;font-size:12.5px;font-weight:700;color:var(--red-ink);letter-spacing:.12em}
+.tm-role span{font-weight:500;color:#5b646b;letter-spacing:.04em}
+.tm-body h3{margin-top:8px;font-size:clamp(22px,2.2vw,28px);font-weight:900;color:#151b1e;letter-spacing:.14em}
+.tm-catch{margin-top:12px;font-weight:900;font-size:15.5px;line-height:1.6;color:#151b1e;padding-left:12px;border-left:3px solid var(--red)}
+.tm-text{margin-top:10px;font-size:14px;line-height:1.9;color:#30373c}
+.tm-partners{display:grid;gap:12px;align-content:center}
+.tm-partners li{display:grid;grid-template-columns:76px minmax(0,1fr);gap:16px;align-items:center;background:#f4f5f6;border-radius:12px;padding:12px}
+.tm-partners img{width:76px;height:76px;border-radius:8px;object-fit:cover}
+.tm-partners span{display:block;font-size:12px;font-weight:700;color:#5b646b;line-height:1.6}
+.tm-partners b{display:block;margin-top:2px;font-size:17px;font-weight:900;color:#151b1e;letter-spacing:.12em}
+.tm-links{display:flex;flex-wrap:wrap;gap:6px 28px}
+@media (max-width:900px){.tm{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.tm-lead{grid-template-columns:minmax(0,1fr)}.tm-ph{max-width:260px}}
+
+/* ===== Contact：流れの下のCTA ===== */
+.ct-again{margin:clamp(36px,5vw,56px) auto 0;width:min(100%,740px);background:#fff;border-radius:22px;padding:clamp(28px,4vw,40px) clamp(20px,4vw,44px);text-align:center;box-shadow:0 18px 50px rgba(15,23,42,.08)}
+.ct-again-h{font-size:clamp(17px,1.8vw,20px);font-weight:900;color:#0f172a;line-height:1.6}
+.ct-again-t{margin-top:8px;font-size:14px;color:#475569}
+.ct-again-btns{margin-top:24px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.ct-again-btns .ct-btn{min-width:250px;min-height:60px}
+@media (max-width:820px){.ct-again-btns .ct-btn{min-width:0;width:100%}}
+
 /* ===== English version ===== */
 :root{--jp:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans JP",sans-serif}
 body{letter-spacing:0}
@@ -837,7 +865,7 @@ body{letter-spacing:0}
 .mb-en,.mb-sub span{display:none}
 .sec-head h2,.ax-h,.ph-block h3,.flow-intro h3,.cta h2,.hero h1{letter-spacing:0}
 .ax-head h1{letter-spacing:-.005em}
-.hero h1{font-size:clamp(24px,2.8vw,36px)}
+.hero h1{font-size:clamp(28px,3.8vw,50px)}
 .ax-members h3{letter-spacing:.02em}
 .fstep b{word-break:normal}
 </style>
@@ -915,9 +943,9 @@ body{letter-spacing:0}
     <div class="hero-media"><img src="../images/hero-tokyo.webp" width="1920" height="1079" alt="" fetchpriority="high"></div>
     <div class="hero-in">
       <p class="hero-kicker" aria-hidden="true"><span class="nb">Be the Light</span> <span class="nb">of Japan.</span></p>
-      <h1 id="hero-title"><span class="nb">When local businesses thrive,</span><br><span class="nb">Japan shines.</span></h1>
-      <p class="lead">MICHINARI is a marketing partner that works inside your business as an outsourced CMO, <br>covering digital marketing, sales promotion, in-house training and DX/AX. <br>We help Japanese SMEs—and overseas companies bringing their products to Japan—grow.</p>
-      <div class="hero-btns"><a class="hb hb-light" href="#services">View our services</a><a class="hb hb-dark" href="#contact">Contact us</a></div>
+      <h1 id="hero-title"><span class="nb">Energizing Japan,</span><br><span class="nb">starting with its small businesses.</span></h1>
+      <p class="lead">From strategy and execution to lasting capability in your team. <br>MICHINARI is an outside head of marketing for small and mid-sized businesses. <br>Through online customer acquisition, sales promotion, training, digitalization and AI, <br>we help you grow sales and build systems to keep growing on your own.</p>
+      <div class="hero-btns"><a class="hb hb-light" href="#services">See what we do</a><a class="hb hb-dark" href="#contact">Book a free consultation</a></div>
     </div>
   </section>
   <div class="hero-strip" aria-label="What we do">
@@ -925,25 +953,17 @@ body{letter-spacing:0}
     <div class="marquee"><div class="marquee-track"><a href="#service-cmo"><b>Outsourced CMO</b><span>Outsourced CMO</span></a><a href="#service-web"><b>Digital Marketing</b><span>Web Marketing</span></a><a href="#service-promo"><b>Sales Promotion</b><span>Sales Promotion</span></a><a href="#service-inhouse"><b>In-house Capability Building</b><span>In-house Support</span></a><a href="#service-dx"><b>DX / AX Support</b><span>DX / AX</span></a><a href="#service-subsidy"><b>Subsidy Consulting</b><span>Subsidy</span></a><span class="dup" aria-hidden="true"><a tabindex="-1" href="#service-cmo"><b>Outsourced CMO</b><span>Outsourced CMO</span></a><a tabindex="-1" href="#service-web"><b>Digital Marketing</b><span>Web Marketing</span></a><a tabindex="-1" href="#service-promo"><b>Sales Promotion</b><span>Sales Promotion</span></a><a tabindex="-1" href="#service-inhouse"><b>In-house Capability Building</b><span>In-house Support</span></a><a tabindex="-1" href="#service-dx"><b>DX / AX Support</b><span>DX / AX</span></a><a tabindex="-1" href="#service-subsidy"><b>Subsidy Consulting</b><span>Subsidy</span></a></span></div></div>
   </div>
 
-  <section class="panel" aria-labelledby="t-news">
-    <div class="sec-head"><div class="labels"><span>News</span><span>News</span><span>News</span></div><h2 id="t-news">News<small>News</small></h2><p class="sec-desc">Updates from MICHINARI and articles on digital marketing.</p></div>
-    <div class="sec-body">
-      <div class="cols-head n-head"><span>[Image]</span><span>[Date + Title]</span></div>
-      <ul class="news-list" id="top-news"></ul>
-      <div class="btn-row"><a class="more" href="#news">All news</a></div>
-    </div>
-  </section>
 
 
   <section class="panel" aria-labelledby="t-what">
-    <div class="sec-head"><h2 id="t-what">Services<small>Services</small></h2><p class="sec-desc">From online customer acquisition to streamlining operations—bring it all to us. We work with you in two main ways.</p></div>
+    <div class="sec-head"><h2 id="t-what">Services<small>Services</small></h2><p class="sec-desc">From online customer acquisition to building operational systems—bring it all to us. We work with you in two main ways.</p></div>
     <div class="two-ways">
       <article class="way">
         <div class="way-ph"><img src="../images/biz-web.webp" width="1200" height="674" alt="" loading="lazy"><span class="way-no">01</span></div>
         <div class="way-body">
           <p class="way-k">Leave it to us</p>
-          <h3>“We want to hand off online marketing”</h3>
-          <p class="way-lead">MICHINARI handles implementation and operation of your ads, website, social media and LINE. Performance-linked arrangements are also available.</p>
+          <h3>Leave customer acquisition to us</h3>
+          <p class="way-lead">MICHINARI handles your online ads, website, social media and LINE—from planning to production and operation. Performance-linked arrangements are also available.</p>
           <p class="way-for">Best for: companies that want more online inquiries and sales but have no one in-house to take it on</p>
           <p class="way-sub">Included</p>
           <ul class="way-list">
@@ -956,14 +976,14 @@ body{letter-spacing:0}
         <div class="way-ph"><img src="../images/biz-inhouse.webp" width="1200" height="674" alt="" loading="lazy"><span class="way-no">02</span></div>
         <div class="way-body">
           <p class="way-k">Build it together</p>
-          <h3>“We want systems our team can run”</h3>
-          <p class="way-lead">From planning your online initiatives to in-house capability, DX/AX, document creation and operational efficiency. As your outside head of marketing, we build systems that last inside your company.</p>
-          <p class="way-for">Best for: companies that want to stop relying on vendors and run marketing and operations in-house</p>
+          <h3>Build a team that grows on its own</h3>
+          <p class="way-lead">From planning your online initiatives to training your team, digitalization and AI, and more efficient documents and operations. As your outside head of marketing, we build a team that can keep growing on its own.</p>
+          <p class="way-for">Best for: companies that want to stop relying on vendors and build a team that can run and improve things in-house</p>
           <p class="way-sub">Included</p>
           <ul class="way-list">
-            <li><a href="#service-cmo"><b>Outsourced CMO</b><span>Strategy, KPIs, budget allocation, project management</span></a></li>
-            <li><a href="#service-inhouse"><b>In-house Capability Building</b><span>Hands-on training, playbooks, review routines</span></a></li>
-            <li><a href="#service-dx"><b>DX / AX Support</b><span>Cloud tools, generative AI, CRM, faster document creation</span></a></li>
+            <li><a href="#service-cmo"><b>Outsourced CMO</b><span>As your outside head of marketing: strategy, KPIs, budget allocation, project management</span></a></li>
+            <li><a href="#service-inhouse"><b>In-house Capability Building</b><span>Training: hands-on sessions, playbooks, review routines</span></a></li>
+            <li><a href="#service-dx"><b>DX / AX Support</b><span>Better operations through digitalization and AI: cloud tools, generative AI, CRM</span></a></li>
           </ul>
         </div>
       </article>
@@ -974,6 +994,44 @@ body{letter-spacing:0}
     </div>
   </section>
 
+  <section class="panel" aria-labelledby="t-works">
+    <div class="sec-head"><h2 id="t-works">Case Studies<small>Works</small></h2><p class="sec-desc">A selection of our work that improved customer acquisition and sales.</p></div>
+    <div class="sec-body">
+      <div class="works" id="top-works"></div>
+      <div class="btn-row"><a class="more" href="#works">See case studies</a></div>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="t-team">
+    <div class="sec-head"><h2 id="t-team">Our Team<small>Team</small></h2><p class="sec-desc">Founder Shuji Kawamoto is your point of contact, working as a team with specialist partners.</p></div>
+    <div class="sec-body">
+      <div class="tm">
+        <div class="tm-lead">
+          <div class="tm-ph"><img src="../images/member-kawamoto.webp" width="600" height="600" alt="Founder Shuji Kawamoto speaking at a seminar" loading="lazy"></div>
+          <div class="tm-body">
+            <p class="tm-role">Founder<span>Outsourced CMO</span></p>
+            <h3>Shuji Kawamoto</h3>
+            <p class="tm-catch">Moving businesses forward—from both the front line and the numbers.</p>
+            <p class="tm-text">As an outside head of marketing, he supports you from strategy and execution to embedding the work in your team.</p>
+          </div>
+        </div>
+        <ul class="tm-partners">
+          <li><img src="../images/member-danno.webp" width="480" height="480" alt="Partner Ryo Danno" loading="lazy"><div><span>Partner / Project Manager, I-Nexus</span><b>Ryo Danno</b></div></li>
+          <li><img src="../images/member-utagawa.webp" width="600" height="600" alt="Partner Daisuke Utagawa" loading="lazy"><div><span>Partner / CEO, WEB FLEEK Inc.</span><b>Daisuke Utagawa</b></div></li>
+        </ul>
+      </div>
+      <div class="btn-row tm-links"><a class="more" href="#members">Meet the team</a><a class="more" href="#message">Read the founder’s message</a></div>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="t-news">
+    <div class="sec-head"><div class="labels"><span>News</span><span>News</span><span>News</span></div><h2 id="t-news">News<small>News</small></h2><p class="sec-desc">Updates from MICHINARI and articles on digital marketing.</p></div>
+    <div class="sec-body">
+      <div class="cols-head n-head"><span>[Image]</span><span>[Date + Title]</span></div>
+      <ul class="news-list" id="top-news"></ul>
+      <div class="btn-row"><a class="more" href="#news">All news</a></div>
+    </div>
+  </section>
 </div></main>
 
 
@@ -1030,7 +1088,7 @@ body{letter-spacing:0}
     <div class="ax-photo"><img src="../images/head-services.webp" width="1600" height="800" alt="A team discussing marketing strategy in a meeting room" loading="lazy"></div>
   </div>
   <section class="panel block">
-    <div class="principle"><b>Maximum impact from a minimal budget.</b><p>Within a limited budget, we choose the initiatives that fit your challenges and decide together what to do—and what not to do.</p></div>
+    <div class="principle"><b>Turning a limited budget into moves that grow your business.</b><p>Within a limited budget, we choose initiatives that fit your challenges and goals, and set clear priorities.</p></div>
     <div class="svc-rows" id="svc-rows"></div>
   </section>
 </div></main>
@@ -1078,7 +1136,7 @@ body{letter-spacing:0}
   <section class="ax-head bleed">
     <div class="ax-wrap ax-head-in">
       <div><p class="crumb"><a href="#top">TOP</a> / About</p><h1>About<span>/</span><small>About</small></h1></div>
-      <p>MICHINARI joins small and mid-sized businesses as an outsourced CMO, <br>supporting everything from marketing strategy and execution <br>to building lasting capability inside your company.</p>
+      <p>MICHINARI serves as an outside head of marketing for small and mid-sized businesses, <br>supporting everything from strategy and execution to lasting capability in your team, <br>and staying with you as your business grows.</p>
     </div>
   </section>
   <div class="ax-photo bleed"><img src="../images/about-street.webp" width="1600" height="900" alt="A local shopping street on a sunny day" loading="lazy"></div>
@@ -1087,10 +1145,11 @@ body{letter-spacing:0}
     <div class="ax-wrap ax-msg">
       <div>
         <h2 class="ax-h">Message from the Founder<small>CEO Message</small></h2>
-        <h3>So that companies with great products <br>get the customers they deserve.</h3>
-        <p>Japan’s small and mid-sized businesses have countless products loved locally for years and skills refined on the front line. Yet I have seen many of them stay unknown to the people who need them, simply because their message and channels were not in place.</p>
-        <p>Most of these companies have no one dedicated to marketing. Ads go to an agency, the website to a web studio, and social media to whoever has time. Each piece moves, but no one looks at the whole picture and decides what to do next.</p>
-        <p>MICHINARI takes on that role from the outside. We set goals with the same perspective as the owner, decide where the budget goes, and take responsibility through execution and improvement. In the end, we leave behind a way of working your team can continue. I do this work because I believe each company’s growth brings energy to its people and its community.</p>
+        <h3>Turning your company’s value <br>into the reason customers choose you.</h3>
+        <p>Products loved locally for years. Skills refined on the front line. <br>Small and mid-sized businesses hold value that has yet to reach the people who need it.</p>
+        <p>To deliver that value, ads, websites and social media can’t stay as separate efforts—they need to be connected toward your business goals.</p>
+        <p>As an outside head of marketing, MICHINARI works with business owners to clarify challenges and takes on everything from strategy to execution and improvement. Along the way, we leave the knowledge and know-how inside your company, building a team that can keep growing on its own.</p>
+        <p>Each company’s growth brings energy to its people and its community. <br>One company at a time, we are energizing Japan.</p>
         <p class="sign">Shuji Kawamoto <br>Founder, MICHINARI</p>
       </div>
       <figure><img src="../images/message-portrait.webp" width="1400" height="1128" alt="Founder Shuji Kawamoto speaking at a seminar" loading="lazy"></figure>
@@ -1108,7 +1167,7 @@ body{letter-spacing:0}
           <p class="mb-role">Founder<span>Outsourced CMO</span></p>
           <h3>Shuji Kawamoto</h3><p class="mb-en">Shuji Kawamoto</p>
           <p class="mb-catch">Moving businesses forward—from both the front line and the numbers.</p>
-          <p class="mb-bio">Began his career on the front line as a physical therapist, then moved to an overseas advertising company and on to freelance digital marketing. Drawing on hands-on experience in ad operations, social media, landing pages, websites and analytics, he works as an outside head of marketing for small and mid-sized businesses—from strategy and execution to embedding the work in your team.</p>
+          <p class="mb-bio">Began his career on the front line as a physical therapist, then moved to an overseas advertising company and on to freelance digital marketing. Drawing on hands-on experience in ad operations, social media, websites and landing pages, and web analytics, he works as an outside head of marketing for small and mid-sized businesses—from strategy and execution to embedding the work in your team.</p>
           <ul class="mb-tags"><li>Outsourced CMO</li><li>Strategy design</li><li>Ad operations</li><li>In-house training</li></ul>
           <div class="mb-links"><a href="https://www.wantedly.com/id/shuuji_kawamoto_b" target="_blank" rel="noopener">Wantedly ↗</a><a href="https://youtrust.jp/users/0735408c56ff8f0f857ed08f6ad5fcf2?youtrust_source=qr_share" target="_blank" rel="noopener">YOUTRUST ↗</a><a href="https://x.com/shuji2000_jp" target="_blank" rel="noopener">X ↗</a></div>
         </div>
@@ -1134,7 +1193,7 @@ body{letter-spacing:0}
             <h3>Daisuke Utagawa</h3><p class="mb-en">Daisuke Utagawa</p>
             <p class="mb-catch">Connecting acquisition to purchase in one seamless line.</p>
             <p class="mb-bio">CEO of WEB FLEEK Inc., an Ebisu, Tokyo-based firm providing end-to-end digital marketing. From online ads and LINE Official Account setup and operation to websites, landing pages and video, he designs and executes the path from acquisition to purchase.</p>
-            <ul class="mb-tags"><li>Online advertising</li><li>LINE setup & operation</li><li>Websites & landing pages</li><li>EC</li></ul>
+            <ul class="mb-tags"><li>Online advertising</li><li>LINE setup & operation</li><li>Website & landing page production</li><li>EC</li></ul>
             <div class="mb-links"><a href="https://webfleek.jp/" target="_blank" rel="noopener">WEB FLEEK ↗</a></div>
           </div>
         </article>
@@ -1190,7 +1249,7 @@ body{letter-spacing:0}
   <section class="ct-hero bleed">
     <div class="ct-hero-in">
       <div class="ct-hero-txt">
-        <p class="crumb"><a href="#top">HOME</a> / CONTACT</p>
+        <p class="crumb"><a href="#top">TOP</a> / Contact</p>
         <p class="ct-label">CONTACT</p>
         <h1>Contact</h1>
         <p>For questions about our services or any other inquiries, <br>please feel free to contact us.</p>
@@ -1225,6 +1284,21 @@ body{letter-spacing:0}
               <option value="Other">Other</option>
             </select></div>
           </div>
+        <div class="field">
+          <label class="label" for="f-source">How did you hear about us?<small>Optional</small></label>
+          <div class="select-wrap ct-select"><select id="f-source" name="source">
+            <option value="">Please select</option>
+            <option value="X (formerly Twitter)">X (formerly Twitter)</option>
+            <option value="Threads">Threads</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Search (Google, Yahoo! etc.)">Search (Google, Yahoo! etc.)</option>
+            <option value="Online ads">Online ads</option>
+            <option value="PR TIMES">PR TIMES</option>
+            <option value="Referral">Referral</option>
+            <option value="Seminar / event">Seminar / event</option>
+            <option value="Other">Other</option>
+          </select></div>
+        </div>
         <div class="field"><label class="label" for="f-url">Website URL<small>Optional</small></label><input id="f-url" name="url" type="url" placeholder="https://example.co.jp"></div>
         <div class="field"><label class="label" for="f-msg">Message<em>Required</em></label><textarea id="f-msg" name="message" rows="7" placeholder="Tell us about your business, your current challenges and what you want to achieve—as much as you can."></textarea></div>
         <div class="field agree ct-agree"><label><input type="checkbox" id="f-agree" name="agree"> I agree that the information I provide will be used to respond to my inquiry.</label></div>
@@ -1249,6 +1323,14 @@ body{letter-spacing:0}
     <div class="ct-flow" id="sec-flow">
       <h2 class="ct-sub-h">What happens next</h2>
       <ol class="flow" data-flow></ol>
+      <div class="ct-again">
+        <p class="ct-again-h">Once you’ve seen how it works, we’d love to hear from you.</p>
+        <p class="ct-again-t">Contact us through the form, or chat with us on LINE.</p>
+        <div class="ct-again-btns">
+          <button type="button" class="ct-btn ct-btn-send" id="back-to-form">Fill in the form<span aria-hidden="true">›</span></button>
+          <a class="ct-btn ct-btn-line" href="https://lin.ee/5DKzvf8P" target="_blank" rel="noopener"><span class="badge"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 .9l-.1.9c0 .3-.2 1 .9.5 1.1-.5 5.9-3.5 8-5.9C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg></span>Chat with us on LINE</a>
+        </div>
+      </div>
     </div>
   </section>
 </div></main>
@@ -1259,7 +1341,7 @@ body{letter-spacing:0}
     <div class="cta-card reveal" id="cta-card">
       <p class="cta-eyebrow">Let’s talk</p>
       <h2 id="t-cta"><span class="nb">We’ll find the <em>right next move</em></span><br><span class="nb">for your business.</span></h2>
-      <p class="cta-text">From customer acquisition and sales promotion to team building and DX/AI, feel free to get in touch.</p>
+      <p class="cta-text">From online customer acquisition and sales promotion to training, digitalization and AI—feel free to get in touch.</p>
       <div class="cta-btns">
         <a class="cta-btn cta-form" href="#contact"><span class="badge"><svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.2L4.2 7H19.8L12 12.2zM4 9.1V17h16V9.1l-8 5.3-8-5.3z"/></svg></span>Contact form</a>
         <a class="cta-btn cta-line" href="https://lin.ee/5DKzvf8P" target="_blank" rel="noopener"><span class="badge"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 .9l-.1.9c0 .3-.2 1 .9.5 1.1-.5 5.9-3.5 8-5.9C21.4 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg></span>Chat with us on LINE</a>
@@ -1289,9 +1371,9 @@ var NEWS = [
   {
     id: "logo", date: "2026.11.01", cat: "News",
     thumb: {img: "../images/news-logo.webp", square: true},
-    title: "We’ve created a new MICHINARI logo",
+    title: "We’ve unveiled the MICHINARI brand logo",
     body: [
-      ["p","We have created a new logo for MICHINARI."],
+      ["p","We have unveiled the MICHINARI brand logo."],
       ["h","The idea behind the logo"],
       ["p","The symbol is based on the letter “m.” True to our name—michinari means “along the road” in Japanese—it represents walking alongside our clients on their business journey, moving forward together step by step."],
       ["p","The dot on the “i” in the michinari wordmark is red. It expresses our motto, “Be the Light of Japan.”—local companies becoming a light that brightens the whole country."],
@@ -1336,7 +1418,7 @@ function renderArticle(n){
 
 /* ---------- バリュー ---------- */
 var VALUES=[
-  ["Less cost, more impact","Less Cost, More Impact","With a limited budget, we pick only what truly needs doing now."],
+  ["Turning a limited budget into growth","Focused Investment","Within a limited budget, we choose initiatives that fit your challenges and goals, and set clear priorities."],
   ["On the same side as the owner","Same Side","We think as part of your team chasing the same goals—not as an outside vendor."],
   ["Hands-on, judged by results","Hands-on","We don’t stop at proposals; we execute on the ground and verify results in numbers."],
   ["Honest about the numbers","Honest Numbers","We share the good numbers and the bad, and decide the next move together."],
@@ -1357,6 +1439,7 @@ function caseCard(c){
     '</div><details><summary>Period ＋</summary><p>'+esc(c.term)+(c.src?' <a href="'+c.src+'" target="_blank" rel="noopener">Source ↗</a>':'')+'</p></details>'+'<a class="case-more" href="#contact" data-topic="I’d like details on your case studies">Get the details in a 30-minute online meeting</a>'+'</article>';
 }
 document.getElementById('all-works').innerHTML=CASES.map(caseCard).join('');
+document.getElementById('top-works').innerHTML=CASES.map(caseCard).join('');
 
 /* ---------- 進め方（共通） ---------- */
 var FLOW_ICON={
@@ -1369,13 +1452,13 @@ var FLOW_ICON={
 };
 var FLOW=[
   ["01","Initial meeting","talk","Reach out via LINE or our contact form. In a 30-minute online meeting, we’ll hear about your challenges and where you want to go. It’s fine if you’re not yet sure what to ask.",false,"Free · 30 min"],
-  ["02","Discovery call","note","We take a close look at your business—sales and inquiry numbers, current initiatives and your team. Working back from your goals, we find the bottleneck holding back results."],
-  ["03","A proposal built around your bottleneck","target","Based on that bottleneck, we propose priorities, initiatives, scope and the division of roles—and whether “leave it to us” or “build it together” fits you best.",true],
+  ["02","Discovery call","note","We take a close look at your business—sales and inquiry numbers, current initiatives and your team. Working back from your goals, we find what is keeping results from coming."],
+  ["03","Initiatives and an action plan for your challenges","target","Based on those challenges, we propose priorities, initiatives, scope and the division of roles—and whether “leave it to us” or “build it together” fits you best.",true],
   ["04","Kick-off","grow","We put the agreed plan into action, review the numbers with you every month, and keep improving as we decide each next move."]
 ];
 var FLOW_INTRO='<div class="flow-intro"><figure><img src="../images/head-services.webp" alt="A meeting discussing goals and challenges" loading="lazy"></figure>'+
   '<div><p class="fi-k">How MICHINARI works</p><h3>We don’t jump straight into tactics. <br>First, we find where things are getting stuck.</h3>'+
-  '<div class="fi-map" aria-label="From goals to initiatives"><span class="n">Goals</span><i>→</i><span class="n hot">Bottleneck</span><i>→</i><span class="n">Priorities</span><i>→</i><span class="n">Initiatives</span></div>'+
+  '<div class="fi-map" aria-label="From goals to initiatives"><span class="n">Goals</span><i>→</i><span class="n hot">Root cause</span><i>→</i><span class="n">Priorities</span><i>→</i><span class="n">Initiatives</span></div>'+
   '<p class="fi-t">Working back from your goals, we decide together what to do—and what not to do.</p></div></div>';
 document.querySelectorAll('[data-flow]').forEach(function(ol){
   ol.classList.add('flow5');
@@ -1386,37 +1469,37 @@ document.querySelectorAll('[data-flow]').forEach(function(ol){
 /* ---------- 事業 ---------- */
 var SERVICES={
   cmo:{title:"Outsourced CMO",en:"Strategy",img:"../images/biz-cmo.webp",alt:"A business owner and consultant meeting over documents",for:"For companies without a head of marketing",
-    lead:"We join your leadership as your head of marketing, set goals, budgets and priorities, and drive execution with your internal team and outside partners.",
+    lead:"As your outside head of marketing (outsourced CMO), we join your leadership, set goals, budgets and priorities, and drive execution with your internal team and outside partners.",
     worries:["Ads, website and social media are handled by different vendors, and no one sees the whole picture","You don’t know how much you spend on marketing or what actually drives results","You can’t afford a full-time marketing lead in-house"],
     after:"Initiatives and budgets are set by working back from business goals, and you can decide each next move based on monthly numbers.",
     groups:[["Strategy & management",[["Outsourced CMO","Strategy and decision-making as your head of marketing"],["Marketing strategy design","Situation analysis, KGI/KPI design and budget allocation"],["Project management","Managing progress and quality across your team and vendors"],["Web consulting","Audits of current initiatives and improvement proposals"]]]],topic:"About Outsourced CMO"},
   web:{title:"Digital Marketing",en:"Digital",img:"../images/biz-web.webp",alt:"Hands working on a laptop showing web analytics",for:"For companies that want more online inquiries and sales",
-    lead:"Ads, websites, landing pages, social media, LINE and MEO. We build every step from being discovered to receiving inquiries and purchases.",
+    lead:"Online ads, websites and landing pages, social media, LINE and MEO (local search on Google Maps). We handle planning through production and operation, building the path from being discovered to receiving inquiries and purchases.",
     worries:["You have a website, but it brings in almost no inquiries","You run ads but can’t tell whether they pay off","You started social media or LINE, but it isn’t driving sales"],
     after:"You can see in numbers which channels bring inquiries and sales, and focus your budget on what works best.",
     groups:[["Online advertising",[["Search ads","Google and Yahoo! JAPAN search ads"],["Display ads","Google Display Network and more"],["Social media ads","Instagram, Facebook, TikTok and X"],["Video ads","Planning and running video ads on YouTube and more"],["LINE ads","Follower-acquisition ads and other campaigns on LINE"],["Ad creative production","Producing and testing banners, ad copy and videos"]]],["Web production & conversion paths",[["Website & landing page production","Design, production and optimization for your goals, including WordPress builds"],["LINE Official Account setup","Designing the path from new follower to purchase or booking"],["MEO (local search)","Optimizing and managing your Google Business Profile"],["Social media management","Planning, creating and analyzing posts"],["Web analytics & measurement","Tracking setup and reporting"],["Outsourced web manager","Day-to-day operations in place of an in-house web/IT person"]]]],topic:"About Digital Marketing"},
   promo:{title:"Sales Promotion",en:"Promotion",img:"../images/biz-promo.webp",alt:"A shop counter with products, POP displays and brochures",for:"For companies whose great products aren’t turning into sales",
     lead:"Campaign planning, flyers, POP and other promotional materials, and e-commerce and in-store displays—driving sales both online and offline.",
-    worries:["Your products are good, but shoppers pass them by in store and online","Campaigns and flyers are made by gut feeling every time","You want to turn in-store customers into repeat buyers via LINE and social media"],
-    after:"Displays and materials that communicate your product’s value, and a flow that drives repeat purchases both in store and online.",
+    worries:["Your products are good, but shoppers pass them by in store and online","Campaigns and flyers are made by gut feeling every time","You want to use LINE and social media to bring customers back for repeat visits and purchases"],
+    after:"Displays and materials that communicate your product’s value, and a flow that brings customers back both in store and online.",
     groups:[["Sales promotion",[["Campaign planning","Planning and running launches and seasonal campaigns"],["Promotional materials","Flyers, brochures, POP and more"],["E-commerce & in-store promotion","Improving product pages, displays and repeat-purchase programs"],["Online–offline integration","Guiding in-store customers to LINE and social media"]]]],topic:"About Sales Promotion"},
   inhouse:{title:"In-house Capability Building",en:"Training",img:"../images/biz-inhouse.webp",alt:"An in-house training session with slides on a monitor",for:"For companies that want to stop relying entirely on outside vendors",
-    lead:"Hands-on training using your own ads and posts, plus clear playbooks, so your team can keep running and improving marketing.",
-    worries:["Outsourcing costs keep rising, and you want to handle it in-house","Know-how is lost every time the person in charge changes","You want people in-house who can judge what works and what doesn’t"],
+    lead:"Hands-on training using your own ads and posts, plus clear playbooks, so your team can keep running and improving marketing in-house.",
+    worries:["Outsourcing costs keep rising, and you want to handle it in-house","Know-how is lost every time the person in charge changes","You want people in-house who can judge results and improve them"],
     after:"Your team has clear procedures and criteria, and can run, review and improve marketing without depending on outsiders.",
     groups:[["In-house capability & training",[["Hands-on training","On-the-job training using your own ads and posts"],["In-house courses on online ads and social media","Courses that help your team take over operations"],["Manuals & playbooks","Templates for ad setup, posting and reporting"],["Review routines","Sharing KPIs and designing regular meetings to drive improvement"]]]],topic:"About In-house Capability Building"},
-  dx:{title:"DX / AX Support",en:"Operations",img:"../images/biz-dx.webp",alt:"A meeting with a laptop and tablet in a bright office",for:"For companies that want to move beyond paper, spreadsheets and people-dependent processes",
-    lead:"DX (digital transformation) and AX (AI transformation), sized to fit small and mid-sized businesses. Using cloud tools such as Google Workspace and Notion together with generative AI, we connect marketing, order and customer management, and internal operations into a single flow.",
+  dx:{title:"DX / AX Support",en:"Operations",img:"../images/biz-dx.webp",alt:"A meeting with a laptop and tablet in a bright office",for:"For companies that want to fix scattered information and work that depends on specific people",
+    lead:"We improve operations through digitalization (DX) and AI (AX), in a way that fits your size and workflows. Using cloud tools such as Google Workspace and Notion together with generative AI, we connect marketing, order and customer management, and internal operations into a single flow.",
     worries:["Customer and deal information is scattered across people and spreadsheets","Creating documents and reports takes too much time, every time","You want to use AI at work but don’t know where to start"],
     after:"Customer, deal and internal information lives in one place; routine work is handled by tools and AI, freeing people to focus on decisions and proposals.",
     groups:[["DX (digitalization & process improvement)",[["Workflow mapping & improvement","Reviewing current work and planning what to digitize, and in what order"],["Google Workspace adoption","Sharing rules and practices for Gmail, Drive and Sheets"],["Internal portal & knowledge base in Notion","Bringing manuals, meeting notes and tasks into one place"],["Order & customer management (CRM / SFA)","Visibility into customers, deals and project progress"]]],["AX (AI adoption) & automation",[["Marketing automation (MA)","Automated email, LINE messages and follow-ups for prospects"],["Generative AI at work","Bringing AI into writing, planning and analysis, with internal guidelines"],["Faster document creation","Templates and AI for proposals, reports and meeting notes"],["Tool integration & workflow automation","Connecting forms, CRM and chat to cut manual work"]]]],topic:"About DX / AX Support"},
-  subsidy:{title:"Subsidy Consulting",en:"Funding",img:"../images/hero-city.webp",alt:"A regional Japanese city on a sunny day",for:"For companies looking to fund new initiatives",
-    lead:"We help you explore Japanese government subsidies for digital and new-business investments, and plan how to apply.",
+  subsidy:{title:"Subsidy Consulting",en:"Funding",img:"../images/hero-city.webp",alt:"A regional Japanese city on a sunny day",for:"For companies that also want to consider the funding side of new initiatives",
+    lead:"For investments in digital or new initiatives, we first clarify your business goals and plans, then explore together whether and how Japanese government subsidies could apply.",
     worries:["You want to know whether subsidies can cover web or equipment investments","You’re unsure how the application process and timeline work","You want advice on the initiative itself, not just the subsidy"],
     after:"Your plans and funding approach are clear, so you can get moving alongside your digital marketing and in-house capability plans.",
-    groups:[["Subsidies",[["Clarifying your project and challenges","Organizing what you want to do with subsidies in mind"],["Subsidy consultation","Assessing eligibility and how to proceed"],["Planning that fits your business","Planned together with your web and in-house capability initiatives"]]]],topic:"About Subsidy Consulting"}
+    groups:[["Subsidies",[["Clarifying your project and challenges","Clarifying business goals and investment plans, then assessing subsidy eligibility"],["Subsidy consultation","Planning the application process and timeline"],["Planning that fits your business","Planned together with your web and in-house capability initiatives"]]]],topic:"About Subsidy Consulting"}
 };
-document.getElementById('svc-rows').innerHTML=Object.keys(SERVICES).map(function(k){var d=SERVICES[k];return '<a class="svc-row" href="#service-'+k+'"><div class="img"><img src="'+d.img+'" alt="'+esc(d.alt)+'" loading="lazy"></div><div class="txt"><span class="en">'+esc(d.en)+'</span><h3>'+esc(d.title)+'</h3><span class="for">'+esc(d.for)+'</span><p>'+esc(d.lead)+'</p><span class="go">View services</span></div></a>';}).join('');
+document.getElementById('svc-rows').innerHTML=Object.keys(SERVICES).map(function(k){var d=SERVICES[k];return '<a class="svc-row" href="#service-'+k+'"><div class="img"><img src="'+d.img+'" alt="'+esc(d.alt)+'" loading="lazy"></div><div class="txt"><span class="en">'+esc(d.en)+'</span><h3>'+esc(d.title)+'</h3><span class="for">'+esc(d.for)+'</span><p>'+esc(d.lead)+'</p><span class="go">View service details</span></div></a>';}).join('');
 var pendingTopic=null;
 function renderService(key){
   var d=SERVICES[key];
@@ -1447,7 +1530,7 @@ document.addEventListener('click',function(e){var a=e.target.closest('[data-topi
     var ag=document.getElementById('f-agree');ag.parentElement.classList.toggle('invalid',!ag.checked);if(!ag.checked)ok=false;
     err.hidden=ok;
     if(!ok){var first=form.querySelector('.invalid');if(first)first.scrollIntoView({block:'center'});return;}
-    var rows=[['Company name',val('company')],['Your name',val('name')],['Email',val('email')],['Phone',val('tel')||'(not provided)'],['Topic',topic.value],['Website URL',val('url')||'(not provided)'],['Message',val('message')]];
+    var rows=[['Company name',val('company')],['Your name',val('name')],['Email',val('email')],['Phone',val('tel')||'(not provided)'],['Topic',topic.value],['How they heard about us',form.elements.source.value||'(not selected)'],['Website URL',val('url')||'(not provided)'],['Message',val('message')]];
     document.getElementById('confirm-list').innerHTML=rows.map(function(r){return '<div><dt>'+esc(r[0])+'</dt><dd>'+esc(r[1])+'</dd></div>';}).join('');
     form.hidden=true;confirmBox.hidden=false;step(1);top();
   });
@@ -1457,7 +1540,7 @@ document.addEventListener('click',function(e){var a=e.target.closest('[data-topi
     if(sendBtn.disabled)return;
     sendBtn.disabled=true;sendErr.hidden=true;var label=sendBtn.innerHTML;sendBtn.textContent='Sending…';
     var data={_subject:'【MICHINARI・EN】Inquiry: '+form.elements.topic.value,_template:'table',_captcha:'false',
-      'Topic':form.elements.topic.value,'Company name':val('company'),'Your name':val('name'),'Email':val('email'),
+      'Topic':form.elements.topic.value,'How they heard about us':form.elements.source.value||'(not selected)','Company name':val('company'),'Your name':val('name'),'Email':val('email'),
       'Phone':val('tel')||'(not provided)','Website URL':val('url')||'(not provided)','Message':val('message'),_replyto:val('email'),_honey:''};
     fetch('https://formsubmit.co/ajax/'+['shuji.kawamoto.jp','gmail.com'].join('@'),{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
       .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
@@ -1585,6 +1668,13 @@ document.querySelectorAll('.lang-sw a').forEach(function(a){a.addEventListener('
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});return;}
   var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.25});
   els.forEach(function(e){io.observe(e);});})();
+
+/* ---------- Contact：流れの下から、フォームの先頭へ戻る ---------- */
+(function(){var b=document.getElementById('back-to-form');if(!b)return;
+  b.addEventListener('click',function(){var f=document.querySelector('#view-contact .ct-card');if(!f)return;
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:f.getBoundingClientRect().top+scrollY-100,behavior:reduce?'auto':'smooth'});
+    var first=document.getElementById('f-company');if(first)setTimeout(function(){first.focus({preventScroll:true});},reduce?0:600);});})();
 
 /* ---------- アクセス解析（GA4）：LINEボタンのクリックを計測 ---------- */
 document.addEventListener('click',function(e){
