@@ -1,15 +1,6 @@
 <!doctype html>
 <html lang="ja">
 <meta charset="utf-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S1H3SGD2XF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-S1H3SGD2XF');
-</script>
 <title>MICHINARI｜中小企業から、日本を元気にする。外部CMO・Webマーケティング支援</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="MICHINARI（ミチナリ）は、外部CMOとして中小企業の経営に入り、Web・販促・内製化・DX/AXまで事業の道のりに伴走するマーケティングパートナーです。">
@@ -1118,7 +1109,7 @@ html,body{background:var(--page)}
   </section>
   <section class="ct-body bleed">
     <span class="ring ring-a" aria-hidden="true"></span><span class="ring ring-b" aria-hidden="true"></span>
-    <p class="ct-intro">以下のフォームに必要事項をご入力のうえ、送信してください。<br>内容を確認し、担当の河本からメールでご連絡します。</p>
+    <p class="ct-intro">以下のフォームに必要事項をご入力のうえ、送信してください。<br>内容を確認のうえ、担当者より2〜3営業日以内にメールでご連絡いたします。</p>
     <div class="ct-card form-card">
       <form id="contact-form" novalidate>
         <div class="field-row">
@@ -1157,7 +1148,7 @@ html,body{background:var(--page)}
       </div>
       <div id="done" class="done" hidden>
         <h2>お問い合わせありがとうございます</h2>
-        <p>内容を確認のうえ、担当の河本からメールでご連絡します。</p>
+        <p>内容を確認のうえ、担当者より2〜3営業日以内にメールでご連絡いたします。</p>
         <a class="btn btn-dark" href="#top">トップへ戻る</a>
       </div>
       <div class="ct-or"><span>または</span></div>
@@ -1198,7 +1189,6 @@ html,body{background:var(--page)}
         <div><h4><a href="#contact">お問い合わせ</a></h4><a href="#contact">お問い合わせフォーム</a><a href="#flow">ご相談の流れ</a><a href="https://lin.ee/5DKzvf8P" target="_blank" rel="noopener">公式LINE ↗</a><a href="https://x.com/shuji2000_jp" target="_blank" rel="noopener">X ↗</a></div>
       </nav>
     </div>
-    <p class="copy" style="border-top:none;padding-top:0;margin-top:24px;line-height:1.8">当サイトでは、利用状況を把握するためにGoogleアナリティクスを使用しています。データはCookieを使って匿名で収集されており、個人を特定するものではありません。詳しくは<a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Googleのポリシー ↗</a>をご覧ください。</p>
     <p class="copy">© MICHINARI All rights reserved.</p>
   </div>
 </footer>
@@ -1379,7 +1369,7 @@ document.addEventListener('click',function(e){var a=e.target.closest('[data-topi
       '電話番号':val('tel')||'（未入力）','ホームページURL':val('url')||'（未入力）','ご相談内容':val('message'),_replyto:val('email'),_honey:''};
     fetch('https://formsubmit.co/ajax/'+['shuji.kawamoto.jp','gmail.com'].join('@'),{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
       .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
-      .then(function(){if(typeof gtag==='function')gtag('event','generate_lead',{method:'contact_form'});confirmBox.hidden=true;done.hidden=false;step(2);top();form.reset();})
+      .then(function(){form.reset();location.href='thanks/';})
       .catch(function(){sendErr.hidden=false;})
       .then(function(){sendBtn.disabled=false;sendBtn.innerHTML=label;});
   });
@@ -1497,12 +1487,4 @@ route();
 document.querySelectorAll('.lang-sw a').forEach(function(a){a.addEventListener('click',function(e){
   if(a.getAttribute('aria-current')==='true'){e.preventDefault();return;}
   e.preventDefault();var h=location.hash||'';location.href=a.getAttribute('href')+h;});});
-
-/* ---------- アクセス解析（GA4）：LINEボタンのクリックを計測 ---------- */
-document.addEventListener('click',function(e){
-  var a=e.target.closest&&e.target.closest('a[href*="lin.ee"]');
-  if(!a||typeof gtag!=='function')return;
-  var s=a.closest('section[id],footer,header');
-  gtag('event','line_click',{link_location:s?(s.id||s.tagName.toLowerCase()):'other'});
-});
 </script>
