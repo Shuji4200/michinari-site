@@ -857,6 +857,76 @@ html,body{background:var(--page)}
 .ct-again-btns .ct-btn{min-width:250px;min-height:60px}
 @media (max-width:820px){.ct-again-btns .ct-btn{min-width:0;width:100%}}
 
+/* ===== 図解（事業ページ） ===== */
+.dg-lead{margin:-6px 0 22px;font-size:15px;color:#30373c}
+.dg-bar{margin-top:14px;background:#151b1e;color:#fff;font-size:14px;font-weight:700;line-height:1.7;padding:14px 18px;border-radius:8px;text-align:center}
+.fn{display:grid;gap:8px}
+.fn-head,.fn-row{display:grid;grid-template-columns:136px repeat(var(--n),minmax(0,1fr));gap:8px}
+.fn-col{position:relative;display:flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px 0 10px;font-size:14px;font-weight:700;color:#fff;text-align:center;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,0 100%,14px 50%)}
+.fn-col.c0{clip-path:polygon(0 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,0 100%);background:#9aa1a8}
+.fn-col.c1{background:#6f777e}.fn-col.c2{background:#454c52}.fn-col.c3{background:#151b1e}
+.fn-col:last-child{background:var(--red-ink)}
+.fn-label{display:flex;align-items:center;justify-content:center;text-align:center;background:#fff;border:1.5px solid #151b1e;border-radius:6px;font-size:13.5px;font-weight:700;color:#151b1e;padding:10px 6px}
+.fn-cell{display:flex;flex-direction:column;justify-content:center;gap:6px;background:#f4f5f6;border-radius:6px;padding:14px 12px;text-align:center}
+.fn-cell span{font-size:13.5px;line-height:1.55;color:#151b1e}
+.fn-cell .fn-sp{display:none}
+.fn-cell:last-child{background:#fbeeec}
+.hub{display:grid;gap:14px}
+.hub-top{text-align:center;font-weight:700;font-size:14.5px;color:#151b1e;border:1.5px solid #151b1e;border-radius:8px;padding:12px}
+.hub-body{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:14px 18px;align-items:center}
+.hub-center{grid-column:2;grid-row:1/span 2;justify-self:center;width:min(100%,220px);aspect-ratio:1;border-radius:50%;background:#151b1e;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 0 0 10px #e9ecef}
+.hub-center b{font-size:20px;font-weight:900;letter-spacing:.06em}
+.hub-center span{margin-top:6px;font-size:12.5px;color:#cfd5da}
+.hub-node{display:flex;flex-direction:column;gap:4px;background:#f4f5f6;border-radius:999px;padding:16px 22px;text-align:center}
+.hub-node b{font-size:15px;color:#151b1e}.hub-node span{font-size:12.5px;color:#5b646b}
+.hub-node.n0{grid-column:1;grid-row:1}.hub-node.n1{grid-column:3;grid-row:1}.hub-node.n2{grid-column:1;grid-row:2}.hub-node.n3{grid-column:3;grid-row:2}
+.ho-legend{display:flex;gap:20px;font-size:12.5px;font-weight:700;color:#30373c;margin-bottom:12px}
+.ho-legend span::before{content:"";display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:6px;vertical-align:0}
+.lg-m::before{background:var(--red-ink)}.lg-c::before{background:#d9dde1}
+.ho-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ho-step{position:relative;background:#f4f5f6;border-radius:10px;padding:18px}
+.ho-step:not(:last-child)::after{content:"";position:absolute;right:-12px;top:50%;width:12px;height:16px;transform:translateY(-50%);background:#151b1e;clip-path:polygon(0 0,100% 50%,0 100%);z-index:1}
+.ho-no{font:700 12px var(--en);letter-spacing:.12em;color:var(--red-ink)}
+.ho-step b{display:block;margin-top:4px;font-size:16px;color:#151b1e}
+.ho-t{margin-top:6px;font-size:13.5px;line-height:1.8;color:#30373c;min-height:3.6em}
+.ho-bar{margin-top:12px;height:10px;border-radius:999px;background:#d9dde1;overflow:hidden}
+.ho-bar i{display:block;height:100%;background:var(--red-ink);border-radius:999px}
+/* 事業一覧の全体図 */
+.dg-overview{margin-bottom:28px}
+.ov{display:grid;gap:10px}
+.ov>div{border-radius:10px;padding:14px 18px;text-align:center;position:relative}
+.ov>div:not(:last-child)::after{content:"";position:absolute;left:50%;bottom:-10px;width:16px;height:10px;transform:translateX(-50%);background:#9aa1a8;clip-path:polygon(0 0,100% 0,50% 100%);z-index:1}
+.ov span{display:block;font:700 11.5px var(--en);letter-spacing:.12em;color:#7a838b;margin-bottom:2px}
+.ov-top{border:1.5px solid #151b1e;font-weight:700;color:#151b1e;background:#fff}
+.ov-cmo{background:#151b1e;color:#fff}.ov-cmo span{color:#aeb6bd}
+.ov-cmo b{display:block;font-size:19px}.ov-cmo small{display:block;margin-top:2px;font-size:13px;color:#d6dbe0}
+.ov-ways{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0!important}
+.ov-way{background:#f4f5f6;border-radius:10px;padding:16px 18px}
+.ov-k{font:700 12px var(--en);letter-spacing:.1em;color:var(--red-ink)}
+.ov-way b{display:block;margin-top:4px;font-size:16px;color:#151b1e}
+.ov-way ul{margin-top:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.ov-way a{display:inline-block;background:#fff;border:1px solid #d9dde1;border-radius:999px;padding:5px 14px;font-size:13px;font-weight:700;color:#151b1e;text-decoration:none}
+.ov-way a:hover{border-color:var(--red-ink);color:var(--red-ink)}
+.ov-base{background:#fff;border:1px dashed #b9c0c6;font-size:13.5px;color:#30373c}
+.ov-base a{color:#151b1e;font-weight:700}
+.ov-goal{background:var(--red-ink);color:#fff;font-weight:900;font-size:16px}
+@media (max-width:820px){
+  .fn-head{display:none}
+  .fn{gap:14px}
+  .fn-row{grid-template-columns:minmax(0,1fr);gap:6px}
+  .fn-label{justify-content:flex-start;border:0;background:none;padding:0;font-size:14px}
+  .fn-cell{text-align:left;align-items:flex-start;padding:12px 14px;border-left:4px solid #6f777e}
+  .fn-cell:last-child{border-left-color:var(--red-ink)}
+  .fn-cell .fn-sp{display:block;font-size:12px;font-weight:700;color:#7a838b}
+  .hub-body{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .hub-center{grid-column:1/-1;grid-row:1;width:180px}
+  .hub-node.n0,.hub-node.n1,.hub-node.n2,.hub-node.n3{grid-column:auto;grid-row:auto;border-radius:12px;padding:12px}
+  .ho-steps{grid-template-columns:minmax(0,1fr);gap:16px}
+  .ho-step:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-14px;transform:translateX(-50%) rotate(90deg)}
+  .ho-t{min-height:0}
+  .ov-ways{grid-template-columns:minmax(0,1fr)}
+}
+
 /* ===== English version ===== */
 :root{--jp:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans JP",sans-serif}
 body{letter-spacing:0}
@@ -1088,6 +1158,20 @@ body{letter-spacing:0}
     <div class="ax-photo"><img src="../images/head-services.webp" width="1600" height="800" alt="A team discussing marketing strategy in a meeting room" loading="lazy"></div>
   </div>
   <section class="panel block">
+    <div class="dg-overview">
+      <h2 class="h-line">How MICHINARI supports you</h2>
+      <p class="dg-lead">Starting from your business goals, we support you in two ways—“leave it to us” or “build it together”—depending on your challenges.</p>
+      <div class="ov">
+        <div class="ov-top"><span>Starting point</span>Business goals (sales, inquiries, profit)</div>
+        <div class="ov-cmo"><span>Steering the whole</span><b>Outsourced CMO</b><small>As your outside head of marketing, we set strategy, budgets and priorities</small></div>
+        <div class="ov-ways">
+          <div class="ov-way"><p class="ov-k">01 Leave it to us</p><b>Leave customer acquisition to us</b><ul><li><a href="#service-web">Digital Marketing</a></li><li><a href="#service-promo">Sales Promotion</a></li></ul></div>
+          <div class="ov-way"><p class="ov-k">02 Build it together</p><b>Build a team that grows on its own</b><ul><li><a href="#service-inhouse">In-house Capability Building</a></li><li><a href="#service-dx">DX / AX Support</a></li></ul></div>
+        </div>
+        <div class="ov-base"><span>As needed</span><a href="#service-subsidy">Subsidy Consulting</a> (considered after clarifying your business goals and investment plans)</div>
+        <div class="ov-goal">Growing sales, and systems to keep growing on your own</div>
+      </div>
+    </div>
     <div class="principle"><b>Turning a limited budget into moves that grow your business.</b><p>Within a limited budget, we choose initiatives that fit your challenges and goals, and set clear priorities.</p></div>
     <div class="svc-rows" id="svc-rows"></div>
   </section>
@@ -1108,6 +1192,7 @@ body{letter-spacing:0}
     <div><h2 class="h-line">Sound familiar?</h2><ul class="worries" id="svc-worries"></ul></div>
     <div><h2 class="h-line">Where we aim to get you</h2><p class="after-box" id="svc-after"></p></div>
   </section>
+  <section class="panel block" id="svc-dg-sec"><h2 class="h-line">How we support you</h2><p class="dg-lead" id="svc-dg-lead"></p><div class="dg" id="svc-dg"></div></section>
   <section class="panel block"><h2 class="h-line">Service menu</h2><div class="svc-table" id="svc-table"></div></section>
   <section class="panel block">
     <h2 class="h-line">How we work</h2><ol class="flow" data-flow></ol>
@@ -1472,35 +1557,51 @@ var SERVICES={
     lead:"As your outside head of marketing (outsourced CMO), we join your leadership, set goals, budgets and priorities, and drive execution with your internal team and outside partners.",
     worries:["Ads, website and social media are handled by different vendors, and no one sees the whole picture","You don’t know how much you spend on marketing or what actually drives results","You can’t afford a full-time marketing lead in-house"],
     after:"Initiatives and budgets are set by working back from business goals, and you can decide each next move based on monthly numbers.",
-    groups:[["Strategy & management",[["Outsourced CMO","Strategy and decision-making as your head of marketing"],["Marketing strategy design","Situation analysis, KGI/KPI design and budget allocation"],["Project management","Managing progress and quality across your team and vendors"],["Web consulting","Audits of current initiatives and improvement proposals"]]]],topic:"About Outsourced CMO"},
+    groups:[["Strategy & management",[["Outsourced CMO","Strategy and decision-making as your head of marketing"],["Marketing strategy design","Situation analysis, KGI/KPI design and budget allocation"],["Project management","Managing progress and quality across your team and vendors"],["Web consulting","Audits of current initiatives and improvement proposals"]]]],diagram:{type:"hub",lead:"Starting from your business goals, the outsourced CMO brings scattered internal and external initiatives together into one plan and drives it forward.",top:"Business goals (sales, inquiries, profit)",center:["Outsourced CMO","Strategy, budget, priorities"],nodes:[["Your team","Day-to-day operations and decisions"],["Ad operations","Online and social media ads"],["Websites & landing pages","Web studio, improvements"],["Social media & LINE","Posting, customer touchpoints"]],bottom:"Review the numbers monthly and decide the next move"},topic:"About Outsourced CMO"},
   web:{title:"Digital Marketing",en:"Digital",img:"../images/v2-web.webp",alt:"A monitor and laptop showing website images and analytics charts",for:"For companies that want more online inquiries and sales",
     lead:"Online ads, websites and landing pages, social media, LINE and MEO (local search on Google Maps). We handle planning through production and operation, building the path from being discovered to receiving inquiries and purchases.",
     worries:["You have a website, but it brings in almost no inquiries","You run ads but can’t tell whether they pay off","You started social media or LINE, but it isn’t driving sales"],
     after:"You can see in numbers which channels bring inquiries and sales, and focus your budget on what works best.",
-    groups:[["Online advertising",[["Search ads","Google and Yahoo! JAPAN search ads"],["Display ads","Google Display Network and more"],["Social media ads","Instagram, Facebook, TikTok and X"],["Video ads","Planning and running video ads on YouTube and more"],["LINE ads","Follower-acquisition ads and other campaigns on LINE"],["Ad creative production","Producing and testing banners, ad copy and videos"]]],["Web production & conversion paths",[["Website & landing page production","Design, production and optimization for your goals, including WordPress builds"],["LINE Official Account setup","Designing the path from new follower to purchase or booking"],["MEO (local search)","Optimizing and managing your Google Business Profile"],["Social media management","Planning, creating and analyzing posts"],["Web analytics & measurement","Tracking setup and reporting"],["Outsourced web manager","Day-to-day operations in place of an in-house web/IT person"]]]],topic:"About Digital Marketing"},
+    groups:[["Online advertising",[["Search ads","Google and Yahoo! JAPAN search ads"],["Display ads","Google Display Network and more"],["Social media ads","Instagram, Facebook, TikTok and X"],["Video ads","Planning and running video ads on YouTube and more"],["LINE ads","Follower-acquisition ads and other campaigns on LINE"],["Ad creative production","Producing and testing banners, ad copy and videos"]]],["Web production & conversion paths",[["Website & landing page production","Design, production and optimization for your goals, including WordPress builds"],["LINE Official Account setup","Designing the path from new follower to purchase or booking"],["MEO (local search)","Optimizing and managing your Google Business Profile"],["Social media management","Planning, creating and analyzing posts"],["Web analytics & measurement","Tracking setup and reporting"],["Outsourced web manager","Day-to-day operations in place of an in-house web/IT person"]]]],diagram:{type:"funnel",lead:"We combine initiatives with different roles for each stage, from discovery to purchase and repeat purchase.",cols:["Get discovered","Interest & comparison","Inquiry & purchase","Repeat & loyalty"],rows:[["Main initiatives",["Online ads","Social media management","MEO (Google Maps)"],["Websites & landing pages","Social media posts","Reviews & comparisons"],["Contact form","LINE Official Account","Booking & purchase paths"],["LINE messages","Ongoing social media posts","Repeat-purchase offers"]],["Customer mindset",["Learns you exist","Compares and gets interested","Decides to inquire or buy","Chooses you again"]]],bar:"With web analytics and measurement, we see in numbers where customers drop off—and keep improving"},topic:"About Digital Marketing"},
   promo:{title:"Sales Promotion",en:"Promotion",img:"../images/v2-promo.webp",alt:"A product shoot setup with packaging, a camera and a tablet showing an online store",for:"For companies whose great products aren’t turning into sales",
     lead:"Campaign planning, flyers, POP and other promotional materials, and e-commerce and in-store displays—driving sales both online and offline.",
     worries:["Your products are good, but shoppers pass them by in store and online","Campaigns and flyers are made by gut feeling every time","You want to use LINE and social media to bring customers back for repeat visits and purchases"],
     after:"Displays and materials that communicate your product’s value, and a flow that brings customers back both in store and online.",
-    groups:[["Sales promotion",[["Campaign planning","Planning and running launches and seasonal campaigns"],["Promotional materials","Flyers, brochures, POP and more"],["E-commerce & in-store promotion","Improving product pages, displays and repeat-purchase programs"],["Online–offline integration","Guiding in-store customers to LINE and social media"]]]],topic:"About Sales Promotion"},
+    groups:[["Sales promotion",[["Campaign planning","Planning and running launches and seasonal campaigns"],["Promotional materials","Flyers, brochures, POP and more"],["E-commerce & in-store promotion","Improving product pages, displays and repeat-purchase programs"],["Online–offline integration","Guiding in-store customers to LINE and social media"]]]],diagram:{type:"funnel",lead:"In store and online, we connect the first touchpoint to repeat visits and purchases.",cols:["Planning","Promotional materials","Selling in store & online","Repeat visits & purchases"],rows:[["Offline (in store)",["Campaign planning","Flyers, POP, brochures","Store displays","From store to LINE sign-up"]],["Online (web)",["Launches & seasonal campaigns","Online product pages","Online sales promotion","Offers via LINE & social media"]]],bar:"Connecting online and offline to build a buying flow that doesn’t end after one purchase"},topic:"About Sales Promotion"},
   inhouse:{title:"In-house Capability Building",en:"Training",img:"../images/v2-inhouse.webp",alt:"A team discussing data on a large monitor",for:"For companies that want to stop relying entirely on outside vendors",
     lead:"Hands-on training using your own ads and posts, plus clear playbooks, so your team can keep running and improving marketing in-house.",
     worries:["Outsourcing costs keep rising, and you want to handle it in-house","Know-how is lost every time the person in charge changes","You want people in-house who can judge results and improve them"],
     after:"Your team has clear procedures and criteria, and can run, review and improve marketing without depending on outsiders.",
-    groups:[["In-house capability & training",[["Hands-on training","On-the-job training using your own ads and posts"],["In-house courses on online ads and social media","Courses that help your team take over operations"],["Manuals & playbooks","Templates for ad setup, posting and reporting"],["Review routines","Sharing KPIs and designing regular meetings to drive improvement"]]]],topic:"About In-house Capability Building"},
+    groups:[["In-house capability & training",[["Hands-on training","On-the-job training using your own ads and posts"],["In-house courses on online ads and social media","Courses that help your team take over operations"],["Manuals & playbooks","Templates for ad setup, posting and reporting"],["Review routines","Sharing KPIs and designing regular meetings to drive improvement"]]]],diagram:{type:"handover",lead:"MICHINARI starts by working hands-on with you, then gradually hands operations over to your team.",steps:[["STEP 1","Execute together","We run your ads and posts together with your staff",80],["STEP 2","Build the playbook","Training and manuals set the routines for ad setup, posting and reporting",50],["STEP 3","Run it in-house","Your team runs and improves things; MICHINARI supports the reviews",20]],labels:["MICHINARI’s involvement","Your team"]},topic:"About In-house Capability Building"},
   dx:{title:"DX / AX Support",en:"Operations",img:"../images/v2-dx.webp",alt:"A monitor and laptop showing a workflow diagram and customer list",for:"For companies that want to fix scattered information and work that depends on specific people",
     lead:"We improve operations through digitalization (DX) and AI (AX), in a way that fits your size and workflows. Using cloud tools such as Google Workspace and Notion together with generative AI, we connect marketing, order and customer management, and internal operations into a single flow.",
     worries:["Customer and deal information is scattered across people and spreadsheets","Creating documents and reports takes too much time, every time","You want to use AI at work but don’t know where to start"],
     after:"Customer, deal and internal information lives in one place; routine work is handled by tools and AI, freeing people to focus on decisions and proposals.",
-    groups:[["DX (digitalization & process improvement)",[["Workflow mapping & improvement","Reviewing current work and planning what to digitize, and in what order"],["Google Workspace adoption","Sharing rules and practices for Gmail, Drive and Sheets"],["Internal portal & knowledge base in Notion","Bringing manuals, meeting notes and tasks into one place"],["Order & customer management (CRM / SFA)","Visibility into customers, deals and project progress"]]],["AX (AI adoption) & automation",[["Marketing automation (MA)","Automated email, LINE messages and follow-ups for prospects"],["Generative AI at work","Bringing AI into writing, planning and analysis, with internal guidelines"],["Faster document creation","Templates and AI for proposals, reports and meeting notes"],["Tool integration & workflow automation","Connecting forms, CRM and chat to cut manual work"]]]],topic:"About DX / AX Support"},
+    groups:[["DX (digitalization & process improvement)",[["Workflow mapping & improvement","Reviewing current work and planning what to digitize, and in what order"],["Google Workspace adoption","Sharing rules and practices for Gmail, Drive and Sheets"],["Internal portal & knowledge base in Notion","Bringing manuals, meeting notes and tasks into one place"],["Order & customer management (CRM / SFA)","Visibility into customers, deals and project progress"]]],["AX (AI adoption) & automation",[["Marketing automation (MA)","Automated email, LINE messages and follow-ups for prospects"],["Generative AI at work","Bringing AI into writing, planning and analysis, with internal guidelines"],["Faster document creation","Templates and AI for proposals, reports and meeting notes"],["Tool integration & workflow automation","Connecting forms, CRM and chat to cut manual work"]]]],diagram:{type:"funnel",lead:"We connect information from customer acquisition to orders, customer management and internal operations into one flow, cutting manual work.",cols:["Acquisition & inquiries","Customer management","Orders & deals","Internal operations"],rows:[["Systems",["Forms & LINE","CRM (one place for customer data)","SFA (visibility into deals)","Internal portal & knowledge base"]],["AI & automation",["MA (automated email & LINE)","Automatic inquiry routing","Help drafting proposals & quotes","Faster meeting notes & reports"]]],bar:"Foundation: cloud tools such as Google Workspace and Notion, plus generative AI (chosen to fit your size and workflows)"},topic:"About DX / AX Support"},
   subsidy:{title:"Subsidy Consulting",en:"Funding",img:"../images/v2-subsidy.webp",alt:"Two people reviewing a plan while pointing at charts on a monitor",for:"For companies that also want to consider the funding side of new initiatives",
     lead:"For investments in digital or new initiatives, we first clarify your business goals and plans, then explore together whether and how Japanese government subsidies could apply.",
     worries:["You want to know whether subsidies can cover web or equipment investments","You’re unsure how the application process and timeline work","You want advice on the initiative itself, not just the subsidy"],
     after:"Your plans and funding approach are clear, so you can get moving alongside your digital marketing and in-house capability plans.",
-    groups:[["Subsidies",[["Clarifying your project and challenges","Clarifying business goals and investment plans, then assessing subsidy eligibility"],["Subsidy consultation","Planning the application process and timeline"],["Planning that fits your business","Planned together with your web and in-house capability initiatives"]]]],topic:"About Subsidy Consulting"}
+    groups:[["Subsidies",[["Clarifying your project and challenges","Clarifying business goals and investment plans, then assessing subsidy eligibility"],["Subsidy consultation","Planning the application process and timeline"],["Planning that fits your business","Planned together with your web and in-house capability initiatives"]]]],diagram:{type:"funnel",lead:"We don’t start from the subsidy. We first clarify your business goals and plans, then consider whether a subsidy fits.",cols:["Goals & challenges","Investment plan","Subsidy review","Execution"],rows:[["What we do",["Clarify what you want to achieve and current challenges","Plan web initiatives, equipment, in-house capability, etc.","Assess whether a subsidy can be used","Plan the application process and timeline"]]],bar:"We propose a realistic approach that fits alongside your digital marketing and in-house plans"},topic:"About Subsidy Consulting"}
 };
 document.getElementById('svc-rows').innerHTML=Object.keys(SERVICES).map(function(k){var d=SERVICES[k];return '<a class="svc-row" href="#service-'+k+'"><div class="img"><img src="'+d.img+'" alt="'+esc(d.alt)+'" loading="lazy"></div><div class="txt"><span class="en">'+esc(d.en)+'</span><h3>'+esc(d.title)+'</h3><span class="for">'+esc(d.for)+'</span><p>'+esc(d.lead)+'</p><span class="go">View service details</span></div></a>';}).join('');
 var pendingTopic=null;
+function renderDiagram(g){
+  var box=document.getElementById('svc-dg'),sec=document.getElementById('svc-dg-sec');
+  if(!g){sec.hidden=true;return;} sec.hidden=false;
+  document.getElementById('svc-dg-lead').textContent=g.lead||'';
+  var h='';
+  if(g.type==='funnel'){
+    h+='<div class="fn" style="--n:'+g.cols.length+'"><div class="fn-head"><span class="fn-corner"></span>'+g.cols.map(function(c,i){return '<span class="fn-col c'+i+'">'+esc(c)+'</span>';}).join('')+'</div>';
+    g.rows.forEach(function(r){var cells=r.length>2?r.slice(1):r[1];h+='<div class="fn-row"><span class="fn-label">'+esc(r[0])+'</span>'+cells.map(function(cell,i){var items=Array.isArray(cell)?cell:[cell];return '<div class="fn-cell c'+i+'"><span class="fn-sp">'+esc(g.cols[i])+'</span>'+items.map(function(t){return '<span>'+esc(t)+'</span>';}).join('')+'</div>';}).join('')+'</div>';});
+    h+='</div>'+(g.bar?'<p class="dg-bar">'+esc(g.bar)+'</p>':'');
+  }else if(g.type==='hub'){
+    h+='<div class="hub"><p class="hub-top">'+esc(g.top)+'</p><div class="hub-body"><div class="hub-center"><b>'+esc(g.center[0])+'</b><span>'+esc(g.center[1])+'</span></div>'+g.nodes.map(function(n,i){return '<div class="hub-node n'+i+'"><b>'+esc(n[0])+'</b><span>'+esc(n[1])+'</span></div>';}).join('')+'</div><p class="dg-bar">'+esc(g.bottom)+'</p></div>';
+  }else if(g.type==='handover'){
+    h+='<div class="ho"><div class="ho-legend"><span class="lg-m">'+esc(g.labels[0])+'</span><span class="lg-c">'+esc(g.labels[1])+'</span></div><div class="ho-steps">'+g.steps.map(function(st){return '<div class="ho-step"><p class="ho-no">'+esc(st[0])+'</p><b>'+esc(st[1])+'</b><p class="ho-t">'+esc(st[2])+'</p><div class="ho-bar" aria-hidden="true"><i style="width:'+st[3]+'%"></i></div></div>';}).join('')+'</div></div>';
+  }
+  box.innerHTML=h;
+}
 function renderService(key){
   var d=SERVICES[key];
   var img=document.getElementById('svc-img');img.src=d.img;img.alt=d.alt;
@@ -1510,6 +1611,7 @@ function renderService(key){
   document.getElementById('svc-lead').textContent=d.lead;
   document.getElementById('svc-worries').innerHTML=d.worries.map(function(w){return '<li>'+esc(w)+'</li>';}).join('');
   document.getElementById('svc-after').textContent=d.after;
+  renderDiagram(d.diagram);
   document.getElementById('svc-table').innerHTML=d.groups.map(function(g){return '<div class="svc-group"><h3>'+esc(g[0])+'</h3><ul>'+g[1].map(function(it){return '<li><b>'+esc(it[0])+'</b><span>'+esc(it[1])+'</span></li>';}).join('')+'</ul></div>';}).join('');
   document.getElementById('svc-cta').setAttribute('data-topic',d.topic);
   document.getElementById('svc-others').innerHTML=Object.keys(SERVICES).filter(function(k){return k!==key;}).map(function(k){return '<a href="#service-'+k+'">'+esc(SERVICES[k].title)+'</a>';}).join('');
