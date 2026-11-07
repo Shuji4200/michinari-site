@@ -926,6 +926,28 @@ html,body{background:var(--page)}
   .ho-t{min-height:0}
   .ov-ways{grid-template-columns:minmax(0,1fr)}
 }
+
+/* ===== お知らせ：カテゴリ（お知らせ／レポート／代表コラム） ===== */
+.nc-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:26px}
+.nc{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;background:#f4f5f6;border:1px solid transparent;border-radius:12px;padding:20px 22px;font:inherit;color:inherit;cursor:pointer;transition:border-color .2s,transform .2s}
+.nc:hover{border-color:#151b1e;transform:translateY(-2px)}
+.nc-en{font:700 12px var(--en);letter-spacing:.14em;color:#7a838b}
+.nc b{font-size:19px;font-weight:900;color:#151b1e}
+.nc p{font-size:13.5px;line-height:1.85;color:#30373c}
+.nc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.nc-tags i{font-style:normal;font-size:12px;font-weight:700;background:#fff;border:1px solid #d9dde1;border-radius:999px;padding:2px 10px;color:#151b1e}
+.nc-col{background:#151b1e}.nc-col b{color:#fff}.nc-col p{color:#cfd5da}.nc-col .nc-en{color:#e07a6e}
+.cat.c-report{background:#454c52}.cat.c-col{background:var(--red-ink)}
+.ntag{font-size:12px;font-weight:700;color:#151b1e;border:1px solid #d9dde1;border-radius:3px;padding:2px 8px}
+.nthumb.is-cat{padding:10px;gap:4px;justify-content:center}
+.nthumb.is-cat .k{font:700 10px var(--en);letter-spacing:.14em}
+.nthumb.is-cat b{font-size:12px;font-weight:900;line-height:1.35}
+.nthumb.is-cat em{font:700 11px var(--en);font-style:normal}
+.nthumb.is-report{background:#454c52;color:#fff;border-color:#454c52}
+.nthumb.is-col{background:#151b1e;color:#fff;border-color:#151b1e}.nthumb.is-col .k{color:#e07a6e}
+.nthumb.big.is-cat b{font-size:22px}.nthumb.big.is-cat .k{font-size:13px}
+.n-empty{padding:28px 4px;font-size:14px;color:#5b646b}
+@media (max-width:820px){.nc-cards{grid-template-columns:minmax(0,1fr)}}
 </style>
 
 <div class="intro" id="intro" aria-hidden="true">
@@ -1083,7 +1105,7 @@ html,body{background:var(--page)}
   </section>
 
   <section class="panel" aria-labelledby="t-news">
-    <div class="sec-head"><div class="labels"><span>News</span><span>News</span><span>News</span></div><h2 id="t-news">お知らせ<small>News</small></h2><p class="sec-desc">MICHINARIからのお知らせや、Webマーケティングに関するコラムをお届けします。</p></div>
+    <div class="sec-head"><div class="labels"><span>News</span><span>News</span><span>News</span></div><h2 id="t-news">お知らせ<small>News</small></h2><p class="sec-desc">MICHINARIからのお知らせ、実務に役立つレポート、代表コラムをお届けします。</p></div>
     <div class="sec-body">
       <div class="cols-head n-head"><span>[Image]</span><span>[Date + Title]</span></div>
       <ul class="news-list" id="top-news"></ul>
@@ -1296,17 +1318,22 @@ html,body{background:var(--page)}
     <section class="ax-head">
       <div class="ax-wrap ax-head-in">
         <div><p class="crumb"><a href="#top">TOP</a> / お知らせ</p><h1>お知らせ<span>/</span><small>News</small></h1></div>
-        <p>MICHINARIからのお知らせや、<br>Webマーケティングに関するコラムを掲載しています。</p>
+        <p>MICHINARIからのお知らせ、実務に役立つレポート、<br>代表・河本のコラムを掲載しています。</p>
       </div>
     </section>
     <div class="ax-photo"><img src="images/head-news.webp" width="1600" height="800" alt="窓辺のデスクに置かれたノートPCとコーヒー" loading="lazy"></div>
   </div>
   <section class="panel block">
+    <div class="nc-cards">
+      <button type="button" class="nc" data-pick="お知らせ"><span class="nc-en">News</span><b>お知らせ</b><p>MICHINARIからのお知らせや、サービス・活動に関する最新情報をお届けします。</p></button>
+      <button type="button" class="nc" data-pick="レポート"><span class="nc-en">Report</span><b>レポート</b><p>中小企業の現場で使える実務の知見をまとめます。</p><span class="nc-tags"><i>Web内製化</i><i>AI・DX</i><i>データ分析</i></span></button>
+      <button type="button" class="nc nc-col" data-pick="代表コラム"><span class="nc-en">Column</span><b>代表コラム</b><p>連載「渋谷のベンチャーで働く26歳の告白」。代表・河本が、現場で感じたことを率直に綴ります。</p></button>
+    </div>
     <div class="filters" role="group" aria-label="カテゴリで絞り込む">
       <button type="button" data-cat="all" aria-pressed="true">すべて</button>
       <button type="button" data-cat="お知らせ" aria-pressed="false">お知らせ</button>
-      <button type="button" data-cat="実績紹介" aria-pressed="false">実績紹介</button>
-      <button type="button" data-cat="コラム" aria-pressed="false">コラム</button>
+      <button type="button" data-cat="レポート" aria-pressed="false">レポート</button>
+      <button type="button" data-cat="代表コラム" aria-pressed="false">代表コラム</button>
     </div>
     <div class="cols-head n-head"><span>[Image]</span><span>[Date + Title]</span></div>
     <ul class="news-list" id="all-news"></ul>
@@ -1470,16 +1497,21 @@ var BASE_TITLE=document.title;
 
 /* ---------- お知らせ ---------- */
 function dateHtml(n){return n.date?'<time>'+esc(n.date)+'</time>':'<span class="date">日付未定</span>';}
-function catClass(c){return c==="実績紹介"?"cat c-works":"cat";}
+function catClass(c){return c==="レポート"?"cat c-report":(c==="代表コラム"?"cat c-col":(c==="実績紹介"?"cat c-works":"cat"));}
 function thumbHtml(n,big){var t=n.thumb||{};var cls='nthumb'+(big?' big':'');
   if(t.img)return '<div class="'+cls+' is-img'+(t.square?' sq':'')+'"><img src="'+t.img+'" alt="" loading="lazy">'+(t.label?'<span class="lbl">'+esc(t.label)+'</span>':'')+'</div>';
   if(t.text)return '<div class="'+cls+' is-text"><span class="k">'+esc(t.label||'')+'</span><b>'+t.text+'</b><img class="mk" src="images/logo-wordmark.webp" alt=""></div>';
+  if(n.cat==='レポート')return '<div class="'+cls+' is-cat is-report"><span class="k">REPORT</span><b>'+esc(n.tag||'レポート')+'</b></div>';
+  if(n.cat==='代表コラム')return '<div class="'+cls+' is-cat is-col"><span class="k">COLUMN</span><b>渋谷のベンチャーで<br>働く26歳の告白</b>'+(n.no?'<em>#'+esc(n.no)+'</em>':'')+'</div>';
   return '<div class="'+cls+' is-def"><img class="mk" src="images/logo-wordmark.webp" alt=""><span>News Release</span></div>';}
-function newsItem(n){return '<li><a href="#news-'+n.id+'">'+thumbHtml(n)+'<div class="nmain"><div class="nmeta">'+dateHtml(n)+'<span class="'+catClass(n.cat)+'">'+esc(n.cat)+'</span>'+(n.draft?'<span class="draft">下書き</span>':'')+'</div><span class="t">'+esc(n.title)+'</span></div></a></li>';}
+function newsItem(n){return '<li><a href="#news-'+n.id+'">'+thumbHtml(n)+'<div class="nmain"><div class="nmeta">'+dateHtml(n)+'<span class="'+catClass(n.cat)+'">'+esc(n.cat)+'</span>'+(n.tag?'<span class="ntag">'+esc(n.tag)+'</span>':'')+(n.draft?'<span class="draft">下書き</span>':'')+'</div><span class="t">'+esc(n.title)+'</span></div></a></li>';}
 document.getElementById('top-news').innerHTML=NEWS.slice(0,3).map(newsItem).join('');
 var currentCat='all';
-function renderList(){var l=NEWS.filter(function(n){return currentCat==='all'||n.cat===currentCat;});document.getElementById('all-news').innerHTML=l.length?l.map(newsItem).join(''):'<li style="padding:24px 0">このカテゴリの記事はまだありません。</li>';}
-document.querySelectorAll('.filters button').forEach(function(b){b.addEventListener('click',function(){currentCat=b.dataset.cat;document.querySelectorAll('.filters button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});renderList();});});
+function renderList(){var l=NEWS.filter(function(n){return currentCat==='all'||n.cat===currentCat;});document.getElementById('all-news').innerHTML=l.length?l.map(newsItem).join(''):'<li class="n-empty">'+(CAT_EMPTY[currentCat]||'このカテゴリの記事はまだありません。')+'</li>';}
+var CAT_EMPTY={'レポート':'レポート記事は準備中です。Web内製化・AI・DX・データ分析をテーマに、順次公開します。','代表コラム':'連載「渋谷のベンチャーで働く26歳の告白」は準備中です。第1回の公開まで、今しばらくお待ちください。'};
+function setCat(c){currentCat=c;document.querySelectorAll('.filters button').forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.cat===c));});renderList();}
+document.querySelectorAll('.filters button').forEach(function(b){b.addEventListener('click',function(){setCat(b.dataset.cat);});});
+document.querySelectorAll('.nc').forEach(function(b){b.addEventListener('click',function(){setCat(b.dataset.pick);var f=document.querySelector('#view-news .filters');window.scrollTo({top:f.getBoundingClientRect().top+scrollY-100,behavior:'smooth'});});});
 renderList();
 function renderArticle(n){
   var body=n.body.map(function(b){if(b[0]==='h')return '<h2>'+esc(b[1])+'</h2>';if(b[0]==='ul')return '<ul>'+b[1].map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>';if(b[0]==='memo')return '<p class="memo">'+esc(b[1])+'</p>';return '<p>'+esc(b[1])+'</p>';}).join('');
@@ -1727,7 +1759,9 @@ function route(){
   if(ALIAS[h]){view=ALIAS[h][0];anchor=ALIAS[h][1];}
   else if(h.indexOf('news-')===0&&NEWS.some(function(x){return 'news-'+x.id===h;})){view='article';renderArticle(NEWS.filter(function(x){return 'news-'+x.id===h;})[0]);}
   else if(h.indexOf('service-')===0&&SERVICES[h.slice(8)]){view='service';renderService(h.slice(8));}
-  else if(['philosophy','services','works','about','news','contact'].indexOf(h)>=0){view=h;}
+  else if(h==='report'||h==='column'){view='news';setCat(h==='report'?'レポート':'代表コラム');}
+  else if(h==='news'){view='news';setCat('all');}
+  else if(['philosophy','services','works','about','contact'].indexOf(h)>=0){view=h;}
   if(view==='contact')window.__resetContact();
   show(view);
   if(anchor){requestAnimationFrame(function(){var el=document.getElementById(anchor);window.scrollTo(0,el.getBoundingClientRect().top+scrollY-96);});}

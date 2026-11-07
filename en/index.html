@@ -927,6 +927,28 @@ html,body{background:var(--page)}
   .ov-ways{grid-template-columns:minmax(0,1fr)}
 }
 
+/* ===== お知らせ：カテゴリ（お知らせ／レポート／Founder’s Column） ===== */
+.nc-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:26px}
+.nc{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;background:#f4f5f6;border:1px solid transparent;border-radius:12px;padding:20px 22px;font:inherit;color:inherit;cursor:pointer;transition:border-color .2s,transform .2s}
+.nc:hover{border-color:#151b1e;transform:translateY(-2px)}
+.nc-en{font:700 12px var(--en);letter-spacing:.14em;color:#7a838b}
+.nc b{font-size:19px;font-weight:900;color:#151b1e}
+.nc p{font-size:13.5px;line-height:1.85;color:#30373c}
+.nc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.nc-tags i{font-style:normal;font-size:12px;font-weight:700;background:#fff;border:1px solid #d9dde1;border-radius:999px;padding:2px 10px;color:#151b1e}
+.nc-col{background:#151b1e}.nc-col b{color:#fff}.nc-col p{color:#cfd5da}.nc-col .nc-en{color:#e07a6e}
+.cat.c-report{background:#454c52}.cat.c-col{background:var(--red-ink)}
+.ntag{font-size:12px;font-weight:700;color:#151b1e;border:1px solid #d9dde1;border-radius:3px;padding:2px 8px}
+.nthumb.is-cat{padding:10px;gap:4px;justify-content:center}
+.nthumb.is-cat .k{font:700 10px var(--en);letter-spacing:.14em}
+.nthumb.is-cat b{font-size:12px;font-weight:900;line-height:1.35}
+.nthumb.is-cat em{font:700 11px var(--en);font-style:normal}
+.nthumb.is-report{background:#454c52;color:#fff;border-color:#454c52}
+.nthumb.is-col{background:#151b1e;color:#fff;border-color:#151b1e}.nthumb.is-col .k{color:#e07a6e}
+.nthumb.big.is-cat b{font-size:22px}.nthumb.big.is-cat .k{font-size:13px}
+.n-empty{padding:28px 4px;font-size:14px;color:#5b646b}
+@media (max-width:820px){.nc-cards{grid-template-columns:minmax(0,1fr)}}
+
 /* ===== English version ===== */
 :root{--jp:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans JP",sans-serif}
 body{letter-spacing:0}
@@ -1095,7 +1117,7 @@ body{letter-spacing:0}
   </section>
 
   <section class="panel" aria-labelledby="t-news">
-    <div class="sec-head"><div class="labels"><span>News</span><span>News</span><span>News</span></div><h2 id="t-news">News<small>News</small></h2><p class="sec-desc">Updates from MICHINARI and articles on digital marketing.</p></div>
+    <div class="sec-head"><div class="labels"><span>News</span><span>News</span><span>News</span></div><h2 id="t-news">News<small>News</small></h2><p class="sec-desc">Updates from MICHINARI, practical reports and columns by our founder.</p></div>
     <div class="sec-body">
       <div class="cols-head n-head"><span>[Image]</span><span>[Date + Title]</span></div>
       <ul class="news-list" id="top-news"></ul>
@@ -1308,17 +1330,22 @@ body{letter-spacing:0}
     <section class="ax-head">
       <div class="ax-wrap ax-head-in">
         <div><p class="crumb"><a href="#top">TOP</a> / News</p><h1>News<span>/</span><small>News</small></h1></div>
-        <p>Updates from MICHINARI <br>and articles on digital marketing.</p>
+        <p>Updates from MICHINARI, practical reports, <br>and columns by our founder, Shuji Kawamoto.</p>
       </div>
     </section>
     <div class="ax-photo"><img src="../images/head-news.webp" width="1600" height="800" alt="A laptop and coffee on a desk by the window" loading="lazy"></div>
   </div>
   <section class="panel block">
+    <div class="nc-cards">
+      <button type="button" class="nc" data-pick="News"><span class="nc-en">News</span><b>News</b><p>Updates from MICHINARI on our services and activities.</p></button>
+      <button type="button" class="nc" data-pick="Reports"><span class="nc-en">Report</span><b>Reports</b><p>Practical insights small and mid-sized businesses can put to work.</p><span class="nc-tags"><i>In-house web</i><i>AI & DX</i><i>Data analysis</i></span></button>
+      <button type="button" class="nc nc-col" data-pick="Founder’s Column"><span class="nc-en">Column</span><b>Founder’s Column</b><p>Series: “Confessions of a 26-Year-Old at a Shibuya Startup.” Our founder writes candidly about what he sees on the front line.</p></button>
+    </div>
     <div class="filters" role="group" aria-label="Filter by category">
       <button type="button" data-cat="all" aria-pressed="true">All</button>
       <button type="button" data-cat="News" aria-pressed="false">News</button>
-      <button type="button" data-cat="Case Study" aria-pressed="false">Case Study</button>
-      <button type="button" data-cat="Column" aria-pressed="false">Column</button>
+      <button type="button" data-cat="Reports" aria-pressed="false">Reports</button>
+      <button type="button" data-cat="Founder’s Column" aria-pressed="false">Founder’s Column</button>
     </div>
     <div class="cols-head n-head"><span>[Image]</span><span>[Date + Title]</span></div>
     <ul class="news-list" id="all-news"></ul>
@@ -1482,16 +1509,21 @@ var BASE_TITLE=document.title;
 
 /* ---------- お知らせ ---------- */
 function dateHtml(n){return n.date?'<time>'+esc(n.date)+'</time>':'<span class="date">TBD</span>';}
-function catClass(c){return c==="Case Study"?"cat c-works":"cat";}
+function catClass(c){return c==="Reports"?"cat c-report":(c==="Founder’s Column"?"cat c-col":(c==="Case Study"?"cat c-works":"cat"));}
 function thumbHtml(n,big){var t=n.thumb||{};var cls='nthumb'+(big?' big':'');
   if(t.img)return '<div class="'+cls+' is-img'+(t.square?' sq':'')+'"><img src="'+t.img+'" alt="" loading="lazy">'+(t.label?'<span class="lbl">'+esc(t.label)+'</span>':'')+'</div>';
   if(t.text)return '<div class="'+cls+' is-text"><span class="k">'+esc(t.label||'')+'</span><b>'+t.text+'</b><img class="mk" src="../images/logo-wordmark.webp" alt=""></div>';
+  if(n.cat==='Reports')return '<div class="'+cls+' is-cat is-report"><span class="k">REPORT</span><b>'+esc(n.tag||'Report')+'</b></div>';
+  if(n.cat==='Founder’s Column')return '<div class="'+cls+' is-cat is-col"><span class="k">COLUMN</span><b>Confessions of a <br>26-Year-Old in Shibuya</b>'+(n.no?'<em>#'+esc(n.no)+'</em>':'')+'</div>';
   return '<div class="'+cls+' is-def"><img class="mk" src="../images/logo-wordmark.webp" alt=""><span>News Release</span></div>';}
-function newsItem(n){return '<li><a href="#news-'+n.id+'">'+thumbHtml(n)+'<div class="nmain"><div class="nmeta">'+dateHtml(n)+'<span class="'+catClass(n.cat)+'">'+esc(n.cat)+'</span>'+(n.draft?'<span class="draft">Draft</span>':'')+'</div><span class="t">'+esc(n.title)+'</span></div></a></li>';}
+function newsItem(n){return '<li><a href="#news-'+n.id+'">'+thumbHtml(n)+'<div class="nmain"><div class="nmeta">'+dateHtml(n)+'<span class="'+catClass(n.cat)+'">'+esc(n.cat)+'</span>'+(n.tag?'<span class="ntag">'+esc(n.tag)+'</span>':'')+(n.draft?'<span class="draft">Draft</span>':'')+'</div><span class="t">'+esc(n.title)+'</span></div></a></li>';}
 document.getElementById('top-news').innerHTML=NEWS.slice(0,3).map(newsItem).join('');
 var currentCat='all';
-function renderList(){var l=NEWS.filter(function(n){return currentCat==='all'||n.cat===currentCat;});document.getElementById('all-news').innerHTML=l.length?l.map(newsItem).join(''):'<li style="padding:24px 0">No articles in this category yet.</li>';}
-document.querySelectorAll('.filters button').forEach(function(b){b.addEventListener('click',function(){currentCat=b.dataset.cat;document.querySelectorAll('.filters button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});renderList();});});
+function renderList(){var l=NEWS.filter(function(n){return currentCat==='all'||n.cat===currentCat;});document.getElementById('all-news').innerHTML=l.length?l.map(newsItem).join(''):'<li class="n-empty">'+(CAT_EMPTY[currentCat]||'No articles in this category yet.')+'</li>';}
+var CAT_EMPTY={'Reports':'Reports are coming soon, covering in-house web, AI & DX and data analysis.','Founder’s Column':'The series “Confessions of a 26-Year-Old at a Shibuya Startup” is coming soon. Please stay tuned for the first installment.'};
+function setCat(c){currentCat=c;document.querySelectorAll('.filters button').forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.cat===c));});renderList();}
+document.querySelectorAll('.filters button').forEach(function(b){b.addEventListener('click',function(){setCat(b.dataset.cat);});});
+document.querySelectorAll('.nc').forEach(function(b){b.addEventListener('click',function(){setCat(b.dataset.pick);var f=document.querySelector('#view-news .filters');window.scrollTo({top:f.getBoundingClientRect().top+scrollY-100,behavior:'smooth'});});});
 renderList();
 function renderArticle(n){
   var body=n.body.map(function(b){if(b[0]==='h')return '<h2>'+esc(b[1])+'</h2>';if(b[0]==='ul')return '<ul>'+b[1].map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>';if(b[0]==='memo')return '<p class="memo">'+esc(b[1])+'</p>';return '<p>'+esc(b[1])+'</p>';}).join('');
@@ -1739,7 +1771,9 @@ function route(){
   if(ALIAS[h]){view=ALIAS[h][0];anchor=ALIAS[h][1];}
   else if(h.indexOf('news-')===0&&NEWS.some(function(x){return 'news-'+x.id===h;})){view='article';renderArticle(NEWS.filter(function(x){return 'news-'+x.id===h;})[0]);}
   else if(h.indexOf('service-')===0&&SERVICES[h.slice(8)]){view='service';renderService(h.slice(8));}
-  else if(['philosophy','services','works','about','news','contact'].indexOf(h)>=0){view=h;}
+  else if(h==='report'||h==='column'){view='news';setCat(h==='report'?'Reports':'Founder’s Column');}
+  else if(h==='news'){view='news';setCat('all');}
+  else if(['philosophy','services','works','about','contact'].indexOf(h)>=0){view=h;}
   if(view==='contact')window.__resetContact();
   show(view);
   if(anchor){requestAnimationFrame(function(){var el=document.getElementById(anchor);window.scrollTo(0,el.getBoundingClientRect().top+scrollY-96);});}
