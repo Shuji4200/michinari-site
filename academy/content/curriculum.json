@@ -1,0 +1,184 @@
+{
+  "stages": [
+    {
+      "id": "product",
+      "order": 1,
+      "title": "商品編",
+      "phase": "何を売るかを理解するフェーズ",
+      "description": "MICHINARIのサービスと価値を、自分の言葉で説明できるようになる",
+      "color": "#2b3a67"
+    },
+    {
+      "id": "acquisition",
+      "order": 2,
+      "title": "集客編",
+      "phase": "見込み客を集めるフェーズ",
+      "description": "発信・LINE・広告で、問い合わせが生まれる仕組みをつくる",
+      "color": "#e5484d"
+    },
+    {
+      "id": "sales",
+      "order": 3,
+      "title": "営業編",
+      "phase": "成果につなげるフェーズ",
+      "description": "商談でお客様の課題を聞き、価値を伝えて契約につなげる",
+      "color": "#1f9d6b"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "p01",
+      "stage": "product",
+      "order": 1,
+      "status": "draft",
+      "title": "MICHINARIとは",
+      "summary": "ミッション・ビジョンと、私たちが中小企業に提供する価値を理解する",
+      "sections": [],
+      "keyPoints": [],
+      "checklist": []
+    },
+    {
+      "id": "p02",
+      "stage": "product",
+      "order": 2,
+      "status": "draft",
+      "title": "サービス全体像",
+      "summary": "提供サービスの範囲と、それぞれが解決する課題を把握する",
+      "sections": [],
+      "keyPoints": [],
+      "checklist": []
+    },
+    {
+      "id": "p03",
+      "stage": "product",
+      "order": 3,
+      "status": "draft",
+      "title": "料金プランと商品設計",
+      "summary": "入口商品から月額プランまでの商品構成と価格の考え方を学ぶ",
+      "sections": [],
+      "keyPoints": [],
+      "checklist": []
+    },
+    {
+      "id": "p04",
+      "stage": "product",
+      "order": 4,
+      "status": "draft",
+      "title": "実績と強みの伝え方",
+      "summary": "実績数値を使って期待値を高める見せ方を身につける",
+      "sections": [],
+      "keyPoints": [],
+      "checklist": []
+    },
+    {
+      "id": "a01",
+      "stage": "acquisition",
+      "order": 1,
+      "status": "draft",
+      "title": "集客の全体設計",
+      "summary": "発信→HP→LINE/問い合わせまでの導線を理解する",
+      "sections": [],
+      "keyPoints": [],
+      "checklist": []
+    },
+    {
+      "id": "a02",
+      "stage": "acquisition",
+      "order": 2,
+      "status": "draft",
+      "title": "SNS・note発信",
+      "summary": "X・note・Threadsで中小企業の経営者に届く発信をつくる",
+      "sections": [],
+      "keyPoints": [],
+      "checklist": []
+    },
+    {
+      "id": "a03",
+      "stage": "acquisition",
+      "order": 3,
+      "status": "draft",
+      "title": "LINE運用",
+      "summary": "LINE登録から商談につなげる運用の基本を学ぶ",
+      "sections": [],
+      "keyPoints": [],
+      "checklist": []
+    },
+    {
+      "id": "a04",
+      "stage": "acquisition",
+      "order": 4,
+      "status": "draft",
+      "title": "Web広告",
+      "summary": "少ない費用で成果を出す広告運用の考え方を学ぶ",
+      "sections": [],
+      "keyPoints": [],
+      "checklist": []
+    },
+    {
+      "id": "a05",
+      "stage": "acquisition",
+      "order": 5,
+      "status": "draft",
+      "title": "計測と振り返り",
+      "summary": "GA4で施策の結果を測り、定例で改善する",
+      "sections": [],
+      "keyPoints": [],
+      "checklist": []
+    },
+    {
+      "id": "s01",
+      "stage": "sales",
+      "order": 1,
+      "status": "draft",
+      "title": "営業プロセスの全体像",
+      "summary": "無料相談から月額契約までの流れを把握する",
+      "sections": [],
+      "keyPoints": [],
+      "checklist": []
+    },
+    {
+      "id": "s02",
+      "stage": "sales",
+      "order": 2,
+      "status": "draft",
+      "title": "初回商談・ヒアリング",
+      "summary": "30分の商談でお客様のボトルネックを聞き出す",
+      "sections": [],
+      "keyPoints": [],
+      "checklist": []
+    },
+    {
+      "id": "s03",
+      "stage": "sales",
+      "order": 3,
+      "status": "draft",
+      "title": "提案の組み立て",
+      "summary": "課題に対して、できることと見込める効果を伝える",
+      "sections": [],
+      "keyPoints": [],
+      "checklist": []
+    },
+    {
+      "id": "s04",
+      "stage": "sales",
+      "order": 4,
+      "status": "draft",
+      "title": "クロージング",
+      "summary": "価値を感じてもらい、契約につなげる",
+      "sections": [],
+      "keyPoints": [],
+      "checklist": []
+    },
+    {
+      "id": "s05",
+      "stage": "sales",
+      "order": 5,
+      "status": "draft",
+      "title": "受注後の引き継ぎ",
+      "summary": "パートナーへの連携と、長くお付き合いするための関係づくり",
+      "sections": [],
+      "keyPoints": [],
+      "checklist": []
+    }
+  ]
+}

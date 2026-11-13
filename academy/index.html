@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MICHINARI Academy｜研修ロードマップ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16181d; --ink2:#3d424d; --mute:#8a909c; --line:#e7e9ee; --bg:#f6f7f9; --card:#fff;
+  --accent:#2b3a67; --accent-soft:#eef1f8; --red:#e5484d; --red-soft:#fdeeee; --ok:#1f9d6b; --ok-soft:#e8f6ef;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.app{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+/* sidebar */
+.side{background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.brand{display:flex;gap:12px;align-items:center;padding:22px 20px;border-bottom:1px solid var(--line)}
+.logo{width:38px;height:38px;border-radius:10px;background:var(--ink);color:#fff;display:grid;place-items:center;font:800 20px Inter;position:relative}
+.logo:after{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:var(--red);top:7px;right:8px}
+.brand b{display:block;font:700 16px Inter;letter-spacing:.02em}
+.brand small{color:var(--mute);font-size:11.5px}
+.nav{padding:14px 10px;flex:1;overflow:auto}
+.nav h6{margin:16px 12px 6px;font-size:11px;color:var(--mute);font-weight:500;letter-spacing:.08em}
+.nav a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;font-size:14px;color:var(--ink2)}
+.nav a:hover{background:var(--bg)}
+.nav a.on{background:var(--accent-soft);color:var(--accent);font-weight:700}
+.nav .cnt{margin-left:auto;font:600 11px Inter;color:var(--mute)}
+.dot{width:8px;height:8px;border-radius:50%}
+.me{border-top:1px solid var(--line);padding:14px 18px;font-size:12px;color:var(--mute)}
+/* main */
+main{min-width:0;padding:44px 56px 80px;max-width:1240px;width:100%;margin:0 auto}
+.hero{background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px 36px;display:grid;grid-template-columns:120px 1fr 280px;gap:32px;align-items:center}
+.ring{position:relative;width:116px;height:116px}
+.ring svg{transform:rotate(-90deg)}
+.ring .num{position:absolute;inset:0;display:grid;place-items:center;font:800 30px Inter}
+.ring .num small{font:500 13px Inter;color:var(--mute)}
+.eyebrow{font-size:11.5px;letter-spacing:.14em;color:var(--mute);font-weight:700}
+.hero h1{margin:6px 0 10px;font-size:30px;font-weight:900;letter-spacing:.02em}
+.hero p{margin:0;color:var(--ink2);font-size:14px;line-height:1.7}
+.next{border-left:1px solid var(--line);padding-left:28px}
+.next h3{margin:6px 0 2px;font-size:17px}
+.next .sub{font-size:12px;color:var(--mute)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;border:0;border-radius:10px;padding:12px 20px;font-weight:700;font-size:14px;margin-top:14px}
+.btn:hover{filter:brightness(1.12)}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.done{background:var(--ok)}
+/* stages */
+.stages{position:relative;margin-top:44px}
+.stage{position:relative;padding-left:86px;margin-bottom:44px}
+.stage:before{content:"";position:absolute;left:31px;top:66px;bottom:-44px;width:2px;background:var(--line)}
+.stage:last-child:before{display:none}
+.node{position:absolute;left:0;top:4px;width:64px;height:64px;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;font:800 18px Inter;color:var(--mute)}
+.stage.cur .node{border-color:var(--c);color:var(--c);box-shadow:0 0 0 6px color-mix(in srgb,var(--c) 14%,transparent)}
+.stage.fin .node{background:var(--c);border-color:var(--c);color:#fff}
+.shead{display:flex;align-items:flex-end;gap:20px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:22px}
+.shead .lab{font:700 12px Inter;letter-spacing:.12em;color:var(--c)}
+.shead h2{margin:6px 0 6px;font-size:24px;font-weight:900}
+.shead p{margin:0;color:var(--ink2);font-size:13.5px}
+.sprog{margin-left:auto;text-align:right;min-width:150px}
+.sprog b{font:800 18px Inter;color:var(--c)} .sprog span{font:500 13px Inter;color:var(--mute)}
+.bar{height:5px;background:var(--line);border-radius:9px;margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--c);border-radius:9px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px 22px;min-height:178px;display:flex;flex-direction:column;position:relative;transition:.15s;text-align:left}
+.card:hover{border-color:var(--c);transform:translateY(-2px);box-shadow:0 8px 20px rgba(20,24,40,.06)}
+.card .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.card .no{width:34px;height:34px;border-radius:9px;background:var(--bg);display:grid;place-items:center;font:700 13px Inter;color:var(--mute)}
+.card.isnext{border:2px solid var(--c)}
+.card.isnext .no{background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c)}
+.card.isdone .no{background:var(--ok-soft);color:var(--ok)}
+.tag{font-size:11px;font-weight:700;padding:4px 10px;border-radius:99px}
+.tag.next{background:var(--c);color:#fff}
+.tag.done{background:var(--ok-soft);color:var(--ok)}
+.tag.draft{background:var(--bg);color:var(--mute)}
+.card h4{margin:0 0 8px;font-size:16px;font-weight:700;line-height:1.45}
+.card p{margin:0;font-size:12.5px;line-height:1.7;color:var(--mute)}
+.card.isnext p{color:var(--ink2)}
+.card .meta{margin-top:auto;padding-top:12px;font:500 11.5px Inter;color:var(--mute)}
+.card.draft h4{color:var(--ink2)}
+/* lesson */
+.crumb{font-size:13px;color:var(--mute);margin-bottom:18px}
+.crumb a:hover{color:var(--ink)}
+.lesson{background:#fff;border:1px solid var(--line);border-radius:20px;padding:40px 48px;max-width:860px}
+.lesson .lab{font:700 12px Inter;letter-spacing:.12em;color:var(--c)}
+.lesson h1{font-size:28px;font-weight:900;margin:8px 0 12px}
+.lesson .lead{font-size:15px;color:var(--ink2);line-height:1.8;margin:0 0 8px}
+.lesson .info{display:flex;gap:16px;font-size:12.5px;color:var(--mute);margin-bottom:28px}
+.sec{border-top:1px solid var(--line);padding-top:26px;margin-top:26px}
+.sec h2{font-size:19px;margin:0 0 14px;display:flex;gap:10px;align-items:center}
+.sec h2 i{font:800 12px Inter;font-style:normal;color:#fff;background:var(--c);border-radius:6px;padding:3px 7px}
+.body{font-size:14.5px;line-height:1.95;color:var(--ink2)}
+.body p{margin:0 0 12px}
+.body ul{margin:0 0 12px;padding-left:1.3em}
+.body li{margin-bottom:4px}
+.body strong{color:var(--ink)}
+.body .callout{background:var(--accent-soft);border-left:3px solid var(--accent);padding:12px 16px;border-radius:8px;margin:0 0 12px;color:var(--ink)}
+.points{background:var(--red-soft);border-radius:14px;padding:20px 24px;margin-top:28px}
+.points h3{margin:0 0 10px;font-size:14px;color:var(--red)}
+.points ul{margin:0;padding-left:1.2em;font-size:14px;line-height:1.9}
+.check{margin-top:26px}
+.check h3{font-size:15px;margin:0 0 10px}
+.check label{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14px;cursor:pointer}
+.check input{margin-top:4px;accent-color:var(--c)}
+.empty{padding:34px;text-align:center;color:var(--mute);background:var(--bg);border-radius:14px;font-size:14px;line-height:1.8}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:34px;gap:12px;flex-wrap:wrap}
+.pager{display:flex;gap:10px}
+.note{max-width:860px;margin-top:14px;font-size:12px;color:var(--mute)}
+.banner{background:#fff8e6;border:1px solid #f3e1a7;color:#7a5a00;border-radius:12px;padding:12px 16px;font-size:13px;margin-bottom:20px}
+.loading{color:var(--mute);padding:60px 0;text-align:center}
+/* CRM */
+.ph{display:flex;align-items:flex-end;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.ph h1{margin:4px 0 0;font-size:28px;font-weight:900}
+.ph .act{margin-left:auto;display:flex;gap:10px;align-items:center}
+.ph .btn{margin-top:0}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:22px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.kpi small{display:block;font-size:12px;color:var(--mute);margin-bottom:6px}
+.kpi b{font:800 24px Inter}.kpi span{font-size:12px;color:var(--mute);margin-left:3px}
+.kpi.warn b{color:var(--red)}
+.tools{display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap}
+.tools input{flex:1;min-width:200px;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font:inherit;font-size:14px;background:#fff}
+.seg{display:flex;background:#fff;border:1px solid var(--line);border-radius:10px;padding:3px}
+.seg button{border:0;background:none;padding:7px 14px;border-radius:7px;font-size:13px;color:var(--ink2)}
+.seg button.on{background:var(--ink);color:#fff}
+.board{display:grid;grid-template-columns:repeat(6,minmax(200px,1fr));gap:12px;overflow-x:auto;padding-bottom:8px}
+.col{background:#eef0f3;border-radius:14px;padding:12px;min-height:200px}
+.col h5{margin:2px 4px 12px;font-size:13px;display:flex;align-items:center;gap:7px}
+.col h5 em{font:600 11px Inter;font-style:normal;color:var(--mute);margin-left:auto}
+.cc{display:block;background:#fff;border-radius:10px;padding:12px 13px;margin-bottom:9px;border:1px solid transparent;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.cc:hover{border-color:var(--accent)}
+.cc b{display:block;font-size:14px;margin-bottom:3px}
+.cc .p{font-size:12px;color:var(--mute)}
+.cc .na{margin-top:8px;font-size:12px;color:var(--ink2);border-top:1px solid var(--line);padding-top:7px}
+.cc .na.late{color:var(--red);font-weight:700}
+.cc .row{display:flex;justify-content:space-between;align-items:center;margin-top:7px;font:600 12px Inter}
+.chip{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px;background:var(--bg);color:var(--ink2);font-weight:500}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:4px 10px;border-radius:99px;color:#fff}
+table.t{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:13px}
+.t th{text-align:left;font-weight:500;color:var(--mute);font-size:12px;padding:11px 12px;border-bottom:1px solid var(--line);background:#fafbfc;white-space:nowrap}
+.t td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+.t tr:last-child td{border-bottom:0}
+.t tr:hover td{background:#fafbfc}
+.t td a{font-weight:700}
+.t select{font:inherit;font-size:12px;border:1px solid var(--line);border-radius:7px;padding:4px 6px;background:#fff}
+.late{color:var(--red);font-weight:700}
+.dgrid{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px}
+.panel h3{margin:0 0 14px;font-size:15px}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:10px 14px;font-size:14px}
+.kv dt{color:var(--mute);font-size:12.5px;padding-top:2px}.kv dd{margin:0;word-break:break-all}
+.memo{white-space:pre-wrap;font-size:14px;line-height:1.8;color:var(--ink2)}
+.log textarea,.f textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;font-size:14px;resize:vertical}
+.log ul{list-style:none;padding:0;margin:16px 0 0}
+.log li{border-left:2px solid var(--line);padding:2px 0 14px 14px;position:relative;font-size:13.5px;line-height:1.7;white-space:pre-wrap}
+.log li:before{content:"";position:absolute;left:-5px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.log li small{display:block;color:var(--mute);font:500 11.5px Inter}
+.modal{position:fixed;inset:0;background:rgba(15,18,28,.45);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto;z-index:50}
+.modal.open{display:flex}
+.mbox{background:#fff;border-radius:18px;width:100%;max-width:720px;padding:28px 30px}
+.mbox h2{margin:0 0 18px;font-size:20px}
+.f{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+.f label{display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--ink2);font-weight:500}
+.f label.w{grid-column:1/-1}
+.f input,.f select{border:1px solid var(--line);border-radius:9px;padding:9px 11px;font:inherit;font-size:14px;background:#fff}
+.f .chk{display:flex;flex-wrap:wrap;gap:8px 14px;font-weight:400;font-size:13.5px}
+.f .chk span{display:flex;gap:6px;align-items:center}
+.mfoot{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
+.mfoot .btn{margin-top:0}
+.btn.danger{background:#fff;color:var(--red);border:1px solid #f3c6c7}
+.btn.danger.arm{background:var(--red);color:#fff}
+.btn.sm{padding:8px 14px;font-size:13px}
+.err{color:var(--red);font-size:13px;margin-top:10px}
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.dgrid{grid-template-columns:1fr}}
+@media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}.f{grid-template-columns:1fr}.t{display:block;overflow-x:auto}}
+/* main tabs */
+.maintabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--bg);border-radius:12px;padding:5px;margin:4px 2px 8px}
+.maintabs .mt{justify-content:center;flex-direction:column;gap:2px;padding:10px 6px;font-weight:700;font-size:13px;color:var(--mute)}
+.maintabs .mt i{font-style:normal;font-size:18px}
+.maintabs .mt.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+/* tap UI */
+*{-webkit-tap-highlight-color:transparent}
+.btn,.seg button,.chipbtn,.nav a,.tab{min-height:44px;touch-action:manipulation;transition:transform .08s,filter .15s,background .15s}
+.btn:active,.chipbtn:active,.card:active,.cc:active,.tab:active,.nav a:active{transform:scale(.97)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.chips{display:flex;gap:10px;margin:28px 0 0;overflow-x:auto;padding-bottom:4px}
+.chipbtn{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:99px;padding:0 18px;font-size:14px;font-weight:700;color:var(--ink2)}
+.chipbtn:hover{border-color:var(--ink)}
+.chipbtn.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.chipbtn em{font:600 12px Inter;font-style:normal;opacity:.7}
+.card .go{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:6px;height:40px;border-radius:10px;background:var(--bg);font-size:13px;font-weight:700;color:var(--ink2);transition:.15s}
+.card:hover .go,.card.isnext .go{background:var(--c);color:#fff}
+.card.isdone .go{background:var(--ok-soft);color:var(--ok)}
+.card .meta{padding-top:10px}
+.mtop{display:none}
+.tabbar{display:none}
+@media(max-width:760px){
+  .side{display:none}
+  .mtop{display:flex;align-items:center;gap:10px;padding:14px 18px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  .mtop b{font:700 15px Inter}
+  .tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);z-index:30;padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+  .tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:10.5px;color:var(--mute);border-radius:10px;font-weight:700}
+  .tab i{font-style:normal;font-size:19px;line-height:1}
+  .tab.on{color:var(--ink);background:var(--bg)}
+  main{padding-bottom:110px}
+  .hero{padding:22px;gap:16px;grid-template-columns:90px 1fr}
+  .hero h1{font-size:22px}
+  .ring{transform:scale(.8);transform-origin:left center}
+  .next .btn{width:100%;justify-content:center}
+  .foot .btn{flex:1;justify-content:center}
+  .foot{flex-direction:column;align-items:stretch}.pager{display:flex}.pager .btn{flex:1;justify-content:center}
+  .ph .act{margin-left:0;width:100%}.ph .act .btn{flex:1;justify-content:center}
+  .board{grid-template-columns:repeat(6,82vw);scroll-snap-type:x mandatory}.col{scroll-snap-align:start}
+}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:110px 1fr}.next{grid-column:1/-1;border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:20px}}
+@media(max-width:760px){.app{grid-template-columns:1fr}.side{position:static;height:auto}.nav{display:none}main{padding:24px 18px}.stage{padding-left:0}.stage:before,.node{display:none}.grid{grid-template-columns:1fr}.lesson{padding:26px 22px}.shead{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<div class="mtop"><div class="logo" style="width:32px;height:32px;font-size:17px">m</div><b>MICHINARI Academy</b></div>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><div class="logo">m</div><div><b>MICHINARI Academy</b><small>育成・顧客管理</small></div></div>
+    <nav class="nav" id="nav"></nav>
+    <div class="me" id="me">読み込み中…</div>
+  </aside>
+  <main id="main"><div class="loading">読み込み中…</div></main>
+</div>
+<nav class="tabbar" id="tabbar"></nav>
+<div class="modal" id="modal"><div class="mbox" id="mbox"></div></div>
+<script>
+const COLORS={product:"#2b3a67",acquisition:"#e5484d",sales:"#1f9d6b"};
+const state={stages:[],lessons:[],done:{},checks:{},uid:null,db:null,progRef:null,ready:false,err:null,stale:false,canSave:true};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const inline=s=>esc(s).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>");
+function md(t){
+  const out=[];let list=null;
+  String(t||"").split("\n").forEach(raw=>{
+    const l=raw.trim();
+    if(/^[-・]\s*/.test(l)&&l.length>1&&(l[0]==="-"||l[0]==="・")){ (list||(list=[])).push("<li>"+inline(l.replace(/^[-・]\s*/,""))+"</li>");return;}
+    if(list){out.push("<ul>"+list.join("")+"</ul>");list=null;}
+    if(!l)return;
+    if(l.startsWith(">"))out.push('<div class="callout">'+inline(l.replace(/^>\s*/,""))+"</div>");
+    else out.push("<p>"+inline(l)+"</p>");
+  });
+  if(list)out.push("<ul>"+list.join("")+"</ul>");
+  return out.join("");
+}
+const colorOf=st=>st?.color||COLORS[st?.id]||"#2b3a67";
+const stageLessons=id=>state.lessons.filter(l=>l.stage===id).sort((a,b)=>(a.order||0)-(b.order||0));
+const ordered=()=>state.stages.flatMap(s=>stageLessons(s.id));
+const nextLesson=()=>ordered().find(l=>!state.done[l.id]&&l.status==="published")||ordered().find(l=>!state.done[l.id]);
+
+function render(){
+  renderNav();
+  const h=location.hash.replace("#","");
+  if(h==="crm"||h.startsWith("crm-")){
+    if(!state.isEditor){$("#main").innerHTML='<div class="empty">顧客管理は編集権限のあるメンバーだけが見られます。</div>';return;}
+    if(!state.crmReady){$("#main").innerHTML='<div class="loading">顧客データを読み込み中…</div>';return;}
+    return h==="crm"?renderCRM():renderCustomer(h.slice(4));
+  }
+  if(!state.ready){$("#main").innerHTML='<div class="loading">'+(state.err||"読み込み中…")+"</div>";return;}
+  if(h.startsWith("lesson-"))return renderLesson(h.slice(7));
+  if(h.startsWith("stage-"))return renderHome(h.slice(6));
+  renderHome();
+}
+function renderNav(){
+  const all=ordered(),h=location.hash,inCRM=h.startsWith("#crm");
+  const doneN=all.filter(l=>state.done[l.id]).length;
+  let html="";
+  if(state.isEditor){
+    html+='<div class="maintabs"><a href="#" class="mt '+(inCRM?"":"on")+'"><i>📘</i>育成</a><a href="#crm" class="mt '+(inCRM?"on":"")+'"><i>👥</i>顧客管理</a></div>';
+  }
+  if(!inCRM){
+    html+='<h6>育成</h6><a href="#" class="'+(h.length<2?"on":"")+'">🧭 育成ロードマップ<span class="cnt">'+doneN+"/"+all.length+"</span></a>";
+    html+="<h6>研修コンテンツ</h6>";
+    state.stages.forEach(s=>{const ls=stageLessons(s.id);const d=ls.filter(l=>state.done[l.id]).length;
+      html+='<a href="#stage-'+esc(s.id)+'" class="'+(h==="#stage-"+s.id?"on":"")+'"><span class="dot" style="background:'+colorOf(s)+'"></span>'+esc(s.title)+'<span class="cnt">'+d+"/"+ls.length+"</span></a>";});
+  }else{
+    const act=state.crm.filter(c=>c.status!=="lost").length;
+    html+='<h6>顧客管理</h6><a href="#crm" data-view="board" class="'+(h==="#crm"&&state.crmView==="board"?"on":"")+'">🗂 パイプライン<span class="cnt">'+act+'</span></a>';
+    html+='<a href="#crm" data-view="list" class="'+(h==="#crm"&&state.crmView==="list"?"on":"")+'">📋 顧客リスト<span class="cnt">'+state.crm.length+'</span></a>';
+    html+='<a href="#crm" data-add="1">＋ 顧客を追加</a>';
+  }
+  $("#nav").innerHTML=html;
+  document.querySelectorAll("#nav [data-view]").forEach(a=>a.onclick=()=>{state.crmView=a.dataset.view;try{localStorage.setItem("crmView",a.dataset.view);}catch(e){}if(location.hash==="#crm")render();});
+  document.querySelectorAll("#nav [data-add]").forEach(a=>a.onclick=e=>{e.preventDefault();if(location.hash!=="#crm")location.hash="crm";setTimeout(()=>openForm(),50);});
+  let tabs;
+  if(state.isEditor)tabs=[["#","📘","育成",!inCRM],["#crm","👥","顧客管理",inCRM]];
+  else tabs=[["#","🧭","ロードマップ",h.length<2]].concat(state.stages.map(st=>["#stage-"+st.id,"●",st.title,h==="#stage-"+st.id,colorOf(st)]));
+  $("#tabbar").innerHTML=tabs.map(t=>`<a class="tab ${t[3]?"on":""}" href="${t[0]}"><i${t[4]?` style="color:${t[4]}"`:""}>${t[1]}</i>${esc(t[2])}</a>`).join("");
+}
+function ring(done,total){
+  const r=50,c=2*Math.PI*r,p=total?done/total:0;
+  return `<div class="ring"><svg width="116" height="116"><circle cx="58" cy="58" r="${r}" fill="none" stroke="#eef0f4" stroke-width="10"/><circle cx="58" cy="58" r="${r}" fill="none" stroke="#2b3a67" stroke-width="10" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-p)}"/></svg><div class="num"><span>${done}<small>/${total}</small></span></div></div>`;
+}
+function renderHome(only){
+  const all=ordered(),done=all.filter(l=>state.done[l.id]).length,nx=nextLesson();
+  const nxStage=nx&&state.stages.find(s=>s.id===nx.stage);
+  let html="";
+  if(state.stale)html+='<div class="banner">データに接続できていません。表示が最新でない可能性があります。</div>';
+  if(!state.canSave)html+='<div class="banner">この閲覧権限では進捗を保存できません（閲覧のみ）。</div>';
+  html+=`<section class="hero">${ring(done,all.length)}<div><div class="eyebrow">MICHINARI 研修カリキュラム</div><h1>育成ロードマップ</h1><p>商品を理解し、集客の仕組みをつくり、営業で成果につなげる。${state.stages.length}ステージ構成のMICHINARI研修コンテンツ</p></div>`;
+  html+=nx?`<div class="next"><div class="eyebrow">次に進む</div><h3>${esc(nx.title)}</h3><div class="sub">${esc(nxStage?.title||"")}・レッスン${nx.order||""}</div><a class="btn" href="#lesson-${esc(nx.id)}">このレッスンを始める →</a></div>`
+          :`<div class="next"><div class="eyebrow">次に進む</div><h3>${all.length?"全レッスン完了 🎉":"レッスン準備中"}</h3></div>`;
+  html+="</section>";
+  html+='<div class="chips"><a class="chipbtn '+(only?"":"on")+'" href="#">すべて<em>'+done+'/'+all.length+'</em></a>'+state.stages.map(s=>{const ls=stageLessons(s.id);return '<a class="chipbtn '+(only===s.id?"on":"")+'" href="#stage-'+esc(s.id)+'"><span class="dot" style="background:'+colorOf(s)+'"></span>'+esc(s.title)+'<em>'+ls.filter(l=>state.done[l.id]).length+'/'+ls.length+'</em></a>';}).join("")+'</div>';
+  html+="<div class='stages'>";
+  if(!state.stages.length)html+='<div class="empty">まだステージがありません。</div>';
+  let reachedCur=false;
+  state.stages.filter(s=>!only||s.id===only).forEach((s,i)=>{
+    const ls=stageLessons(s.id),d=ls.filter(l=>state.done[l.id]).length,c=colorOf(s);
+    const fin=ls.length&&d===ls.length;let cls=fin?"fin":"";
+    if(!fin&&!reachedCur&&(only||true)){cls="cur";reachedCur=true;}
+    html+=`<section class="stage ${cls}" style="--c:${c}"><div class="node">${fin?"✓":String(s.order||i+1).padStart(2,"0")}</div>
+    <div class="shead"><div><div class="lab">STAGE ${s.order||i+1} ・ ${esc(s.phase||"")}</div><h2>${esc(s.title)}</h2><p>${esc(s.description||"")}</p></div>
+    <div class="sprog"><b>${d}</b><span>/${ls.length}</span><div class="bar"><i style="width:${ls.length?d/ls.length*100:0}%"></i></div></div></div><div class="grid">`;
+    if(!ls.length)html+='<div class="empty" style="grid-column:1/-1">レッスンはこれから追加されます</div>';
+    ls.forEach(l=>{
+      const isD=!!state.done[l.id],isN=nx&&nx.id===l.id,draft=l.status!=="published";
+      const tag=isD?'<span class="tag done">完了</span>':isN?'<span class="tag next">次はここ</span>':draft?'<span class="tag draft">準備中</span>':"";
+      html+=`<a class="card ${isD?"isdone":""} ${isN?"isnext":""} ${draft?"draft":""}" href="#lesson-${esc(l.id)}"><div class="top"><div class="no">${isD?"✓":String(l.order||"").padStart(2,"0")}</div>${tag}</div><h4>${esc(l.title)}</h4><p>${esc(l.summary||"")}</p>${l.minutes?`<div class="meta">⏱ 約${l.minutes}分</div>`:""}<span class="go">${isD?"✓ 復習する":isN?"▶ 始める":draft?"内容を見る →":"▶ 開く"}</span></a>`;
+    });
+    html+="</div></section>";
+  });
+  html+="</div>";
+  $("#main").innerHTML=html;
+}
+function renderLesson(id){
+  const l=state.lessons.find(x=>x.id===id);
+  if(!l){$("#main").innerHTML='<div class="crumb"><a href="#">← 育成ロードマップ</a></div><div class="empty">このレッスンは見つかりませんでした。</div>';return;}
+  const s=state.stages.find(x=>x.id===l.stage),c=colorOf(s),all=ordered(),i=all.findIndex(x=>x.id===id);
+  const prev=all[i-1],next=all[i+1],isD=!!state.done[id],draft=l.status!=="published";
+  const secs=Array.isArray(l.sections)?l.sections:[];
+  let html=`<div class="crumb"><a href="#">育成ロードマップ</a> / <a href="#stage-${esc(l.stage)}">${esc(s?.title||"")}</a> / ${esc(l.title)}</div>
+  <article class="lesson" style="--c:${c}"><div class="lab">STAGE ${s?.order||""} ${esc(s?.title||"")} ・ LESSON ${l.order||""}</div><h1>${esc(l.title)}</h1>
+  ${l.summary?`<p class="lead">${esc(l.summary)}</p>`:""}<div class="info">${l.minutes?`<span>⏱ 約${l.minutes}分</span>`:""}${draft?'<span class="tag draft">準備中</span>':""}${isD?'<span class="tag done">完了</span>':""}</div>`;
+  if(!secs.length)html+='<div class="empty">このレッスンの本文はまだ作成されていません。<br>内容が追加されるとここに表示されます。</div>';
+  secs.forEach((sc,k)=>{html+=`<section class="sec"><h2><i>${String(k+1).padStart(2,"0")}</i>${esc(sc.heading)}</h2><div class="body">${md(sc.body)}</div></section>`;});
+  if(Array.isArray(l.keyPoints)&&l.keyPoints.length)html+=`<div class="points"><h3>このレッスンのポイント</h3><ul>${l.keyPoints.map(p=>"<li>"+inline(p)+"</li>").join("")}</ul></div>`;
+  if(Array.isArray(l.checklist)&&l.checklist.length){const ck=state.checks[id]||{};
+    html+=`<div class="check"><h3>理解度チェック</h3>${l.checklist.map((q,k)=>`<label><input type="checkbox" data-ck="${k}" ${ck[k]?"checked":""}><span>${inline(q)}</span></label>`).join("")}</div>`;}
+  html+=`<div class="foot"><button class="btn ${isD?"done":""}" id="toggle" ${state.canSave&&state.progRef?"":"disabled"}>${isD?"✓ 完了済み（取り消す）":"このレッスンを完了にする"}</button><div class="pager">${prev?`<a class="btn ghost" href="#lesson-${esc(prev.id)}">← 前へ</a>`:""}${next?`<a class="btn ghost" href="#lesson-${esc(next.id)}">次へ →</a>`:""}</div></div></article>`;
+  if(!state.progRef)html+='<div class="note">サインインしていないため、進捗は保存されません。</div>';
+  if(state.static)html+='<div class="note">進捗はこのブラウザに保存されます（別の端末には引き継がれません）。</div>';
+  $("#main").innerHTML=html;window.scrollTo(0,0);
+  const t=$("#toggle");if(t)t.onclick=()=>{state.done[id]=!isD;if(!state.done[id])delete state.done[id];save();render();};
+  document.querySelectorAll("[data-ck]").forEach(cb=>cb.onchange=()=>{const m=state.checks[id]||(state.checks[id]={});m[cb.dataset.ck]=cb.checked;save();});
+}
+/* ===== CRM ===== */
+const ST=[{id:"lead",label:"リード",color:"#8a909c"},{id:"consult",label:"無料相談",color:"#3b82f6"},{id:"diagnosis",label:"有料診断",color:"#8b5cf6"},{id:"proposal",label:"提案中",color:"#f59e0b"},{id:"won",label:"契約中",color:"#1f9d6b"},{id:"lost",label:"失注",color:"#b4b9c2"}];
+const OPT={
+  region:["東京","広島","福岡","その他"],
+  source:["X","note","Threads","HP","LINE","紹介","PR TIMES","Wantedly","YOUTRUST","テレアポ・DM","その他"],
+  service:["CMO代行","Web集客支援","Web集客内製化","AI・DX支援","採用ブランディング・広報","パッケージ（集客〜LINE）","有料診断"],
+  partner:["MICHINARI（自社）","歌川（ウェブフリーク）","團野（I-Nexus）","倉田（AI・AX）"]
+};
+const stOf=id=>ST.find(s=>s.id===id)||ST[0];
+const pill=id=>{const s=stOf(id);return `<span class="pill" style="background:${s.color}">${s.label}</span>`;};
+const today=()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10);};
+const yen=n=>n?"¥"+Number(n).toLocaleString("ja-JP"):"—";
+const isLate=c=>c.nextDate&&c.nextDate<today()&&!["won","lost"].includes(c.status);
+const fmtDate=s=>s?s.replace(/^\d{4}-/,"").replace("-","/"):"";
+Object.assign(state,{crm:[],crmReady:false,isEditor:false,crmView:"board",crmQ:"",logDraft:{},writing:{}});
+try{state.crmView=localStorage.getItem("crmView")||"board";}catch(e){}
+
+function filtered(){
+  const q=state.crmQ.trim().toLowerCase();
+  return state.crm.filter(c=>!q||[c.company,c.person,c.memo,c.source,c.region,(c.services||[]).join(" ")].join(" ").toLowerCase().includes(q));
+}
+function kpiHTML(){
+  const L=state.crm,open=L.filter(c=>["consult","diagnosis","proposal"].includes(c.status));
+  const won=L.filter(c=>c.status==="won"),mrr=won.reduce((a,c)=>a+(+c.monthly||0),0);
+  const pipe=L.filter(c=>c.status==="proposal").reduce((a,c)=>a+(+c.monthly||0),0);
+  const late=L.filter(isLate).length;
+  return `<div class="kpi"><small>リード・商談中</small><b>${L.filter(c=>c.status==="lead").length+open.length}</b><span>件</span></div>
+  <div class="kpi"><small>商談中（相談〜提案）</small><b>${open.length}</b><span>件</span></div>
+  <div class="kpi"><small>契約中 / 月額合計</small><b>${won.length}</b><span>社</span> <span style="font:700 14px Inter;color:var(--ok)">${yen(mrr)}</span></div>
+  <div class="kpi"><small>提案中の見込み月額</small><b style="font-size:20px">${yen(pipe)}</b></div>
+  <div class="kpi ${late?"warn":""}"><small>期限切れアクション</small><b>${late}</b><span>件</span></div>`;
+}
+function bodyHTML(){
+  const L=filtered();
+  if(!state.crm.length)return '<div class="empty">まだ顧客が登録されていません。<br>「＋ 顧客を追加」から登録するか、チャットで「〇〇社を追加して」と伝えてください。</div>';
+  if(state.crmView==="board"){
+    return '<div class="board">'+ST.map(s=>{const cs=L.filter(c=>(c.status||"lead")===s.id).sort((a,b)=>(a.nextDate||"9")>(b.nextDate||"9")?1:-1);
+      return `<div class="col"><h5><span class="dot" style="background:${s.color}"></span>${s.label}<em>${cs.length}</em></h5>${cs.map(c=>`<a class="cc" href="#crm-${esc(c.id)}"><b>${esc(c.company)}</b><div class="p">${esc(c.person||"")}${c.region?" ・ "+esc(c.region):""}</div><div class="row">${c.source?`<span class="chip">${esc(c.source)}</span>`:"<span></span>"}<span>${c.monthly?yen(c.monthly)+"/月":""}</span></div>${c.nextAction||c.nextDate?`<div class="na ${isLate(c)?"late":""}">${c.nextDate?"📅 "+fmtDate(c.nextDate)+" ":""}${esc(c.nextAction||"")}</div>`:""}</a>`).join("")}</div>`;}).join("")+"</div>";
+  }
+  const rows=L.slice().sort((a,b)=>(a.nextDate||"9")>(b.nextDate||"9")?1:-1);
+  return `<table class="t"><thead><tr><th>会社名</th><th>担当者</th><th>ステータス</th><th>地域</th><th>流入経路</th><th>サービス</th><th>月額</th><th>次回アクション</th><th>期日</th></tr></thead><tbody>${rows.map(c=>`<tr><td><a href="#crm-${esc(c.id)}">${esc(c.company)}</a></td><td>${esc(c.person||"")}</td><td><select data-st="${esc(c.id)}">${ST.map(s=>`<option value="${s.id}" ${s.id===(c.status||"lead")?"selected":""}>${s.label}</option>`).join("")}</select></td><td>${esc(c.region||"")}</td><td>${esc(c.source||"")}</td><td>${esc((c.services||[]).join("、"))}</td><td>${yen(c.monthly)}</td><td>${esc(c.nextAction||"")}</td><td class="${isLate(c)?"late":""}">${fmtDate(c.nextDate)}</td></tr>`).join("")}</tbody></table>${L.length?"":'<div class="empty" style="margin-top:12px">該当する顧客がいません</div>'}`;
+}
+function bindBody(){
+  document.querySelectorAll("[data-st]").forEach(sel=>sel.onchange=()=>changeStatus(sel.dataset.st,sel.value));
+}
+function renderCRM(){
+  $("#main").innerHTML=`<div class="ph"><div><div class="eyebrow">顧客管理</div><h1>${state.crmView==="list"?"顧客リスト":"パイプライン"}</h1></div><div class="act"><button class="btn" id="addC">＋ 顧客を追加</button></div></div>
+  <div class="kpis" id="kpis">${kpiHTML()}</div>
+  <div class="tools"><input id="q" placeholder="会社名・担当者・メモで検索" value="${esc(state.crmQ)}"><div class="seg"><button data-v="board" class="${state.crmView==="board"?"on":""}">ボード</button><button data-v="list" class="${state.crmView==="list"?"on":""}">リスト</button></div></div>
+  <div id="crmBody">${bodyHTML()}</div>`;
+  bindBody();
+  $("#addC").onclick=()=>openForm();
+  $("#q").oninput=e=>{state.crmQ=e.target.value;$("#crmBody").innerHTML=bodyHTML();bindBody();};
+  document.querySelectorAll("[data-v]").forEach(b=>b.onclick=()=>{state.crmView=b.dataset.v;try{localStorage.setItem("crmView",b.dataset.v);}catch(e){}renderCRM();renderNav();});
+}
+function refreshCRM(){
+  const h=location.hash;
+  if(h==="#crm"&&$("#crmBody")){$("#kpis").innerHTML=kpiHTML();$("#crmBody").innerHTML=bodyHTML();bindBody();renderNav();}
+  else if(h.startsWith("#crm-")&&$("#modal").classList.contains("open"))renderNav();
+  else render();
+}
+function renderCustomer(id){
+  const c=state.crm.find(x=>x.id===id);
+  if(!c){$("#main").innerHTML='<div class="crumb"><a href="#crm">← 顧客管理</a></div><div class="empty">この顧客は見つかりませんでした（削除された可能性があります）。</div>';return;}
+  const logs=(c.logs||[]).slice().sort((a,b)=>(b.at||"")>(a.at||"")?1:-1);
+  const row=(k,v)=>v?`<dt>${k}</dt><dd>${v}</dd>`:"";
+  $("#main").innerHTML=`<div class="crumb"><a href="#crm">顧客管理</a> / ${esc(c.company)}</div>
+  <div class="ph"><div><div style="margin-bottom:6px">${pill(c.status)}</div><h1>${esc(c.company)}</h1></div><div class="act">
+   <select id="stSel" class="btn ghost sm" style="padding:8px 10px">${ST.map(s=>`<option value="${s.id}" ${s.id===(c.status||"lead")?"selected":""}>${s.label}</option>`).join("")}</select>
+   <button class="btn ghost sm" id="edit">編集</button><button class="btn danger sm" id="del">削除</button></div></div>
+  <div class="dgrid"><div>
+   <div class="panel" style="margin-bottom:20px"><h3>次回アクション</h3><div style="font-size:15px" class="${isLate(c)?"late":""}">${c.nextDate?"📅 "+esc(c.nextDate)+"　":""}${esc(c.nextAction||"未設定")}</div></div>
+   <div class="panel log"><h3>対応履歴</h3><textarea id="logT" rows="3" placeholder="商談・連絡の内容を記録（例：初回商談。LINE運用に課題。来週に有料診断の提案）">${esc(state.logDraft[id]||"")}</textarea>
+    <div style="display:flex;justify-content:flex-end"><button class="btn sm" id="addLog">履歴を追加</button></div>
+    <ul>${logs.map(l=>`<li><small>${esc(l.at?new Date(l.at).toLocaleString("ja-JP",{year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"}):"")}</small>${esc(l.text)}</li>`).join("")||'<li style="border:0;color:var(--mute)">まだ履歴はありません</li>'}</ul></div>
+  </div><div class="panel"><h3>顧客情報</h3><dl class="kv">
+   ${row("担当者",esc(c.person)+(c.role?` <span style="color:var(--mute)">(${esc(c.role)})</span>`:""))}${row("メール",esc(c.email))}${row("電話",esc(c.phone))}${row("業種",esc(c.industry))}${row("地域",esc(c.region))}${row("流入経路",esc(c.source))}
+   ${row("サービス",esc((c.services||[]).join("、")))}${row("月額",c.monthly?yen(c.monthly):"")}${row("初期費用",c.initialFee?yen(c.initialFee):"")}${row("実行担当",esc(c.partner))}${row("Web/URL",c.url?`<a href="${esc(c.url)}" target="_blank" rel="noopener" style="color:var(--accent)">${esc(c.url)}</a>`:"")}
+   ${row("登録日",esc((c.createdAt||"").slice(0,10)))}${row("更新日",esc((c.updatedAt||"").slice(0,10)))}</dl>
+   ${c.memo?`<h3 style="margin-top:22px">メモ</h3><div class="memo">${esc(c.memo)}</div>`:""}</div></div><div class="err" id="cErr"></div>`;
+  $("#edit").onclick=()=>openForm(c);
+  $("#stSel").onchange=e=>changeStatus(id,e.target.value);
+  $("#logT").oninput=e=>{state.logDraft[id]=e.target.value;};
+  $("#addLog").onclick=async()=>{const t=$("#logT").value.trim();if(!t)return;
+    const logs=[...(c.logs||[]),{at:new Date().toISOString(),text:t}];
+    if(await writeC(id,{...c,logs,updatedAt:new Date().toISOString()})){state.logDraft[id]="";render();}};
+  let armed=false;$("#del").onclick=async()=>{
+    if(!armed){armed=true;$("#del").textContent="本当に削除する（元に戻せません）";$("#del").classList.add("arm");setTimeout(()=>{armed=false;const d=$("#del");if(d){d.textContent="削除";d.classList.remove("arm");}},4000);return;}
+    try{await state.db.doc("crm/"+id).delete();location.hash="crm";}catch(e){$("#cErr").textContent="削除できませんでした："+(e?.message||e?.code||"");}
+  };
+}
+function strip(c){const o={...c};delete o.id;return JSON.parse(JSON.stringify(o));}
+async function writeC(id,data){
+  const prev=state.writing[id]||Promise.resolve();
+  const p=prev.then(()=>state.db.doc("crm/"+id).set(strip(data)));
+  state.writing[id]=p.catch(()=>{});
+  try{await p;return true;}catch(e){const el=$("#cErr")||$("#fErr");if(el)el.textContent="保存できませんでした："+(e?.message||e?.code||"");return false;}
+}
+function changeStatus(id,to){
+  const c=state.crm.find(x=>x.id===id);if(!c||c.status===to)return;
+  const now=new Date().toISOString();
+  writeC(id,{...c,status:to,updatedAt:now,logs:[...(c.logs||[]),{at:now,text:`ステータス変更：${stOf(c.status).label} → ${stOf(to).label}`}]});
+}
+function openForm(c){
+  const v=c||{status:"lead",services:[]};
+  const sel=(n,arr,blank=true)=>`<select name="${n}">${blank?'<option value="">—</option>':""}${arr.map(o=>`<option ${o===v[n]?"selected":""}>${esc(o)}</option>`).join("")}</select>`;
+  const inp=(n,t="text",ph="")=>`<input name="${n}" type="${t}" value="${esc(v[n]??"")}" placeholder="${esc(ph)}">`;
+  $("#mbox").innerHTML=`<h2>${c?"顧客情報を編集":"顧客を追加"}</h2><form class="f" id="cf">
+  <label class="w">会社名 *${inp("company","text","株式会社〇〇")}</label>
+  <label>担当者名${inp("person")}</label><label>役職${inp("role","text","代表取締役など")}</label>
+  <label>メール${inp("email","email")}</label><label>電話${inp("phone","tel")}</label>
+  <label>業種${inp("industry","text","映像制作、飲食 など")}</label><label>Web/URL${inp("url","url","https://")}</label>
+  <label>地域${sel("region",OPT.region)}</label><label>流入経路${sel("source",OPT.source)}</label>
+  <label>ステータス<select name="status">${ST.map(s=>`<option value="${s.id}" ${s.id===v.status?"selected":""}>${s.label}</option>`).join("")}</select></label>
+  <label>実行担当${sel("partner",OPT.partner)}</label>
+  <label class="w">サービス<div class="chk">${OPT.service.map(o=>`<span><input type="checkbox" name="services" value="${esc(o)}" ${(v.services||[]).includes(o)?"checked":""}>${esc(o)}</span>`).join("")}</div></label>
+  <label>月額（円）${inp("monthly","number","300000")}</label><label>初期費用（円）${inp("initialFee","number")}</label>
+  <label>次回アクション${inp("nextAction","text","有料診断の提案 など")}</label><label>期日${inp("nextDate","date")}</label>
+  <label class="w">メモ<textarea name="memo" rows="4">${esc(v.memo||"")}</textarea></label>
+  </form><div class="err" id="fErr"></div><div class="mfoot"><button class="btn ghost" id="cancel">キャンセル</button><button class="btn" id="saveC">保存する</button></div>`;
+  $("#modal").classList.add("open");
+  const close=()=>$("#modal").classList.remove("open");
+  $("#cancel").onclick=close;
+  $("#cf").onsubmit=e=>e.preventDefault();
+  $("#saveC").onclick=async()=>{
+    const fd=new FormData($("#cf"));const d={};
+    ["company","person","role","email","phone","industry","url","region","source","status","partner","nextAction","nextDate","memo"].forEach(k=>d[k]=(fd.get(k)||"").toString().trim());
+    d.services=fd.getAll("services");d.monthly=+fd.get("monthly")||0;d.initialFee=+fd.get("initialFee")||0;
+    if(!d.company){$("#fErr").textContent="会社名を入力してください";return;}
+    const now=new Date().toISOString();
+    const id=c?c.id:"c"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+    const logs=[...((c&&c.logs)||[])];
+    if(!c)logs.push({at:now,text:"顧客を登録（"+stOf(d.status).label+"）"});
+    else if(c.status!==d.status)logs.push({at:now,text:`ステータス変更：${stOf(c.status).label} → ${stOf(d.status).label}`});
+    $("#saveC").disabled=true;
+    const ok=await writeC(id,{...(c||{}),...d,logs,createdAt:c?.createdAt||now,updatedAt:now});
+    $("#saveC").disabled=false;
+    if(ok){close();if(!c)location.hash="crm-"+id;else render();}
+  };
+}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#modal").classList.remove("open");});
+
+let saving=Promise.resolve(),saveTimer=null;
+function save(){
+  if(!state.progRef||!state.canSave)return;
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(()=>{saving=saving.then(()=>state.progRef.set({done:state.done,checks:state.checks,updatedAt:new Date().toISOString()})).catch(e=>{if(e&&e.code==="invalid_argument"){state.canSave=false;render();}});},400);
+}
+const rr=()=>{if(location.hash.startsWith("#crm"))renderNav();else render();};
+window.addEventListener("hashchange",()=>{$("#modal").classList.remove("open");render();});
+render();
+/* GitHub Pages など claude.ai の外で開いたとき：content/curriculum.json を読み、進捗はこの端末に保存 */
+async function staticMode(){
+  state.static=true;
+  try{
+    const r=await fetch("content/curriculum.json",{cache:"no-store"});
+    const j=await r.json();
+    state.stages=(j.stages||[]).sort((a,b)=>(a.order||0)-(b.order||0));state.lessons=j.lessons||[];
+    try{const p=JSON.parse(localStorage.getItem("michinari-academy-progress")||"{}");state.done=p.done||{};state.checks=p.checks||{};}catch(e){}
+    state.progRef={set:async d=>{localStorage.setItem("michinari-academy-progress",JSON.stringify(d));}};
+    state.ready=true;$("#me").textContent="進捗はこの端末に保存されます";
+  }catch(e){state.err="研修データを読み込めませんでした。";}
+  render();
+}
+(async()=>{
+  if(!window.claude||!window.claude.use)return staticMode();
+  const db=await window.claude?.use?.("db").catch(()=>null);
+  const user=await window.claude?.use?.("user").catch(()=>null);
+  if(!db){state.err="データベースに接続できません。サインインして開き直してください。";render();$("#me").textContent="未接続";return;}
+  state.db=db;
+  let got=0;const timer=setTimeout(()=>{if(!state.ready){state.err="データの読み込みに時間がかかっています…";render();}else{state.stale=true;render();}},10000);
+  const mark=(snap)=>{got|=snap;if(got===3){state.ready=true;if(!state._fresh){}}};
+  db.collection("stages").onSnapshot(s=>{state.stages=s.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.order||0)-(b.order||0));mark(1);if(!s.metadata.fromCache){clearTimeout(timer);state.stale=false;}rr();},e=>{clearTimeout(timer);state.err="データの読み込みに失敗しました";render();});
+  db.collection("lessons").onSnapshot(s=>{state.lessons=s.docs.map(d=>({id:d.id,...d.data()}));mark(2);rr();},()=>{});
+  try{
+    const ed=user&&user.canEdit?await user.canEdit().catch(()=>false):false;
+    if(ed){
+      state.isEditor=true;renderNav();
+      db.collection("crm").onSnapshot(s=>{state.crm=s.docs.map(d=>({id:d.id,...d.data()}));state.crmReady=true;refreshCRM();},
+        e=>{state.crmReady=true;state.isEditor=false;render();});
+      if(location.hash.startsWith("#crm"))render();
+    }
+  }catch(e){}
+  try{
+    const uid=user?await user.id():null;
+    if(user){const n=await user.displayName?.().catch?.(()=>null);$("#me").textContent=n?n+" さんの進捗":"進捗は自動保存されます";}
+    if(uid){
+      state.uid=uid;state.progRef=db.doc("data/users/"+uid+"/progress");
+      const w=user.can?await user.can("data.write").catch(()=>null):null;
+      const snap=await state.progRef.get();
+      if(snap.exists){const d=snap.data();state.done={...(d.done||{})};state.checks=JSON.parse(JSON.stringify(d.checks||{}));}
+      render();
+    }else{$("#me").textContent="サインインすると進捗が保存されます";}
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
