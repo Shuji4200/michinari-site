@@ -1,4 +1,4 @@
-# MICHINARI Academy（研修ロードマップ）
+# MICHINARI事業（GitHub公開版＝育成のみ）
 
 GitHub Pages 用の研修アプリです。リポジトリ `michinari-site` の `academy/` フォルダに置くと、
 `https://shuji4200.github.io/michinari-site/academy/` で開けます。
