@@ -1708,6 +1708,7 @@ async function pushSnaps(){
 function mergePay(){state.clients=state.rawClients.map(c=>{const p=(state.payments[c.id]||{}).paid;return p?{...c,paid:{...(c.paid||{}),...p}}:c;});}
 /* ===== 経理・財務（CFO） ===== */
 const FREEE_URL="https://secure.freee.co.jp/";
+const FREEE_ACCOUNT="shuji.kawamoto.jp@gmail.com"; /* freee会計にログインするアカウント（本人指定） */
 function billingFor(mo){
   return state.clients.filter(c=>c.startDate&&c.status!=="prep"&&ym(c.startDate)<=mo&&!(c.endDate&&ym(c.endDate)<mo)&&!(c.status==="ended"&&!c.endDate&&mo===thisMonth())&&!(c.status==="paused"&&mo===thisMonth()))
     .map(c=>({c,amt:(+c.monthly||0)+(ym(c.startDate)===mo?(+c.initialFee||0):0),paid:!!(c.paid&&c.paid[mo])})).filter(x=>x.amt>0);
@@ -1721,7 +1722,7 @@ function renderFinance(){
   const paidList=months.flatMap(mo=>billingFor(mo).filter(x=>x.paid).map(x=>({...x,mo})));
   const g=state.goals||{};
   $("#main").innerHTML=`<div class="ph"><div><div class="eyebrow">CFO</div><h1>💴 経理・財務</h1></div><div class="act"><a class="btn sm" href="${FREEE_URL}" target="_blank" rel="noopener">freeeを開く ↗</a></div></div>
-  <p class="hint" style="margin-top:-8px;margin-bottom:16px">経理の詳細（仕訳・請求書・経費）はfreeeで管理します。ここでは受注クライアントの契約から計算した売上と、入金の確認だけを見ます。</p>
+  <p class="hint" style="margin-top:-8px;margin-bottom:16px">経理の詳細（仕訳・請求書・経費）はfreee会計で管理します。ここでは受注クライアントの契約から計算した売上と、入金の確認だけを見ます。<br>freee会計は <b>${FREEE_ACCOUNT}</b> のアカウントでログインして開きます。</p>
   <div class="kpis k4" style="grid-template-columns:repeat(4,1fr);margin-bottom:18px">
    <div class="kpi"><small>今月の売上（月額＋初期費用）</small><b style="font-size:20px">${yen(now.total)}</b>${g.mrr?`<span>月額の目標 ${yen(g.mrr)}</span>`:""}</div>
    <div class="kpi"><small>今月の入金済み</small><b style="font-size:20px;color:var(--ok)">${yen(now.paid)}</b></div>
