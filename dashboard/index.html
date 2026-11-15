@@ -504,6 +504,11 @@ body.ro [data-pdo]{pointer-events:none}
 .tdcol .padd select{border:1px solid var(--line);border-radius:8px;font:inherit;font-size:13px;padding:0 6px;height:34px}
 body.ro .tdcol .padd{display:none!important}body.ro .tdt{cursor:default}
 @media(max-width:1000px){.tdcols{grid-template-columns:1fr}}
+
+.hrc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.hri{display:flex;gap:12px;background:#fff;border:1px solid var(--line);border-top:4px solid #f59e0b;border-radius:14px;padding:16px 18px}
+.hrn{font:800 22px Inter;color:#f59e0b;line-height:1}.hri b{font-size:16px;line-height:1.5}.hri p{margin:6px 0 0;font-size:13px;color:var(--mute);line-height:1.6;white-space:pre-wrap}
+@media(max-width:900px){.hrc{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -524,7 +529,7 @@ const APP_MODE="public"; /* build_dept.py が部門アプリ用に書き換え�
 const IS_MAIN=APP_MODE==="main"||APP_MODE==="public"; /* public＝GitHub公開デモ（サンプルデータ・表示のみ） */
 const DEPT_URL={ceo:"https://claude.ai/artifact/Wpeio4RoYmBtWeFhWUyHzW",cso:"https://claude.ai/artifact/NdYfQVJVwmKLknjkjTGfqp",cmo:"https://claude.ai/artifact/CN24agrwF3i3jyo8AVs8LZ",cpo:"https://claude.ai/artifact/6rz9jPxcGmGgUAEbZ5tPHK",chro:"https://claude.ai/artifact/RkMZCBt7JyLZaqXWU3h1yD",cfo:"https://claude.ai/artifact/8tbbPu9Vga31o2T5RHGbRk",clo:"https://claude.ai/artifact/HnHtUyPZrVVDjYGE3UGEZm"};
 /* 部門アプリが持つデータ（＝そのアプリで編集する元データ）と、参照用コピー */
-const OWN={ceo:["biz","todos"],cso:["crm","clients","salesdocs"],cmo:["mkt","mktposts","hplog","hptasks","hpinfo"],cpo:["products"],chro:["stages","lessons"],cfo:["payments"],clo:["legal"]};
+const OWN={ceo:["biz","todos"],cso:["crm","clients","salesdocs"],cmo:["mkt","mktposts","hplog","hptasks","hpinfo"],cpo:["products"],chro:["stages","lessons","hr"],cfo:["payments"],clo:["legal"]};
 const COPY={cso:["products"],cfo:["clients"]};
 const LOCAL=IS_MAIN?null:new Set([...(OWN[APP_MODE]||[]),...(COPY[APP_MODE]||[])]);
 const state={payments:{},rawClients:[],stages:[],lessons:[],done:{},checks:{},uid:null,db:null,progRef:null,ready:false,err:null,stale:false,canSave:true};
@@ -556,7 +561,7 @@ function render(){
 }
 function route(){
   const h=location.hash.replace("#","");
-  const biz=h===""||h==="home"||h.startsWith("d-")||h==="plan"||h==="finance"||h==="legal"||h==="products"||h==="marketing"||h==="site"||h==="docs"||h==="clients"||h.startsWith("client-")||h==="crm"||h.startsWith("crm-")||h==="weekly"||h.startsWith("weekly-")||PLANNED[h];
+  const biz=h===""||h==="home"||h.startsWith("d-")||h==="plan"||h==="finance"||h==="legal"||h==="products"||h==="marketing"||h==="site"||h==="hiring"||h==="docs"||h==="clients"||h.startsWith("client-")||h==="crm"||h.startsWith("crm-")||h==="weekly"||h.startsWith("weekly-")||PLANNED[h];
   const trainR=h==="training"||h.startsWith("stage-")||h.startsWith("lesson-");
   if(IS_PUBLIC&&!(h===""||h==="home"||h.startsWith("d-"))){location.hash="";return;}
   if(state.isEditor&&!IS_MAIN&&!biz&&!(APP_MODE==="chro"&&trainR)){location.hash="";return;}
@@ -577,6 +582,7 @@ function route(){
     if(h==="products")return renderProducts();
     if(h==="marketing")return renderMkt();
     if(h==="site")return renderSite();
+    if(h==="hiring")return renderHiring();
     if(h==="clients")return renderClients();
     if(h.startsWith("client-"))return renderClient(h.slice(7));
     if(PLANNED[h]&&h!=="strategy"){location.hash="";return;}
@@ -824,7 +830,7 @@ function refreshCRM(){
   const h=location.hash;
   if($("#modal").classList.contains("open")){renderNav();return;}
   if(h==="#crm"&&$("#crmBody")){$("#kpis").innerHTML=kpiHTML();$("#crmBody").innerHTML=bodyHTML();bindBody();renderNav();return;}
-  if(state.isEditor&&(h===""||h==="#"||h==="#home"||h.startsWith("#d-")||h==="#marketing"||h==="#site"||h.startsWith("#crm")||h.startsWith("#client-")))return render();
+  if(state.isEditor&&(h===""||h==="#"||h==="#home"||h.startsWith("#d-")||h==="#marketing"||h==="#site"||h==="#hiring"||h.startsWith("#crm")||h.startsWith("#client-")))return render();
   renderNav();
 }
 function renderCustomer(id){
@@ -1512,7 +1518,7 @@ const DEPTS=[
  {id:"cso",ic:"🤝",name:"営業",role:"CSO",color:"#1f9d6b",pages:[["#crm","顧客リスト"],["#clients","受注クライアント"],["#docs","実績・営業資料"]]},
  {id:"cmo",ic:"📣",name:"マーケティング",role:"CMO",color:"#e5484d",pages:[["#marketing","集客データ（SNS・HP）"],["#site","HP管理"]]},
  {id:"cpo",ic:"📦",name:"商品・サービス",role:"CPO",color:"#8b5cf6",pages:[["#products","商品一覧"]]},
- {id:"chro",ic:"📘",name:"人事・採用・教育",role:"CHRO",color:"#f59e0b",pages:[["#training","育成ロードマップ"]]},
+ {id:"chro",ic:"📘",name:"人事・採用・教育",role:"CHRO",color:"#f59e0b",pages:[["#hiring","採用基準"],["#training","育成ロードマップ"]]},
  {id:"cfo",ic:"💴",name:"経理・財務",role:"CFO",color:"#0ea5e9",pages:[["#finance","売上・入金"]]},
  {id:"clo",ic:"⚖️",name:"法務",role:"CLO",color:"#64748b",pages:[["#legal","契約書・書類"]]}
 ];
@@ -1635,6 +1641,7 @@ function renderDept(id){
   <section class="dsec"><h3 class="h3">${moLabel(mo)}の数字</h3><div class="pks">${K.map(kpiCard).join("")}</div>
    <p class="hint">${K.some(x=>!x.v)?"「手入力」の項目は 🎯目標・数字 から実績を入れます。":""}それ以外は各ページのデータから自動で集計しています。</p></section>
   ${id==="ceo"?todoBoard():""}
+  ${id==="chro"&&hrItems().length?`<section class="dsec"><div class="dh" style="display:flex;align-items:center;justify-content:space-between"><h3 class="h3" style="margin:0">MICHINARIの採用基準</h3><a class="lnk" href="#hiring">採用基準へ →</a></div>${hiringCard(true)}</section>`:""}
   <section class="dsec"><h3 class="h3">PDCA</h3>${pdcaBoard(id)}</section>${extra}`;
   bindMonthNav();$("#kEdit").onclick=()=>openKpiForm(id);bindPdca(id);
   if(id==="cso")bindCso();
@@ -1861,6 +1868,30 @@ function bindTodoBoard(){
       onDelete:async e=>{try{await softDel("todos/"+t.id);return true;}catch(x){e.textContent="削除できませんでした";return false;}}});});
 }
 
+/* ===== 人事・採用・教育：採用基準（#hiring） ===== */
+Object.assign(state,{hr:{}});
+const HR_NUM=["①","②","③","④","⑤","⑥","⑦","⑧","⑨"];
+function hrItems(){return ((state.hr.criteria||{}).items||[]).filter(x=>x&&x.title);}
+function hiringCard(compact){
+  const L=hrItems();
+  if(!L.length)return compact?"":'<div class="empty sm">採用基準がまだありません。「編集する」から追加します。</div>';
+  return `<div class="hrc">${L.map((x,i)=>`<div class="hri"><span class="hrn">${HR_NUM[i]||i+1}</span><div><b>${esc(x.title)}</b>${x.desc?`<p>${esc(x.desc)}</p>`:""}</div></div>`).join("")}</div>`;
+}
+function openHiringForm(){
+  const L=hrItems(),vals={};const n=Math.max(5,L.length+1);
+  for(let i=0;i<n;i++){vals["t"+i]=(L[i]||{}).title||"";vals["d"+i]=(L[i]||{}).desc||"";}
+  const fields=[];for(let i=0;i<n;i++){fields.push({k:"t"+i,l:`基準${HR_NUM[i]||i+1}`,w:1},{k:"d"+i,l:"見るポイント・補足（任意）",t:"textarea",rows:2});}
+  openForm2({title:"MICHINARIの採用基準",fields,values:vals,onSave:(d,e)=>{const items=[];for(let i=0;i<n;i++){if(d["t"+i])items.push({title:d["t"+i],desc:d["d"+i]||""});}
+    return writeDoc("hr/criteria",{items,updatedAt:new Date().toISOString()},e);}});
+}
+function renderHiring(){
+  const c=state.hr.criteria||{};
+  $("#main").innerHTML=`<div class="ph"><div><div class="eyebrow">CHRO ・ 人事・採用・教育</div><h1>🤝 採用基準</h1></div><div class="act"><button class="btn ghost sm" id="hrEdit">編集する</button></div></div>
+  <p class="hint" style="margin:-8px 0 16px">MICHINARIで一緒に働く人を決めるときの基準です。面談や採用・参画の判断は、この基準に照らして行います。${c.updatedAt?`（最終更新：${fmtDate(c.updatedAt.slice(0,10))}）`:""}</p>
+  <section class="dsec">${hiringCard(false)}</section>`;
+  $("#hrEdit").onclick=openHiringForm;
+}
+
 /* ===== 法務（CLO） ===== */
 Object.assign(state,{legal:[]});
 const LG_TYPES=["契約書（顧客）","契約書（パートナー）","NDA","利用規約・ポリシー","登記・届出","その他"];
@@ -1900,7 +1931,7 @@ function bizRefresh(meta){
   const h=location.hash;
   if($("#modal").classList.contains("open")){renderNav();return;}
   if(meta&&meta.hasPendingWrites&&(h.startsWith("#client-")))return;
-  if(h===""||h==="#"||h==="#home"||h.startsWith("#d-")||h==="#clients"||h.startsWith("#client-")||h==="#docs"||h==="#products"||h==="#marketing"||h==="#site"||h==="#finance"||h==="#legal")render();else if(h.startsWith("#weekly-")&&!(meta&&meta.hasPendingWrites)&&!document.activeElement?.closest?.(".addrow"))render();else renderNav();
+  if(h===""||h==="#"||h==="#home"||h.startsWith("#d-")||h==="#clients"||h.startsWith("#client-")||h==="#docs"||h==="#products"||h==="#marketing"||h==="#site"||h==="#hiring"||h==="#finance"||h==="#legal")render();else if(h.startsWith("#weekly-")&&!(meta&&meta.hasPendingWrites)&&!document.activeElement?.closest?.(".addrow"))render();else renderNav();
 }
 let saving=Promise.resolve(),saveTimer=null;
 function save(){
@@ -1953,6 +1984,7 @@ async function staticMode(){
       db.collection("hptasks").onSnapshot(s=>{state.hptasks=live(s);bizRefresh(s.metadata);},()=>{});
       db.collection("hpinfo").onSnapshot(s=>{const m={};s.docs.forEach(d=>{const x=d.data();if(!x._deleted)m[d.id]=x;});state.hpinfo=m.site||{};bizRefresh(s.metadata);},()=>{});
       db.collection("todos").onSnapshot(s=>{state.todos=live(s);bizRefresh(s.metadata);},()=>{});
+      db.collection("hr").onSnapshot(s=>{const m={};s.docs.forEach(d=>{const x=d.data();if(!x._deleted)m[d.id]=x;});state.hr=m;bizRefresh(s.metadata);},()=>{});
       db.collection("legal").onSnapshot(s=>{state.legal=live(s);bizRefresh(s.metadata);},()=>{});
       db.collection("payments").onSnapshot(s=>{const m={};s.docs.forEach(d=>{const x=d.data();if(!x._deleted)m[d.id]=x;});state.payments=m;mergePay();bizRefresh(s.metadata);},()=>{});
       db.collection("clients").onSnapshot(s=>{state.rawClients=live(s);mergePay();state.clientsReady=true;bizRefresh(s.metadata);},()=>{});
