@@ -512,6 +512,11 @@ body.ro .tdcol .padd{display:none!important}body.ro .tdt{cursor:default}
 .nav a .chev{margin-left:auto;color:#a0a5b0;font-size:16px;line-height:1;transition:transform .15s;transform:rotate(0deg)}
 .nav a .chev.open{transform:rotate(90deg)}
 .nav a .cnt+.chev{margin-left:6px}
+
+.fh{font-size:13px;margin:0 0 8px;color:var(--mute)}
+.fbar{height:8px;background:#eef0f4;border-radius:4px;overflow:hidden;min-width:60px}.fbar i{display:block;height:100%;background:#0ea5e9}
+.fitems{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}.fitems li{display:grid;grid-template-columns:7em 1fr auto;gap:10px;align-items:center;font-size:13px}.fitems b{font:600 13px Inter}
+.paid li .btn{white-space:nowrap;flex:0 0 auto}
 </style>
 </head>
 <body>
@@ -532,7 +537,7 @@ const APP_MODE="main"; /* build_dept.py が部門アプリ用に書き換える 
 const IS_MAIN=APP_MODE==="main"||APP_MODE==="public"; /* public＝GitHub公開デモ（サンプルデータ・表示のみ） */
 const DEPT_URL={ceo:"https://claude.ai/artifact/Wpeio4RoYmBtWeFhWUyHzW",cso:"https://claude.ai/artifact/NdYfQVJVwmKLknjkjTGfqp",cmo:"https://claude.ai/artifact/CN24agrwF3i3jyo8AVs8LZ",cpo:"https://claude.ai/artifact/6rz9jPxcGmGgUAEbZ5tPHK",chro:"https://claude.ai/artifact/RkMZCBt7JyLZaqXWU3h1yD",cfo:"https://claude.ai/artifact/8tbbPu9Vga31o2T5RHGbRk",clo:"https://claude.ai/artifact/HnHtUyPZrVVDjYGE3UGEZm"};
 /* 部門アプリが持つデータ（＝そのアプリで編集する元データ）と、参照用コピー */
-const OWN={ceo:["biz","todos"],cso:["crm","clients","salesdocs"],cmo:["mkt","mktposts","hplog","hptasks","hpinfo"],cpo:["products"],chro:["stages","lessons","hr"],cfo:["payments"],clo:["legal"]};
+const OWN={ceo:["biz","todos"],cso:["crm","clients","salesdocs"],cmo:["mkt","mktposts","hplog","hptasks","hpinfo"],cpo:["products"],chro:["stages","lessons","hr"],cfo:["payments","fin"],clo:["legal"]};
 const COPY={cso:["products"],cfo:["clients"]};
 const LOCAL=IS_MAIN?null:new Set([...(OWN[APP_MODE]||[]),...(COPY[APP_MODE]||[])]);
 const state={payments:{},rawClients:[],stages:[],lessons:[],done:{},checks:{},uid:null,db:null,progRef:null,ready:false,err:null,stale:false,canSave:true};
@@ -1550,7 +1555,7 @@ const KPIS={
  cmo:[{k:"show",n:["mkt"],l:"SNSの表示回数",u:"回",v:mo=>mktMonth(mo).show},{k:"posts",n:["mkt"],l:"投稿数",u:"本",v:mo=>mktMonth(mo).posts},{k:"hp",n:["mkt"],l:"HPの訪問数",u:"回",v:mo=>mktMonth(mo).hp},{k:"cv",n:["mkt"],l:"LINE・フォーム",u:"件",v:mo=>mktMonth(mo).cv},{k:"snsLeads",n:["crm"],l:"集客経由の問い合わせ",u:"件",v:mo=>leadsIn(mo,["X","Threads","note","HP","LINE"])}],
  cpo:[{k:"onSale",n:["products"],l:"販売中の商品",u:"個",v:()=>state.products.filter(p=>(p.status||"sale")==="sale").length},{k:"newDeals",n:["clients"],l:"新規受注",u:"件",v:mo=>state.clients.filter(c=>c.startDate&&ym(c.startDate)===mo&&c.status!=="prep").length},{k:"active",n:["clients"],l:"稼働中クライアント",u:"社",v:mo=>revenueFor(mo).customers},{k:"arpu",n:["clients"],l:"平均月額単価",f:"yen",v:mo=>{const r=revenueFor(mo);return r.customers?Math.round(r.mrr/r.customers):null;}}],
  chro:[{k:"applicants",l:"採用の応募",u:"人"},{k:"interviews",l:"面談",u:"回"},{k:"hires",l:"採用・参画",u:"人"},{k:"lessons",n:["lessons"],l:"公開中のレッスン",u:"本",v:()=>state.lessons.filter(l=>l.status==="published").length}],
- cfo:[{k:"sales",n:["clients"],l:"売上",f:"yen",v:mo=>revenueFor(mo).total},{k:"paid",n:["clients","payments"],l:"入金済み",f:"yen",v:mo=>billSum(mo).paid},{k:"unpaid",n:["clients","payments"],l:"未入金",f:"yen",low:1,v:mo=>billSum(mo).unpaid},{k:"rate",n:["clients","payments"],l:"入金率",f:"pct",v:mo=>{const b=billSum(mo);return b.all?pct(b.paid,b.all):null;}}],
+ cfo:[{k:"sales",n:["clients"],l:"売上",f:"yen",v:mo=>revenueFor(mo).total},{k:"expense",n:["fin"],l:"経費（freee）",f:"yen",low:1,v:mo=>{const m=((state.fin.freee||{}).months||{})[mo];return m?m.expense:null;}},{k:"paid",n:["clients","payments"],l:"入金済み",f:"yen",v:mo=>billSum(mo).paid},{k:"unpaid",n:["clients","payments"],l:"未入金",f:"yen",low:1,v:mo=>billSum(mo).unpaid},{k:"rate",n:["clients","payments"],l:"入金率",f:"pct",v:mo=>{const b=billSum(mo);return b.all?pct(b.paid,b.all):null;}}],
  clo:[{k:"due",n:["legal"],l:"30日以内に期限・更新",u:"件",low:1,v:()=>{const s=addDays(today(),30);return state.legal.filter(d=>d.expireDate&&d.expireDate<=s&&d.status!=="expired").length;}},{k:"pending",n:["legal"],l:"準備中・確認中",u:"件",low:1,v:()=>state.legal.filter(d=>["prep","review"].includes(d.status)).length},{k:"signed",n:["legal"],l:"今月の締結",u:"件",v:mo=>state.legal.filter(d=>d.signedDate&&ym(d.signedDate)===mo).length},{k:"docs",n:["legal"],l:"書類の数",u:"件",v:()=>state.legal.length}]
 };
 const pKey=(id,mo)=>id+"_"+mo;
@@ -1708,7 +1713,6 @@ async function pushSnaps(){
 function mergePay(){state.clients=state.rawClients.map(c=>{const p=(state.payments[c.id]||{}).paid;return p?{...c,paid:{...(c.paid||{}),...p}}:c;});}
 /* ===== 経理・財務（CFO） ===== */
 const FREEE_URL="https://secure.freee.co.jp/";
-const FREEE_ACCOUNT="shuji.kawamoto.jp@gmail.com"; /* freee会計にログインするアカウント（本人指定） */
 function billingFor(mo){
   return state.clients.filter(c=>c.startDate&&c.status!=="prep"&&ym(c.startDate)<=mo&&!(c.endDate&&ym(c.endDate)<mo)&&!(c.status==="ended"&&!c.endDate&&mo===thisMonth())&&!(c.status==="paused"&&mo===thisMonth()))
     .map(c=>({c,amt:(+c.monthly||0)+(ym(c.startDate)===mo?(+c.initialFee||0):0),paid:!!(c.paid&&c.paid[mo])})).filter(x=>x.amt>0);
@@ -1722,7 +1726,7 @@ function renderFinance(){
   const paidList=months.flatMap(mo=>billingFor(mo).filter(x=>x.paid).map(x=>({...x,mo})));
   const g=state.goals||{};
   $("#main").innerHTML=`<div class="ph"><div><div class="eyebrow">CFO</div><h1>💴 経理・財務</h1></div><div class="act"><a class="btn sm" href="${FREEE_URL}" target="_blank" rel="noopener">freeeを開く ↗</a></div></div>
-  <p class="hint" style="margin-top:-8px;margin-bottom:16px">経理の詳細（仕訳・請求書・経費）はfreee会計で管理します。ここでは受注クライアントの契約から計算した売上と、入金の確認だけを見ます。<br>freee会計は <b>${FREEE_ACCOUNT}</b> のアカウントでログインして開きます。</p>
+  <p class="hint" style="margin-top:-8px;margin-bottom:16px">経理の詳細（仕訳・請求書・経費）はfreee会計で管理します。ここでは受注クライアントの契約から計算した売上と、入金の確認だけを見ます。${(state.fin.freee||{}).account?`<br>freee会計は <b>${esc(state.fin.freee.account)}</b> のアカウントでログインして開きます。`:""}</p>
   <div class="kpis k4" style="grid-template-columns:repeat(4,1fr);margin-bottom:18px">
    <div class="kpi"><small>今月の売上（月額＋初期費用）</small><b style="font-size:20px">${yen(now.total)}</b>${g.mrr?`<span>月額の目標 ${yen(g.mrr)}</span>`:""}</div>
    <div class="kpi"><small>今月の入金済み</small><b style="font-size:20px;color:var(--ok)">${yen(now.paid)}</b></div>
@@ -1734,7 +1738,7 @@ function renderFinance(){
    <p class="hint">売上は受注クライアント（営業が登録）の「契約開始日・月額・初期費用」から計算しています。入金は右の一覧で「✓ 入金済み」を押して記録します。</p></section>
   <section class="panel"><div class="dh"><h3>入金待ち <em>${wait.length}件</em></h3></div>
    ${wait.length?`<ul class="paid">${wait.map(x=>`<li><span style="flex:1 1 auto;min-width:7em;font-weight:700">${esc(x.c.company)}</span><span class="mute s">${x.mo.replace("-","/")}</span><b>${yen(x.amt)}</b><button class="btn sm" data-pay="${esc(x.c.id)}" data-mo="${x.mo}">✓ 入金済み</button></li>`).join("")}</ul>`:'<div class="empty sm">入金待ちはありません</div>'}
-   ${paidList.length?`<h3 style="margin-top:20px">入金済み（直近）</h3><ul class="paid">${paidList.slice(0,12).map(x=>`<li><span style="flex:1 1 auto;min-width:7em;font-weight:700">${esc(x.c.company)}</span><span class="mute s">${x.mo.replace("-","/")}</span><b>${yen(x.amt)}</b><button class="btn ghost sm" data-unpay="${esc(x.c.id)}" data-mo="${x.mo}">取り消す</button></li>`).join("")}</ul>`:""}</section></div><div class="err" id="pErr"></div>`;
+   ${paidList.length?`<h3 style="margin-top:20px">入金済み（直近）</h3><ul class="paid">${paidList.slice(0,12).map(x=>`<li><span style="flex:1 1 auto;min-width:7em;font-weight:700">${esc(x.c.company)}</span><span class="mute s">${x.mo.replace("-","/")}</span><b>${yen(x.amt)}</b><button class="btn ghost sm" data-unpay="${esc(x.c.id)}" data-mo="${x.mo}">取り消す</button></li>`).join("")}</ul>`:""}</section></div>${freeeSection()}<div class="err" id="pErr"></div>`;
   const setPay=async(cid,mo,on)=>{const cur=state.payments[cid]||{};const paid={...(cur.paid||{})};if(on)paid[mo]=new Date().toISOString();else delete paid[mo];
     const doc={paid,updatedAt:new Date().toISOString()};if(await writeDoc("payments/"+cid,doc)){state.payments[cid]=doc;mergePay();renderFinance();}};
   document.querySelectorAll("[data-pay]").forEach(b=>b.onclick=()=>{b.disabled=true;setPay(b.dataset.pay,b.dataset.mo,true);});
@@ -1904,6 +1908,28 @@ function renderHiring(){
   $("#hrEdit").onclick=openHiringForm;
 }
 
+
+/* freee会計の数字（fin/freee：Claudeがfreeeから取り込む） */
+Object.assign(state,{fin:{}});
+function freeeSection(){
+  const F=state.fin.freee;
+  if(!F)return `<section class="dsec panel" style="margin-top:18px"><div class="dh"><h3>freee会計の数字</h3></div><div class="empty sm">まだfreeeの数字を取り込んでいません。</div></section>`;
+  const y=F.year||{},mo=thisMonth(),M=F.months||{},cur=M[mo]||{};
+  const ks=Object.keys(M).sort();const maxE=Math.max(1,...ks.map(k=>M[k].expense||0));
+  const items=(y.items||[]).slice().sort((a,b)=>b.amount-a.amount);const maxI=Math.max(1,...items.map(x=>x.amount));
+  const t=F.fetchedAt?(d=>(d.getMonth()+1)+"/"+d.getDate()+" "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0"))(new Date(F.fetchedAt)):"";
+  return `<section class="dsec panel" style="margin-top:18px"><div class="dh"><h3>freee会計の数字（${F.fiscalYear}年）</h3><span class="mute s">${esc(F.company||"")}${t?` ・ ${t} 時点`:""}</span></div>
+   <div class="kpis k4" style="grid-template-columns:repeat(4,1fr);margin-bottom:14px">
+    <div class="kpi"><small>今年の収入</small><b style="font-size:20px">¥${(y.income||0).toLocaleString()}</b></div>
+    <div class="kpi"><small>今年の経費</small><b style="font-size:20px">¥${(y.expense||0).toLocaleString()}</b></div>
+    <div class="kpi"><small>差引（収入−経費）</small><b style="font-size:20px;color:${(y.profit||0)<0?"var(--red)":"inherit"}">${(y.profit||0)<0?"−":""}¥${Math.abs(y.profit||0).toLocaleString()}</b></div>
+    <div class="kpi"><small>今月の経費</small><b style="font-size:20px">¥${(cur.expense||0).toLocaleString()}</b></div></div>
+   <div class="dgrid2"><div><h4 class="fh">月別</h4><div class="tw"><table class="t"><thead><tr><th>月</th><th>収入</th><th>経費</th><th style="width:40%"></th></tr></thead><tbody>
+    ${ks.map(k=>`<tr><td><b>${+k.slice(5)}月</b></td><td>¥${(M[k].income||0).toLocaleString()}</td><td>¥${(M[k].expense||0).toLocaleString()}</td><td><div class="fbar"><i style="width:${(M[k].expense||0)/maxE*100}%"></i></div></td></tr>`).join("")}</tbody></table></div></div>
+    <div><h4 class="fh">経費の内訳（今年）</h4><ul class="fitems">${items.map(x=>`<li><span>${esc(x.name)}</span><div class="fbar"><i style="width:${x.amount/maxI*100}%"></i></div><b>¥${x.amount.toLocaleString()}</b></li>`).join("")}</ul></div></div>
+   <p class="hint">freee会計の試算表から、Claudeが取り込んだ数字です。最新にしたいときは、チャットで「freeeの数字を更新して」と伝えてください。仕訳を直すときはfreeeで行ってください。</p></section>`;
+}
+
 /* ===== 法務（CLO） ===== */
 Object.assign(state,{legal:[]});
 const LG_TYPES=["契約書（顧客）","契約書（パートナー）","NDA","利用規約・ポリシー","登記・届出","その他"];
@@ -1997,6 +2023,7 @@ async function staticMode(){
       db.collection("hpinfo").onSnapshot(s=>{const m={};s.docs.forEach(d=>{const x=d.data();if(!x._deleted)m[d.id]=x;});state.hpinfo=m.site||{};bizRefresh(s.metadata);},()=>{});
       db.collection("todos").onSnapshot(s=>{state.todos=live(s);bizRefresh(s.metadata);},()=>{});
       db.collection("hr").onSnapshot(s=>{const m={};s.docs.forEach(d=>{const x=d.data();if(!x._deleted)m[d.id]=x;});state.hr=m;bizRefresh(s.metadata);},()=>{});
+      db.collection("fin").onSnapshot(s=>{const m={};s.docs.forEach(d=>{const x=d.data();if(!x._deleted)m[d.id]=x;});state.fin=m;bizRefresh(s.metadata);},()=>{});
       db.collection("legal").onSnapshot(s=>{state.legal=live(s);bizRefresh(s.metadata);},()=>{});
       db.collection("payments").onSnapshot(s=>{const m={};s.docs.forEach(d=>{const x=d.data();if(!x._deleted)m[d.id]=x;});state.payments=m;mergePay();bizRefresh(s.metadata);},()=>{});
       db.collection("clients").onSnapshot(s=>{state.rawClients=live(s);mergePay();state.clientsReady=true;bizRefresh(s.metadata);},()=>{});
