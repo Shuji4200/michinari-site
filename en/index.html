@@ -956,6 +956,23 @@ html,body{background:var(--page)}
 .mb-ph-mono span{font-family:Lexend,sans-serif;font-weight:600;font-size:40px;letter-spacing:.08em;color:#fff;opacity:.92}
 .mb-ph-mono span::after{content:"";display:block;width:22px;height:3px;margin:8px auto 0;background:var(--red)}
 
+/* ===== 3 Reasons to Choose Us・主な支援・あわせて支援 ===== */
+.reasons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.reason{position:relative;padding:28px 24px 26px;background:#fff;border:1px solid var(--line);border-radius:14px;border-top:3px solid var(--red)}
+.reason .r-no{display:block;font:700 32px/1 var(--en);color:var(--red);letter-spacing:.02em}
+.reason h3{margin-top:14px;font-size:18px;font-weight:900;line-height:1.5;color:var(--ink)}
+.reason p{margin-top:10px;font-size:14.5px;line-height:1.85;color:#3a4247}
+.reasons-wrap{margin-top:clamp(36px,5vw,56px)}
+.reasons-wrap .reasons{margin-top:18px}
+.svc-core{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:6px}
+.core-card{padding:24px 22px;background:#f4f6f9;border-radius:12px}
+.core-card .core-no{font:700 13px var(--en);color:var(--red);letter-spacing:.08em}
+.core-card h3{margin-top:8px;font-size:18px;font-weight:900}
+.core-card p{margin-top:8px;font-size:14.5px;line-height:1.8;color:#3a4247}
+.svc-also{margin:18px clamp(20px,4vw,48px) 0;font-size:14.5px;font-weight:700;color:#3a4247}
+.dg-overview .svc-also{margin:16px 0 0;text-align:center}
+@media (max-width:820px){.reasons,.svc-core{grid-template-columns:minmax(0,1fr)}}
+
 /* ===== English version ===== */
 :root{--jp:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans JP",sans-serif}
 body{letter-spacing:0}
@@ -1086,10 +1103,16 @@ body{letter-spacing:0}
         </div>
       </article>
     </div>
+    <p class="svc-also">We also support recruitment branding and PR (PR TIMES, Wantedly, note and more).</p>
     <div class="way-foot">
       <p>Not sure which fits? In a free 30-minute consultation, we’ll suggest the right approach for you.</p>
       <div class="way-foot-links"><a class="more" href="#contact">Book a free consultation</a></div>
     </div>
+  </section>
+
+  <section class="panel" aria-labelledby="t-reasons">
+    <div class="sec-head"><h2 id="t-reasons">3 Reasons to Choose Us<small>Why MICHINARI</small></h2><p class="sec-desc">Three things that set MICHINARI apart.</p></div>
+    <div class="sec-body"><div class="reasons" data-reasons></div></div>
   </section>
 
   <section class="panel" aria-labelledby="t-works">
@@ -1197,7 +1220,9 @@ body{letter-spacing:0}
         </div>
         <div class="ov-goal">Growing sales, and systems to keep growing on your own</div>
       </div>
+      <p class="svc-also">We also support recruitment branding and PR (PR TIMES, Wantedly, note and more).</p>
     </div>
+    <div class="reasons-wrap"><h2 class="h-line">3 Reasons to Choose Us</h2><div class="reasons" data-reasons></div></div>
     <div class="principle"><b>Turning a limited budget into moves that grow your business.</b><p>Within a limited budget, we choose initiatives that fit your challenges and goals, and set clear priorities.</p></div>
     <div class="svc-rows" id="svc-rows"></div>
   </section>
@@ -1219,6 +1244,7 @@ body{letter-spacing:0}
     <div><h2 class="h-line">Where we aim to get you</h2><p class="after-box" id="svc-after"></p></div>
   </section>
   <section class="panel block" id="svc-dg-sec"><h2 class="h-line">How we support you</h2><p class="dg-lead" id="svc-dg-lead"></p><div class="dg" id="svc-dg"></div></section>
+  <section class="panel block" id="svc-core-sec" hidden><h2 class="h-line">Core Services</h2><div class="svc-core" id="svc-core"></div></section>
   <section class="panel block"><h2 class="h-line">Service menu</h2><div class="svc-table" id="svc-table"></div></section>
   <section class="panel block">
     <h2 class="h-line">How we work</h2><ol class="flow" data-flow></ol>
@@ -1580,10 +1606,18 @@ var FLOW_ICON={
   doc:'<path d="M7 3.5h7l4 4V20.5H7z"/><path d="M14 3.5v4h4"/><path d="M9.5 12h6M9.5 15.5h6"/>',
   grow:'<path d="M4 19.5h16"/><path d="m5 15.5 4-4 3 3 6.5-6.5"/><path d="M14.5 8h4v4"/>'
 };
+var REASONS=[
+  ["01","One point of contact, from strategy to execution","Our CMO sets the strategy and the execution team acts on it directly. With a single point of contact, nothing gets lost in translation or simply handed off."],
+  ["02","Decisions driven by data, bottlenecks found","We bring your ad, website, LINE and sales numbers into one dashboard, find where things stall, and improve with clear evidence."],
+  ["03","With you until you can run it in-house","We operate side by side with your team, train them along the way, and leave you able to run it yourselves—without relying on outsourcing forever."]
+];
+document.querySelectorAll('[data-reasons]').forEach(function(el){
+  el.innerHTML=REASONS.map(function(r){return '<div class="reason"><span class="r-no">'+r[0]+'</span><h3>'+r[1]+'</h3><p>'+r[2]+'</p></div>';}).join('');
+});
 var FLOW=[
   ["01","Initial meeting","talk","Reach out via LINE or our contact form. In a 30-minute online meeting, we’ll hear about your challenges and where you want to go. It’s fine if you’re not yet sure what to ask.",false,"Free · 30 min"],
-  ["02","Discovery call","note","We take a close look at your business—sales and inquiry numbers, current initiatives and your team. Working back from your goals, we find what is keeping results from coming."],
-  ["03","Initiatives and an action plan for your challenges","target","Based on those challenges, we propose priorities, initiatives, scope and the division of roles—and whether “leave it to us” or “build it together” fits you best.",true],
+  ["02","Discovery call","note","We take a close look at your business—sales and inquiry numbers, current initiatives and your team. Working back from your goals, we find what is keeping results from coming. We also review your GA4, ad and social media data free of charge."],
+  ["03","Initiatives and an action plan for your challenges","target","Based on those challenges, we propose priorities, initiatives, scope and the division of roles—and whether “leave it to us” or “build it together” fits you best. You can review our proposal before deciding whether to go ahead.",true],
   ["04","Kick-off","grow","We put the agreed plan into action, review the numbers with you every month, and keep improving as we decide each next move."]
 ];
 var FLOW_INTRO='<div class="flow-intro"><figure><img src="../images/head-services.webp" alt="A meeting discussing goals and challenges" loading="lazy"></figure>'+
@@ -1607,6 +1641,7 @@ var SERVICES={
     lead:"Online ads, websites and landing pages, social media, LINE and MEO (local search on Google Maps). We handle planning through production and operation, building the path from being discovered to receiving inquiries and purchases.",
     worries:["You have a website, but it brings in almost no inquiries","You run ads but can’t tell whether they pay off","You started social media or LINE, but it isn’t driving sales"],
     after:"You can see in numbers which channels bring inquiries and sales, and focus your budget on what works best.",
+    core:[["Online advertising","We handle Google and Meta (Instagram and Facebook) ads from planning through delivery and ongoing optimization."],["Websites & landing pages","We plan, build and improve websites and landing pages that convey your strengths and turn visitors into inquiries."],["LINE setup & operation","We design everything from friend sign-ups to message delivery, deepening customer relationships and driving inquiries and purchases."]],
     groups:[["Online advertising",[["Search ads","Google and Yahoo! JAPAN search ads"],["Display ads","Google Display Network and more"],["Social media ads","Instagram, Facebook, TikTok and X"],["Video ads","Planning and running video ads on YouTube and more"],["LINE ads","Follower-acquisition ads and other campaigns on LINE"],["Ad creative production","Producing and testing banners, ad copy and videos"]]],["Web production & conversion paths",[["Website & landing page production","Design, production and optimization for your goals, including WordPress builds"],["LINE Official Account setup","Designing the path from new follower to purchase or booking"],["MEO (local search)","Optimizing and managing your Google Business Profile"],["Social media management","Planning, creating and analyzing posts"],["Web analytics & measurement","Tracking setup and reporting"],["Outsourced web manager","Day-to-day operations in place of an in-house web/IT person"]]]],diagram:{type:"funnel",lead:"We combine initiatives with different roles for each stage, from discovery to purchase and repeat purchase.",cols:["Get discovered","Interest & comparison","Inquiry & purchase","Repeat & loyalty"],rows:[["Main initiatives",["Online ads","Social media management","MEO (Google Maps)"],["Websites & landing pages","Social media posts","Reviews & comparisons"],["Contact form","LINE Official Account","Booking & purchase paths"],["LINE messages","Ongoing social media posts","Repeat-purchase offers"]],["Customer mindset",["Learns you exist","Compares and gets interested","Decides to inquire or buy","Chooses you again"]]],bar:"With web analytics and measurement, we see in numbers where customers drop off—and keep improving"},topic:"About Web Lead Generation"},
   inhouse:{title:"In-house Web Marketing Enablement",en:"In-house",img:"../images/v2-inhouse.webp",alt:"A team discussing data on a large monitor",for:"For companies that want to stop relying entirely on outside vendors",
     lead:"Hands-on training using your own ads and posts, plus clear playbooks, so your team can keep running and improving marketing in-house.",
@@ -1647,6 +1682,8 @@ function renderService(key){
   document.getElementById('svc-worries').innerHTML=d.worries.map(function(w){return '<li>'+esc(w)+'</li>';}).join('');
   document.getElementById('svc-after').textContent=d.after;
   renderDiagram(d.diagram);
+  var cs=document.getElementById('svc-core-sec');cs.hidden=!d.core;
+  document.getElementById('svc-core').innerHTML=(d.core||[]).map(function(c,i){return '<div class="core-card"><span class="core-no">0'+(i+1)+'</span><h3>'+esc(c[0])+'</h3><p>'+esc(c[1])+'</p></div>';}).join('');
   document.getElementById('svc-table').innerHTML=d.groups.map(function(g){return '<div class="svc-group"><h3>'+esc(g[0])+'</h3><ul>'+g[1].map(function(it){return '<li><b>'+esc(it[0])+'</b><span>'+esc(it[1])+'</span></li>';}).join('')+'</ul></div>';}).join('');
   document.getElementById('svc-cta').setAttribute('data-topic',d.topic);
   document.getElementById('svc-others').innerHTML=Object.keys(SERVICES).filter(function(k){return k!==key;}).map(function(k){return '<a href="#service-'+k+'">'+esc(SERVICES[k].title)+'</a>';}).join('');
