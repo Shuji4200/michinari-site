@@ -1,3 +1,5 @@
+import os
+os.makedirs("dept",exist_ok=True)
 s=open('index.html').read()
 assert 'const APP_MODE="main";' in s
 for k in ["ceo","cso","cmo","cpo","chro","cfo","clo","public"]:
