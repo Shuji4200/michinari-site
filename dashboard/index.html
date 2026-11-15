@@ -490,6 +490,20 @@ body.ro [data-pdo]{pointer-events:none}
 .chip{border:0;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;color:#fff;background:var(--c);cursor:pointer;white-space:nowrap}
 .hpinfo{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0;font-size:13px}.hpinfo dt{color:var(--mute);font-weight:600}.hpinfo dd{margin:0;word-break:break-all}.hpinfo dd p{margin:0}
 .hplog li>span{min-width:44px}
+
+.tdcols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.tdcol{background:#fff;border:1px solid var(--line);border-top:4px solid var(--c);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.tdh{display:flex;align-items:center;gap:6px}.tdh b{font-size:15px}.tdh em{font-style:normal;font-size:12px;color:var(--mute)}.tdi{font-size:16px}
+.tdl{margin-left:auto;font-size:11px;font-weight:700;color:var(--red);background:#fde8e8;border-radius:999px;padding:2px 8px}
+.tdcol .bar{height:6px;background:#eef0f4;border-radius:3px;overflow:hidden}.tdcol .bar i{display:block;height:100%;background:var(--c)}
+.tdp{font-size:12px;color:var(--mute);line-height:1.5}
+.tdl2{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.tdl2 li{display:flex;align-items:center;gap:6px;font-size:13px}.tdl2 input{margin:0}
+.tdt{flex:1;min-width:0;text-align:left;border:0;background:none;padding:0;font:inherit;color:inherit;cursor:pointer;line-height:1.5}.tdt:hover{color:var(--accent)}
+.tdl2 li.done .tdt{color:var(--mute);text-decoration:line-through}.tdl2 small{font-size:11px;color:var(--mute);white-space:nowrap}.tdl2 li.late small{color:var(--red);font-weight:700}
+.tdcol .padd select{border:1px solid var(--line);border-radius:8px;font:inherit;font-size:13px;padding:0 6px;height:34px}
+body.ro .tdcol .padd{display:none!important}body.ro .tdt{cursor:default}
+@media(max-width:1000px){.tdcols{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -510,7 +524,7 @@ const APP_MODE="public"; /* build_dept.py が部門アプリ用に書き換え�
 const IS_MAIN=APP_MODE==="main"||APP_MODE==="public"; /* public＝GitHub公開デモ（サンプルデータ・表示のみ） */
 const DEPT_URL={ceo:"https://claude.ai/artifact/Wpeio4RoYmBtWeFhWUyHzW",cso:"https://claude.ai/artifact/NdYfQVJVwmKLknjkjTGfqp",cmo:"https://claude.ai/artifact/CN24agrwF3i3jyo8AVs8LZ",cpo:"https://claude.ai/artifact/6rz9jPxcGmGgUAEbZ5tPHK",chro:"https://claude.ai/artifact/RkMZCBt7JyLZaqXWU3h1yD",cfo:"https://claude.ai/artifact/8tbbPu9Vga31o2T5RHGbRk",clo:"https://claude.ai/artifact/HnHtUyPZrVVDjYGE3UGEZm"};
 /* 部門アプリが持つデータ（＝そのアプリで編集する元データ）と、参照用コピー */
-const OWN={ceo:["biz"],cso:["crm","clients","salesdocs"],cmo:["mkt","mktposts","hplog","hptasks","hpinfo"],cpo:["products"],chro:["stages","lessons"],cfo:["payments"],clo:["legal"]};
+const OWN={ceo:["biz","todos"],cso:["crm","clients","salesdocs"],cmo:["mkt","mktposts","hplog","hptasks","hpinfo"],cpo:["products"],chro:["stages","lessons"],cfo:["payments"],clo:["legal"]};
 const COPY={cso:["products"],cfo:["clients"]};
 const LOCAL=IS_MAIN?null:new Set([...(OWN[APP_MODE]||[]),...(COPY[APP_MODE]||[])]);
 const state={payments:{},rawClients:[],stages:[],lessons:[],done:{},checks:{},uid:null,db:null,progRef:null,ready:false,err:null,stale:false,canSave:true};
@@ -1616,9 +1630,11 @@ function renderDept(id){
   <div class="dlinks">${D.pages.map(p=>`<a href="${p[0]}">${esc(p[1])} →</a>`).join("")}${IS_MAIN?`<a class="ext" href="${DEPT_URL[id]}" target="_blank" rel="noopener">${esc(D.name)}部門アプリを開く ↗</a>`:""}${id==="cfo"?`<a href="${FREEE_URL}" target="_blank" rel="noopener">freee ↗</a>`:""}${al?`<span class="dal">⚠ ${esc(al)}</span>`:""}</div>
   <section class="dsec"><h3 class="h3">${moLabel(mo)}の数字</h3><div class="pks">${K.map(kpiCard).join("")}</div>
    <p class="hint">${K.some(x=>!x.v)?"「手入力」の項目は 🎯目標・数字 から実績を入れます。":""}それ以外は各ページのデータから自動で集計しています。</p></section>
+  ${id==="ceo"?todoBoard():""}
   <section class="dsec"><h3 class="h3">PDCA</h3>${pdcaBoard(id)}</section>${extra}`;
   bindMonthNav();$("#kEdit").onclick=()=>openKpiForm(id);bindPdca(id);
   if(id==="cso")bindCso();
+  if(id==="ceo")bindTodoBoard();
 }
 /* 営業：ファネルと今日やること */
 function csoExtra(){
@@ -1646,9 +1662,10 @@ function renderDash(){
   $("#main").innerHTML=`<div class="ph"><div><div class="eyebrow">CEO ダッシュボード ・ ${td.replace(/-/g,"/")}</div><h1>🏛 経営</h1></div><div class="act">${monthNav()}<button class="btn ghost sm" id="kEdit">🎯 全社の目標</button></div></div>
   <div class="dlinks">${DEPTS[0].pages.map(p=>`<a href="${p[0]}">${esc(p[1])} →</a>`).join("")}<a class="ext" href="${DEPT_URL.ceo}" target="_blank" rel="noopener">経営部門アプリを開く ↗</a></div>
   <section class="dsec"><h3 class="h3">全社の数字（${moLabel(mo)}）</h3><div class="pks">${K.map(kpiCard).join("")}</div></section>
+  ${todoBoard()}
   <section class="dsec"><h3 class="h3">部門ごとの状況 <em class="mute s" style="font-weight:500">P計画・D実行・C評価・A改善が埋まると色がつきます</em></h3><div class="dcards">${cards}</div></section>
   <section class="dsec"><h3 class="h3">経営のPDCA</h3>${pdcaBoard("ceo")}</section>`;
-  bindMonthNav();$("#kEdit").onclick=()=>openKpiForm("ceo");bindPdca("ceo");
+  bindMonthNav();$("#kEdit").onclick=()=>openKpiForm("ceo");bindPdca("ceo");bindTodoBoard();
 }
 
 
@@ -1744,11 +1761,15 @@ function sampleData(){
   pdca["cfo_"+mo]=P("- 未入金ゼロを維持する",[act("請求書の送付",d(mo,1),true),act("入金の確認",addDays(td,3),false)],"","",{unpaid:0,rate:100});
   pdca["clo_"+mo]=P("- 期限が近い契約を更新する",[act("サンプル工務店の契約更新",addDays(td,10),false)],"","",{due:0,pending:0});
   pdca["cso_"+pm]=P("- 無料の課題分析を月4件",[act("分析4件",d(pm,28),true)],"- 分析は4件できたが、提案までに時間がかかった","- 分析から2週間以内に提案する",{consult:4,won:1});
-  return {crm,clients,payments,mkt,mposts,products,legal,stages,lessons,pdca,goals:{customers:4,mrr:1000000,inquiries:10}};
+  const T=(area,title,priority,due,done)=>({id:"t"+Math.random().toString(36).slice(2,8),area,title,priority,due,done,doneAt:done?iso(addDays(td,-2)):null});
+  const todos=[T("sales","無料の課題分析を3件実施","A",addDays(td,5),false),T("sales","提案書テンプレートの見直し","B",addDays(td,-3),true),T("sales","紹介元へのお礼と近況報告","B",addDays(td,-1),false),T("sales","商談後のフォロー連絡の型をつくる","C","",false),
+    T("acq","note記事を週1本公開","A",addDays(td,2),false),T("acq","HPのLINEボタンを目立たせる","A",addDays(td,4),false),T("acq","Xの固定ポストを更新","B",addDays(td,-4),true),T("acq","Threadsの投稿テーマを整理","C","",true),
+    T("product","外部CMOのサービス資料を1枚にまとめる","A",addDays(td,6),false),T("product","支援実績を2件追加","B",addDays(td,10),false),T("product","料金表の見直し","B",addDays(td,-6),true)];
+  return {crm,clients,payments,mkt,mposts,products,legal,stages,lessons,pdca,todos,goals:{customers:4,mrr:1000000,inquiries:10}};
 }
 function startPublic(){
   const S=sampleData();
-  Object.assign(state,{crm:S.crm,rawClients:S.clients,payments:S.payments,mkt:S.mkt,mposts:S.mposts,products:S.products,legal:S.legal,stages:S.stages,lessons:S.lessons,pdca:S.pdca,goals:S.goals,
+  Object.assign(state,{crm:S.crm,rawClients:S.clients,payments:S.payments,mkt:S.mkt,mposts:S.mposts,products:S.products,legal:S.legal,stages:S.stages,lessons:S.lessons,pdca:S.pdca,todos:S.todos,goals:S.goals,
     isEditor:true,crmReady:true,clientsReady:true,productsReady:true,mktReady:true,docsReady:true,planReady:true,bizChecked:true,ready:true,docs:[],weekly:{},kpisnap:{}});
   mergePay();document.body.classList.add("ro");
   document.title="MICHINARI 事業ダッシュボード（デモ）";
@@ -1803,6 +1824,36 @@ function renderSite(){
     b.disabled=true;const doc={...t,status:nx,updatedAt:new Date().toISOString()};delete doc.id;await writeDoc("hptasks/"+t.id,doc);});
   $("#hpInfo").onclick=()=>openForm2({title:"HPの基本情報",fields:[{k:"url",l:"公開URL"},{k:"enUrl",l:"英語版URL"},{k:"ga4",l:"GA4 測定ID"},{k:"repo",l:"ソース（GitHub）"},{k:"line",l:"公式LINE"},{k:"chat",l:"HP作成チャットのURL"},{k:"memo",l:"メモ",t:"textarea",rows:4}],values:I,
     onSave:(d,e)=>writeDoc("hpinfo/site",{...d,updatedAt:new Date().toISOString()},e)});
+}
+
+/* ===== 経営：事業の進捗（営業・集客・商品の優先順位とTodo） ===== */
+Object.assign(state,{todos:[]});
+const TD_AREAS=[["sales","営業","🤝","#1f9d6b"],["acq","集客","📣","#e5484d"],["product","商品","📦","#8b5cf6"]];
+const tdSort=(a,b)=>(!!a.done-!!b.done)||((a.priority||"C")>(b.priority||"C")?1:(a.priority||"C")<(b.priority||"C")?-1:0)||((a.due||"9")>(b.due||"9")?1:-1);
+function todoBoard(){
+  const td=today(),ro=IS_PUBLIC;
+  const cols=TD_AREAS.map(([k,l,ic,c])=>{
+    const L=state.todos.filter(t=>t.area===k).sort(tdSort),done=L.filter(t=>t.done).length,p=L.length?Math.round(done/L.length*100):0;
+    const open=L.filter(t=>!t.done),late=open.filter(t=>t.due&&t.due<td).length;
+    const shown=L.filter(t=>!t.done||(t.doneAt&&t.doneAt.slice(0,10)>=addDays(td,-14)));
+    return `<div class="tdcol" style="--c:${c}"><div class="tdh"><span class="tdi">${ic}</span><b>${l}</b><em>${done}/${L.length}</em>${late?`<span class="tdl">期限切れ ${late}</span>`:""}</div>
+     <div class="bar"><i style="width:${p}%"></i></div><div class="tdp">進捗 ${p}%${open[0]?` ・ 最優先：${esc(open[0].title)}`:""}</div>
+     ${shown.length?`<ul class="tdl2">${shown.map(t=>`<li class="${t.done?"done":""} ${!t.done&&t.due&&t.due<td?"late":""}"><input type="checkbox" data-tdo="${esc(t.id)}" ${t.done?"checked":""} ${ro?"disabled":""}><span class="pri p${esc(t.priority||"C")}">${esc(t.priority||"C")}</span><button class="tdt" data-tde="${esc(t.id)}">${esc(t.title)}</button>${t.due?`<small>${fmtDate(t.due)}</small>`:""}</li>`).join("")}</ul>`:'<div class="pph">まだやることがありません。</div>'}
+     ${ro?"":`<div class="padd"><input id="tdin-${k}" data-tdin="${k}" placeholder="${l}のやることを追加"><select data-tdpr="${k}"><option value="A">A</option><option value="B" selected>B</option><option value="C">C</option></select><button class="btn sm" data-tdadd="${k}">追加</button></div>`}</div>`;}).join("");
+  return `<section class="dsec"><h3 class="h3">事業の進捗 <em class="mute s" style="font-weight:500">営業・集客・商品のやることを優先順位（A→C）で並べています</em></h3><div class="tdcols">${cols}</div><div class="err" id="tdErr"></div></section>`;
+}
+function bindTodoBoard(){
+  if(IS_PUBLIC)return;
+  const save=(id,doc)=>writeDoc("todos/"+id,{...doc,updatedAt:new Date().toISOString()},$("#tdErr"));
+  const add=k=>{const i=document.querySelector(`[data-tdin="${k}"]`),t=i.value.trim();if(!t){i.focus();return;}
+    const pr=document.querySelector(`[data-tdpr="${k}"]`).value;i.value="";save(newId("td"),{area:k,title:t,priority:pr,due:"",done:false,createdAt:new Date().toISOString()});};
+  document.querySelectorAll("[data-tdadd]").forEach(b=>b.onclick=()=>add(b.dataset.tdadd));
+  document.querySelectorAll("[data-tdin]").forEach(i=>i.onkeydown=e=>{if(e.key==="Enter"&&!e.isComposing){e.preventDefault();add(i.dataset.tdin);}});
+  document.querySelectorAll("[data-tdo]").forEach(c=>c.onchange=()=>{const t=state.todos.find(x=>x.id===c.dataset.tdo);if(!t)return;const d={...t,done:c.checked,doneAt:c.checked?new Date().toISOString():null};delete d.id;save(t.id,d);});
+  document.querySelectorAll("[data-tde]").forEach(b=>b.onclick=()=>{const t=state.todos.find(x=>x.id===b.dataset.tde);if(!t)return;
+    openForm2({title:"やることを編集",fields:[{k:"title",l:"やること",req:1,w:1},{k:"area",l:"区分",t:"select",blank:false,o:TD_AREAS.map(a=>[a[0],a[1]])},{k:"priority",l:"優先度",t:"select",blank:false,o:[["A","A（最優先）"],["B","B"],["C","C"]]},{k:"due",l:"期日",t:"date"},{k:"memo",l:"メモ",t:"textarea",rows:3}],values:t,
+      onSave:(d,e)=>{const doc={...t,...d};delete doc.id;return writeDoc("todos/"+t.id,{...doc,updatedAt:new Date().toISOString()},e);},
+      onDelete:async e=>{try{await softDel("todos/"+t.id);return true;}catch(x){e.textContent="削除できませんでした";return false;}}});});
 }
 
 /* ===== 法務（CLO） ===== */
@@ -1896,6 +1947,7 @@ async function staticMode(){
       db.collection("hplog").onSnapshot(s=>{state.hplog=live(s);bizRefresh(s.metadata);},()=>{});
       db.collection("hptasks").onSnapshot(s=>{state.hptasks=live(s);bizRefresh(s.metadata);},()=>{});
       db.collection("hpinfo").onSnapshot(s=>{const m={};s.docs.forEach(d=>{const x=d.data();if(!x._deleted)m[d.id]=x;});state.hpinfo=m.site||{};bizRefresh(s.metadata);},()=>{});
+      db.collection("todos").onSnapshot(s=>{state.todos=live(s);bizRefresh(s.metadata);},()=>{});
       db.collection("legal").onSnapshot(s=>{state.legal=live(s);bizRefresh(s.metadata);},()=>{});
       db.collection("payments").onSnapshot(s=>{const m={};s.docs.forEach(d=>{const x=d.data();if(!x._deleted)m[d.id]=x;});state.payments=m;mergePay();bizRefresh(s.metadata);},()=>{});
       db.collection("clients").onSnapshot(s=>{state.rawClients=live(s);mergePay();state.clientsReady=true;bizRefresh(s.metadata);},()=>{});
