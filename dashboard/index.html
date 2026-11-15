@@ -509,6 +509,10 @@ body.ro .tdcol .padd{display:none!important}body.ro .tdt{cursor:default}
 .hri{display:flex;gap:12px;background:#fff;border:1px solid var(--line);border-top:4px solid #f59e0b;border-radius:14px;padding:16px 18px}
 .hrn{font:800 22px Inter;color:#f59e0b;line-height:1}.hri b{font-size:16px;line-height:1.5}.hri p{margin:6px 0 0;font-size:13px;color:var(--mute);line-height:1.6;white-space:pre-wrap}
 @media(max-width:900px){.hrc{grid-template-columns:1fr}}
+
+.nav a .chev{margin-left:auto;color:#a0a5b0;font-size:16px;line-height:1;transition:transform .15s;transform:rotate(0deg)}
+.nav a .chev.open{transform:rotate(90deg)}
+.nav a .cnt+.chev{margin-left:6px}
 </style>
 </head>
 <body>
@@ -600,6 +604,7 @@ function route(){
   renderHome();
 }
 function renderNav(){
+  state.navOpen=state.navOpen||{};
   const all=ordered(),h=location.hash||"#";
   const doneN=all.filter(l=>state.done[l.id]).length;
   const inTrain=h==="#training"||h.startsWith("#stage-")||h.startsWith("#lesson-")||(!state.isEditor&&h==="#");
@@ -615,9 +620,11 @@ function renderNav(){
       const inPages=D.pages.some(p=>h===p[0]||(p[0]==="#crm"&&h.startsWith("#crm-"))||(p[0]==="#clients"&&h.startsWith("#client-")))||(D.id==="chro"&&inTrain)||(D.id==="ceo"&&(h==="#home"||h==="#strategy"));
       const onDash=dh==="#"?(h==="#"||h==="#home"||h==="#d-"+D.id):h===dh;
       const on=onDash||inPages;
+      if(on&&state.navCur!==D.id){state.navCur=D.id;state.navOpen[D.id]=true;}
+      const open=IS_PUBLIC?false:(state.navOpen[D.id]!==undefined?state.navOpen[D.id]:on);
       const badge=D.id==="ceo"?"":D.id==="cso"&&late?'<span class="cnt red">'+late+"</span>":"";
-      html+='<a href="'+dh+'" class="'+(on?"on ":"")+((D.id==="ceo"||!IS_MAIN)?"top":"child")+'"><i class="ic">'+D.ic+'</i><span class="ml">'+D.name+'<small class="role">'+D.role+'</small></span>'+badge+"</a>";
-      if(on&&!IS_PUBLIC){html+=sub(dh,"ダッシュボード（PDCA）",onDash);
+      html+='<a href="'+dh+'" data-dept="'+D.id+'" data-on="'+(on?1:0)+'" data-open="'+(open?1:0)+'" class="'+(on?"on ":"")+((D.id==="ceo"||!IS_MAIN)?"top":"child")+'"><i class="ic">'+D.ic+'</i><span class="ml">'+D.name+'<small class="role">'+D.role+'</small></span>'+badge+(IS_PUBLIC?"":'<span class="chev'+(open?" open":"")+'" aria-hidden="true">›</span>')+"</a>";
+      if(open){html+=sub(dh,"ダッシュボード（PDCA）",onDash);
         D.pages.forEach(p=>{if(p[0]==="#training"){html+=trainSub();return;}
           html+=sub(p[0],p[1],h===p[0]||(p[0]==="#crm"&&h.startsWith("#crm-"))||(p[0]==="#clients"&&h.startsWith("#client-"))||(p[0]==="#plan"&&h==="#strategy"));});}
     });
@@ -625,6 +632,11 @@ function renderNav(){
     html+="<h6>育成</h6>"+trainSub();
   }
   $("#nav").innerHTML=html;
+  if(!IS_PUBLIC)document.querySelectorAll("#nav a[data-dept]").forEach(a=>a.addEventListener("click",e=>{
+    const id=a.dataset.dept,open=a.dataset.open==="1",on=a.dataset.on==="1";
+    if(open){e.preventDefault();e.stopPropagation();state.navOpen[id]=false;renderNav();return;}
+    state.navOpen[id]=true;if(on){e.preventDefault();e.stopPropagation();renderNav();}
+  }));
   document.querySelectorAll("#nav [data-view]").forEach(a=>a.onclick=()=>{state.crmView=a.dataset.view;try{localStorage.setItem("crmView",a.dataset.view);}catch(e){}if(location.hash==="#crm")render();});
   document.querySelectorAll("#nav [data-add]").forEach(a=>a.onclick=e=>{e.preventDefault();if(location.hash!=="#crm")location.hash="crm";setTimeout(()=>openForm(),60);});
   document.querySelectorAll("#nav a").forEach(a=>a.addEventListener("click",()=>document.body.classList.remove("menu")));
@@ -1869,7 +1881,7 @@ function bindTodoBoard(){
 }
 
 /* ===== 人事・採用・教育：採用基準（#hiring） ===== */
-Object.assign(state,{hr:{}});
+Object.assign(state,{hr:{},navOpen:{},navCur:null});
 const HR_NUM=["①","②","③","④","⑤","⑥","⑦","⑧","⑨"];
 function hrItems(){return ((state.hr.criteria||{}).items||[]).filter(x=>x&&x.title);}
 function hiringCard(compact){
