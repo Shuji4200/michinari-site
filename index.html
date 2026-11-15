@@ -1487,9 +1487,10 @@ var NEWS = [
     body: [
       ["p","このたび、MICHINARI（ミチナリ）のブランドロゴを公開しました。"],
       ["h","ロゴに込めた思い"],
+      ["p","ロゴと一緒に掲げる言葉は「人、企業、社会と。ともに道を歩む。」です。お客さまの会社、そこで働く人、そして地域や社会。そのすべてと同じ道を歩み、ともに成長していくというMICHINARIの姿勢を表しています。"],
       ["p","シンボルマークは、アルファベットの「m」をもとにしています。「道なり」という名前のとおり、お客さまの事業の道のりに寄り添い、一歩ずつ一緒に前へ進んでいく姿をイメージしました。"],
       ["p","ワードマーク「michinari」の「i」の点には赤を使っています。地域の会社が日本を明るく照らす存在になる、という「Be the Light of Japan.」の思いを込めました。"],
-      ["p","あわせて、ビジョン「人、企業、社会と。ともに道を歩む。」をロゴと一緒に掲げていきます。名刺や資料、Webサイトなど、これから順次このロゴに切り替えてまいります。"]
+      ["p","名刺や資料、Webサイトなど、これから順次このロゴに切り替えてまいります。"]
     ]
   },
   {
@@ -1666,9 +1667,9 @@ document.addEventListener('click',function(e){var a=e.target.closest('[data-topi
     var data={_subject:'【MICHINARI】お問い合わせ：'+form.elements.topic.value,_template:'table',_captcha:'false',
       'ご相談の内容':form.elements.topic.value,'知ったきっかけ':form.elements.source.value||'（未選択）','会社名・屋号':val('company'),'お名前':val('name'),'メールアドレス':val('email'),
       '電話番号':val('tel')||'（未入力）','ホームページURL':val('url')||'（未入力）','ご相談内容':val('message'),_replyto:val('email'),_honey:''};
-    fetch('https://formsubmit.co/ajax/'+['shuji.kawamoto.jp','gmail.com'].join('@'),{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
+    fetch('https://formsubmit.co/ajax/6352b40cd9ae72bd79ac8326445ec889',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
       .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
-      .then(function(){form.reset();var ok=false;try{sessionStorage.setItem('mn_lead','1');ok=true;}catch(e){}location.href=ok?'thanks/':'thanks/?sent=1';})
+      .then(function(j){if(!j||j.success===false||j.success==='false')throw new Error((j&&j.message)||'not sent');form.reset();var ok=false;try{sessionStorage.setItem('mn_lead','1');ok=true;}catch(e){}location.href=ok?'thanks/':'thanks/?sent=1';})
       .catch(function(){sendErr.hidden=false;})
       .then(function(){sendBtn.disabled=false;sendBtn.innerHTML=label;});
   });
