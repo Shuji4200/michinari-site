@@ -483,6 +483,13 @@ tr.hotrow td{background:#fff8f8}
 .demobar{background:#2b3a67;color:#fff;text-align:center;font-size:13px;font-weight:600;padding:8px 12px}
 body.ro [data-ped],body.ro #kEdit,body.ro .padd,body.ro [data-pdel],body.ro #pCarry,body.ro [data-done],body.ro .dlinks a,body.ro #pErr{display:none!important}
 body.ro [data-pdo]{pointer-events:none}
+
+.hpt,.hplog{list-style:none;margin:0;padding:0}.hpt li,.hplog li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.hpt li.done .hptx b{color:var(--mute);text-decoration:line-through}.hptx,.hplog li>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.hptx small,.hplog small{font-size:12px;color:var(--mute)}
+.pri{font:800 11px Inter;width:22px;height:22px;border-radius:6px;display:grid;place-items:center;background:#f1f2f5;color:#8a909c}.pri.pA{background:#fde8e8;color:var(--red)}.pri.pB{background:#fff4dd;color:#b7791f}
+.chip{border:0;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;color:#fff;background:var(--c);cursor:pointer;white-space:nowrap}
+.hpinfo{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0;font-size:13px}.hpinfo dt{color:var(--mute);font-weight:600}.hpinfo dd{margin:0;word-break:break-all}.hpinfo dd p{margin:0}
+.hplog li>span{min-width:44px}
 </style>
 </head>
 <body>
@@ -503,7 +510,7 @@ const APP_MODE="public"; /* build_dept.py が部門アプリ用に書き換え�
 const IS_MAIN=APP_MODE==="main"||APP_MODE==="public"; /* public＝GitHub公開デモ（サンプルデータ・表示のみ） */
 const DEPT_URL={ceo:"https://claude.ai/artifact/Wpeio4RoYmBtWeFhWUyHzW",cso:"https://claude.ai/artifact/NdYfQVJVwmKLknjkjTGfqp",cmo:"https://claude.ai/artifact/CN24agrwF3i3jyo8AVs8LZ",cpo:"https://claude.ai/artifact/6rz9jPxcGmGgUAEbZ5tPHK",chro:"https://claude.ai/artifact/RkMZCBt7JyLZaqXWU3h1yD",cfo:"https://claude.ai/artifact/8tbbPu9Vga31o2T5RHGbRk",clo:"https://claude.ai/artifact/HnHtUyPZrVVDjYGE3UGEZm"};
 /* 部門アプリが持つデータ（＝そのアプリで編集する元データ）と、参照用コピー */
-const OWN={ceo:["biz"],cso:["crm","clients","salesdocs"],cmo:["mkt","mktposts"],cpo:["products"],chro:["stages","lessons"],cfo:["payments"],clo:["legal"]};
+const OWN={ceo:["biz"],cso:["crm","clients","salesdocs"],cmo:["mkt","mktposts","hplog","hptasks","hpinfo"],cpo:["products"],chro:["stages","lessons"],cfo:["payments"],clo:["legal"]};
 const COPY={cso:["products"],cfo:["clients"]};
 const LOCAL=IS_MAIN?null:new Set([...(OWN[APP_MODE]||[]),...(COPY[APP_MODE]||[])]);
 const state={payments:{},rawClients:[],stages:[],lessons:[],done:{},checks:{},uid:null,db:null,progRef:null,ready:false,err:null,stale:false,canSave:true};
@@ -535,7 +542,7 @@ function render(){
 }
 function route(){
   const h=location.hash.replace("#","");
-  const biz=h===""||h==="home"||h.startsWith("d-")||h==="plan"||h==="finance"||h==="legal"||h==="products"||h==="marketing"||h==="docs"||h==="clients"||h.startsWith("client-")||h==="crm"||h.startsWith("crm-")||h==="weekly"||h.startsWith("weekly-")||PLANNED[h];
+  const biz=h===""||h==="home"||h.startsWith("d-")||h==="plan"||h==="finance"||h==="legal"||h==="products"||h==="marketing"||h==="site"||h==="docs"||h==="clients"||h.startsWith("client-")||h==="crm"||h.startsWith("crm-")||h==="weekly"||h.startsWith("weekly-")||PLANNED[h];
   const trainR=h==="training"||h.startsWith("stage-")||h.startsWith("lesson-");
   if(IS_PUBLIC&&!(h===""||h==="home"||h.startsWith("d-"))){location.hash="";return;}
   if(state.isEditor&&!IS_MAIN&&!biz&&!(APP_MODE==="chro"&&trainR)){location.hash="";return;}
@@ -555,6 +562,7 @@ function route(){
     if(h==="legal")return renderLegal();
     if(h==="products")return renderProducts();
     if(h==="marketing")return renderMkt();
+    if(h==="site")return renderSite();
     if(h==="clients")return renderClients();
     if(h.startsWith("client-"))return renderClient(h.slice(7));
     if(PLANNED[h]&&h!=="strategy"){location.hash="";return;}
@@ -798,7 +806,7 @@ function refreshCRM(){
   const h=location.hash;
   if($("#modal").classList.contains("open")){renderNav();return;}
   if(h==="#crm"&&$("#crmBody")){$("#kpis").innerHTML=kpiHTML();$("#crmBody").innerHTML=bodyHTML();bindBody();renderNav();return;}
-  if(state.isEditor&&(h===""||h==="#"||h==="#home"||h.startsWith("#d-")||h==="#marketing"||h.startsWith("#crm")||h.startsWith("#client-")))return render();
+  if(state.isEditor&&(h===""||h==="#"||h==="#home"||h.startsWith("#d-")||h==="#marketing"||h==="#site"||h.startsWith("#crm")||h.startsWith("#client-")))return render();
   renderNav();
 }
 function renderCustomer(id){
@@ -1484,7 +1492,7 @@ Object.assign(state,{pdca:{},pdcaMonth:null});
 const DEPTS=[
  {id:"ceo",ic:"🏛",name:"経営",role:"CEO",color:"#2b3a67",pages:[["#plan","MICHINARIとは（事業戦略）"]]},
  {id:"cso",ic:"🤝",name:"営業",role:"CSO",color:"#1f9d6b",pages:[["#crm","顧客リスト"],["#clients","受注クライアント"],["#docs","実績・営業資料"]]},
- {id:"cmo",ic:"📣",name:"マーケティング",role:"CMO",color:"#e5484d",pages:[["#marketing","集客データ（SNS・HP）"]]},
+ {id:"cmo",ic:"📣",name:"マーケティング",role:"CMO",color:"#e5484d",pages:[["#marketing","集客データ（SNS・HP）"],["#site","HP管理"]]},
  {id:"cpo",ic:"📦",name:"商品・サービス",role:"CPO",color:"#8b5cf6",pages:[["#products","商品一覧"]]},
  {id:"chro",ic:"📘",name:"人事・採用・教育",role:"CHRO",color:"#f59e0b",pages:[["#training","育成ロードマップ"]]},
  {id:"cfo",ic:"💴",name:"経理・財務",role:"CFO",color:"#0ea5e9",pages:[["#finance","売上・入金"]]},
@@ -1751,6 +1759,52 @@ function startPublic(){
   render();
 }
 
+/* ===== マーケティング：HP管理（#site） ===== */
+Object.assign(state,{hpinfo:{},hplog:[],hptasks:[]});
+const HP_DEFAULT={url:"https://michinari-inc.jp/",enUrl:"https://michinari-inc.jp/en/",ga4:"G-S1H3SGD2XF",repo:"https://github.com/Shuji4200/michinari-site",line:"https://lin.ee/5DKzvf8P",chat:"https://claude.ai/chat/bb21f63c-53a4-46fe-a92e-b47a6cab7cf0",memo:""};
+const HPT_ST=[["todo","未着手","#8a909c"],["doing","対応中","#3b82f6"],["done","完了","#1f9d6b"]];
+function renderSite(){
+  const I={...HP_DEFAULT,...state.hpinfo},td=today(),mo=thisMonth(),pm=shiftMonth(mo,-1);
+  const sumM=(m,k)=>monthWeeks(m).reduce((a,w)=>a+(+(((state.mkt[w]||{}).hp||{})[k])||0),0);
+  const has=m=>monthWeeks(m).some(w=>(state.mkt[w]||{}).hp);
+  const K=[["訪問数","sessions"],["ユーザー","users"],["LINEクリック","lineClicks"],["フォーム送信","formSubmits"]];
+  const kp=K.map(([l,k])=>{const a=has(mo)?sumM(mo,k):null,b=has(pm)?sumM(pm,k):null;
+    return `<div class="kpi"><small>${l}（${+mo.slice(5)}月）</small><b>${a==null?"—":a.toLocaleString()}</b>${b!=null?`<span class="mute s">先月 ${b.toLocaleString()}</span>`:""}</div>`;}).join("");
+  const wk=Object.keys(state.mkt||{}).filter(w=>(state.mkt[w]||{}).hp).sort().reverse().slice(0,8);
+  const rows=wk.map(w=>{const h=state.mkt[w].hp;const n=k=>h[k]==null?"—":(+h[k]).toLocaleString();
+    return `<tr><td><b>${fmtDate(w)}〜</b></td><td>${n("sessions")}</td><td>${n("users")}</td><td>${n("fromSearch")}</td><td>${n("fromX")}</td><td>${n("fromThreads")}</td><td>${n("fromNote")}</td><td>${n("lineClicks")}</td><td>${n("formSubmits")}</td></tr>`;}).join("");
+  const tasks=state.hptasks.slice().sort((a,b)=>((a.status==="done")-(b.status==="done"))||((a.priority||"C")>(b.priority||"C")?1:-1)||((a.due||"9")>(b.due||"9")?1:-1));
+  const stOf2=s=>HPT_ST.find(x=>x[0]===s)||HPT_ST[0];
+  const logs=state.hplog.slice().sort((a,b)=>(b.date||"")>(a.date||"")?1:-1).slice(0,30);
+  const link=(u,t)=>u?`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t||u)} ↗</a>`:"—";
+  $("#main").innerHTML=`<div class="ph"><div><div class="eyebrow">CMO ・ マーケティング</div><h1>🌐 HP管理</h1></div><div class="act"><a class="btn ghost sm" href="${esc(I.url)}" target="_blank" rel="noopener">HPを開く ↗</a><button class="btn ghost sm" id="hpInfo">基本情報を編集</button></div></div>
+  <p class="hint" style="margin:-8px 0 16px">HPの数字（GA4）、改善リスト、更新の記録をまとめて見ます。HPの修正は「HP作成チャット」で行い、公開したら更新の記録に残します。</p>
+  <div class="kpis">${kp}</div>
+  <div class="dgrid2">
+   <section class="dsec panel"><div class="dh"><h3>改善リスト <em>${tasks.filter(t=>t.status!=="done").length}件</em></h3><button class="btn sm" id="hptAdd">＋ 追加</button></div>
+    ${tasks.length?`<ul class="hpt">${tasks.map(t=>{const s=stOf2(t.status);return `<li class="${t.status==="done"?"done":""}"><span class="pri p${esc(t.priority||"C")}">${esc(t.priority||"C")}</span><div class="hptx"><b>${esc(t.title)}</b><small>${esc(t.page||"")}${t.due?` ・ 期日 ${fmtDate(t.due)}`:""}${t.memo?` ・ ${esc(t.memo)}`:""}</small></div><button class="chip" data-hpst="${esc(t.id)}" style="--c:${s[2]}">${s[1]}</button><button class="px" data-hpe="${esc(t.id)}" title="編集">✎</button></li>`;}).join("")}</ul>`:'<div class="empty sm">改善したいことを追加します（例：トップのLINEボタンを目立たせる）。</div>'}</section>
+   <section class="dsec panel"><div class="dh"><h3>基本情報</h3></div>
+    <dl class="hpinfo"><dt>公開URL</dt><dd>${link(I.url)}</dd><dt>英語版</dt><dd>${link(I.enUrl)}</dd><dt>GA4</dt><dd>${esc(I.ga4||"—")}</dd><dt>ソース</dt><dd>${link(I.repo,"GitHub（michinari-site）")}</dd><dt>公式LINE</dt><dd>${link(I.line)}</dd><dt>作業チャット</dt><dd>${link(I.chat,"HP作成チャット")}</dd>${I.memo?`<dt>メモ</dt><dd>${md(I.memo)}</dd>`:""}</dl></section>
+  </div>
+  <section class="dsec panel"><div class="dh"><h3>週ごとのHPの数字</h3><a class="lnk" href="#marketing">集客データへ →</a></div>
+   ${rows?`<div class="tw"><table class="t"><thead><tr><th>週</th><th>訪問</th><th>ユーザー</th><th>検索から</th><th>Xから</th><th>Threadsから</th><th>noteから</th><th>LINEクリック</th><th>フォーム</th></tr></thead><tbody>${rows}</tbody></table></div>`:'<div class="empty sm">まだHPの数字がありません。</div>'}</section>
+  <section class="dsec panel"><div class="dh"><h3>更新の記録</h3><button class="btn ghost sm" id="hplAdd">＋ 記録する</button></div>
+   ${logs.length?`<ul class="hplog">${logs.map(l=>`<li><span class="mute s">${fmtDate(l.date)}</span><div><b>${esc(l.summary)}</b>${l.page?`<small>${esc(l.page)}</small>`:""}${l.by?`<small>${esc(l.by)}</small>`:""}</div>${l.url?`<a class="lnk" href="${esc(l.url)}" target="_blank" rel="noopener">見る ↗</a>`:""}<button class="px" data-hpl="${esc(l.id)}" title="編集">✎</button></li>`).join("")}</ul>`:'<div class="empty sm">HPを更新したら、ここに記録します。HP作成チャットで公開したときは、チャット側が自動で書き込みます。</div>'}</section>`;
+  const taskForm=t=>openForm2({title:t?"改善を編集":"改善を追加",fields:[{k:"title",l:"やること",req:1},{k:"page",l:"対象ページ（例：トップ、外部CMO、お問い合わせ）"},{k:"priority",l:"優先度",t:"select",blank:false,o:[["A","A（すぐ）"],["B","B"],["C","C"]]},{k:"status",l:"状態",t:"select",blank:false,o:HPT_ST.map(x=>[x[0],x[1]])},{k:"due",l:"期日",t:"date"},{k:"memo",l:"メモ",t:"textarea",rows:3}],
+    values:t||{priority:"B",status:"todo"},onSave:(d,e)=>{const id=t?t.id:newId("ht");return writeDoc("hptasks/"+id,{...(t||{}),...d,id:undefined,createdAt:(t&&t.createdAt)||new Date().toISOString(),updatedAt:new Date().toISOString()},e);},
+    onDelete:t?async e=>{try{await softDel("hptasks/"+t.id);return true;}catch(x){e.textContent="削除できませんでした";return false;}}:null});
+  const logForm=l=>openForm2({title:l?"更新の記録を編集":"更新を記録",fields:[{k:"date",l:"日付",t:"date",req:1},{k:"summary",l:"何を変えたか",req:1},{k:"page",l:"対象ページ"},{k:"url",l:"確認用URL"},{k:"by",l:"作業した人・チャット"}],
+    values:l||{date:td,by:"手動"},onSave:(d,e)=>{const id=l?l.id:newId("hl");return writeDoc("hplog/"+id,{...(l||{}),...d,id:undefined,updatedAt:new Date().toISOString()},e);},
+    onDelete:l?async e=>{try{await softDel("hplog/"+l.id);return true;}catch(x){e.textContent="削除できませんでした";return false;}}:null});
+  $("#hptAdd").onclick=()=>taskForm(null);$("#hplAdd").onclick=()=>logForm(null);
+  document.querySelectorAll("[data-hpe]").forEach(b=>b.onclick=()=>taskForm(state.hptasks.find(t=>t.id===b.dataset.hpe)));
+  document.querySelectorAll("[data-hpl]").forEach(b=>b.onclick=()=>logForm(state.hplog.find(t=>t.id===b.dataset.hpl)));
+  document.querySelectorAll("[data-hpst]").forEach(b=>b.onclick=async()=>{const t=state.hptasks.find(x=>x.id===b.dataset.hpst);const i=HPT_ST.findIndex(x=>x[0]===(t.status||"todo"));const nx=HPT_ST[(i+1)%3][0];
+    b.disabled=true;const doc={...t,status:nx,updatedAt:new Date().toISOString()};delete doc.id;await writeDoc("hptasks/"+t.id,doc);});
+  $("#hpInfo").onclick=()=>openForm2({title:"HPの基本情報",fields:[{k:"url",l:"公開URL"},{k:"enUrl",l:"英語版URL"},{k:"ga4",l:"GA4 測定ID"},{k:"repo",l:"ソース（GitHub）"},{k:"line",l:"公式LINE"},{k:"chat",l:"HP作成チャットのURL"},{k:"memo",l:"メモ",t:"textarea",rows:4}],values:I,
+    onSave:(d,e)=>writeDoc("hpinfo/site",{...d,updatedAt:new Date().toISOString()},e)});
+}
+
 /* ===== 法務（CLO） ===== */
 Object.assign(state,{legal:[]});
 const LG_TYPES=["契約書（顧客）","契約書（パートナー）","NDA","利用規約・ポリシー","登記・届出","その他"];
@@ -1790,7 +1844,7 @@ function bizRefresh(meta){
   const h=location.hash;
   if($("#modal").classList.contains("open")){renderNav();return;}
   if(meta&&meta.hasPendingWrites&&(h.startsWith("#client-")))return;
-  if(h===""||h==="#"||h==="#home"||h.startsWith("#d-")||h==="#clients"||h.startsWith("#client-")||h==="#docs"||h==="#products"||h==="#marketing"||h==="#finance"||h==="#legal")render();else if(h.startsWith("#weekly-")&&!(meta&&meta.hasPendingWrites)&&!document.activeElement?.closest?.(".addrow"))render();else renderNav();
+  if(h===""||h==="#"||h==="#home"||h.startsWith("#d-")||h==="#clients"||h.startsWith("#client-")||h==="#docs"||h==="#products"||h==="#marketing"||h==="#site"||h==="#finance"||h==="#legal")render();else if(h.startsWith("#weekly-")&&!(meta&&meta.hasPendingWrites)&&!document.activeElement?.closest?.(".addrow"))render();else renderNav();
 }
 let saving=Promise.resolve(),saveTimer=null;
 function save(){
@@ -1839,6 +1893,9 @@ async function staticMode(){
       db.collection("products").onSnapshot(s=>{state.products=live(s);state.productsReady=true;bizRefresh(s.metadata);},()=>{});
       db.collection("pdca").onSnapshot(s=>{const m={};s.docs.forEach(d=>{const x=d.data();if(!x._deleted)m[d.id]=x;});state.pdca=m;bizRefresh(s.metadata);},()=>{});
       db.collection("kpisnap").onSnapshot(s=>{const m={};s.docs.forEach(d=>{const x=d.data();if(!x._deleted)m[d.id]=x;});state.kpisnap=m;state.snapReady=true;scheduleSnap();},()=>{});
+      db.collection("hplog").onSnapshot(s=>{state.hplog=live(s);bizRefresh(s.metadata);},()=>{});
+      db.collection("hptasks").onSnapshot(s=>{state.hptasks=live(s);bizRefresh(s.metadata);},()=>{});
+      db.collection("hpinfo").onSnapshot(s=>{const m={};s.docs.forEach(d=>{const x=d.data();if(!x._deleted)m[d.id]=x;});state.hpinfo=m.site||{};bizRefresh(s.metadata);},()=>{});
       db.collection("legal").onSnapshot(s=>{state.legal=live(s);bizRefresh(s.metadata);},()=>{});
       db.collection("payments").onSnapshot(s=>{const m={};s.docs.forEach(d=>{const x=d.data();if(!x._deleted)m[d.id]=x;});state.payments=m;mergePay();bizRefresh(s.metadata);},()=>{});
       db.collection("clients").onSnapshot(s=>{state.rawClients=live(s);mergePay();state.clientsReady=true;bizRefresh(s.metadata);},()=>{});
