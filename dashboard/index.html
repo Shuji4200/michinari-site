@@ -687,11 +687,11 @@ function renderLesson(id){
   document.querySelectorAll("[data-ck]").forEach(cb=>cb.onchange=()=>{const m=state.checks[id]||(state.checks[id]={});m[cb.dataset.ck]=cb.checked;save();});
 }
 /* ===== CRM ===== */
-const ST=[{id:"lead",label:"リード（問い合わせ）",color:"#8a909c"},{id:"consult",label:"無料課題分析",color:"#3b82f6"},{id:"diagnosis",label:"デモ提示",color:"#8b5cf6"},{id:"proposal",label:"提案中",color:"#f59e0b"},{id:"won",label:"受注",color:"#1f9d6b"},{id:"lost",label:"失注",color:"#b4b9c2"}];
+const ST=[{id:"lead",label:"接点（問い合わせ・紹介）",color:"#8a909c"},{id:"consult",label:"初回打ち合わせ",color:"#3b82f6"},{id:"diagnosis",label:"次回提案",color:"#8b5cf6"},{id:"proposal",label:"契約の調整",color:"#f59e0b"},{id:"won",label:"受注（キックオフ）",color:"#1f9d6b"},{id:"lost",label:"失注",color:"#b4b9c2"}];
 const OPT={
   region:["東京","広島","福岡","その他"],
-  source:["X","note","Threads","HP","LINE","紹介","PR TIMES","Wantedly","YOUTRUST","テレアポ・DM","その他"],
-  service:["外部CMO（ダッシュボード管理）","ダッシュボード初期構築","広告運用","LINE構築・運用","LP・HP制作","SNS運用","採用・広報","その他"],
+  source:["X","note","Threads","HP","LINE","紹介","紹介（経営コンサル・代理店）","紹介（士業・金融機関）","直接営業","PR TIMES","Wantedly","YOUTRUST","テレアポ・DM","その他"],
+  service:["CMO（PM・戦略）","Web戦略（ロードマップ）","Web広告運用","クリエイティブ（バナー・動画）","LINE構築","LINE運用","LP・HP制作","その他"],
   partner:["MICHINARI（自社）","歌川（ウェブフリーク）","團野（I-Nexus）","倉田（AI・AX）"]
 };
 const stOf=id=>ST.find(s=>s.id===id)||ST[0];
@@ -710,14 +710,18 @@ const CF=()=>[
   {g:"基本",k:"revenue",l:"年商",t:"select",o:["3億円未満","3億〜10億円","10億円以上","不明"]},
   {g:"基本",k:"mktDept",l:"マーケ部署",t:"select",o:["あり","なし","不明"]},
   {g:"基本",k:"url",l:"HP",t:"url",w:true},
+  {g:"基本",k:"customerType",l:"顧客の種類",t:"select",o:[["A","A：直接の顧客"],["B","B：パートナー顧客（コンサル・代理店）"]]},
+  {g:"基本",k:"persona",l:"ペルソナのタイプ",t:"select",o:[["1","① 内製化したい"],["2","② 新規事業・部署を立ち上げたい"],["3","③ マーケ担当が経験1〜2年"],["B","B：パートナー"]]},
+  {g:"基本",k:"employees",l:"従業員数"},
   {g:"流入",k:"source",l:"流入経路",t:"select",o:OPT.source},{g:"流入",k:"inquiryDate",l:"問い合わせ日",t:"date"},
   {g:"商談",k:"issue",l:"課題（どこで止まっているか）",t:"textarea",rows:2},
   {g:"商談",k:"decisionMaker",l:"決裁者"},{g:"商談",k:"budget",l:"予算感"},{g:"商談",k:"timing",l:"検討時期"},
-  {g:"無料課題分析",k:"analysisDate",l:"分析実施日",t:"date"},{g:"無料課題分析",k:"demoUrl",l:"デモのURL",t:"url"},
-  {g:"無料課題分析",k:"findings",l:"分析で見つかった課題",t:"textarea",rows:2},
+  {g:"初回打ち合わせ",k:"analysisDate",l:"初回打ち合わせ日",t:"date"},{g:"初回打ち合わせ",k:"gaAccess",l:"GA4などの閲覧権限",t:"select",o:["もらった","依頼中","まだ"]},
+  {g:"初回打ち合わせ",k:"findings",l:"提案の入口にする課題",t:"textarea",rows:2},{g:"初回打ち合わせ",k:"demoUrl",l:"見せたデモのURL",t:"url"},
   {g:"提案",k:"services",l:"提案する商品",t:"checks",o:svcOpts()},
-  {g:"提案",k:"monthly",l:"見込み月額（円）",t:"number"},{g:"提案",k:"initialFee",l:"初期費用（円）",t:"number"},
-  {g:"提案",k:"proposalDate",l:"提案日",t:"date"},{g:"提案",k:"replyDue",l:"返事の期日",t:"date"},
+  {g:"提案",k:"monthly",l:"見込み月額（MICHINARIへの支払い・円）",t:"number"},{g:"提案",k:"initialFee",l:"初期費用（円）",t:"number"},
+  {g:"提案",k:"adBudget",l:"広告費（月・円）",t:"number"},{g:"提案",k:"plan",l:"提案したプラン",t:"select",o:["推奨プラン","最小プラン","両方"]},
+  {g:"提案",k:"proposalDate",l:"次回提案日",t:"date"},{g:"提案",k:"replyDue",l:"返事の期日",t:"date"},
   {g:"状態",k:"status",l:"段階",t:"select",o:ST.map(s=>[s.id,s.label]),blank:false},
   {g:"状態",k:"priority",l:"優先度",t:"select",o:[["A","A（最優先）"],["B","B"],["C","C"]]},
   {g:"状態",k:"nextAction",l:"次アクション",w:true},{g:"状態",k:"nextDate",l:"次アクションの期日",t:"date"},
@@ -995,7 +999,7 @@ function liveKPI(ws){
   const moved=s=>L.filter(c=>c.reached&&c.reached[s]&&inWeek(localDate(c.reached[s]))).length;
   return {customers:m.customers,mrr:m.mrr,inquiries:L.filter(c=>inWeek(inqDate(c))).length,consult:moved("consult"),diagnosis:moved("diagnosis"),proposal:moved("proposal"),won:moved("won")};
 }
-const KPI_LABEL=[["customers","月額顧客数","社"],["mrr","月額売上","円"],["inquiries","今週の問い合わせ","件"],["consult","無料課題分析に進んだ","件"],["diagnosis","デモ提示に進んだ","件"],["proposal","提案に進んだ","件"],["won","受注","件"]];
+const KPI_LABEL=[["customers","月額顧客数","社"],["mrr","月額売上","円"],["inquiries","今週の問い合わせ","件"],["consult","初回打ち合わせに進んだ","件"],["diagnosis","次回提案に進んだ","件"],["proposal","契約の調整に進んだ","件"],["won","受注","件"]];
 function renderWeeklyList(){
   const ws=weekStart(today());
   const ids=Object.keys(state.weekly).sort().reverse();
@@ -1415,7 +1419,7 @@ function renderMkt(){
     <div class="mbig">${nf(A[ch.k][ch.show])}<small>${ch.m.find(x=>x[0]===ch.show)[1]}</small>${delta(A[ch.k][ch.show],P[ch.k][ch.show])}</div>
     <dl class="kv sm2">${ch.m.filter(x=>x[0]!==ch.show).map(([mk,ml])=>`<dt>${ml}</dt><dd>${nf(A[ch.k][mk])}${delta(A[ch.k][mk],P[ch.k][mk])}</dd>`).join("")}</dl></div>`).join("")}</div></section>
   <section class="panel dsec"><div class="dh"><h3>媒体 × 成果 <em>発信が商談につながっているか</em></h3></div>
-   <div class="tw"><table class="t"><thead><tr><th>媒体</th><th>投稿数</th><th>表示</th><th>反応</th><th>HPへの流入</th><th>LINE・問い合わせ</th><th>商談（無料課題分析〜）</th></tr></thead><tbody>
+   <div class="tw"><table class="t"><thead><tr><th>媒体</th><th>投稿数</th><th>表示</th><th>反応</th><th>HPへの流入</th><th>LINE・問い合わせ</th><th>商談（初回打ち合わせ〜）</th></tr></thead><tbody>
    ${rows.map(r=>`<tr><td><b>${r.l}</b></td><td>${nf(r.posts)}</td><td>${nf(r.show)}</td><td>${nf(r.react)}</td><td>${nf(r.hp)}</td><td><b>${r.lead}</b></td><td><b>${r.deal}</b></td></tr>`).join("")}
    <tr class="tot"><td>合計</td><td>${nf(sumN(...rows.map(r=>r.posts)))}</td><td>${nf(sumN(...rows.map(r=>r.show)))}</td><td>${nf(sumN(...rows.map(r=>r.react)))}</td><td>${nf(hp.sessions)}<span class="mute s">（HP全体）</span></td><td>${rows.reduce((a,r)=>a+r.lead,0)}</td><td>${rows.reduce((a,r)=>a+r.deal,0)}</td></tr></tbody></table></div>
    <p class="hint">「LINE・問い合わせ」「商談」は、営業（顧客管理）の流入経路と問い合わせ日から自動で数えています。HPのLINEボタンのクリック ${nf(hp.lineClicks)}・フォーム送信 ${nf(hp.formSubmits)}。</p></section>
@@ -1525,7 +1529,7 @@ function billSum(mo){const b=billingFor(mo);const all=b.reduce((a,x)=>a+x.amt,0)
 // k:キー l:名前 u:単位 f:"yen"|"pct" low:少ないほど良い v:自動計算（なければ手入力）
 const KPIS={
  ceo:[{k:"mrr",n:["clients"],l:"月額売上",f:"yen",v:mo=>revenueFor(mo).mrr,g:"mrr"},{k:"customers",n:["clients"],l:"月額顧客数",u:"社",v:mo=>revenueFor(mo).customers,g:"customers"},{k:"total",n:["clients"],l:"売上（初期費用込み）",f:"yen",v:mo=>revenueFor(mo).total},{k:"leads",n:["crm"],l:"問い合わせ数",u:"件",v:mo=>leadsIn(mo),g:"inquiries"}],
- cso:[{k:"leads",n:["crm"],l:"問い合わせ",u:"件",v:mo=>leadsIn(mo)},{k:"consult",n:["crm"],l:"無料課題分析",u:"件",v:mo=>movedIn("consult",mo)},{k:"proposal",n:["crm"],l:"提案",u:"件",v:mo=>movedIn("proposal",mo)},{k:"won",n:["crm"],l:"受注",u:"件",v:mo=>movedIn("won",mo)},{k:"rate",n:["crm"],l:"分析→受注率",f:"pct",v:mo=>pct(movedIn("won",mo),movedIn("consult",mo))}],
+ cso:[{k:"leads",n:["crm"],l:"問い合わせ",u:"件",v:mo=>leadsIn(mo)},{k:"consult",n:["crm"],l:"初回打ち合わせ",u:"件",v:mo=>movedIn("consult",mo)},{k:"proposal",n:["crm"],l:"次回提案",u:"件",v:mo=>movedIn("diagnosis",mo)},{k:"won",n:["crm"],l:"受注",u:"件",v:mo=>movedIn("won",mo)},{k:"rate",n:["crm"],l:"初回打ち合わせ→受注率",f:"pct",v:mo=>pct(movedIn("won",mo),movedIn("consult",mo))}],
  cmo:[{k:"show",n:["mkt"],l:"SNSの表示回数",u:"回",v:mo=>mktMonth(mo).show},{k:"posts",n:["mkt"],l:"投稿数",u:"本",v:mo=>mktMonth(mo).posts},{k:"hp",n:["mkt"],l:"HPの訪問数",u:"回",v:mo=>mktMonth(mo).hp},{k:"cv",n:["mkt"],l:"LINE・フォーム",u:"件",v:mo=>mktMonth(mo).cv},{k:"snsLeads",n:["crm"],l:"集客経由の問い合わせ",u:"件",v:mo=>leadsIn(mo,["X","Threads","note","HP","LINE"])}],
  cpo:[{k:"onSale",n:["products"],l:"販売中の商品",u:"個",v:()=>state.products.filter(p=>(p.status||"sale")==="sale").length},{k:"newDeals",n:["clients"],l:"新規受注",u:"件",v:mo=>state.clients.filter(c=>c.startDate&&ym(c.startDate)===mo&&c.status!=="prep").length},{k:"active",n:["clients"],l:"稼働中クライアント",u:"社",v:mo=>revenueFor(mo).customers},{k:"arpu",n:["clients"],l:"平均月額単価",f:"yen",v:mo=>{const r=revenueFor(mo);return r.customers?Math.round(r.mrr/r.customers):null;}}],
  chro:[{k:"applicants",l:"採用の応募",u:"人"},{k:"interviews",l:"面談",u:"回"},{k:"hires",l:"採用・参画",u:"人"},{k:"lessons",n:["lessons"],l:"公開中のレッスン",u:"本",v:()=>state.lessons.filter(l=>l.status==="published").length}],
@@ -1640,7 +1644,7 @@ function renderDept(id){
 function csoExtra(){
   const scope=state.funnelScope,td=today();
   const F=state.crm.filter(c=>scope==="all"||ym(inqDate(c))===thisMonth());
-  const steps=[["lead","問い合わせ"],["consult","無料課題分析"],["diagnosis","デモ提示"],["proposal","提案"],["won","受注"]].map(([s,l])=>[l,F.filter(c=>reached(c,s)).length]);
+  const steps=[["lead","接点"],["consult","初回打ち合わせ"],["diagnosis","次回提案"],["proposal","契約の調整"],["won","受注"]].map(([s,l])=>[l,F.filter(c=>reached(c,s)).length]);
   const max=Math.max(1,...steps.map(s=>s[1]));
   const todo=state.crm.filter(c=>c.nextDate&&c.nextDate<=td&&c.status!=="lost").sort((a,b)=>a.nextDate>b.nextDate?1:-1);
   return `<div class="dgrid2"><section class="dsec panel"><div class="dh"><h3>ファネル</h3><div class="seg sm"><button data-fs="all" class="${scope==="all"?"on":""}">全期間</button><button data-fs="month" class="${scope==="month"?"on":""}">今月の問い合わせ</button></div></div>
@@ -1730,20 +1734,21 @@ function sampleData(){
   const inq=[d(ppm,8),d(ppm,20),d(pm,3),d(pm,12),d(pm,22),d(mo,2),d(mo,4),d(mo,6),d(pm,9),d(mo,1),d(mo,7),d(pm,18)];
   const crm=co.map((c,i)=>{const r={};STAGE_ORDER.forEach((s,j)=>{if(st[i]!=="lost"&&j<=STAGE_ORDER.indexOf(st[i]))r[s]=iso(addDays(inq[i],j*4)>td?td:addDays(inq[i],j*4));});
     return {id:"c"+i,company:c,person:"担当者",region:["広島","福岡","東京"][i%3],source:src[i],status:st[i],inquiryDate:inq[i],reached:r,monthly:300000,
-      services:["外部CMO（ダッシュボード管理）"],nextAction:["定例の準備","提案書を送る","デモを見せる","課題分析の結果を説明","ヒアリング日程の調整","ヒアリング日程の調整","初回の連絡","初回の連絡","","見積もりの確認","初回の連絡","定例の準備"][i],
+      services:["CMO（PM・戦略）","Web広告運用"],nextAction:["定例の準備","提案書を送る","デモを見せる","次回提案の準備","ヒアリング日程の調整","ヒアリング日程の調整","初回の連絡","初回の連絡","","見積もりの確認","初回の連絡","定例の準備"][i],
       nextDate:st[i]==="lost"?"":addDays(td,[-1,3,0,2,5,1,0,1,0,4,2,7][i]),priority:["A","A","A","B","B","C","C","C","C","A","B","A"][i]};});
   const clients=[
-    {id:"k1",company:co[0],status:"active",startDate:d(ppm,15),monthly:300000,initialFee:300000,services:["外部CMO（ダッシュボード管理）","ダッシュボード初期構築"]},
-    {id:"k2",company:co[1],status:"active",startDate:d(pm,1),monthly:300000,initialFee:300000,services:["外部CMO（ダッシュボード管理）","ダッシュボード初期構築"]},
-    {id:"k3",company:co[11],status:"active",startDate:d(mo,1),monthly:400000,initialFee:300000,services:["外部CMO（ダッシュボード管理）","広告運用"]}];
+    {id:"k1",company:co[0],status:"active",startDate:d(ppm,15),monthly:300000,initialFee:300000,services:["CMO（PM・戦略）","Web戦略（ロードマップ）","Web広告運用"]},
+    {id:"k2",company:co[1],status:"active",startDate:d(pm,1),monthly:300000,initialFee:300000,services:["CMO（PM・戦略）","Web戦略（ロードマップ）","Web広告運用"]},
+    {id:"k3",company:co[11],status:"active",startDate:d(mo,1),monthly:400000,initialFee:300000,services:["CMO（PM・戦略）","Web広告運用","LINE運用"]}];
   const payments={k1:{paid:{[ppm]:1,[pm]:1,[mo]:1}},k2:{paid:{[pm]:1}}};
   const mkt={};let w=weekStart(d(ppm,1));let i=0;
   while(w<=td){mkt[w]={weekStart:w,x:{posts:5+i%3,impressions:1800+i*260,engagements:60+i*9,followers:300+i*12},th_cmo:{posts:7,views:420+i*55,likes:10+i,replies:3,followers:80+i*4},note:{posts:1,impressions:200+i*40,views:60+i*9,likes:4+i%4,followers:20+i*2},hp:{sessions:120+i*14,users:90+i*10,fromX:12+i,fromThreads:4+i%3,fromNote:8+i,fromSearch:40+i*3,lineClicks:3+i%4,formSubmits:1+i%2}};w=addDays(w,7);i++;}
   const mposts=[{id:"m1",date:d(mo,3),channel:"X",category:"代表コラム",theme:"地方企業がGA4で最初に見るべき3つの数字",impressions:3200,reactions:96,clicks:31},{id:"m2",date:d(mo,5),channel:"note",category:"代表コラム",theme:"外部CMOという働き方",impressions:640,reactions:22,clicks:14},{id:"m3",date:d(pm,20),channel:"Threads（pointaxis_cmo）",category:"",theme:"問い合わせ対応を速くする仕組み",impressions:880,reactions:18,clicks:6}];
-  const products=[{id:"g1",order:1,name:"無料の課題分析",priceLabel:"0円",role:"入口（無料）",status:"sale",pitch:"GA4などの数字を見て、Webの課題と予算の目安をお伝えします。",deliverables:"Webの課題の整理\n予算の提案\nダッシュボードのデモ"},
-    {id:"g2",order:2,name:"ダッシュボード初期構築",priceLabel:"30万円（初期）",initialFee:300000,role:"初期費用",status:"sale",pitch:"売上につながる数字を、一画面で見られるようにします。",deliverables:"計測の整備\nダッシュボードの構築"},
-    {id:"g3",order:3,name:"外部CMOコンサルティング（ダッシュボードの管理）",priceLabel:"月額30万円",monthly:300000,role:"メイン（月額）",status:"sale",pitch:"御社に必要なものを実行して、売上拡大に繋げていきます。",deliverables:"毎月の数字の確認\n戦略と打ち手の決定"},
-    {id:"g4",order:4,name:"マーケティング施策",priceLabel:"別途見積もり",role:"オプション（別途）",status:"sale",pitch:"広告運用・LINE運用・LP/HP制作など。",deliverables:"広告運用\nLINE運用\nLP・HP制作"}];
+  const products=[{id:"g1",order:1,name:"CMO（PM・戦略）",priceLabel:"月10万円",monthly:100000,role:"メイン（月額）",status:"sale",pitch:"戦略、月次の打ち合わせ、施策の優先順位づけ、チームのディレクション。",deliverables:"戦略\n月次の打ち合わせ\n施策の優先順位づけ"},
+    {id:"g2",order:2,name:"Web戦略（ロードマップ作成・提案）",priceLabel:"15万円〜（初回のみ）",initialFee:150000,role:"初回",status:"sale",pitch:"現状分析から3・6・12ヶ月のロードマップをつくります。",deliverables:"現状分析\nロードマップ"},
+    {id:"g3",order:3,name:"Web広告運用",priceLabel:"広告費の20%（最低月10万円〜）",monthly:100000,role:"月額",status:"sale",pitch:"運用・改善・レポート。",deliverables:"運用\n改善\nレポート"},
+    {id:"g4",order:4,name:"クリエイティブ",priceLabel:"静止画1枚5,000円・動画1本1.5万〜2万円",role:"別料金",status:"sale",pitch:"広告用のバナー・動画。",deliverables:"バナー\n動画"},
+    {id:"g5",order:5,name:"LINE構築・運用",priceLabel:"初期20万円＋運用月15万円〜",initialFee:200000,monthly:150000,role:"オプション",status:"sale",pitch:"構築・配信・分析。",deliverables:"構築\n配信\n分析"}];
   const legal=[{id:"l1",title:"業務委託契約（サンプル工務店）",type:"契約書（顧客）",status:"signed",signedDate:d(ppm,14),expireDate:addDays(td,20)},
     {id:"l2",title:"業務委託契約（サンプル商事）",type:"契約書（顧客）",status:"review",signedDate:"",expireDate:""},
     {id:"l3",title:"パートナー秘密保持契約",type:"NDA",status:"signed",signedDate:d(pm,2),expireDate:addDays(td,300)},
@@ -1753,18 +1758,18 @@ function sampleData(){
   const act=(t,due,done)=>({id:"a"+Math.random().toString(36).slice(2,7),text:t,due,done});
   const P=(plan,actions,check,act2,targets,actuals)=>({plan,actions,check,act:act2,targets,actuals:actuals||{},updatedAt:iso(td)});
   const pdca={};
-  pdca["ceo_"+mo]=P("- 月額売上100万円に向けて、受注を月2社ペースにする\n- 各部門の数字を毎週確認する",[act("月次の経営会議",addDays(td,6),false),act("各部門の目標を確定",d(mo,3),true)],"","",{mrr:1000000,customers:4,leads:10});
-  pdca["cso_"+mo]=P("- 無料の課題分析を月5件\n- 分析から2週間以内に提案",[act("課題分析の結果説明（デモ食品）",addDays(td,2),false),act("提案書テンプレートの見直し",d(mo,5),true),act("紹介元へのお礼連絡",addDays(td,-1),false)],"","",{leads:10,consult:5,proposal:3,won:2});
+  pdca["ceo_"+mo]=P("- まず5社受注。初回打ち合わせを月5件\n- 各部門の数字を毎週確認する",[act("月次の経営会議",addDays(td,6),false),act("各部門の目標を確定",d(mo,3),true)],"","",{mrr:1000000,customers:4,leads:10});
+  pdca["cso_"+mo]=P("- 初回打ち合わせを月5件\n- 初回から2週間以内に次回提案",[act("次回提案（デモ食品）",addDays(td,2),false),act("提案書テンプレートの見直し",d(mo,5),true),act("紹介元へのお礼連絡",addDays(td,-1),false)],"","",{leads:10,consult:5,proposal:3,won:2});
   pdca["cmo_"+mo]=P("- Xは週5投稿、noteは週1本\n- HPのLINEボタンを目立たせる",[act("note記事「外部CMOという働き方」",d(mo,5),true),act("HPのLINEボタン改修",addDays(td,4),false)],"","",{show:20000,posts:30,hp:700,cv:20,snsLeads:6});
-  pdca["cpo_"+mo]=P("- 外部CMOの提供内容を1枚にまとめる",[act("サービス資料の更新",addDays(td,5),false)],"","",{onSale:4,newDeals:2,active:4});
+  pdca["cpo_"+mo]=P("- 料金表と提案資料の型を整える",[act("サービス資料の更新",addDays(td,5),false)],"","",{onSale:4,newDeals:2,active:4});
   pdca["chro_"+mo]=P("- 営業メンバーを1名採用\n- 研修の営業編を公開",[act("求人票の作成",d(mo,4),true),act("面談3件",addDays(td,8),false)],"","",{applicants:5,interviews:3,hires:1,lessons:12},{applicants:4,interviews:2,hires:0});
   pdca["cfo_"+mo]=P("- 未入金ゼロを維持する",[act("請求書の送付",d(mo,1),true),act("入金の確認",addDays(td,3),false)],"","",{unpaid:0,rate:100});
   pdca["clo_"+mo]=P("- 期限が近い契約を更新する",[act("サンプル工務店の契約更新",addDays(td,10),false)],"","",{due:0,pending:0});
-  pdca["cso_"+pm]=P("- 無料の課題分析を月4件",[act("分析4件",d(pm,28),true)],"- 分析は4件できたが、提案までに時間がかかった","- 分析から2週間以内に提案する",{consult:4,won:1});
+  pdca["cso_"+pm]=P("- 初回打ち合わせを月4件",[act("初回打ち合わせ4件",d(pm,28),true)],"- 初回打ち合わせは4件できたが、次回提案までに時間がかかった","- 初回から2週間以内に次回提案する",{consult:4,won:1});
   const T=(area,title,priority,due,done)=>({id:"t"+Math.random().toString(36).slice(2,8),area,title,priority,due,done,doneAt:done?iso(addDays(td,-2)):null});
-  const todos=[T("sales","無料の課題分析を3件実施","A",addDays(td,5),false),T("sales","提案書テンプレートの見直し","B",addDays(td,-3),true),T("sales","紹介元へのお礼と近況報告","B",addDays(td,-1),false),T("sales","商談後のフォロー連絡の型をつくる","C","",false),
+  const todos=[T("sales","初回打ち合わせを3件実施","A",addDays(td,5),false),T("sales","提案書テンプレートの見直し","B",addDays(td,-3),true),T("sales","紹介元へのお礼と近況報告","B",addDays(td,-1),false),T("sales","商談後のフォロー連絡の型をつくる","C","",false),
     T("acq","note記事を週1本公開","A",addDays(td,2),false),T("acq","HPのLINEボタンを目立たせる","A",addDays(td,4),false),T("acq","Xの固定ポストを更新","B",addDays(td,-4),true),T("acq","Threadsの投稿テーマを整理","C","",true),
-    T("product","外部CMOのサービス資料を1枚にまとめる","A",addDays(td,6),false),T("product","支援実績を2件追加","B",addDays(td,10),false),T("product","料金表の見直し","B",addDays(td,-6),true)];
+    T("product","料金表を新しい形に更新","A",addDays(td,6),false),T("product","支援実績を2件追加","B",addDays(td,10),false),T("product","料金表の見直し","B",addDays(td,-6),true)];
   return {crm,clients,payments,mkt,mposts,products,legal,stages,lessons,pdca,todos,goals:{customers:4,mrr:1000000,inquiries:10}};
 }
 function startPublic(){
