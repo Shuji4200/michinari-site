@@ -175,6 +175,32 @@ table.t{width:100%;border-collapse:collapse;background:#fff;border:1px solid var
 .btn.danger.arm{background:var(--red);color:#fff}
 .btn.sm{padding:8px 14px;font-size:13px}
 .err{color:var(--red);font-size:13px;margin-top:10px}
+/* 商談予定 */
+.mtk{display:grid;grid-template-columns:1fr 1fr 2fr 2fr;gap:14px;margin-bottom:18px}
+.mtk .kpi{border-left:4px solid var(--accent)}.mtk .kpi:nth-child(2){border-left-color:var(--ok)}
+.mtcd{color:#4f46e5;font-size:22px!important}.mtbd{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.mtbd span{font-size:12px;font-weight:700;color:#fff;background:var(--mc);border-radius:99px;padding:3px 10px}
+.mtbar{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}.mtbar b{font:800 18px Inter;margin-left:6px}
+.mtlg{display:flex;gap:16px;font-size:12px;color:var(--mute);margin-bottom:10px;flex-wrap:wrap}
+.mtlg span:before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-2px;border:1px solid var(--line);background:#fff}
+.mtlg .lg1:before{background:var(--ok-soft);border-color:#9fd8bd}.mtlg .lg2:before{background:var(--red-soft);border-color:#f3b4b6}.mtlg .lg3:before{border-style:dashed}
+.mtcal{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:auto;max-height:760px}
+.mtg{display:grid;min-width:900px}
+.mth{position:sticky;top:0;z-index:3;background:#fff;border-bottom:1px solid var(--line);border-left:1px solid var(--line);padding:10px 12px;display:flex;align-items:baseline;gap:8px}
+.mth:first-child{border-left:0}.mth small{color:var(--mute);font-size:12px}.mth small.sat{color:#3b82f6}.mth small.sun{color:var(--red)}
+.mth b{font:800 17px Inter}.mth.td b{background:#4f46e5;color:#fff;border-radius:99px;padding:2px 10px}
+.mtax{font:600 11px Inter;color:var(--mute);text-align:right;padding-right:8px}.mtax div{transform:translateY(-6px)}.mtax.s{padding-top:8px}
+.mtud{border-left:1px solid var(--line);border-bottom:1px solid var(--line);padding:6px;display:flex;flex-direction:column;gap:6px;background:#fafbfc}
+.mtcol{position:relative;border-left:1px solid var(--line);background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 71px,var(--line) 71px,var(--line) 72px)}
+.mtcol.td{background-color:#f7f7ff}
+.mtc{display:block;left:4px;right:4px;box-sizing:border-box;background:#fff;border:1px solid var(--line);border-left:4px solid var(--mc);border-radius:8px;padding:6px 8px;overflow:hidden;color:var(--ink);text-decoration:none;box-shadow:0 2px 6px rgba(20,24,40,.06)}
+.mtc:hover{box-shadow:0 4px 12px rgba(20,24,40,.14)}.mtc.done{background:var(--ok-soft)}.mtc.ns{background:var(--red-soft)}.mtc.auto{border-style:dashed;border-left-style:solid}
+.mtt{font-size:12px;display:flex;flex-wrap:wrap;align-items:center;gap:2px 6px}.mtt .mty{margin:0;color:var(--mc)}.mtt b{font:800 13px Inter}.mtt span{color:var(--mute);margin-left:4px}
+.mty{display:inline-block;font-size:11px;font-weight:700;color:var(--mc);border:1px solid var(--mc);border-radius:99px;padding:1px 8px;margin:3px 0;background:#fff}
+.mtn{font-weight:800;font-size:13px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mtud .mtn{white-space:normal}.mtc{padding:5px 8px}.mtp{font-size:11px;color:var(--mute)}
+.mlist{list-style:none;margin:10px 0 0;padding:0}.mlist li{padding:10px 0;border-top:1px solid var(--line);cursor:pointer;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}.mlist li>div{flex-basis:100%}
+.mrs{font-size:11px;font-weight:700;border-radius:99px;padding:2px 8px;background:#f1f2f5;color:var(--mute)}.mrs.ok{background:var(--ok-soft);color:var(--ok)}.mrs.ng{background:var(--red-soft);color:var(--red)}
+@media(max-width:1100px){.mtk{grid-template-columns:1fr 1fr}}
 @media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.dgrid{grid-template-columns:1fr}}
 @media(max-width:760px){.kpis{grid-template-columns:repeat(2,1fr)}.f{grid-template-columns:1fr}.t{display:block;overflow-x:auto}}
 /* ===== MICHINARI事業 ===== */
@@ -570,7 +596,7 @@ function render(){
 }
 function route(){
   const h=location.hash.replace("#","");
-  const biz=h===""||h==="home"||h.startsWith("d-")||h==="plan"||h==="finance"||h==="legal"||h==="products"||h==="marketing"||h==="site"||h==="hiring"||h==="docs"||h==="clients"||h.startsWith("client-")||h==="crm"||h.startsWith("crm-")||h==="weekly"||h.startsWith("weekly-")||PLANNED[h];
+  const biz=h===""||h==="home"||h.startsWith("d-")||h==="plan"||h==="finance"||h==="legal"||h==="products"||h==="marketing"||h==="site"||h==="hiring"||h==="docs"||h==="clients"||h.startsWith("client-")||h==="crm"||h==="meetings"||h.startsWith("crm-")||h==="weekly"||h.startsWith("weekly-")||PLANNED[h];
   const trainR=h==="training"||h.startsWith("stage-")||h.startsWith("lesson-");
   if(IS_PUBLIC&&!(h===""||h==="home"||h.startsWith("d-"))){location.hash="";return;}
   if(state.isEditor&&!IS_MAIN&&!biz&&!(APP_MODE==="chro"&&trainR)){location.hash="";return;}
@@ -585,6 +611,7 @@ function route(){
     if(h===""||h==="home")return renderDash();
     if(h.startsWith("d-"))return renderDept(h.slice(2));
     if(h==="crm")return renderCRM();
+    if(h==="meetings")return renderMeetings();
     if(h==="docs")return renderDocs();
     if(h==="finance")return renderFinance();
     if(h==="legal")return renderLegal();
@@ -647,7 +674,7 @@ function renderNav(){
   document.querySelectorAll("#nav a").forEach(a=>a.addEventListener("click",()=>document.body.classList.remove("menu")));
   let tabs;
   if(state.isEditor&&!IS_MAIN){const D=deptOf(APP_MODE);tabs=[["#",D.ic,"ダッシュボード",h==="#"||h==="#home"]].concat(D.pages.slice(0,3).map(p=>[p[0],"•",p[1].replace(/（.*）/,""),h===p[0]||h.startsWith(p[0]+"-")])).concat([["menu","☰","メニュー",false]]);}
-  else if(state.isEditor)tabs=[["#","🏛","経営",h==="#"||h==="#home"||h==="#plan"],["#d-cso","🤝","営業",h==="#d-cso"||h.startsWith("#crm")||h==="#docs"||h==="#clients"||h.startsWith("#client-")],["#d-cmo","📣","マーケ",h==="#d-cmo"||h==="#marketing"],["#d-cfo","💴","経理",h==="#d-cfo"||h==="#finance"],["menu","☰","メニュー",false]];
+  else if(state.isEditor)tabs=[["#","🏛","経営",h==="#"||h==="#home"||h==="#plan"],["#d-cso","🤝","営業",h==="#d-cso"||h.startsWith("#crm")||h==="#meetings"||h==="#docs"||h==="#clients"||h.startsWith("#client-")],["#d-cmo","📣","マーケ",h==="#d-cmo"||h==="#marketing"],["#d-cfo","💴","経理",h==="#d-cfo"||h==="#finance"],["menu","☰","メニュー",false]];
   else tabs=[["#","🧭","ロードマップ",h==="#"]].concat(state.stages.map(st=>["#stage-"+st.id,"●",st.title,h==="#stage-"+st.id,colorOf(st)]));
   $("#tabbar").innerHTML=tabs.map(t=>t[0]==="menu"?`<button class="tab" id="menuBtn"><i>${t[1]}</i>${t[2]}</button>`:`<a class="tab ${t[3]?"on":""}" href="${t[0]}"><i${t[4]?` style="color:${t[4]}"`:""}>${t[1]}</i>${esc(t[2])}</a>`).join("");
   const mb=$("#menuBtn");if(mb)mb.onclick=()=>document.body.classList.toggle("menu");
@@ -866,6 +893,7 @@ function renderCustomer(id){
    <button class="btn ghost sm" id="edit">編集</button><button class="btn danger sm" id="del">削除</button></div></div>
   <div class="dgrid"><div>
    ${c.status==="won"?`<div class="panel wonbox" style="margin-bottom:20px"><div><b>🎉 受注済み</b><div class="mute s">契約・ダッシュボード・定例・入金は「受注クライアント」で管理します。</div></div><button class="btn sm" id="toClient">${state.clients.some(k=>k.crmId===c.id)?"受注クライアントを開く →":"受注クライアントに登録 →"}</button></div>`:""}
+   ${meetingsPanel(c)}
    <div class="panel" style="margin-bottom:20px"><h3>次アクション</h3><div style="font-size:15px" class="${isLate(c)?"late":""}">${c.nextDate?"📅 "+esc(c.nextDate)+"　":""}${esc(c.nextAction||"未設定")}</div>${c.replyDue?`<div class="mute s" style="margin-top:6px">返事の期日：${esc(c.replyDue)}</div>`:""}</div>
    <div class="panel log"><h3>対応履歴</h3><textarea id="logT" rows="3" placeholder="商談・連絡の内容を記録">${esc(state.logDraft[id]||"")}</textarea>
     <div style="display:flex;justify-content:flex-end"><button class="btn sm" id="addLog">履歴を追加</button></div>
@@ -873,6 +901,8 @@ function renderCustomer(id){
   </div><div>${groups.map(g=>{const body=CF().filter(f=>f.g===g).map(show).join("");return body?`<div class="panel" style="margin-bottom:14px"><h3>${g}</h3><dl class="kv">${body}</dl></div>`:"";}).join("")}
    <div class="mute s">登録 ${esc((c.createdAt||"").slice(0,10))} ・ 更新 ${esc((c.updatedAt||"").slice(0,10))}</div></div></div><div class="err" id="cErr"></div>`;
   $("#edit").onclick=()=>openForm(c);
+  $("#mAdd").onclick=()=>openMeetingForm(c,null);
+  document.querySelectorAll("[data-me]").forEach(li=>li.onclick=()=>openMeetingForm(c,(c.meetings||[]).find(m=>m.id===li.dataset.me)));
   const tc=$("#toClient");if(tc)tc.onclick=()=>crmToClient(c);
   $("#stSel").onchange=e=>changeStatus(id,e.target.value);
   $("#logT").oninput=e=>{state.logDraft[id]=e.target.value;};
@@ -908,6 +938,90 @@ function openForm(c){
     if(ok)setTimeout(render,0);return ok;}});
 }
 document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#modal").classList.remove("open");});
+
+/* ===== 商談予定（週カレンダー） ===== */
+/* 商談は顧客（crm）の meetings に入れる：[{id,date,start,end,type,place,memo,result}]。result：""=未入力／done=実施済み／noshow=来なかった・中止 */
+const MT_TYPES=["初回打ち合わせ","次回提案","契約の調整","定例","その他"];
+const MT_COLORS={"初回打ち合わせ":"#3b82f6","次回提案":"#8b5cf6","契約の調整":"#f59e0b","定例":"#1f9d6b","その他":"#8a909c"};
+Object.assign(state,{mtWeek:null,mtType:"all"});
+const mtWeekStart=d=>{const x=new Date(d+"T00:00:00");const w=(x.getDay()+6)%7;return addDays(d,-w);};
+function allMeetings(){
+  const out=[];
+  state.crm.forEach(c=>{
+    const ms=(c.meetings||[]).filter(m=>m&&m.date);
+    ms.forEach(m=>out.push({...m,cid:c.id,company:c.company,person:c.person||"",status:c.status}));
+    if(c.nextDate&&!["won","lost"].includes(c.status)&&/打ち合わせ|商談|提案|面談|ヒアリング|定例|訪問/.test(c.nextAction||"")&&!ms.some(m=>m.date===c.nextDate))
+      out.push({id:"next",date:c.nextDate,start:"",end:"",type:/提案/.test(c.nextAction)?"次回提案":/定例/.test(c.nextAction)?"定例":"初回打ち合わせ",memo:c.nextAction,cid:c.id,company:c.company,person:c.person||"",status:c.status,auto:true});
+  });
+  return out.sort((a,b)=>(a.date+(a.start||"99"))>(b.date+(b.start||"99"))?1:-1);
+}
+const mtMin=t=>{const m=/^(\d{1,2}):(\d{2})/.exec(t||"");return m?+m[1]*60+ +m[2]:null;};
+function mtCountdown(m){
+  const t=new Date(m.date+"T"+(m.start||"09:00")+":00")-new Date();
+  if(t<0)return "まもなく";const h=Math.floor(t/36e5),mi=Math.floor(t%36e5/6e4);
+  return h>=48?`あと ${Math.floor(h/24)} 日`:`あと ${h} 時間 ${mi} 分`;
+}
+function renderMeetings(){
+  const td=today(),ws=state.mtWeek||mtWeekStart(td),we=addDays(ws,6);
+  const all=allMeetings();
+  const typeOk=m=>state.mtType==="all"?true:state.mtType==="first"?m.type==="初回打ち合わせ":m.type!=="初回打ち合わせ";
+  const wk=all.filter(m=>m.date>=ws&&m.date<=we&&typeOk(m));
+  const now=new Date(),nx=all.find(m=>new Date(m.date+"T"+(m.end||m.start||"23:59")+":00")>=now&&m.result!=="noshow");
+  const byType=MT_TYPES.map(t=>[t,all.filter(m=>m.date>=ws&&m.date<=we&&m.type===t).length]).filter(x=>x[1]);
+  const H0=8,H1=21,PX=72,days=[...Array(7)].map((_,i)=>addDays(ws,i)),dw="月火水木金土日";
+  const card=m=>{const s=mtMin(m.start),e=mtMin(m.end)??(s!=null?s+60:null);
+    const top=s==null?0:Math.max(0,(s-H0*60)/60*PX),hgt=s==null?0:Math.max(PX*0.75,((e-s)/60)*PX-4);
+    const cls=m.result==="done"?"done":m.result==="noshow"?"ns":"";
+    return `<a class="mtc ${cls} ${m.auto?"auto":""}" href="#crm-${esc(m.cid)}" style="${s==null?"":`position:absolute;top:${top}px;height:${hgt}px;`}--mc:${MT_COLORS[m.type]||"#8a909c"}">
+      <div class="mtt"><b>${s==null?"時間未定":esc(m.start)}</b>${m.end?`<span>– ${esc(m.end)}</span>`:""}<span class="mty">${esc(m.type||"商談")}</span></div><div class="mtn">${esc(m.company)}</div>${m.person?`<div class="mtp">${esc(m.person)}</div>`:""}</a>`;};
+  const cols=days.map((d,i)=>{const ms=wk.filter(m=>m.date===d),timed=ms.filter(m=>mtMin(m.start)!=null),undt=ms.filter(m=>mtMin(m.start)==null);
+    return {d,i,timed,undt};});
+  const hasUndated=cols.some(c=>c.undt.length);
+  $("#main").innerHTML=`<div class="ph"><div><div class="eyebrow">営業（CSO）</div><h1>📅 商談予定</h1><p class="mute" style="margin:6px 0 0">週カレンダー ／ カードを押すと顧客の詳細（記録・次の一手）を開きます</p></div><div class="act"><button class="btn sm" id="mtAdd">＋ 商談を追加</button></div></div>
+  <div class="mtk">
+   <div class="kpi"><small>今週の商談</small><b>${wk.length}</b><span>件</span></div>
+   <div class="kpi"><small>実施済み（今週）</small><b>${wk.filter(m=>m.result==="done").length}</b><span>件</span></div>
+   <div class="kpi wide"><small>次の商談</small>${nx?`<b class="mtcd">${mtCountdown(nx)}</b><div class="mute s">${esc(fmtDate(nx.date))}${nx.start?" "+esc(nx.start):""} ／ ${esc(nx.company)}（${esc(nx.type)}）</div>`:'<b class="mute" style="font-size:16px">予定なし</b>'}</div>
+   <div class="kpi wide"><small>種類別（今週）</small><div class="mtbd">${byType.map(([t,n])=>`<span style="--mc:${MT_COLORS[t]}">${esc(t)} ${n}</span>`).join("")||'<span class="mute s">—</span>'}</div></div>
+  </div>
+  <div class="mtbar"><button class="btn ghost sm" id="mtToday">今日</button><button class="btn ghost sm" id="mtPrev">‹</button><button class="btn ghost sm" id="mtNext">›</button><b>${fmtDate(ws)} – ${fmtDate(we)}</b>
+   <div class="seg sm" style="margin-left:auto">${[["all","すべて"],["first","初回打ち合わせのみ"],["other","初回以外"]].map(([k,l])=>`<button data-mt="${k}" class="${state.mtType===k?"on":""}">${l}</button>`).join("")}</div></div>
+  <div class="mtlg"><span class="lg0">未入力</span><span class="lg1">実施済み</span><span class="lg2">来なかった・中止</span><span class="lg3">時間未定（次アクションから自動表示）</span></div>
+  <div class="mtcal"><div class="mtg" style="grid-template-columns:56px repeat(7,minmax(120px,1fr))">
+   <div class="mth"></div>${cols.map(c=>`<div class="mth ${c.d===td?"td":""}"><small class="${c.i===5?"sat":c.i===6?"sun":""}">${dw[c.i]}</small><b>${fmtDate(c.d)}</b></div>`).join("")}
+   ${hasUndated?`<div class="mtax s">終日</div>${cols.map(c=>`<div class="mtud">${c.undt.map(card).join("")}</div>`).join("")}`:""}
+   <div class="mtax">${[...Array(H1-H0)].map((_,k)=>`<div style="height:${PX}px">${String(H0+k).padStart(2,"0")}:00</div>`).join("")}</div>
+   ${cols.map(c=>`<div class="mtcol ${c.d===td?"td":""}" style="height:${(H1-H0)*PX}px">${c.timed.map(card).join("")}</div>`).join("")}
+  </div></div>
+  <section class="dsec panel" style="margin-top:20px"><div class="dh"><h3>今週の一覧 <em>${wk.length}件</em></h3></div>
+   ${wk.length?`<table class="t"><tbody>${wk.map(m=>`<tr><td class="w110">${fmtDate(m.date)} ${esc(m.start||"")}</td><td><a href="#crm-${esc(m.cid)}">${esc(m.company)}</a><div class="mute s">${esc(m.person)}</div></td><td><span class="mty" style="--mc:${MT_COLORS[m.type]||"#8a909c"}">${esc(m.type)}</span></td><td>${esc(m.place||"")}</td><td class="mute s">${esc(m.memo||"")}</td><td>${m.auto?'<span class="mute s">時間未定</span>':`<button class="btn ghost sm" data-mte="${esc(m.cid)}|${esc(m.id)}">記録</button>`}</td></tr>`).join("")}</tbody></table>`:'<div class="empty sm">この週の商談はありません</div>'}</section>`;
+  const go=d=>{state.mtWeek=d;renderMeetings();};
+  $("#mtToday").onclick=()=>go(null);$("#mtPrev").onclick=()=>go(addDays(ws,-7));$("#mtNext").onclick=()=>go(addDays(ws,7));
+  document.querySelectorAll("[data-mt]").forEach(b=>b.onclick=()=>{state.mtType=b.dataset.mt;renderMeetings();});
+  $("#mtAdd").onclick=()=>openMeetingForm(null,null);
+  document.querySelectorAll("[data-mte]").forEach(b=>b.onclick=()=>{const [cid,mid]=b.dataset.mte.split("|");const c=state.crm.find(x=>x.id===cid);if(c)openMeetingForm(c,(c.meetings||[]).find(m=>m.id===mid));});
+}
+function openMeetingForm(c,m){
+  const custs=state.crm.filter(x=>!["lost"].includes(x.status)).map(x=>[x.id,x.company]);
+  const fields=[...(c?[]:[{k:"cid",l:"顧客",t:"select",o:custs,req:true,w:true}]),
+    {k:"date",l:"日付",t:"date",req:true},{k:"type",l:"種類",t:"select",o:MT_TYPES,blank:false},
+    {k:"start",l:"開始",t:"time"},{k:"end",l:"終了",t:"time"},
+    {k:"place",l:"場所・URL",w:true,ph:"オンライン（Google Meet）／訪問：〇〇"},
+    {k:"result",l:"結果",t:"select",o:[["","未入力"],["done","実施済み"],["noshow","来なかった・中止"]],blank:false},
+    {k:"memo",l:"メモ（目的・聞くこと・結果）",t:"textarea",rows:3}];
+  openForm2({title:m?"商談を編集":"商談を追加",fields,values:m||{type:"初回打ち合わせ",date:today(),result:""},
+    onSave:async d=>{const cc=c||state.crm.find(x=>x.id===d.cid);if(!cc)return false;delete d.cid;
+      const now=new Date().toISOString(),ms=[...(cc.meetings||[])];
+      if(m){const i=ms.findIndex(x=>x.id===m.id);ms[i]={...m,...d};}else ms.push({id:newId("m"),...d});
+      const logs=[...(cc.logs||[]),{at:now,text:m?`商談を更新：${d.date} ${d.start||""} ${d.type}${d.result==="done"?"（実施済み）":d.result==="noshow"?"（来なかった・中止）":""}`:`商談を追加：${d.date} ${d.start||""} ${d.type}`}];
+      const ok=await writeC(cc.id,{...cc,meetings:ms,logs,updatedAt:now});if(ok)setTimeout(render,0);return ok;},
+    onDelete:m?async()=>{const cc=c;const ms=(cc.meetings||[]).filter(x=>x.id!==m.id);const ok=await writeC(cc.id,{...cc,meetings:ms,updatedAt:new Date().toISOString()});if(ok)setTimeout(render,0);return ok;}:null});
+}
+function meetingsPanel(c){
+  const ms=(c.meetings||[]).slice().sort((a,b)=>(b.date+(b.start||""))>(a.date+(a.start||""))?1:-1);
+  return `<div class="panel" style="margin-bottom:20px"><div style="display:flex;align-items:center;justify-content:space-between"><h3 style="margin:0">商談予定・記録</h3><button class="btn ghost sm" id="mAdd">＋ 商談を追加</button></div>
+   ${ms.length?`<ul class="mlist">${ms.map(m=>`<li data-me="${esc(m.id)}"><span class="mty" style="--mc:${MT_COLORS[m.type]||"#8a909c"}">${esc(m.type)}</span><b>${fmtDate(m.date)} ${esc(m.start||"")}${m.end?"–"+esc(m.end):""}</b>${m.result==="done"?'<span class="mrs ok">実施済み</span>':m.result==="noshow"?'<span class="mrs ng">来なかった・中止</span>':m.date<today()?'<span class="mrs">結果未入力</span>':""}<div class="mute s">${esc(m.place||"")}${m.memo?" ／ "+esc(m.memo):""}</div></li>`).join("")}</ul>`:'<div class="mute s" style="margin-top:8px">まだ商談の予定はありません</div>'}</div>`;
+}
 
 /* ===== MICHINARI事業：共通 ===== */
 const TR=()=>state.isEditor?"#training":"#";
@@ -1532,7 +1646,7 @@ function renderProducts(){
 Object.assign(state,{pdca:{},pdcaMonth:null});
 const DEPTS=[
  {id:"ceo",ic:"🏛",name:"経営",role:"CEO",color:"#2b3a67",pages:[["#plan","MICHINARIとは（事業戦略）"]]},
- {id:"cso",ic:"🤝",name:"営業",role:"CSO",color:"#1f9d6b",pages:[["#crm","顧客リスト"],["#clients","受注クライアント"],["#docs","実績・営業資料"]]},
+ {id:"cso",ic:"🤝",name:"営業",role:"CSO",color:"#1f9d6b",pages:[["#crm","顧客リスト"],["#meetings","商談予定"],["#clients","受注クライアント"],["#docs","実績・営業資料"]]},
  {id:"cmo",ic:"📣",name:"マーケティング",role:"CMO",color:"#e5484d",pages:[["#marketing","集客データ（SNS・HP）"],["#site","HP管理"]]},
  {id:"cpo",ic:"📦",name:"商品・サービス",role:"CPO",color:"#8b5cf6",pages:[["#products","商品一覧"]]},
  {id:"chro",ic:"📘",name:"人事・採用・教育",role:"CHRO",color:"#f59e0b",pages:[["#hiring","採用基準"],["#training","育成ロードマップ"]]},
@@ -1675,7 +1789,9 @@ function csoExtra(){
    <div class="funnel">${steps.map((s,i)=>`<div class="fr"><span class="fl">${s[0]}</span><div class="fb"><i style="width:${s[1]/max*100}%;background:${["#8a909c","#3b82f6","#8b5cf6","#f59e0b","#1f9d6b"][i]}"></i></div><b>${s[1]}</b><span class="fc">${i?(pct(s[1],steps[i-1][1])??"—")+(steps[i-1][1]?"%":""):""}</span></div>`).join("")}</div>
    <p class="hint">右の％は、ひとつ前の段階からの移行率です。</p></section>
   <section class="dsec panel"><div class="dh"><h3>今日やること <em>${todo.length}件</em></h3><a class="lnk" href="#crm">顧客リストへ →</a></div>
-   ${todo.length?`<ul class="todo">${todo.map(c=>todoRow(c,td)).join("")}</ul>`:'<div class="empty sm">期日が今日までのアクションはありません 🎉</div>'}</section></div>`;
+   ${todo.length?`<ul class="todo">${todo.map(c=>todoRow(c,td)).join("")}</ul>`:'<div class="empty sm">期日が今日までのアクションはありません 🎉</div>'}</section></div>
+  ${(()=>{const up=allMeetings().filter(m=>m.date>=td&&m.date<=addDays(td,13)).slice(0,8);return `<section class="dsec panel" style="margin-top:18px"><div class="dh"><h3>これからの商談（2週間） <em>${up.length}件</em></h3><a class="lnk" href="#meetings">商談予定（カレンダー）へ →</a></div>
+   ${up.length?`<table class="t"><tbody>${up.map(m=>`<tr><td class="w110">${fmtDate(m.date)} ${esc(m.start||"時間未定")}</td><td><a href="#crm-${esc(m.cid)}">${esc(m.company)}</a></td><td><span class="mty" style="--mc:${MT_COLORS[m.type]||"#8a909c"}">${esc(m.type)}</span></td><td class="mute s">${esc(m.memo||"")}</td></tr>`).join("")}</tbody></table>`:'<div class="empty sm">2週間以内の商談はありません</div>'}</section>`;})()}`;
 }
 function bindCso(){document.querySelectorAll("[data-fs]").forEach(b=>b.onclick=()=>{state.funnelScope=b.dataset.fs;render();});bindTodo();}
 /* 経営（CEO）：一覧 */
@@ -1759,7 +1875,8 @@ function sampleData(){
   const crm=co.map((c,i)=>{const r={};STAGE_ORDER.forEach((s,j)=>{if(st[i]!=="lost"&&j<=STAGE_ORDER.indexOf(st[i]))r[s]=iso(addDays(inq[i],j*4)>td?td:addDays(inq[i],j*4));});
     return {id:"c"+i,company:c,person:"担当者",region:["広島","福岡","東京"][i%3],source:src[i],status:st[i],inquiryDate:inq[i],reached:r,monthly:300000,
       services:["CMO（PM・戦略）","Web広告運用"],nextAction:["定例の準備","提案書を送る","デモを見せる","次回提案の準備","ヒアリング日程の調整","ヒアリング日程の調整","初回の連絡","初回の連絡","","見積もりの確認","初回の連絡","定例の準備"][i],
-      nextDate:st[i]==="lost"?"":addDays(td,[-1,3,0,2,5,1,0,1,0,4,2,7][i]),priority:["A","A","A","B","B","C","C","C","C","A","B","A"][i]};});
+      nextDate:st[i]==="lost"?"":addDays(td,[-1,3,0,2,5,1,0,1,0,4,2,7][i]),priority:["A","A","A","B","B","C","C","C","C","A","B","A"][i],
+      meetings:[[],[{id:"m1",date:addDays(td,3),start:"14:00",end:"15:00",type:"定例"}],[{id:"m2",date:addDays(td,1),start:"10:00",end:"11:00",type:"次回提案"}],[{id:"m3",date:addDays(td,2),start:"16:00",end:"17:00",type:"次回提案"}],[{id:"m4",date:addDays(td,-1),start:"11:00",end:"12:00",type:"初回打ち合わせ",result:"done"}],[{id:"m5",date:addDays(td,4),start:"13:00",end:"14:00",type:"初回打ち合わせ"}]][i]||[]};});
   const clients=[
     {id:"k1",company:co[0],status:"active",startDate:d(ppm,15),monthly:300000,initialFee:300000,services:["CMO（PM・戦略）","Web戦略（ロードマップ）","Web広告運用"]},
     {id:"k2",company:co[1],status:"active",startDate:d(pm,1),monthly:300000,initialFee:300000,services:["CMO（PM・戦略）","Web戦略（ロードマップ）","Web広告運用"]},
