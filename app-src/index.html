@@ -508,6 +508,12 @@ tr.hotrow td{background:#fff8f8}
 .demobar{background:#2b3a67;color:#fff;text-align:center;font-size:13px;font-weight:600;padding:8px 12px}
 body.ro [data-ped],body.ro #kEdit,body.ro .padd,body.ro [data-pdel],body.ro #pCarry,body.ro [data-done],body.ro .dlinks a,body.ro #pErr{display:none!important}
 body.ro [data-pdo]{pointer-events:none}
+body.ro .dlinks a.pub{display:inline-block!important}
+body.ro #edit,body.ro #del,body.ro #addLog,body.ro #logT,body.ro #mAdd,body.ro #mtAdd,body.ro #toClient,body.ro #addCl,body.ro #addDoc,body.ro #clAddLog,body.ro #clLogT,body.ro #edCl,body.ro [data-ed],body.ro .addrow,body.ro .lrows .x,body.ro [data-mte]{display:none!important}
+body.ro #stSel,body.ro [data-st],body.ro [data-me],body.ro [data-chk],body.ro [data-paid]{pointer-events:none}
+body.ro #stSel{opacity:.85}
+.pipe td:nth-child(2) .pill,.pipe .pill{white-space:nowrap}.pipe th.num,.pipe td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.pipe tfoot td{font-weight:700;border-top:2px solid var(--line)}
+.srcbar{display:inline-block;height:8px;border-radius:4px;background:#3b82f6;vertical-align:middle;margin-right:6px}
 
 .hpt,.hplog{list-style:none;margin:0;padding:0}.hpt li,.hplog li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
 .hpt li.done .hptx b{color:var(--mute);text-decoration:line-through}.hptx,.hplog li>div{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}.hptx small,.hplog small{font-size:12px;color:var(--mute)}
@@ -597,7 +603,7 @@ function route(){
   const h=location.hash.replace("#","");
   const biz=h===""||h==="home"||h.startsWith("d-")||h==="plan"||h==="finance"||h==="legal"||h==="products"||h==="marketing"||h==="site"||h==="hiring"||h==="docs"||h==="clients"||h.startsWith("client-")||h==="crm"||h==="meetings"||h.startsWith("crm-")||h==="weekly"||h.startsWith("weekly-")||PLANNED[h];
   const trainR=h==="training"||h.startsWith("stage-")||h.startsWith("lesson-");
-  if(IS_PUBLIC&&!(h===""||h==="home"||h.startsWith("d-"))){location.hash="";return;}
+  if(IS_PUBLIC&&!(h===""||h==="home"||h.startsWith("d-")||pubPage(h))){location.hash="";return;}
   if(state.isEditor&&!IS_MAIN&&!biz&&!(APP_MODE==="chro"&&trainR)){location.hash="";return;}
   if(state.isEditor&&biz&&!IS_MAIN){
     if(!state.crmReady){$("#main").innerHTML='<div class="loading">データを読み込み中…</div>';return;}
@@ -652,7 +658,7 @@ function renderNav(){
       const onDash=dh==="#"?(h==="#"||h==="#home"||h==="#d-"+D.id):h===dh;
       const on=onDash||inPages;
       if(on&&state.navCur!==D.id){state.navCur=D.id;state.navOpen[D.id]=true;}
-      const open=IS_PUBLIC?false:(state.navOpen[D.id]!==undefined?state.navOpen[D.id]:on);
+      const open=IS_PUBLIC?(D.id==="cso"&&on):(state.navOpen[D.id]!==undefined?state.navOpen[D.id]:on);
       const badge=D.id==="ceo"?"":D.id==="cso"&&late?'<span class="cnt red">'+late+"</span>":"";
       html+='<a href="'+dh+'" data-dept="'+D.id+'" data-on="'+(on?1:0)+'" data-open="'+(open?1:0)+'" class="'+(on?"on ":"")+((D.id==="ceo"||!IS_MAIN)?"top":"child")+'"><i class="ic">'+D.ic+'</i><span class="ml">'+D.name+'<small class="role">'+D.role+'</small></span>'+badge+(IS_PUBLIC?"":'<span class="chev'+(open?" open":"")+'" aria-hidden="true">›</span>')+"</a>";
       if(open){html+=sub(dh,"ダッシュボード（PDCA）",onDash);
@@ -1767,7 +1773,7 @@ function renderDept(id){
   let extra="";
   if(id==="cso")extra=csoExtra();
   $("#main").innerHTML=`<div class="ph"><div><div class="eyebrow" style="color:${D.color}">${D.role} ダッシュボード</div><h1>${D.ic} ${esc(D.name)}</h1></div><div class="act">${monthNav()}<button class="btn ghost sm" id="kEdit">🎯 目標・数字</button></div></div>
-  <div class="dlinks">${D.pages.map(p=>`<a href="${p[0]}">${esc(p[1])} →</a>`).join("")}${IS_MAIN?`<a class="ext" href="${DEPT_URL[id]}" target="_blank" rel="noopener">${esc(D.name)}部門アプリを開く ↗</a>`:""}${id==="cfo"?`<a href="${FREEE_URL}" target="_blank" rel="noopener">freee ↗</a>`:""}${al?`<span class="dal">⚠ ${esc(al)}</span>`:""}</div>
+  <div class="dlinks">${D.pages.map(p=>`<a href="${p[0]}"${pubPage(p[0].slice(1))?' class="pub"':""}>${esc(p[1])} →</a>`).join("")}${IS_MAIN&&!IS_PUBLIC?`<a class="ext" href="${DEPT_URL[id]}" target="_blank" rel="noopener">${esc(D.name)}部門アプリを開く ↗</a>`:""}${id==="cfo"?`<a href="${FREEE_URL}" target="_blank" rel="noopener">freee ↗</a>`:""}${al?`<span class="dal">⚠ ${esc(al)}</span>`:""}</div>
   <section class="dsec"><h3 class="h3">${moLabel(mo)}の数字</h3><div class="pks">${K.map(kpiCard).join("")}</div>
    <p class="hint">${K.some(x=>!x.v)?"「手入力」の項目は 🎯目標・数字 から実績を入れます。":""}それ以外は各ページのデータから自動で集計しています。</p></section>
   ${id==="ceo"?todoBoard():""}
@@ -1790,7 +1796,28 @@ function csoExtra(){
   <section class="dsec panel"><div class="dh"><h3>今日やること <em>${todo.length}件</em></h3><a class="lnk" href="#crm">顧客リストへ →</a></div>
    ${todo.length?`<ul class="todo">${todo.map(c=>todoRow(c,td)).join("")}</ul>`:'<div class="empty sm">期日が今日までのアクションはありません 🎉</div>'}</section></div>
   ${(()=>{const up=allMeetings().filter(m=>m.date>=td&&m.date<=addDays(td,13)).slice(0,8);return `<section class="dsec panel" style="margin-top:18px"><div class="dh"><h3>これからの商談（2週間） <em>${up.length}件</em></h3><a class="lnk" href="#meetings">商談予定（カレンダー）へ →</a></div>
-   ${up.length?`<table class="t"><tbody>${up.map(m=>`<tr><td class="w110">${fmtDate(m.date)} ${esc(m.start||"時間未定")}</td><td><a href="#crm-${esc(m.cid)}">${esc(m.company)}</a></td><td><span class="mty" style="--mc:${MT_COLORS[m.type]||"#8a909c"}">${esc(m.type)}</span></td><td class="mute s">${esc(m.memo||"")}</td></tr>`).join("")}</tbody></table>`:'<div class="empty sm">2週間以内の商談はありません</div>'}</section>`;})()}`;
+   ${up.length?`<table class="t"><tbody>${up.map(m=>`<tr><td class="w110">${fmtDate(m.date)} ${esc(m.start||"時間未定")}</td><td><a href="#crm-${esc(m.cid)}">${esc(m.company)}</a></td><td><span class="mty" style="--mc:${MT_COLORS[m.type]||"#8a909c"}">${esc(m.type)}</span></td><td class="mute s">${esc(m.memo||"")}</td></tr>`).join("")}</tbody></table>`:'<div class="empty sm">2週間以内の商談はありません</div>'}</section>`;})()}
+  <div style="margin-top:18px">${csoPipeline()}</div><div style="margin-top:18px">${csoSources()}</div>`;
+}
+/* 営業：提案中の案件（見込み月額）と流入経路別 */
+function csoPipeline(){
+  const L=state.crm.filter(c=>["diagnosis","proposal"].includes(c.status)).sort((a,b)=>(a.status===b.status?0:a.status==="proposal"?-1:1)||((b.monthly||0)-(a.monthly||0)));
+  const sum=st=>L.filter(c=>!st||c.status===st).reduce((a,c)=>a+(+c.monthly||0),0);
+  const ini=L.reduce((a,c)=>a+(+c.initialFee||0),0);
+  return `<section class="dsec panel"><div class="dh"><h3>提案中の案件 <em>${L.length}件</em></h3><a class="lnk" href="#crm">顧客リストへ →</a></div>
+   <div class="pks" style="grid-template-columns:repeat(3,1fr);margin-bottom:12px">
+    <div class="pk"><small>見込み月額（合計）</small><div class="pkv"><b>${yen(sum())}</b></div></div>
+    <div class="pk"><small>うち契約の調整中</small><div class="pkv"><b>${yen(sum("proposal"))}</b></div></div>
+    <div class="pk"><small>見込み初期費用</small><div class="pkv"><b>${yen(ini)}</b></div></div></div>
+   ${L.length?`<table class="t pipe"><thead><tr><th>会社</th><th>段階</th><th>提案</th><th class="num">見込み月額</th><th>返事の期日</th></tr></thead><tbody>${L.map(c=>`<tr><td><a href="#crm-${esc(c.id)}">${esc(c.company)}</a></td><td>${pill(c.status)}</td><td class="mute s">${esc((c.services||[]).join("・"))}</td><td class="num">${c.monthly?yen(c.monthly):"—"}</td><td class="${c.replyDue&&c.replyDue<today()?"late":""}">${c.replyDue?fmtDate(c.replyDue):"—"}</td></tr>`).join("")}</tbody></table>`:'<div class="empty sm">次回提案・契約の調整の段階の案件はありません</div>'}</section>`;
+}
+function csoSources(){
+  const by={};state.crm.forEach(c=>{const k=(c.source||"不明").replace(/^紹介（.*）$/,m=>m);(by[k]=by[k]||[]).push(c);});
+  const R=Object.entries(by).map(([k,L])=>({k,n:L.length,c:L.filter(x=>reached(x,"consult")).length,w:L.filter(x=>x.status==="won").length})).sort((a,b)=>b.n-a.n||b.w-a.w);
+  const max=Math.max(1,...R.map(r=>r.n));
+  return `<section class="dsec panel"><div class="dh"><h3>流入経路別 <em class="mute s" style="font-weight:500">全期間</em></h3></div>
+   ${R.length?`<table class="t pipe"><thead><tr><th>流入経路</th><th>接点</th><th class="num">初回打ち合わせ</th><th class="num">受注</th><th class="num">受注率</th></tr></thead><tbody>${R.map(r=>`<tr><td>${esc(r.k)}</td><td><span class="srcbar" style="width:${Math.round(r.n/max*80)}px"></span>${r.n}</td><td class="num">${r.c}</td><td class="num">${r.w}</td><td class="num">${r.n?Math.round(r.w/r.n*100)+"%":"—"}</td></tr>`).join("")}</tbody></table>
+   <p class="hint">受注率＝その経路の接点のうち受注した割合。どの経路に力を入れるかの判断に使います。</p>`:'<div class="empty sm">まだ顧客がいません</div>'}</section>`;
 }
 function bindCso(){document.querySelectorAll("[data-fs]").forEach(b=>b.onclick=()=>{state.funnelScope=b.dataset.fs;render();});bindTodo();}
 /* 経営（CEO）：一覧 */
@@ -1863,24 +1890,83 @@ function renderFinance(){
 
 /* ===== 公開デモ（GitHub）：サンプルデータで表示だけ ===== */
 const IS_PUBLIC=APP_MODE==="public";
+/* 公開デモで見せる営業のページ（表示のみ） */
+function pubPage(h){return APP_MODE==="public"&&(h==="crm"||h==="meetings"||h==="clients"||h==="docs"||h.startsWith("crm-")||h.startsWith("client-"));}
 function sampleData(){
   const td=today(),mo=thisMonth(),pm=shiftMonth(mo,-1),ppm=shiftMonth(mo,-2);
   const d=(m,day)=>m+"-"+String(day).padStart(2,"0");
   const iso=s=>s+"T10:00:00+09:00";
-  const co=["株式会社サンプル工務店","サンプル不動産株式会社","株式会社デモ食品","デモ観光株式会社","株式会社サンプル歯科","サンプル物流株式会社","株式会社デモ建設","サンプル保険代理店","株式会社デモ美容","サンプル製作所","株式会社デモ住宅","サンプル商事株式会社"];
-  const src=["X","note","HP","LINE","Threads","紹介","X","HP","note","LINE","紹介","X"];
-  const st=["won","won","proposal","diagnosis","consult","consult","lead","lead","lost","proposal","lead","won"];
-  const inq=[d(ppm,8),d(ppm,20),d(pm,3),d(pm,12),d(pm,22),d(mo,2),d(mo,4),d(mo,6),d(pm,9),d(mo,1),d(mo,7),d(pm,18)];
-  const crm=co.map((c,i)=>{const r={};STAGE_ORDER.forEach((s,j)=>{if(st[i]!=="lost"&&j<=STAGE_ORDER.indexOf(st[i]))r[s]=iso(addDays(inq[i],j*4)>td?td:addDays(inq[i],j*4));});
-    return {id:"c"+i,company:c,person:"担当者",region:["広島","福岡","東京"][i%3],source:src[i],status:st[i],inquiryDate:inq[i],reached:r,monthly:300000,
-      services:["CMO（PM・戦略）","Web広告運用"],nextAction:["定例の準備","提案書を送る","デモを見せる","次回提案の準備","ヒアリング日程の調整","ヒアリング日程の調整","初回の連絡","初回の連絡","","見積もりの確認","初回の連絡","定例の準備"][i],
-      nextDate:st[i]==="lost"?"":addDays(td,[-1,3,0,2,5,1,0,1,0,4,2,7][i]),priority:["A","A","A","B","B","C","C","C","C","A","B","A"][i],
-      meetings:[[],[{id:"m1",date:addDays(td,3),start:"14:00",end:"15:00",type:"定例"}],[{id:"m2",date:addDays(td,1),start:"10:00",end:"11:00",type:"次回提案"}],[{id:"m3",date:addDays(td,2),start:"16:00",end:"17:00",type:"次回提案"}],[{id:"m4",date:addDays(td,-1),start:"11:00",end:"12:00",type:"初回打ち合わせ",result:"done"}],[{id:"m5",date:addDays(td,4),start:"13:00",end:"14:00",type:"初回打ち合わせ"}]][i]||[]};});
+  /* 営業：平日だけで日付を動かす（土日は商談を入れない） */
+  const isWk=x=>{const g=new Date(x+"T00:00:00").getDay();return g!==0&&g!==6;};
+  const bd=n=>{let x=td,k=0;const st=n>=0?1:-1;if(n===0){while(!isWk(x))x=addDays(x,1);return x;}while(k<Math.abs(n)){x=addDays(x,st);if(isWk(x))k++;}return x;};
+  const ago=n=>addDays(td,-n);
+  const SV={cmo:"CMO（PM・戦略）",web:"Web戦略（ロードマップ）",ad:"Web広告運用",cr:"クリエイティブ（バナー・動画）",lb:"LINE構築",lo:"LINE運用",lp:"LP・HP制作"};
+  const M=(id,date,start,end,type,place,memo,result)=>({id,date,start,end,type,place:place||"",memo:memo||"",result:result||""});
+  const R=(company,o)=>{const r={},keys=STAGE_ORDER;let t=o.inq;keys.forEach((k,j)=>{if(o.st==="lost"?j<=(o.lostAt||1):j<=keys.indexOf(o.st)){t+=j?o.gap[j-1]:0;r[k]=iso(addDays(td,t>0?0:t));}});
+    return {id:o.id,company,person:o.person,role:o.role,industry:o.ind,region:o.reg,source:o.src,status:o.st,inquiryDate:addDays(td,o.inq),reached:r,priority:o.pri,
+      customerType:o.ct||"A",persona:o.pe||"1",employees:o.emp,revenue:o.rev,mktDept:o.mk||"なし",issue:o.issue,decisionMaker:o.dm,budget:o.bud,timing:o.tim,
+      analysisDate:r.consult?r.consult.slice(0,10):"",gaAccess:o.ga,findings:o.find,services:o.sv||[],monthly:o.mo||0,initialFee:o.ini||0,adBudget:o.adb||0,plan:o.plan,
+      proposalDate:r.diagnosis?r.diagnosis.slice(0,10):"",replyDue:o.rd||"",nextAction:o.na||"",nextDate:o.nd||"",partner:"MICHINARI（自社）",lostReason:o.lr||"",memo:o.memo||"",
+      meetings:o.ms||[],logs:(o.logs||[]).map(([dd,tx])=>({at:iso(addDays(td,dd)),text:tx})),createdAt:iso(addDays(td,o.inq)),updatedAt:iso(td)};};
+  const crm=[
+   R("株式会社サンプル工務店",{id:"c0",person:"山本 様",role:"代表取締役",ind:"建設・リフォーム",reg:"広島",src:"紹介（経営コンサル・代理店）",st:"won",inq:-78,gap:[6,12,7,8],pri:"A",emp:"25名",rev:"3億〜10億円",ct:"B",pe:"B",
+     issue:"HPからの問い合わせが月10件前後で止まっている",dm:"代表",bud:"月30万円まで",tim:"すぐ",ga:"もらった",find:"LINE登録後のフォローがなく、見積もり前に離脱している",sv:[SV.cmo,SV.ad,SV.lb,SV.lo],mo:350000,ini:350000,adb:150000,plan:"推奨プラン",
+     na:"月次定例の準備（10月の数字まとめ）",nd:bd(2),ms:[M("m01",bd(-6),"17:00","18:00","定例","オンライン","10月の振り返り","done"),M("m02",bd(2),"17:00","18:00","定例","オンライン","11月前半の数字確認")],
+     logs:[[-78,"紹介元の経営コンサルからご紹介"],[-72,"初回打ち合わせ：問い合わせ導線を確認"],[-52,"受注（キックオフ）"],[-6,"定例：LINE経由の見積もり依頼が先月比+40%"]]}),
+   R("サンプル不動産株式会社",{id:"c1",person:"佐藤 様",role:"営業部長",ind:"不動産",reg:"福岡",src:"HP",st:"won",inq:-44,gap:[4,10,6,8],pri:"A",emp:"40名",rev:"3億〜10億円",mk:"あり",pe:"3",
+     issue:"ポータルサイト頼みで、自社HPからの反響が少ない",dm:"社長",bud:"月20〜30万円",tim:"今期中",ga:"もらった",find:"物件ページの離脱率が高く、問い合わせボタンが見つけにくい",sv:[SV.cmo,SV.ad],mo:200000,ini:150000,adb:100000,plan:"最小プラン",
+     na:"広告の初回レポート送付",nd:bd(3),ms:[M("m03",bd(4),"10:00","11:00","定例","先方オフィス","広告の初回レポート")],
+     logs:[[-44,"HPのお問い合わせフォームから"],[-40,"初回打ち合わせ（オンライン）"],[-16,"受注（キックオフ）"]]}),
+   R("サンプル商事株式会社",{id:"c2",person:"田中 様",role:"取締役",ind:"卸売",reg:"東京",src:"紹介（士業・金融機関）",st:"won",inq:-38,gap:[5,11,9,8],pri:"A",emp:"60名",rev:"10億円以上",pe:"2",
+     issue:"新しいEC事業を立ち上げたいが、社内にWebがわかる人がいない",dm:"取締役",bud:"月30万円前後",tim:"来月から",ga:"依頼中",find:"立ち上げ3か月のロードマップと、広告・LINEの順番",sv:[SV.cmo,SV.web,SV.lb,SV.lo],mo:250000,ini:350000,plan:"推奨プラン",
+     na:"キックオフの資料を送る",nd:bd(1),ms:[M("m04",bd(3),"16:00","17:30","その他","オンライン","キックオフ（体制・スケジュール確認）")],
+     logs:[[-38,"顧問税理士からのご紹介"],[-33,"初回打ち合わせ"],[-13,"次回提案：推奨プランで合意"],[-5,"受注（キックオフ）"]]}),
+   R("株式会社デモ食品",{id:"c3",person:"中村 様",role:"マーケティング担当",ind:"食品製造",reg:"広島",src:"note",st:"proposal",inq:-30,gap:[6,12,9],pri:"A",emp:"35名",rev:"3億〜10億円",mk:"あり",pe:"3",
+     issue:"通販の広告を自社で回しているが、CPAが下がらない",dm:"専務",bud:"広告費込みで月50万円",tim:"年内",ga:"もらった",find:"広告の訴求が1パターンだけ。LPのファーストビューを2案で検証したい",sv:[SV.cmo,SV.ad,SV.cr],mo:250000,ini:150000,adb:300000,plan:"両方",rd:bd(3),
+     na:"契約書のドラフトを送る",nd:ago(0),ms:[M("m05",bd(-3),"14:00","15:00","次回提案","オンライン","推奨・最小の2案を提示","done"),M("m06",bd(1),"14:00","15:00","契約の調整","オンライン","契約内容と開始日のすり合わせ")],
+     logs:[[-30,"noteの記事から問い合わせ"],[-24,"初回打ち合わせ"],[-12,"次回提案"],[-3,"専務と契約内容の調整に入る"]]}),
+   R("デモ観光株式会社",{id:"c4",person:"木村 様",role:"支配人",ind:"観光・宿泊",reg:"福岡",src:"X",st:"proposal",inq:-26,gap:[7,10,7],pri:"A",emp:"18名",rev:"3億円未満",pe:"1",
+     issue:"OTA手数料が重く、自社サイトからの直接予約を増やしたい",dm:"社長",bud:"月20万円",tim:"繁忙期前",ga:"もらった",find:"自社予約の導線がスマホで3タップ多い",sv:[SV.cmo,SV.lp,SV.lb],mo:150000,ini:400000,plan:"最小プラン",rd:bd(4),
+     na:"見積もりの修正版を送る",nd:bd(1),ms:[M("m07",bd(3),"11:00","12:00","契約の調整","オンライン","見積もりの修正版の説明")],logs:[[-26,"Xのポストから DM"],[-19,"初回打ち合わせ"],[-9,"次回提案"],[-2,"社長から見積もりの修正依頼"]]}),
+   R("株式会社サンプル歯科",{id:"c5",person:"伊藤 院長",role:"院長",ind:"医療・歯科",reg:"東京",src:"LINE",st:"diagnosis",inq:-16,gap:[5,7],pri:"A",emp:"12名",rev:"3億円未満",pe:"1",
+     issue:"自費診療の問い合わせを増やしたい",dm:"院長",bud:"月15〜20万円",tim:"来月",ga:"もらった",find:"Googleマップからの流入が多いのに、予約ページへの導線が弱い",sv:[SV.cmo,SV.ad],mo:200000,ini:150000,adb:100000,plan:"推奨プラン",rd:bd(6),
+     na:"次回提案（推奨プラン）",nd:bd(2),ms:[M("m08",bd(-6),"13:00","14:00","初回打ち合わせ","医院","ヒアリング","done"),M("m09",bd(2),"10:00","11:00","次回提案","オンライン","推奨プラン・最小プランの2案")],logs:[[-16,"公式LINEから相談"],[-11,"初回打ち合わせ（医院で）"]]}),
+   R("サンプル物流株式会社",{id:"c6",person:"小林 様",role:"総務部長",ind:"物流",reg:"広島",src:"紹介（経営コンサル・代理店）",st:"diagnosis",inq:-14,gap:[6,7],pri:"B",emp:"120名",rev:"10億円以上",ct:"B",pe:"B",
+     issue:"ドライバーの採用が進まない（採用広報）",dm:"社長",bud:"未定",tim:"来年春までに",ga:"まだ",find:"求人ページに働く人の声がない。Indeedとの連動も弱い",sv:[SV.cmo,SV.ad,SV.cr],mo:200000,ini:150000,plan:"推奨プラン",
+     na:"次回提案資料をつくる",nd:bd(3),ms:[M("m10",bd(-8),"15:00","16:00","初回打ち合わせ","先方オフィス","","done"),M("m11",bd(4),"15:00","16:00","次回提案","先方オフィス","採用広報の提案")],logs:[[-14,"紹介元のコンサルからご紹介"],[-8,"初回打ち合わせ"]]}),
+   R("株式会社デモ美容",{id:"c7",person:"渡辺 様",role:"オーナー",ind:"美容サロン",reg:"福岡",src:"Threads",st:"diagnosis",inq:-20,gap:[5,9],pri:"B",emp:"8名",rev:"3億円未満",pe:"1",
+     issue:"Instagramのフォロワーはいるが予約につながらない",dm:"オーナー",bud:"月10万円",tim:"検討中",ga:"依頼中",find:"プロフィールから予約までの導線が長い",sv:[SV.cmo,SV.lb],mo:100000,ini:200000,plan:"最小プラン",
+     na:"次回提案（最小プラン）",nd:bd(0),ms:[M("m12",bd(0),"16:00","17:00","次回提案","オンライン","LINE構築を中心に")],logs:[[-20,"Threadsの投稿から問い合わせ"],[-15,"初回打ち合わせ"]]}),
+   R("株式会社デモ建設",{id:"c8",person:"加藤 様",role:"常務",ind:"建設",reg:"広島",src:"直接営業",st:"consult",inq:-10,gap:[7],pri:"B",emp:"45名",rev:"3億〜10億円",pe:"2",
+     issue:"新しくリフォーム部門をつくったが集客の型がない",dm:"社長",bud:"月20万円前後",tim:"年明け",ga:"依頼中",find:"",
+     na:"GA4の閲覧権限をもらう",nd:bd(1),ms:[M("m13",bd(-3),"10:00","11:00","初回打ち合わせ","先方オフィス","ヒアリング","done"),M("m14",bd(5),"13:00","14:00","次回提案","先方オフィス","")],logs:[[-10,"展示会で名刺交換"],[-3,"初回打ち合わせ"]]}),
+   R("サンプル製作所",{id:"c9",person:"松本 様",role:"営業課長",ind:"製造業",reg:"広島",src:"HP",st:"consult",inq:-7,gap:[2],pri:"B",emp:"80名",rev:"10億円以上",pe:"3",
+     issue:"BtoBの引き合いをWebから取りたい",dm:"部長",bud:"不明",tim:"来期",ga:"まだ",
+     na:"初回打ち合わせ（訪問）",nd:bd(1),ms:[M("m15",bd(1),"10:00","11:00","初回打ち合わせ","先方工場","工場見学も兼ねて")],logs:[[-7,"HPのフォームから資料請求"],[-5,"初回打ち合わせの日程確定"]]}),
+   R("株式会社デモ住宅",{id:"c10",person:"林 様",role:"代表",ind:"住宅販売",reg:"東京",src:"紹介",st:"consult",inq:-6,gap:[4],pri:"B",emp:"15名",rev:"3億円未満",pe:"1",
+     issue:"モデルハウスの来場予約を増やしたい",dm:"代表",bud:"月15万円",tim:"春の繁忙期前",ga:"依頼中",
+     na:"ヒアリング内容のまとめを送る",nd:ago(1),ms:[M("m16",bd(-1),"11:00","12:00","初回打ち合わせ","オンライン","","done")],logs:[[-6,"既存クライアントからご紹介"],[-2,"初回打ち合わせ"]]}),
+   R("デモ保険代理店",{id:"c11",person:"井上 様",role:"代表",ind:"保険代理店",reg:"福岡",src:"X",st:"lead",inq:-3,gap:[],pri:"C",emp:"6名",rev:"3億円未満",
+     issue:"",na:"日程候補を送る",nd:bd(1),ms:[M("m17",bd(6),"11:00","12:00","初回打ち合わせ","オンライン","")],logs:[[-3,"Xのポストに問い合わせ"]]}),
+   R("株式会社サンプルクリニック",{id:"c12",person:"事務長",role:"事務長",ind:"医療",reg:"東京",src:"HP",st:"lead",inq:-1,gap:[],pri:"C",emp:"20名",rev:"3億円未満",
+     issue:"",na:"お礼と日程候補を送る",nd:bd(0),logs:[[-1,"HPのフォームから問い合わせ"]]}),
+   R("サンプル家具株式会社",{id:"c13",person:"斎藤 様",role:"店長",ind:"小売",reg:"広島",src:"note",st:"lost",lostAt:2,inq:-50,gap:[5,10],pri:"C",emp:"10名",rev:"3億円未満",
+     issue:"ECの売上を伸ばしたい",lr:"予算が合わない（来期に再検討）",na:"",nd:"",logs:[[-50,"noteから問い合わせ"],[-45,"初回打ち合わせ"],[-35,"次回提案"],[-28,"失注：予算が合わない"]]})];
   const clients=[
-    {id:"k1",company:co[0],status:"active",startDate:d(ppm,15),monthly:300000,initialFee:300000,services:["CMO（PM・戦略）","Web戦略（ロードマップ）","Web広告運用"]},
-    {id:"k2",company:co[1],status:"active",startDate:d(pm,1),monthly:300000,initialFee:300000,services:["CMO（PM・戦略）","Web戦略（ロードマップ）","Web広告運用"]},
-    {id:"k3",company:co[11],status:"active",startDate:d(mo,1),monthly:400000,initialFee:300000,services:["CMO（PM・戦略）","Web広告運用","LINE運用"]}];
-  const payments={k1:{paid:{[ppm]:1,[pm]:1,[mo]:1}},k2:{paid:{[pm]:1}}};
+    {id:"k1",crmId:"c0",company:"株式会社サンプル工務店",status:"active",startDate:addDays(td,-52),renewDate:addDays(td,128),monthly:350000,initialFee:350000,services:[SV.cmo,SV.ad,SV.lb,SV.lo],partner:"MICHINARI（自社）",contact:"山本 様（代表）",meeting:"毎月第3金曜 17:00",satisfaction:5,
+     logs:[{at:iso(addDays(td,-6)),text:"定例：LINE経由の見積もり依頼が先月比+40%。来月は施工事例ページを追加"}],issues:[{text:"施工事例を3件もらう（先方）",done:false},{text:"LINEのステップ配信を2通追加",done:true}]},
+    {id:"k2",crmId:"c1",company:"サンプル不動産株式会社",status:"active",startDate:addDays(td,-16),renewDate:addDays(td,164),monthly:200000,initialFee:150000,services:[SV.cmo,SV.ad],partner:"MICHINARI（自社）",contact:"佐藤 様（営業部長）",meeting:"隔週水曜 10:00",satisfaction:4,
+     logs:[{at:iso(addDays(td,-9)),text:"キックオフ：物件ページの問い合わせボタンを改修"}],issues:[{text:"GA4のコンバージョン設定",done:true},{text:"広告の初回レポート",done:false}]},
+    {id:"k3",crmId:"c2",company:"サンプル商事株式会社",status:"prep",startDate:addDays(td,13),monthly:250000,initialFee:350000,services:[SV.cmo,SV.web,SV.lb,SV.lo],partner:"MICHINARI（自社）",contact:"田中 様（取締役）",meeting:"未定",
+     issues:[{text:"キックオフの日程を決める",done:true},{text:"GA4・広告アカウントの権限をもらう",done:false}]}];
+  const payments={k1:{paid:{[pm]:1,[mo]:1}},k2:{paid:{}}};
+  const docs=[
+    {id:"d1",type:"portfolio",genre:"LINE構築・運用",title:"工務店：LINEで見積もり依頼を増やす",client:"建設・リフォーム（広島）",publish:"匿名ならOK",period:"3か月",purpose:"LINE登録後のフォローで見積もり依頼を増やす",result:"見積もり依頼 月10件→月14件"},
+    {id:"d2",type:"portfolio",genre:"広告運用",title:"食品メーカー：通販広告の改善",client:"食品製造（広島）",publish:"匿名ならOK",period:"6か月",purpose:"CPAを下げる",result:"CPA 32%改善"},
+    {id:"d3",type:"portfolio",genre:"採用・広報",title:"人材会社：採用広報とSNS運用",client:"人材サービス",publish:"社内のみ",period:"継続中",purpose:"応募数を増やす",result:"応募数 2.1倍"},
+    {id:"d4",type:"demo",genre:"ダッシュボード",title:"事業ダッシュボード（このデモ）",client:"",publish:"社名も出してOK",purpose:"経営・営業・マーケの数字とPDCAを一画面で",url:"https://michinari-inc.jp/dashboard/"},
+    {id:"d5",type:"material",genre:"その他",title:"初回紹介資料（約10枚）",publish:"社名も出してOK",purpose:"初回打ち合わせで会社とサービスを紹介する"},
+    {id:"d6",type:"material",genre:"その他",title:"次回提案資料の型（推奨・最小の2案）",publish:"社内のみ",purpose:"初回のヒアリングをもとに2案で提案する"}];
   const mkt={};let w=weekStart(d(ppm,1));let i=0;
   while(w<=td){mkt[w]={weekStart:w,x:{posts:5+i%3,impressions:1800+i*260,engagements:60+i*9,followers:300+i*12},th_cmo:{posts:7,views:420+i*55,likes:10+i,replies:3,followers:80+i*4},note:{posts:1,impressions:200+i*40,views:60+i*9,likes:4+i%4,followers:20+i*2},hp:{sessions:120+i*14,users:90+i*10,fromX:12+i,fromThreads:4+i%3,fromNote:8+i,fromSearch:40+i*3,lineClicks:3+i%4,formSubmits:1+i%2}};w=addDays(w,7);i++;}
   const mposts=[{id:"m1",date:d(mo,3),channel:"X",category:"代表コラム",theme:"地方企業がGA4で最初に見るべき3つの数字",impressions:3200,reactions:96,clicks:31},{id:"m2",date:d(mo,5),channel:"note",category:"代表コラム",theme:"外部CMOという働き方",impressions:640,reactions:22,clicks:14},{id:"m3",date:d(pm,20),channel:"Threads（pointaxis_cmo）",category:"",theme:"問い合わせ対応を速くする仕組み",impressions:880,reactions:18,clicks:6}];
@@ -1899,7 +1985,7 @@ function sampleData(){
   const P=(plan,actions,check,act2,targets,actuals)=>({plan,actions,check,act:act2,targets,actuals:actuals||{},updatedAt:iso(td)});
   const pdca={};
   pdca["ceo_"+mo]=P("- まず5社受注。初回打ち合わせを月5件\n- 各部門の数字を毎週確認する",[act("月次の経営会議",addDays(td,6),false),act("各部門の目標を確定",d(mo,3),true)],"","",{mrr:1000000,customers:4,leads:10});
-  pdca["cso_"+mo]=P("- 初回打ち合わせを月5件\n- 初回から2週間以内に次回提案",[act("次回提案（デモ食品）",addDays(td,2),false),act("提案書テンプレートの見直し",d(mo,5),true),act("紹介元へのお礼連絡",addDays(td,-1),false)],"","",{leads:10,consult:5,proposal:3,won:2});
+  pdca["cso_"+mo]=P("- 初回打ち合わせを月5件（紹介元から3件、SNS・HPから2件）\n- 初回から2週間以内に次回提案（推奨・最小の2案）\n- 契約の調整中の2社（デモ食品・デモ観光）を今月中に受注",[act("デモ食品：契約書のドラフトを送る",ago(0),false),act("デモ観光：見積もりの修正版を送る",bd(1),false),act("紹介元の経営コンサルに近況報告",ago(2),true),act("次回提案資料の型を更新",ago(6),true),act("サンプル歯科・物流の次回提案",bd(4),false)],"- 初回打ち合わせは6件で目標達成。紹介経由が中心\n- 問い合わせは7件で目標の7割。SNS経由が少ない","- 紹介元への定期連絡を月2回にする\n- 初回打ち合わせのあと48時間以内に要点をまとめて送る",{leads:10,consult:5,proposal:3,won:2,rate:30});
   pdca["cmo_"+mo]=P("- Xは週5投稿、noteは週1本\n- HPのLINEボタンを目立たせる",[act("note記事「外部CMOという働き方」",d(mo,5),true),act("HPのLINEボタン改修",addDays(td,4),false)],"","",{show:20000,posts:30,hp:700,cv:20,snsLeads:6});
   pdca["cpo_"+mo]=P("- 料金表と提案資料の型を整える",[act("サービス資料の更新",addDays(td,5),false)],"","",{onSale:4,newDeals:2,active:4});
   pdca["chro_"+mo]=P("- 営業メンバーを1名採用\n- 研修の営業編を公開",[act("求人票の作成",d(mo,4),true),act("面談3件",addDays(td,8),false)],"","",{applicants:5,interviews:3,hires:1,lessons:12},{applicants:4,interviews:2,hires:0});
@@ -1910,12 +1996,13 @@ function sampleData(){
   const todos=[T("sales","初回打ち合わせを3件実施","A",addDays(td,5),false),T("sales","提案書テンプレートの見直し","B",addDays(td,-3),true),T("sales","紹介元へのお礼と近況報告","B",addDays(td,-1),false),T("sales","商談後のフォロー連絡の型をつくる","C","",false),
     T("acq","note記事を週1本公開","A",addDays(td,2),false),T("acq","HPのLINEボタンを目立たせる","A",addDays(td,4),false),T("acq","Xの固定ポストを更新","B",addDays(td,-4),true),T("acq","Threadsの投稿テーマを整理","C","",true),
     T("product","料金表を新しい形に更新","A",addDays(td,6),false),T("product","支援実績を2件追加","B",addDays(td,10),false),T("product","料金表の見直し","B",addDays(td,-6),true)];
-  return {crm,clients,payments,mkt,mposts,products,legal,stages,lessons,pdca,todos,goals:{customers:4,mrr:1000000,inquiries:10}};
+  return {crm,clients,payments,docs,mkt,mposts,products,legal,stages,lessons,pdca,todos,goals:{customers:4,mrr:1000000,inquiries:10}};
 }
 function startPublic(){
   const S=sampleData();
   Object.assign(state,{crm:S.crm,rawClients:S.clients,payments:S.payments,mkt:S.mkt,mposts:S.mposts,products:S.products,legal:S.legal,stages:S.stages,lessons:S.lessons,pdca:S.pdca,todos:S.todos,goals:S.goals,
-    isEditor:true,crmReady:true,clientsReady:true,productsReady:true,mktReady:true,docsReady:true,planReady:true,bizChecked:true,ready:true,docs:[],weekly:{},kpisnap:{}});
+    isEditor:true,crmReady:true,clientsReady:true,productsReady:true,mktReady:true,docsReady:true,planReady:true,bizChecked:true,ready:true,docs:S.docs,weekly:{},kpisnap:{}});
+  state.db={doc:()=>({set:()=>Promise.reject(new Error("デモ画面のため保存されません"))})};
   mergePay();document.body.classList.add("ro");
   document.title="MICHINARI 事業ダッシュボード（デモ）";
   const b=document.querySelector(".brand b"),sm=document.querySelector(".brand small"),mb=document.querySelector(".mtop b");
