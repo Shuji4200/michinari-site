@@ -997,6 +997,53 @@ html,body{background:var(--page)}
 .pp li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
 .pp li span{color:#4a525a}.pp li b{text-align:right;font-weight:700}
 @media (max-width:820px){.pain-row{grid-template-columns:minmax(0,1fr)}.pain-ar{transform:rotate(90deg);height:24px}.purposes{grid-template-columns:minmax(0,1fr)}.pp li{flex-direction:column;gap:2px}.pp li b{text-align:left}}
+
+/* ===== PMF ===== */
+.pu{display:grid;grid-template-columns:minmax(0,1fr) 34px minmax(0,1.15fr) 34px minmax(0,1fr);gap:10px;align-items:stretch}
+.pc{background:#f4f6f9;border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:6px}
+.pc.hl{background:var(--ink);color:#fff}
+.pc .pk{font-size:12.5px;font-weight:900;letter-spacing:.08em;color:var(--red)}
+.pc.hl .pk{color:#ff8b7f}
+.pc.hl h3{color:#fff;font:800 26px/1.2 var(--en)}
+.pc h3{font-size:21px;font-weight:900}
+.pc p{font-size:14px;line-height:1.7;color:#4a525a}.pc.hl p{color:#d9dee4}
+.pa{display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:var(--red)}
+.pmf-band{margin-top:18px;padding:14px 20px;border-left:4px solid var(--red);background:#fdf3f1;font-size:15.5px;font-weight:700;line-height:1.7}
+.pmf-band em{font-style:normal;color:var(--red)}
+.pmf-sub{margin-top:30px;font-size:17px;font-weight:900}
+.fj{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-top:14px;counter-reset:none}
+.fj li{position:relative;background:#f4f6f9;border-radius:10px;padding:14px 12px 14px;display:flex;flex-direction:column;gap:2px}
+.fj li:not(:last-child)::after{content:"";position:absolute;right:-7px;top:50%;width:6px;height:10px;transform:translateY(-50%);background:var(--red);clip-path:polygon(0 0,100% 50%,0 100%)}
+.fj .fn{font:700 11.5px var(--mono);color:var(--muted)}
+.fj b{font:800 20px/1.2 var(--en);color:var(--ink)}
+.fj i{font-style:normal;font-size:11px;color:var(--muted)}
+.fj p{margin-top:6px;font-size:13px;line-height:1.55;font-weight:700}
+.fj li.hl{background:var(--red)}.fj li.hl b,.fj li.hl i,.fj li.hl .fn,.fj li.hl p{color:#fff}
+.pmf-src{margin-top:10px;font-size:11.5px;color:var(--muted)}
+.pmf-note{margin-top:12px;font-size:13px;color:var(--muted)}
+.pmf-wrap{margin-bottom:clamp(40px,5vw,64px)}
+.loops{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.lp{border-radius:12px;padding:20px 22px}
+.lp.bad{background:#f4f6f9}.lp.good{background:#fff;border:1.5px solid var(--red)}
+.lp .lh{font-size:17px;font-weight:900;display:flex;align-items:center;gap:10px}
+.lp .lh span{font-size:12px;font-weight:900;padding:2px 10px;border-radius:99px;background:#6b7480;color:#fff}
+.lp.good .lh span{background:var(--red)}
+.lp ol{margin:12px 0 0;padding-left:1.4em;display:flex;flex-direction:column;gap:6px;font-size:14.5px;font-weight:700}
+.lp.bad ol{color:#5a636d}
+.mp-wrap{overflow-x:auto;margin-top:18px}
+.mp{width:100%;border-collapse:collapse;min-width:640px;font-size:14px}
+.mp th,.mp td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;line-height:1.6}
+.mp thead th{background:var(--ink);color:#fff;font-size:12.5px;font-weight:700}
+.mp tbody th{font:800 15px var(--en);white-space:nowrap}
+.mp td.b{font-weight:900;white-space:nowrap}
+.mp td.s{font-size:13px;color:var(--red);font-weight:700}
+.mp tr.hl{background:#fdf3f1}
+.sh2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.shc{background:#f4f6f9;border-radius:12px;padding:22px}
+.shc .tag{display:inline-block;font-size:12px;font-weight:900;padding:2px 10px;border-radius:99px;background:var(--ink);color:#fff}
+.shc h3{margin-top:10px;font-size:18px;font-weight:900}
+.shc p{margin-top:6px;font-size:14px;line-height:1.75;color:#4a525a}
+@media (max-width:820px){.pu{grid-template-columns:minmax(0,1fr)}.pa{transform:rotate(90deg);height:24px}.fj{grid-template-columns:repeat(2,minmax(0,1fr))}.fj li::after{display:none}.loops,.sh2{grid-template-columns:minmax(0,1fr)}}
 </style>
 
 <div class="intro" id="intro" aria-hidden="true">
@@ -1083,6 +1130,31 @@ html,body{background:var(--page)}
   </div>
 
 
+
+  <section class="panel pmf-top" aria-labelledby="t-pmf">
+    <div class="sec-head"><h2 id="t-pmf">私たちの目的と、ゴール<small>Goal is PMF</small></h2><p class="sec-desc">目的は、御社の売上を上げること。そのゴールが PMF（プロダクトマーケットフィット）です。</p></div>
+    <div class="sec-body">
+      <div class="pu">
+        <div class="pc"><span class="pk">目的</span><h3>売上を上げる</h3><p>売上＝顧客数 × 単価 × 継続。広告やHPは、そのための手段です。</p></div>
+        <span class="pa" aria-hidden="true">→</span>
+        <div class="pc hl"><span class="pk">ゴール</span><h3>PMF</h3><p>商品が顧客の課題を満たし、正しい市場に届いている状態。投資するほど売上が伸びます。</p></div>
+        <span class="pa" aria-hidden="true">→</span>
+        <div class="pc"><span class="pk">その先</span><h3>自走して伸び続ける</h3><p>勝ち筋を広げ、社内で回せる仕組みにします。</p></div>
+      </div>
+      <p class="pmf-band">PMFの前に広告を増やしても、売上は伸びません。だから先に<em>「売れる理由」</em>をつくります。</p>
+      <h3 class="pmf-sub">6つのフェーズで、いまの現在地を確かめる</h3>
+      <ol class="fj">
+          <li><span class="fn">01</span><b>CPF</b><i>Customer Problem Fit</i><p>顧客に、本当に課題はあるか</p></li>
+          <li><span class="fn">02</span><b>PSF</b><i>Problem Solution Fit</i><p>課題を解決できる方法は何か</p></li>
+          <li><span class="fn">03</span><b>SPF</b><i>Solution Product Fit</i><p>解決策を商品として形にできるか</p></li>
+          <li class="hl"><span class="fn">04</span><b>PMF</b><i>Product Market Fit</i><p>商品は市場に受け入れられたか</p></li>
+          <li><span class="fn">05</span><b>GTM</b><i>Go-to-Market</i><p>売れる仕組みを広げられるか</p></li>
+          <li><span class="fn">06</span><b>Growth</b><i>Growth</i><p>計画どおりに伸び続けているか</p></li>
+        </ol>
+      <p class="pmf-src">出典：才流「PMF（プロダクトマーケットフィット）のよくある質問に一問一答」（2026年9月28日）をもとにMICHINARIが再構成</p>
+      <div class="btn-row"><a class="more" href="#services">PMFまでの支援を見る</a></div>
+    </div>
+  </section>
 
   <section class="panel" aria-labelledby="t-what">
     <div class="sec-head"><h2 id="t-what">事業内容<small>Services</small></h2><p class="sec-desc">Web集客から業務の仕組みづくりまで、まとめてご相談いただけます。支援の形は、大きく2つです。</p></div>
@@ -1223,6 +1295,47 @@ html,body{background:var(--page)}
   </div>
   <section class="panel block">
     <div class="pains-wrap"><h2 class="h-line">こんなお悩みはありませんか</h2><p class="dg-lead">売上づくりの「よくあるお悩み」を、MICHINARIはこう変えます。</p><div class="pains" data-pains></div></div>
+    <div class="pmf-wrap">
+      <h2 class="h-line">なぜ、PMFが先なのか</h2>
+      <p class="dg-lead">PMFの前と後で、同じ広告費でも結果がまったく変わります。</p>
+      <div class="loops">
+        <div class="lp bad"><p class="lh">PMFしていない<span>悪循環</span></p><ol><li>広告・販促に予算を使う</li><li>商談につながらない</li><li>商談しても受注できない</li><li>社内の予算・人が削られる</li><li>資金繰りが苦しくなる</li></ol></div>
+        <div class="lp good"><p class="lh">PMFしている<span>好循環</span></p><ol><li>広告・販促に予算を使う</li><li>投じるほど商談が増える</li><li>商談から受注が生まれる</li><li>追加の予算・人を確保できる</li><li>資金が積み上がっていく</li></ol></div>
+      </div>
+      <p class="pmf-band">穴の空いたバケツに水を注がないように。先に<em>「売れる理由」</em>をつくります。</p>
+    </div>
+    <div class="pmf-wrap">
+      <h2 class="h-line">フィットジャーニーと、MICHINARIの支援</h2>
+      <p class="dg-lead">アイデアからPMF、そして成長まで。6つのフェーズのどこにいるかを見極め、いまのフェーズに合う施策だけを打ちます。</p>
+      <ol class="fj">
+          <li><span class="fn">01</span><b>CPF</b><i>Customer Problem Fit</i><p>顧客に、本当に課題はあるか</p></li>
+          <li><span class="fn">02</span><b>PSF</b><i>Problem Solution Fit</i><p>課題を解決できる方法は何か</p></li>
+          <li><span class="fn">03</span><b>SPF</b><i>Solution Product Fit</i><p>解決策を商品として形にできるか</p></li>
+          <li class="hl"><span class="fn">04</span><b>PMF</b><i>Product Market Fit</i><p>商品は市場に受け入れられたか</p></li>
+          <li><span class="fn">05</span><b>GTM</b><i>Go-to-Market</i><p>売れる仕組みを広げられるか</p></li>
+          <li><span class="fn">06</span><b>Growth</b><i>Growth</i><p>計画どおりに伸び続けているか</p></li>
+        </ol>
+      <div class="mp-wrap"><table class="mp">
+        <thead><tr><th>フェーズ</th><th>やること</th><th>MICHINARIの支援内容</th><th>主なサービス</th></tr></thead>
+        <tbody>
+          <tr><th>CPF・PSF</th><td class="b">課題を見つける</td><td>事前の戦略シート（3C・PEST・5フォース）、ヒアリング、一次情報と購入の決め手（KBF）の整理</td><td class="s">CMO代行（Web戦略）</td></tr>
+          <tr><th>SPF</th><td class="b">売り方を形にする</td><td>訴求・LP・公式LINEを小さく作り、クリエイティブの仮説を立てる</td><td class="s">CMO代行・Web集客支援</td></tr>
+          <tr class="hl"><th>PMF</th><td class="b">市場で確かめる</td><td>少額の広告で反応を見て、獲得単価・受注率・継続率を計画とくらべる</td><td class="s">CMO代行＋Web集客支援</td></tr>
+          <tr><th>GTM</th><td class="b">勝ち筋を広げる</td><td>当たったチャネルに予算を寄せ、LTV÷CAC 3倍以上を目安に拡大する</td><td class="s">CMO代行＋Web集客支援</td></tr>
+          <tr><th>Growth</th><td class="b">自走して伸ばす</td><td>運用を社内に移し、新しい事業・部署の立ち上げ、AIで効率化する</td><td class="s">内製化支援・AI・DX支援</td></tr>
+        </tbody>
+      </table></div>
+      <p class="pmf-note">一直線には進まず、前のフェーズに戻ることもあります。PMFしたあとも、別の顧客層では最初からやり直すことがあります。</p>
+      <p class="pmf-src">出典：才流「PMF（プロダクトマーケットフィット）のよくある質問に一問一答」（2026年9月28日）をもとにMICHINARIが再構成</p>
+    </div>
+    <div class="pmf-wrap">
+      <h2 class="h-line">数字で合意して、数字で判断する</h2>
+      <p class="dg-lead">伴走では、計画と実績を同じシートで確かめながら進めます。だから次の一手がぶれません。</p>
+      <div class="sh2">
+        <div class="shc"><span class="tag">ご契約前</span><h3>① 投資回収シート</h3><p>3C・調査・ヒアリングの事実をもとに、売上目標・予算・獲得単価から投資回収の見込みを計算します。何ヶ月目に回収できるかを、事前に共有します。</p></div>
+        <div class="shc"><span class="tag">ご契約後</span><h3>② 導入シート（御社専用）</h3><p>①で合意した数字をそのまま引き継ぎ、毎月の計画と実績をくらべます。御社も同じシートを見られるので、決めたことと実行がずれません。</p></div>
+      </div>
+    </div>
     <div class="dg-overview">
       <h2 class="h-line">MICHINARIの支援の全体像</h2>
       <p class="dg-lead">経営の目標を起点に、課題に合わせて「任せる」「一緒につくる」の2つの形で支援します。</p>
