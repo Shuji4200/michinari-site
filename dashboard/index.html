@@ -514,6 +514,19 @@ body.ro #edit,body.ro #del,body.ro #addLog,body.ro #logT,body.ro #mAdd,body.ro #
 body.ro #stSel,body.ro [data-st],body.ro [data-me],body.ro [data-chk],body.ro [data-paid]{pointer-events:none}
 body.ro #stSel{opacity:.85}
 .pipe td:nth-child(2) .pill,.pipe .pill{white-space:nowrap}.pipe th.num,.pipe td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.pipe tfoot td{font-weight:700;border-top:2px solid var(--line)}
+.fitp .fsteps{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:6px 0 16px}
+.fstep{border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff;opacity:.6}
+.fstep.done{opacity:1;background:#f0faf5;border-color:#bfe8d3}.fstep.now{opacity:1;border:2px solid #1f6feb;background:#f2f7ff;box-shadow:0 2px 10px rgba(31,111,235,.12)}
+.fsn{font-weight:800;font-size:17px}.fse{font-size:10px;color:var(--mute);margin-bottom:6px}.fsb{height:5px;background:#eef0f3;border-radius:3px;overflow:hidden}.fsb i{display:block;height:100%;background:#1f9d6b}.fstep.now .fsb i{background:#1f6feb}
+.fsc{font-size:11px;margin-top:5px;font-weight:700;color:#1f6feb}.fstep.done .fsc{color:#1f9d6b}
+.fnow{display:grid;grid-template-columns:240px 1fr;gap:16px;background:#f7f8fa;border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.fnow small{display:block;font-size:11px;color:var(--mute);font-weight:700;margin-bottom:4px}.fnow b{font-size:30px;font-weight:800;color:#1f6feb;line-height:1}.fnow span{display:block;font-size:11px;color:var(--mute);margin:2px 0 6px}.fnow p{margin:0;font-size:13px}
+.fnote{background:#fff;border-left:3px solid #1f6feb;padding:8px 10px;border-radius:6px;font-size:13px;margin-bottom:8px}
+.fcl{list-style:none;padding:0;margin:4px 0 8px}.fcl li{display:flex;gap:8px;align-items:baseline;font-size:13px;padding:4px 0}.fcl li.ok>span:not(.fchk){color:var(--mute)}
+.fchk{width:16px;text-align:center;font-weight:800;color:#1f9d6b}.fauto{margin-left:auto;font-size:11px;color:var(--mute);white-space:nowrap}
+.fcd{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-bottom:6px;background:#fff}.fcd summary{cursor:pointer;font-size:13px;display:flex;gap:8px;align-items:baseline}.fcd summary em{margin-left:auto;font-style:normal;font-size:12px;font-weight:700;color:var(--mute)}.fcd summary em.ok{color:#1f9d6b}
+.fmini{display:flex;gap:2px}.fmini span{font-size:10px;font-weight:700;padding:3px 5px;border-radius:4px;background:#eef0f3;color:#9aa1ab}.fmini span.d{background:#d9f2e6;color:#1f7a54}.fmini span.n{background:#1f6feb;color:#fff}
+@media(max-width:760px){.fitp .fsteps{grid-template-columns:repeat(3,1fr)}.fnow{grid-template-columns:1fr}}
 .srcbar{display:inline-block;height:8px;border-radius:4px;background:#3b82f6;vertical-align:middle;margin-right:6px}
 
 .hpt,.hplog{list-style:none;margin:0;padding:0}.hpt li,.hplog li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
@@ -1777,12 +1790,12 @@ function renderDept(id){
   <div class="dlinks">${D.pages.map(p=>`<a href="${p[0]}"${pubPage(p[0].slice(1))?' class="pub"':""}>${esc(p[1])} →</a>`).join("")}${IS_MAIN&&!IS_PUBLIC?`<a class="ext" href="${DEPT_URL[id]}" target="_blank" rel="noopener">${esc(D.name)}部門アプリを開く ↗</a>`:""}${id==="cfo"?`<a href="${FREEE_URL}" target="_blank" rel="noopener">freee ↗</a>`:""}${al?`<span class="dal">⚠ ${esc(al)}</span>`:""}</div>
   <section class="dsec"><h3 class="h3">${moLabel(mo)}の数字</h3><div class="pks">${K.map(kpiCard).join("")}</div>
    <p class="hint">${K.some(x=>!x.v)?"「手入力」の項目は 🎯目標・数字 から実績を入れます。":""}それ以外は各ページのデータから自動で集計しています。</p></section>
-  ${id==="ceo"?todoBoard():""}
+  ${id==="ceo"?(IS_MAIN?fitBoard():"")+todoBoard():""}
   ${id==="chro"&&hrItems().length?`<section class="dsec"><div class="dh" style="display:flex;align-items:center;justify-content:space-between"><h3 class="h3" style="margin:0">MICHINARIの採用基準</h3><a class="lnk" href="#hiring">採用基準へ →</a></div>${hiringCard(true)}</section>`:""}
   <section class="dsec"><h3 class="h3">PDCA</h3>${pdcaBoard(id)}</section>${extra}`;
   bindMonthNav();$("#kEdit").onclick=()=>openKpiForm(id);bindPdca(id);
   if(id==="cso")bindCso();
-  if(id==="ceo")bindTodoBoard();
+  if(id==="ceo"){bindTodoBoard();bindFit();}
 }
 /* 営業：ファネルと今日やること */
 function csoExtra(){
@@ -1833,10 +1846,11 @@ function renderDash(){
   $("#main").innerHTML=`<div class="ph"><div><div class="eyebrow">CEO ダッシュボード ・ ${td.replace(/-/g,"/")}</div><h1>🏛 経営</h1></div><div class="act">${monthNav()}<button class="btn ghost sm" id="kEdit">🎯 全社の目標</button></div></div>
   <div class="dlinks">${DEPTS[0].pages.map(p=>`<a href="${p[0]}">${esc(p[1])} →</a>`).join("")}<a class="ext" href="${DEPT_URL.ceo}" target="_blank" rel="noopener">経営部門アプリを開く ↗</a></div>
   <section class="dsec"><h3 class="h3">全社の数字（${moLabel(mo)}）</h3><div class="pks">${K.map(kpiCard).join("")}</div></section>
+  ${fitBoard()}
   ${todoBoard()}
   <section class="dsec"><h3 class="h3">部門ごとの状況 <em class="mute s" style="font-weight:500">P計画・D実行・C評価・A改善が埋まると色がつきます</em></h3><div class="dcards">${cards}</div></section>
   <section class="dsec"><h3 class="h3">経営のPDCA</h3>${pdcaBoard("ceo")}</section>`;
-  bindMonthNav();$("#kEdit").onclick=()=>openKpiForm("ceo");bindPdca("ceo");bindTodoBoard();
+  bindMonthNav();$("#kEdit").onclick=()=>openKpiForm("ceo");bindPdca("ceo");bindTodoBoard();bindFit();
 }
 
 
@@ -1997,12 +2011,15 @@ function sampleData(){
   const todos=[T("sales","初回打ち合わせを3件実施","A",addDays(td,5),false),T("sales","提案書テンプレートの見直し","B",addDays(td,-3),true),T("sales","紹介元へのお礼と近況報告","B",addDays(td,-1),false),T("sales","商談後のフォロー連絡の型をつくる","C","",false),
     T("acq","note記事を週1本公開","A",addDays(td,2),false),T("acq","HPのLINEボタンを目立たせる","A",addDays(td,4),false),T("acq","Xの固定ポストを更新","B",addDays(td,-4),true),T("acq","Threadsの投稿テーマを整理","C","",true),
     T("product","料金表を新しい形に更新","A",addDays(td,6),false),T("product","支援実績を2件追加","B",addDays(td,10),false),T("product","料金表の見直し","B",addDays(td,-6),true)];
-  return {crm,clients,payments,docs,mkt,mposts,products,legal,stages,lessons,pdca,todos,goals:{customers:4,mrr:1000000,inquiries:10}};
+  const fit={checks:{cpf_1:true,cpf_2:true,cpf_3:true,psf_1:true,spf_1:true,pmf_2:true},
+    focus:"- 共創パートナー顧客を1社決め、毎月の報告の型を一緒に磨く\n- 工務店の事例を数字つきでまとめ、紹介元に共有する\n- 3か月目の継続を確認できるよう、満足度を毎月記録する",
+    services:{g1:{stage:"spf",next:"月次報告のテンプレートを固める"},g3:{stage:"psf",next:"CPAの改善事例を2件つくる"},g5:{stage:"psf",next:"構築から運用への移行率を見る"},g2:{stage:"",next:"ロードマップの型を1枚にまとめる"},g4:{stage:"cpf",next:"単価で利益が残るか確認"}},updatedAt:iso(td)};
+  return {fit,crm,clients,payments,docs,mkt,mposts,products,legal,stages,lessons,pdca,todos,goals:{customers:4,mrr:1000000,inquiries:10}};
 }
 function startPublic(){
   const S=sampleData();
   Object.assign(state,{crm:S.crm,rawClients:S.clients,payments:S.payments,mkt:S.mkt,mposts:S.mposts,products:S.products,legal:S.legal,stages:S.stages,lessons:S.lessons,pdca:S.pdca,todos:S.todos,goals:S.goals,
-    isEditor:true,crmReady:true,clientsReady:true,productsReady:true,mktReady:true,docsReady:true,planReady:true,bizChecked:true,ready:true,docs:S.docs,weekly:{},kpisnap:{}});
+    isEditor:true,crmReady:true,clientsReady:true,productsReady:true,mktReady:true,docsReady:true,planReady:true,bizChecked:true,ready:true,docs:S.docs,fit:S.fit,weekly:{},kpisnap:{}});
   state.db={doc:()=>({set:()=>Promise.reject(new Error("デモ画面のため保存されません"))})};
   mergePay();document.body.classList.add("ro");
   document.title="MICHINARI 事業ダッシュボード（デモ）";
@@ -2087,6 +2104,85 @@ function bindTodoBoard(){
     openForm2({title:"やることを編集",fields:[{k:"title",l:"やること",req:1,w:1},{k:"area",l:"区分",t:"select",blank:false,o:TD_AREAS.map(a=>[a[0],a[1]])},{k:"priority",l:"優先度",t:"select",blank:false,o:[["A","A（最優先）"],["B","B"],["C","C"]]},{k:"due",l:"期日",t:"date"},{k:"memo",l:"メモ",t:"textarea",rows:3}],values:t,
       onSave:(d,e)=>{const doc={...t,...d};delete doc.id;return writeDoc("todos/"+t.id,{...doc,updatedAt:new Date().toISOString()},e);},
       onDelete:async e=>{try{await softDel("todos/"+t.id);return true;}catch(x){e.textContent="削除できませんでした";return false;}}});});
+}
+
+/* ===== 経営：PMF（フィットジャーニー）— MICHINARIと各サービスが今どの段階か ===== */
+Object.assign(state,{fit:{}});
+const FIT=[
+ {id:"cpf",n:"CPF",en:"Customer Problem Fit",goal:"バーニングニーズ（切実な課題）の発見と検証",act:"顧客インタビュー・課題の仮説を言語化"},
+ {id:"psf",n:"PSF",en:"Problem Solution Fit",goal:"解決策を立て、お金を払ってくれるかを検証",act:"MVP・営業資料・デモ・営業"},
+ {id:"spf",n:"SPF",en:"Solution Product Fit",goal:"解決策をサービス（型）にできるか",act:"支援の型づくり・共創パートナー顧客"},
+ {id:"pmf",n:"PMF",en:"Product Market Fit",goal:"市場に受け入れられ、顧客が定着するか",act:"カスタマーサクセス・継続率の改善"},
+ {id:"gtm",n:"GTM",en:"Go-to-Market",goal:"ビジネスモデルと拡大できるかの検証",act:"集客チャネルの最適化・採用／育成の型"},
+ {id:"growth",n:"Growth",en:"Growth",goal:"計画どおりの事業の成長",act:"チャネル・セグメントの拡張、採用"}];
+function fitStats(){
+  const crm=state.crm||[],cl=(state.clients||[]).filter(c=>c.status!=="prep"||true),td=today();
+  const met=crm.filter(c=>reached(c,"consult")).length;
+  const paid=cl.filter(c=>c.status!=="prep").length,won=crm.filter(c=>c.status==="won").length;
+  const act=cl.filter(c=>clientActiveAt(c,td));
+  const old=cl.filter(c=>c.startDate&&c.startDate<=addDays(td,-90)&&c.status!=="prep");
+  const kept=old.filter(c=>clientActiveAt(c,td)).length;
+  const sat=cl.filter(c=>+c.satisfaction>0),satAvg=sat.length?sat.reduce((a,c)=>a+ +c.satisfaction,0)/sat.length:null;
+  const mrr=act.reduce((a,c)=>a+(+c.monthly||0),0),g=state.goals||{};
+  const docs=(state.docs||[]).filter(d=>d.type==="material"||d.type==="demo").length;
+  return {met,paid:Math.max(paid,won),act:act.length,old:old.length,kept,ret:old.length?kept/old.length:null,satAvg,mrr,goalMrr:+g.mrr||0,docs};
+}
+function fitCriteria(S){
+  const m=(state.fit.checks||{});
+  const A=(id,l,ok,v)=>({id,l,auto:true,ok:!!ok,v}),M=id=>l=>({id,l,auto:false,ok:!!m[id]});
+  return {
+   cpf:[A("cpf_a","顧客と話した（初回打ち合わせ）10社以上",S.met>=10,`${S.met}社`),M("cpf_1")("同じ課題を3社以上から聞いた（課題が存在する）"),M("cpf_2")("予算・時期があり、解決するに値する切実な課題だと言える"),M("cpf_3")("一緒にやるチームがそろっている")],
+   psf:[A("psf_a","お金を払ってくれた顧客が1社以上",S.paid>=1,`${S.paid}社`),A("psf_b","営業資料・デモがある",S.docs>=1,`${S.docs}件`),M("psf_1")("熱狂的な顧客が数名いる（続けたい・紹介したいと言ってくれる）")],
+   spf:[A("spf_a","契約した顧客が3社以上",S.paid>=3,`${S.paid}社`),M("spf_1")("支援の型（手順・テンプレート・報告の形）ができている"),M("spf_2")("一緒にサービスを磨いてくれる共創パートナー顧客がいる")],
+   pmf:[A("pmf_a","3か月以上たった顧客の継続率80%以上（3社以上）",S.old>=3&&S.ret>=0.8,S.ret==null?"対象なし":`${Math.round(S.ret*100)}%（${S.kept}/${S.old}社）`),A("pmf_b","顧客満足度の平均4以上（NPSの代わり）",S.satAvg!=null&&S.satAvg>=4,S.satAvg==null?"未入力":S.satAvg.toFixed(1)),M("pmf_1")("ショーン・エリステスト：「なくなったら非常に困る」が40%以上"),M("pmf_2")("バリュープロポジションを一言で言える")],
+   gtm:[A("gtm_a","月額売上が目標に到達",S.goalMrr>0&&S.mrr>=S.goalMrr,`${yen(S.mrr)}／${S.goalMrr?yen(S.goalMrr):"目標未設定"}`),M("gtm_1")("受注が来るチャネルが決まっていて再現できる"),M("gtm_2")("ユニットエコノミクスが合う（1社の獲得費用＜1社の粗利）")],
+   growth:[M("gr_1")("計画どおりに売上・顧客数が伸びている"),M("gr_2")("採用・育成の型があり、人を増やしても質が落ちない")]};
+}
+function fitNow(C){let cur=FIT.length-1;for(let i=0;i<FIT.length;i++){if(!C[FIT[i].id].every(x=>x.ok)){cur=i;break;}}return cur;}
+const fitKey=n=>String(n||"").split(/[（(・]/)[0].trim();
+function fitService(p){
+  const k=fitKey(p.name),has=list=>(list||[]).some(s=>{const a=fitKey(s);return a&&k&&(a===k||a.startsWith(k)||k.startsWith(a));});
+  const prop=(state.crm||[]).filter(c=>has(c.services)).length,cl=(state.clients||[]).filter(c=>has(c.services));
+  const won=cl.filter(c=>c.status!=="prep").length,act=cl.filter(c=>clientActiveAt(c,today())).length;
+  const auto=won>=3?"spf":won>=1?"psf":"cpf";
+  const sv=(state.fit.services||{})[p.id]||{};
+  return {p,prop,won,act,stage:sv.stage||auto,auto:!sv.stage,memo:sv.memo||"",next:sv.next||""};
+}
+function fitBoard(){
+  const S=fitStats(),C=fitCriteria(S),cur=fitNow(C),F=FIT[cur],ro=IS_PUBLIC||!state.isEditor,f=state.fit||{};
+  const todo=C[F.id].filter(x=>!x.ok);
+  const steps=FIT.map((x,i)=>{const L=C[x.id],ok=L.filter(y=>y.ok).length;const cls=i<cur?"done":i===cur?"now":"";
+    return `<div class="fstep ${cls}"><div class="fsn">${x.n}</div><div class="fse">${x.en}</div><div class="fsb"><i style="width:${Math.round(ok/L.length*100)}%"></i></div><div class="fsc">${i<cur?"✓ クリア":i===cur?"いまここ":""} ${ok}/${L.length}</div></div>`;}).join("");
+  const crit=FIT.map((x,i)=>`<details class="fcd" ${i===cur?"open":""}><summary><b>${x.n}</b> <span class="mute s">${esc(x.goal)}</span> <em class="${C[x.id].every(y=>y.ok)?"ok":""}">${C[x.id].filter(y=>y.ok).length}/${C[x.id].length}</em></summary>
+     <ul class="fcl">${C[x.id].map(c=>`<li class="${c.ok?"ok":""}">${c.auto?`<span class="fchk">${c.ok?"✓":"・"}</span>`:`<input type="checkbox" data-fit="${c.id}" ${c.ok?"checked":""} ${ro?"disabled":""}>`}<span>${esc(c.l)}</span>${c.auto?`<small class="fauto">自動：${esc(c.v)}</small>`:""}</li>`).join("")}</ul>
+     <div class="mute s">主な活動：${esc(x.act)}</div></details>`).join("");
+  const svs=(state.products||[]).filter(p=>(p.status||"sale")!=="stop").sort((a,b)=>(a.order||0)-(b.order||0)).map(fitService);
+  const idx=id=>FIT.findIndex(x=>x.id===id);
+  const svRows=svs.map(s=>`<tr><td><b>${esc(s.p.name)}</b>${s.p.priceLabel?`<div class="mute s">${esc(s.p.priceLabel)}</div>`:""}</td>
+    <td><div class="fmini">${FIT.map((x,i)=>`<span class="${i<idx(s.stage)?"d":i===idx(s.stage)?"n":""}" title="${x.n}">${x.n}</span>`).join("")}</div>${s.auto?'<div class="mute s">数字から自動判定</div>':""}</td>
+    <td class="num">${s.prop}</td><td class="num">${s.won}</td><td class="num">${s.act}</td><td class="s">${esc(s.next||s.memo||"—")}</td></tr>`).join("");
+  return `<section class="dsec panel fitp"><div class="dh"><h3>PMF（フィットジャーニー）<em class="mute s" style="font-weight:500">MICHINARIが今どの段階か</em></h3>${ro?"":'<button class="btn ghost sm" id="fitEdit">編集する</button>'}</div>
+   <div class="fsteps">${steps}</div>
+   <div class="fnow"><div><small>いまの段階</small><b>${F.n}</b><span>${esc(F.en)}</span><p>${esc(F.goal)}</p></div>
+    <div><small>今、注力すること</small>${(f.focus||"").trim()?`<div class="fnote">${esc(f.focus).replace(/\n/g,"<br>")}</div>`:""}
+     ${todo.length?`<ul class="fcl">${todo.map(c=>`<li>・${esc(c.l)}${c.auto?`<small class="fauto">今：${esc(c.v)}</small>`:""}</li>`).join("")}</ul>`:""}
+     <div class="mute s">次の段階（${FIT[Math.min(cur+1,FIT.length-1)].n}）に進む条件は、上の「いまここ」の項目がすべてそろうことです。</div></div></div>
+   <div class="fcrit">${crit}</div>
+   <h4 class="h4" style="margin:18px 0 8px">サービスごとの段階</h4>
+   ${svs.length?`<table class="t pipe"><thead><tr><th>サービス</th><th>段階</th><th class="num">提案</th><th class="num">契約</th><th class="num">稼働中</th><th>次にやること・メモ</th></tr></thead><tbody>${svRows}</tbody></table>`:'<div class="empty sm">販売中のサービスがありません</div>'}
+   <p class="hint">段階は、自動の項目（顧客・受注クライアント・目標の数字から判定）と、手でチェックする項目でそろえます。サービスの段階は、手で決めていなければ契約数から自動で出します（0社＝CPF・1社〜＝PSF・3社〜＝SPF）。</p>
+   <div class="err" id="fitErr"></div></section>`;
+}
+function bindFit(){
+  if(IS_PUBLIC||!state.isEditor)return;
+  const save=d=>writeDoc("biz/fit",{...state.fit,...d,updatedAt:new Date().toISOString()},$("#fitErr"));
+  document.querySelectorAll("[data-fit]").forEach(c=>c.onchange=()=>save({checks:{...(state.fit.checks||{}),[c.dataset.fit]:c.checked}}));
+  const b=$("#fitEdit");if(!b)return;
+  b.onclick=()=>{const svs=(state.products||[]).filter(p=>(p.status||"sale")!=="stop").sort((a,b)=>(a.order||0)-(b.order||0));const cur=state.fit.services||{};
+    const fields=[{k:"focus",l:"今、注力すること（全体）",t:"textarea",rows:4,w:1}],vals={focus:state.fit.focus||""};
+    svs.forEach(p=>{const s=cur[p.id]||{};fields.push({k:"st_"+p.id,l:`${p.name}：段階`,t:"select",o:[["","数字から自動"]].concat(FIT.map(x=>[x.id,x.n]))},{k:"nx_"+p.id,l:`${p.name}：次にやること・メモ`});vals["st_"+p.id]=s.stage||"";vals["nx_"+p.id]=s.next||"";});
+    openForm2({title:"PMF（フィットジャーニー）",fields,values:vals,onSave:(d,e)=>{const services={...cur};svs.forEach(p=>{services[p.id]={stage:d["st_"+p.id]||"",next:d["nx_"+p.id]||""};});
+      return writeDoc("biz/fit",{...state.fit,focus:d.focus||"",services,updatedAt:new Date().toISOString()},e);}});};
 }
 
 /* ===== 人事・採用・教育：採用基準（#hiring） ===== */
@@ -2235,6 +2331,7 @@ async function staticMode(){
       db.collection("salesdocs").onSnapshot(s=>{state.docs=live(s);state.docsReady=true;bizRefresh(s.metadata);},()=>{});
       db.doc("biz/plan").onSnapshot(d=>{state.plan=d.exists?d.data():null;state.planReady=true;if(location.hash==="#plan"&&!state.planEditing&&!d.metadata.hasPendingWrites)render();},()=>{state.planReady=true;});
       db.doc("biz/strategy").onSnapshot(d=>{state.strategy=d.exists?d.data():{};state.strategyReady=true;if(location.hash==="#strategy"&&!$("#modal").classList.contains("open")&&!d.metadata.hasPendingWrites)render();},()=>{});
+      db.doc("biz/fit").onSnapshot(d=>{state.fit=d.exists?d.data():{};const h=location.hash;if((h===""||h==="#"||h==="#d-ceo")&&!$("#modal").classList.contains("open"))render();},()=>{});
       db.doc("biz/goals").onSnapshot(d=>{state.goals=d.exists?d.data():{};const h=location.hash;if((h===""||h==="#")&&!$("#modal").classList.contains("open"))render();},()=>{});
     }
   }catch(e){}
