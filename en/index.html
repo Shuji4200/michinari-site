@@ -1407,6 +1407,12 @@ html,body{background:var(--page)}
 }
 @media (min-width:480px) and (max-width:820px){.wd-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}.wd-card.core{grid-column:1/-1}}
 
+/* Founder’s Columnのサムネイル */
+.nthumb.is-colimg{background:#0f2245;border-color:#0f2245}
+.nthumb.is-colimg img{object-fit:contain}
+.nthumb.is-colimg em{position:absolute;right:6px;bottom:4px;font:700 11px var(--en);color:#fff;font-style:normal}
+.nc-col .nc-img{display:block;width:100%;height:auto;aspect-ratio:1734/907;object-fit:cover;border-radius:8px;margin-bottom:14px}
+
 /* ===== English version ===== */
 :root{--jp:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans JP",sans-serif}
 body{letter-spacing:0}
@@ -1420,6 +1426,8 @@ body{letter-spacing:0}
 .fstep b{word-break:normal}
 </style>
 
+</head>
+<body>
 </head>
 <body>
 <div class="intro" id="intro" aria-hidden="true">
@@ -1772,7 +1780,7 @@ body{letter-spacing:0}
     <div class="nc-cards">
       <button type="button" class="nc" data-pick="News"><span class="nc-en">News</span><b>News</b><p>Updates from MICHINARI on our services and activities.</p></button>
       <button type="button" class="nc" data-pick="Reports"><span class="nc-en">Report</span><b>Reports</b><p>Practical insights small and mid-sized businesses can put to work.</p><span class="nc-tags"><i>In-house web</i><i>AI & DX</i><i>Data analysis</i></span></button>
-      <button type="button" class="nc nc-col" data-pick="Founder’s Column"><span class="nc-en">Column</span><b>Founder’s Column</b><p>Series: “Confessions of a 26-Year-Old at a Shibuya Startup.” Our founder writes candidly about what he sees on the front line.</p></button>
+      <button type="button" class="nc nc-col" data-pick="Founder’s Column"><img class="nc-img" src="../images/column-s.webp" alt="MICHINARI Founder’s Column" width="600" height="314" loading="lazy"><span class="nc-en">Column</span><b>Founder’s Column</b><p>Series: “Confessions of a 26-Year-Old at a Shibuya Startup.” Our founder writes candidly about what he sees on the front line.</p></button>
     </div>
     <div class="filters" role="group" aria-label="Filter by category">
       <button type="button" data-cat="all" aria-pressed="true">All</button>
@@ -1949,7 +1957,7 @@ function thumbHtml(n,big){var t=n.thumb||{};var cls='nthumb'+(big?' big':'');
   if(t.img)return '<div class="'+cls+' is-img'+(t.square?' sq':'')+'"><img src="'+t.img+'" alt="" loading="lazy">'+(t.label?'<span class="lbl">'+esc(t.label)+'</span>':'')+'</div>';
   if(t.text)return '<div class="'+cls+' is-text"><span class="k">'+esc(t.label||'')+'</span><b>'+t.text+'</b><img class="mk" src="../images/logo-wordmark.webp" alt=""></div>';
   if(n.cat==='Reports')return '<div class="'+cls+' is-cat is-report"><span class="k">REPORT</span><b>'+esc(n.tag||'Report')+'</b></div>';
-  if(n.cat==='Founder’s Column')return '<div class="'+cls+' is-cat is-col"><span class="k">COLUMN</span><b>Confessions of a <br>26-Year-Old in Shibuya</b>'+(n.no?'<em>#'+esc(n.no)+'</em>':'')+'</div>';
+  if(n.cat==='Founder’s Column')return '<div class="'+cls+' is-img is-colimg"><img src="../images/column-s.webp" alt="MICHINARI Founder’s Column" loading="lazy">'+(n.no?'<em>#'+esc(n.no)+'</em>':'')+'</div>';
   return '<div class="'+cls+' is-def"><img class="mk" src="../images/logo-wordmark.webp" alt=""><span>News Release</span></div>';}
 function newsItem(n){return '<li><a href="#news-'+n.id+'">'+thumbHtml(n)+'<div class="nmain"><div class="nmeta">'+dateHtml(n)+'<span class="'+catClass(n.cat)+'">'+esc(n.cat)+'</span>'+(n.tag?'<span class="ntag">'+esc(n.tag)+'</span>':'')+(n.draft?'<span class="draft">Draft</span>':'')+'</div><span class="t">'+esc(n.title)+'</span></div></a></li>';}
 document.getElementById('top-news').innerHTML=NEWS.slice(0,3).map(newsItem).join('');
@@ -2280,5 +2288,7 @@ document.addEventListener('click',function(e){
 </script>
 
 <script>window.addEventListener("load",function(){setTimeout(function(){["v2-cmo","v2-web","v2-inhouse","v2-promo","v2-dx"].forEach(function(k){var i=new Image();i.src="../images/"+k+"-s.webp";});},300);});</script>
+</body>
+</html>
 </body>
 </html>
