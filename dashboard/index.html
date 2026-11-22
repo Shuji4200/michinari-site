@@ -222,6 +222,19 @@ table.t{width:100%;border-collapse:collapse;background:#fff;border:1px solid var
 .gs{font-size:12px;color:var(--ink2);margin-top:8px}.mute{color:var(--mute)}.s{font-size:12px}
 .dgrid2{display:grid;grid-template-columns:1fr 1.15fr;gap:18px;align-items:start}
 .seg.sm button{padding:5px 10px;font-size:12px;min-height:32px}
+.sflow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:6px}
+.sflow .st{position:relative;background:var(--card,#fff);border:1px solid var(--line,#e3e6ee);border-top:4px solid var(--sc);border-radius:12px;padding:12px 12px 10px;display:flex;flex-direction:column;gap:6px}
+.sflow .st:not(:last-child)::after{content:"";position:absolute;right:-9px;top:50%;width:8px;height:8px;border-top:2px solid #b8bfcc;border-right:2px solid #b8bfcc;transform:translateY(-50%) rotate(45deg)}
+.sflow .sn{font-size:11px;font-weight:700;color:var(--sc);letter-spacing:.5px}
+.sflow .stt{font-weight:700;font-size:14px;line-height:1.35}
+.sflow .sto{font-size:12px;line-height:1.5;color:#5b6474;background:#f5f7fb;border-radius:8px;padding:6px 8px}
+.sflow .sto b{color:var(--sc)}
+.sflow .sdo{font-size:12px;line-height:1.55;color:#3d4554;margin:0;padding-left:16px}
+.sflow .scn{margin-top:auto;font-size:12px;color:#5b6474}.sflow .scn b{font-size:18px;color:#1d2352;margin-right:2px}
+.sflow .skl{font-size:11.5px;line-height:1.5;background:#fff7e8;border:1px dashed #e2a64a;border-radius:8px;padding:6px 8px;color:#7a4a0e}
+.sstory{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#1d2352;color:#fafafc;border-radius:12px;padding:10px 14px;font-size:13px;line-height:1.5}
+.sstory b{color:#f0c27b}
+@media(max-width:900px){.sflow{grid-template-columns:1fr}.sflow .st:not(:last-child)::after{right:50%;top:auto;bottom:-9px;transform:translateX(50%) rotate(135deg)}}
 .funnel{display:flex;flex-direction:column;gap:12px}
 .fr{display:grid;grid-template-columns:92px 1fr 36px 44px;align-items:center;gap:10px;font-size:13px}
 .fl{color:var(--ink2);font-weight:500}.fb{height:22px;background:var(--bg);border-radius:6px;overflow:hidden}.fb i{display:block;height:100%;border-radius:6px;min-width:2px}
@@ -1797,6 +1810,23 @@ function renderDept(id){
   if(id==="cso")bindCso();
   if(id==="ceo"){bindTodoBoard();bindFit();}
 }
+/* 営業：営業の流れ（ストーリー） */
+function csoFlow(){
+  const td=today(),C=state.crm,up=allMeetings().filter(m=>m.date>=td&&m.type==="初回打ち合わせ");
+  const n=st=>C.filter(c=>c.status===st).length;
+  const S=[
+   {c:"#3b82f6",t:"問い合わせ・リード獲得",s:"出会い",st:"「この人に相談したい」と思ってもらう入口",d:["HP・X・Threads・noteの発信、紹介、広告から接点をつくる","流入経路と相手の悩みを顧客リストに残す"],k:["接点",n("lead")]},
+   {c:"#0e7c86",t:"顧客理解の資料作成",s:"理解",st:"相手の事業を、相手以上に理解してから会う",d:["HP・社名から公開情報を調べ、ビジネスモデルと集客の現状を8枚に整理","事実と仮説を分け、初回で確かめることを6つ決める"],k:["初回の予定",up.length],skill:true},
+   {c:"#8b5cf6",t:"初回オンライン打ち合わせ",s:"共感",st:"仮説をぶつけ、本当の課題と目標を一緒に言葉にする",d:["売上目標・客単価・今の数字・予算・体制・決裁者を聞く","「なぜ今なのか」を相手の言葉で引き出す"],k:["初回打ち合わせ",n("consult")]},
+   {c:"#f59e0b",t:"提案",s:"道筋",st:"目標から逆算した「売上までの道のり」を見せる",d:["投資回収シートで、何に・いくら・いつ回収するかを示す","優先順位をつけた打ち手と、事例・数字で期待値を上げる"],k:["提案中",n("diagnosis")+n("proposal")]},
+   {c:"#1f9d6b",t:"受注",s:"伴走",st:"約束した道のりを、一緒に歩き始める",d:["導入シートで提案内容と乖離がないよう共有","キックオフと定例で、最初の成果を早く見せる"],k:["受注",n("won")]}];
+  return `<section class="dsec panel" style="margin-bottom:18px"><div class="dh"><h3>営業の流れ</h3><span class="mute s">営業はストーリー。理解 → 共感 → 道筋 → 伴走の順に、相手の物語として話す</span></div>
+   <div class="sstory"><b>ストーリー</b>出会い → 相手の事業を理解する → 課題と目標に共感する → 売上までの道筋を描く → 一緒に歩き始める</div>
+   <div class="sflow">${S.map((x,i)=>`<div class="st" style="--sc:${x.c}"><span class="sn">STEP ${i+1}｜${x.s}</span><div class="stt">${["①","②","③","④","⑤"][i]} ${x.t}</div>
+    <div class="sto"><b>ストーリー：</b>${x.st}</div><ul class="sdo">${x.d.map(t=>`<li>${t}</li>`).join("")}</ul>
+    ${x.skill?`<div class="skl">🧩 スキル「顧客理解の資料作成」<br>チャットで「〇〇社（URL）の顧客理解の資料を作って」と頼むと、8枚の社内用スライドができます</div>`:""}
+    <div class="scn"><b>${x.k[1]}</b>件　${x.k[0]}</div></div>`).join("")}</div></section>`;
+}
 /* 営業：ファネルと今日やること */
 function csoExtra(){
   const scope=state.funnelScope,td=today();
@@ -1804,7 +1834,7 @@ function csoExtra(){
   const steps=[["lead","接点"],["consult","初回打ち合わせ"],["diagnosis","次回提案"],["proposal","契約の調整"],["won","受注"]].map(([s,l])=>[l,F.filter(c=>reached(c,s)).length]);
   const max=Math.max(1,...steps.map(s=>s[1]));
   const todo=state.crm.filter(c=>c.nextDate&&c.nextDate<=td&&c.status!=="lost").sort((a,b)=>a.nextDate>b.nextDate?1:-1);
-  return `<div class="dgrid2"><section class="dsec panel"><div class="dh"><h3>ファネル</h3><div class="seg sm"><button data-fs="all" class="${scope==="all"?"on":""}">全期間</button><button data-fs="month" class="${scope==="month"?"on":""}">今月の問い合わせ</button></div></div>
+  return `${csoFlow()}<div class="dgrid2"><section class="dsec panel"><div class="dh"><h3>ファネル</h3><div class="seg sm"><button data-fs="all" class="${scope==="all"?"on":""}">全期間</button><button data-fs="month" class="${scope==="month"?"on":""}">今月の問い合わせ</button></div></div>
    <div class="funnel">${steps.map((s,i)=>`<div class="fr"><span class="fl">${s[0]}</span><div class="fb"><i style="width:${s[1]/max*100}%;background:${["#8a909c","#3b82f6","#8b5cf6","#f59e0b","#1f9d6b"][i]}"></i></div><b>${s[1]}</b><span class="fc">${i?(pct(s[1],steps[i-1][1])??"—")+(steps[i-1][1]?"%":""):""}</span></div>`).join("")}</div>
    <p class="hint">右の％は、ひとつ前の段階からの移行率です。</p></section>
   <section class="dsec panel"><div class="dh"><h3>今日やること <em>${todo.length}件</em></h3><a class="lnk" href="#crm">顧客リストへ →</a></div>
